@@ -147,9 +147,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <AboutSection />
       <StatsCounter />
       <BrandBanner />
-      <AboutSection />
       <div className="islamic-divider max-w-6xl mx-auto" />
       <PillarsSection />
       <SummitHighlights />
