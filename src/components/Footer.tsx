@@ -109,29 +109,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Partner logos */}
         <div className="mt-16 pt-8 border-t border-white/5">
-          <p className="text-center text-white/30 text-xs uppercase tracking-widest mb-6">
-            Partners & Collaborators
-          </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
-            {siteConfig.partnerLogos.map((partner) => (
-              <div
-                key={partner.name}
-                className={`rounded-xl px-6 py-4 w-full max-w-[240px] h-28 flex items-center justify-center overflow-hidden ${
-                  partner.bg === "light"
-                    ? "bg-white"
-                    : "bg-black border border-white/10"
-                }`}
-              >
-                <LogoImage
-                  src={partner.src}
-                  alt={partner.fullName}
-                  className="h-full w-auto max-h-20"
-                />
-              </div>
-            ))}
-          </div>
           <p className="text-white/30 text-xs text-center">
             &copy; {new Date().getFullYear()} Inspire Oman. All rights reserved. An initiative by Gulf Madhyamam.
           </p>

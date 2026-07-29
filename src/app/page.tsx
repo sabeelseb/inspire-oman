@@ -10,7 +10,6 @@ import SummitHighlights from "@/components/SummitHighlights";
 import PackageTiers from "@/components/PackageTiers";
 import ContactForm from "@/components/ContactForm";
 import BrandBanner from "@/components/BrandBanner";
-import PartnersSection from "@/components/PartnersSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import { siteConfig, testimonials } from "@/lib/data";
@@ -155,7 +154,6 @@ export default function Home() {
       <PillarsSection />
       <SummitHighlights />
       <PackageTiers />
-      <PartnersSection />
       <TestimonialsSection />
       <CTABanner />
       <ContactForm />
