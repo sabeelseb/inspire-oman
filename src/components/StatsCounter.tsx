@@ -1,18 +1,19 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { stats } from "@/lib/data";
+import { useInView } from "framer-motion";
+import Image from "next/image";
+import { stats, siteConfig } from "@/lib/data";
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once: true, amount: 0.4 });
 
   useEffect(() => {
     if (!inView) return;
-    const duration = 2000;
-    const steps = 60;
+    const duration = 1200;
+    const steps = 36;
     const increment = value / steps;
     let current = 0;
     const timer = setInterval(() => {
@@ -29,38 +30,43 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 
   return (
     <span ref={ref} className="tabular-nums">
-      {count.toLocaleString()}{suffix}
+      {count.toLocaleString()}
+      {suffix}
     </span>
   );
 }
 
+/** Compact stats + skyline banner — minimal vertical whitespace */
 export default function StatsCounter() {
   return (
-    <section className="relative z-10 section-padding pt-8 md:pt-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
-        >
+    <section className="relative z-10 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="max-w-6xl mx-auto space-y-4 sm:space-y-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="glass-card p-6 sm:p-8 text-center group hover:border-gold/30 transition-all duration-500"
+              className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-3.5 sm:px-4 sm:py-4 text-center"
             >
-              <div className="text-3xl sm:text-4xl md:text-5xl font-black gold-text mb-2">
+              <div className="text-xl sm:text-2xl md:text-3xl font-black gold-text leading-none mb-1">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-white/50 text-sm sm:text-base font-medium">{stat.label}</p>
-            </motion.div>
+              <p className="text-white/45 text-[11px] sm:text-xs font-medium leading-snug">
+                {stat.label}
+              </p>
+            </div>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="relative overflow-hidden rounded-xl border border-gold/25">
+          <Image
+            src={siteConfig.images.banner}
+            alt="Inspire Oman — Celebrating Success. Creating Legacy. Inspiring Investment."
+            width={2501}
+            height={626}
+            className="w-full h-auto object-cover max-h-28 sm:max-h-36 md:max-h-44"
+            sizes="(max-width: 768px) 100vw, 1152px"
+          />
+        </div>
       </div>
     </section>
   );

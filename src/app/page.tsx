@@ -9,38 +9,37 @@ import PillarsSection from "@/components/PillarsSection";
 import SummitHighlights from "@/components/SummitHighlights";
 import PackageTiers from "@/components/PackageTiers";
 import ContactForm from "@/components/ContactForm";
-import BrandBanner from "@/components/BrandBanner";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import { siteConfig, testimonials } from "@/lib/data";
 
 function AboutSection() {
   return (
-    <section className="relative section-padding">
+    <section className="relative pt-16 pb-6 sm:pt-20 sm:pb-8 md:pt-24 md:pb-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <ScrollReveal>
-            <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
+            <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
               About the Initiative
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Celebrating Oman&apos;s{" "}
               <span className="gold-text">Growth Story</span>
             </h2>
-            <p className="text-white/50 leading-relaxed mb-6">
+            <p className="text-white/50 leading-relaxed mb-4">
               {siteConfig.description}
             </p>
-            <p className="text-white/40 leading-relaxed mb-8">
+            <p className="text-white/40 leading-relaxed mb-6">
               In strategic partnership with the Oman Chamber of Commerce &amp; Industry (OCCI),
               Inspire Oman brings together CEOs, investors, government leaders, and entrepreneurs
               to celebrate contributions, strengthen investment pathways, and document the
               remarkable achievements of Oman&apos;s business community.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5">
               {["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"].map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 rounded-full bg-gold/10 text-gold text-sm border border-gold/20"
+                  className="px-3.5 py-1.5 rounded-full bg-gold/10 text-gold text-sm border border-gold/20"
                 >
                   {tag}
                 </span>
@@ -50,9 +49,9 @@ function AboutSection() {
 
           <ScrollReveal delay={0.2}>
             <div className="relative">
-              <div className="glass-card p-8 relative overflow-hidden">
+              <div className="glass-card p-5 sm:p-6 relative overflow-hidden">
                 <IslamicPattern opacity={0.08} />
-                <div className="relative space-y-6">
+                <div className="relative space-y-4">
                   {[
                     { label: "Strategic Partner", value: siteConfig.partners.strategic },
                     { label: "Initiative By", value: siteConfig.partners.initiative },
@@ -60,11 +59,11 @@ function AboutSection() {
                     { label: "Summit Date", value: siteConfig.summitDate },
                     { label: "Venue", value: siteConfig.venue },
                   ].map(({ label, value }) => (
-                    <div key={label} className="flex items-start gap-4">
-                      <div className="w-2 h-2 rounded-full bg-gold mt-2 shrink-0" />
+                    <div key={label} className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
                       <div>
-                        <p className="text-white/30 text-xs uppercase tracking-wider">{label}</p>
-                        <p className="text-white/80 font-medium">{value}</p>
+                        <p className="text-white/30 text-[10px] uppercase tracking-wider">{label}</p>
+                        <p className="text-white/80 text-sm font-medium">{value}</p>
                       </div>
                     </div>
                   ))}
@@ -149,7 +148,6 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <StatsCounter />
-      <BrandBanner />
       <div className="islamic-divider max-w-6xl mx-auto" />
       <PillarsSection />
       <SummitHighlights />
