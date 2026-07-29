@@ -1,16 +1,24 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, MapPin, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 import IslamicPattern from "./IslamicPattern";
+import { usePageLoader } from "./AppShell";
 
 export default function Hero() {
+  const { markFirstSectionReady } = usePageLoader();
+
+  useEffect(() => {
+    const t = window.setTimeout(() => markFirstSectionReady(), 2200);
+    return () => window.clearTimeout(t);
+  }, [markFirstSectionReady]);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Photo background */}
       <Image
         src={siteConfig.images.hero}
         alt="Muscat, Oman"
@@ -18,6 +26,8 @@ export default function Hero() {
         priority
         className="object-cover object-center"
         sizes="100vw"
+        onLoadingComplete={() => markFirstSectionReady()}
+        onError={() => markFirstSectionReady()}
       />
       <div className="absolute inset-0 bg-primary/80" />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/75 to-primary" />
