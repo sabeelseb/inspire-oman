@@ -25,33 +25,11 @@ export default function Navbar() {
 
   // Lock page scroll while mobile menu is open
   useEffect(() => {
-    if (!mobileOpen) {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      document.body.style.touchAction = "";
-      return;
-    }
-
-    const scrollY = window.scrollY;
-    document.documentElement.style.overflow = "hidden";
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    document.body.style.touchAction = "none";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
-    document.body.style.width = "100%";
-
     return () => {
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      document.body.style.touchAction = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-      document.body.style.width = "";
-      window.scrollTo(0, scrollY);
+      document.body.style.overflow = prev;
     };
   }, [mobileOpen]);
 

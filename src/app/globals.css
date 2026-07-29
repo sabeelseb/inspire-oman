@@ -7,23 +7,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply bg-primary text-white antialiased;
-    overflow-x: hidden;
-    overflow-y: auto;
-    min-height: 100%;
-    position: relative;
-  }
-
-  /* Prevent accidental scroll lock leftovers on mobile */
-  body.menu-open {
-    overflow: hidden;
-    touch-action: none;
   }
 
   ::selection {
