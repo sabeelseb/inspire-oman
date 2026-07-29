@@ -37,10 +37,8 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+      {/* Plain header — avoid motion transforms on fixed nav (iOS / containing-block bugs) */}
+      <header
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
           headerSolid
             ? "bg-primary/95 backdrop-blur-xl border-b border-gold/10 shadow-lg shadow-black/20"
@@ -122,7 +120,7 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile drawer */}
       <AnimatePresence>

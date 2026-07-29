@@ -135,13 +135,18 @@ export default function AppShell({ children }: { children: ReactNode }) {
         )}
       </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isReady ? 1 : 0 }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: isReady ? 0.08 : 0 }}
+      {/*
+        Do NOT wrap children in Framer Motion — transforms on an ancestor break
+        position:fixed on the Navbar (nav appears mid-page while scrolling).
+        Splash overlay covers content until ready; fade with CSS opacity only.
+      */}
+      <div
+        className={`transition-opacity duration-500 ease-out ${
+          isReady ? "opacity-100" : "opacity-0"
+        }`}
       >
         {children}
-      </motion.div>
+      </div>
     </LoaderContext.Provider>
   );
 }
