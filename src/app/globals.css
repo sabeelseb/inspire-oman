@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-primary text-white antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-primary;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold/40 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold/60;
+  }
+}
+
+@layer components {
+  .gold-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #c5a55a 0%, #d4af37 50%, #c5a55a 100%);
+    background-size: 200% auto;
+  }
+
+  .gold-border {
+    @apply border border-gold/30;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 30px rgba(197, 165, 90, 0.15);
+  }
+
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-500;
+  }
+  .glass-card-hover:hover {
+    @apply bg-white/[0.06] border-gold/30;
+    box-shadow: 0 0 40px rgba(197, 165, 90, 0.1);
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32 px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 bg-gold text-primary-dark font-semibold rounded-lg
+      transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-3.5 border-2 border-gold text-gold font-semibold rounded-lg
+      transition-all duration-300 hover:bg-gold hover:text-primary-dark hover:-translate-y-0.5;
+  }
+
+  .islamic-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
