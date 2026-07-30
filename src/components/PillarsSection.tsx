@@ -14,7 +14,7 @@ export default function PillarsSection() {
     <section className="relative section-padding overflow-hidden">
       <IslamicPattern opacity={0.03} />
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative site-container">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Three Pillars</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">

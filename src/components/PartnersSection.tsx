@@ -6,8 +6,8 @@ import { siteConfig } from "@/lib/data";
 
 export default function PartnersSection() {
   return (
-    <section className="relative py-10 sm:py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-10 sm:py-12">
+      <div className="site-container">
         <ScrollReveal className="text-center mb-8">
           <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
             Our Partners

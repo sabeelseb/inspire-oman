@@ -33,7 +33,7 @@ export default function AboutPage() {
         <IslamicPattern opacity={0.05} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/[0.03] blur-[100px]" />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <div className="relative site-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
+        <div className="site-container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal>
               <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
@@ -108,7 +108,7 @@ export default function AboutPage() {
       {/* Values */}
       <section className="section-padding bg-primary-light relative">
         <IslamicPattern opacity={0.03} />
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative site-container">
           <ScrollReveal className="text-center mb-16">
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Our Values</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -134,7 +134,7 @@ export default function AboutPage() {
 
       {/* Stakeholders */}
       <section className="section-padding">
-        <div className="max-w-4xl mx-auto">
+        <div className="site-container">
           <ScrollReveal className="text-center mb-12">
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Our Audience</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">

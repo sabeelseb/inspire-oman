@@ -12,7 +12,7 @@ export default function PackageTiers() {
     <section className="relative section-padding overflow-hidden">
       <IslamicPattern opacity={0.03} />
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative site-container">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
             Partnership Packages

@@ -67,7 +67,7 @@ export default function MediaPage() {
         <div className="absolute inset-0 bg-primary/85" />
         <IslamicPattern opacity={0.05} />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <div className="relative site-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export default function MediaPage() {
       </section>
 
       <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
+        <div className="site-container">
           <ScrollReveal className="text-center mb-16">
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Video</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -138,7 +138,7 @@ export default function MediaPage() {
 
       <section className="section-padding bg-primary-light relative">
         <IslamicPattern opacity={0.03} />
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative site-container">
           <ScrollReveal className="text-center mb-16">
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Gallery</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">
@@ -180,7 +180,7 @@ export default function MediaPage() {
       </section>
 
       <section className="section-padding">
-        <div className="max-w-4xl mx-auto">
+        <div className="site-container">
           <ScrollReveal className="text-center mb-16">
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Press</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">

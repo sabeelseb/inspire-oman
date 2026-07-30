@@ -10,7 +10,7 @@ import ScrollReveal from "./ScrollReveal";
 export default function SummitHighlights() {
   return (
     <section className="relative section-padding bg-primary-light">
-      <div className="max-w-7xl mx-auto">
+      <div className="site-container">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
             Flagship Event

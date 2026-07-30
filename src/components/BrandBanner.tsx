@@ -6,8 +6,8 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function BrandBanner() {
   return (
-    <section className="relative px-4 sm:px-6 lg:px-8 py-10">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-10">
+      <div className="site-container">
         <ScrollReveal>
           <div className="relative overflow-hidden rounded-2xl border border-gold/20 gold-glow">
             <Image

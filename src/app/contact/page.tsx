@@ -23,7 +23,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-dark-gradient" />
         <IslamicPattern opacity={0.05} />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <div className="relative site-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export default function ContactPage() {
 
       {/* Contact Grid */}
       <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
+        <div className="site-container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {[
               {

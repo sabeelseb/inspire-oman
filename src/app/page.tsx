@@ -16,8 +16,8 @@ import { siteConfig, testimonials } from "@/lib/data";
 
 function AboutSection() {
   return (
-    <section className="relative pt-14 pb-6 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative pt-14 pb-6">
+      <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <ScrollReveal>
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
@@ -81,7 +81,7 @@ function AboutSection() {
 function TestimonialsSection() {
   return (
     <section className="relative section-padding">
-      <div className="max-w-7xl mx-auto">
+      <div className="site-container">
         <ScrollReveal className="text-center mb-16">
           <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
             Voices of Support
@@ -118,7 +118,7 @@ function CTABanner() {
       <div className="absolute inset-0 bg-gradient-to-r from-gold/10 via-gold/5 to-gold/10" />
       <IslamicPattern opacity={0.06} />
 
-      <div className="relative max-w-4xl mx-auto px-4 text-center">
+      <div className="relative site-container text-center">
         <ScrollReveal>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
             Be Part of Oman&apos;s{" "}
@@ -150,7 +150,7 @@ export default function Home() {
       <AboutSection />
       <StatsCounter />
       <PartnersSection />
-      <div className="islamic-divider max-w-6xl mx-auto" />
+      <div className="islamic-divider site-container" />
       <PillarsSection />
       <SummitHighlights />
       <PackageTiers />

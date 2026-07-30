@@ -39,8 +39,8 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
 /** Compact stats + skyline banner — same density on mobile and desktop */
 export default function StatsCounter() {
   return (
-    <section className="relative z-10 px-4 sm:px-6 lg:px-8 py-6">
-      <div className="max-w-7xl mx-auto space-y-4">
+    <section className="relative z-10 py-6">
+      <div className="site-container space-y-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {stats.map((stat, i) => (
             <div

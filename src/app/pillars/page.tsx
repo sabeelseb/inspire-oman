@@ -43,7 +43,7 @@ export default function PillarsPage() {
         <div className="absolute inset-0 bg-dark-gradient" />
         <IslamicPattern opacity={0.05} />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <div className="relative site-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -85,7 +85,7 @@ export default function PillarsPage() {
           >
             {i % 2 !== 0 && <IslamicPattern opacity={0.03} />}
 
-            <div className="relative max-w-7xl mx-auto">
+            <div className="relative site-container">
               <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${reversed ? "lg:grid-flow-dense" : ""}`}>
                 <ScrollReveal className={reversed ? "lg:col-start-2" : ""}>
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-semibold mb-6">

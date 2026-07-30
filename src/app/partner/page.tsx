@@ -35,7 +35,7 @@ export default function PartnerPage() {
         <div className="absolute inset-0 bg-dark-gradient" />
         <IslamicPattern opacity={0.05} />
 
-        <div className="relative max-w-4xl mx-auto px-4 text-center">
+        <div className="relative site-container text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function PartnerPage() {
 
       {/* Packages Comparison */}
       <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
+        <div className="site-container">
           <ScrollReveal className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Choose Your <span className="gold-text">Package</span>
@@ -159,7 +159,8 @@ export default function PartnerPage() {
       {/* Application Form */}
       <section className="section-padding bg-primary-light relative" id="apply">
         <IslamicPattern opacity={0.03} />
-        <div className="relative max-w-3xl mx-auto">
+        <div className="relative site-container">
+          <div className="mx-auto w-full max-w-3xl">
           <ScrollReveal className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-semibold mb-6">
               <FileText size={16} /> DIGITAL SPONSORSHIP AGREEMENT
@@ -248,6 +249,7 @@ export default function PartnerPage() {
               </button>
             </form>
           </ScrollReveal>
+          </div>
         </div>
       </section>
     </>
