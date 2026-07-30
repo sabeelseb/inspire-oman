@@ -12,7 +12,7 @@ export default function BrandBanner() {
           <div className="relative overflow-hidden rounded-2xl border border-gold/20 gold-glow">
             <Image
               src={siteConfig.images.banner}
-              alt="Inspire Oman — Celebrating Success. Creating Legacy. Inspiring Investment."
+              alt="Inspire Oman - Celebrating Success. Creating Legacy. Inspiring Investment."
               width={2501}
               height={626}
               className="w-full h-auto object-cover"

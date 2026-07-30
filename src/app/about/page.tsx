@@ -75,11 +75,11 @@ export default function AboutPage() {
               <p className="text-white/40 leading-relaxed mb-8">
                 Through a powerful combination of premium documentation, digital storytelling, and
                 a flagship investors summit, we create a lasting platform for recognition,
-                collaboration, and growth — aligned with the bold ambitions of Oman Vision 2040.
+                collaboration, and growth - aligned with the bold ambitions of Oman Vision 2040.
               </p>
               <div className="glass-card p-6 border-l-2 border-l-gold">
                 <p className="text-white/60 italic">
-                  &ldquo;Inspire Oman is more than an event — it is a movement to document
+                  &ldquo;Inspire Oman is more than an event - it is a movement to document
                   excellence, celebrate achievement, and inspire the next generation of business
                   leaders in the Sultanate.&rdquo;
                 </p>

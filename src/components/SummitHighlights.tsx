@@ -20,7 +20,7 @@ export default function SummitHighlights() {
             <span className="gold-text">2026</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Discover, Connect &amp; Prosper — bringing together leaders, investors, and visionaries
+            Discover, Connect &amp; Prosper - bringing together leaders, investors, and visionaries
           </p>
         </ScrollReveal>
 

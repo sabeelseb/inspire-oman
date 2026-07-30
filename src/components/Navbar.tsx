@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Plain header — avoid motion transforms on fixed nav (iOS / containing-block bugs) */}
+      {/* Plain header - avoid motion transforms on fixed nav (iOS / containing-block bugs) */}
       <header
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
           headerSolid

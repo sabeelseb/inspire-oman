@@ -36,7 +36,7 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-/** Compact stats + skyline banner — same density on mobile and desktop */
+/** Compact stats + skyline banner - same density on mobile and desktop */
 export default function StatsCounter() {
   return (
     <section className="relative z-10 py-6">
@@ -60,7 +60,7 @@ export default function StatsCounter() {
         <div className="relative overflow-hidden rounded-xl border border-gold/25">
           <Image
             src={siteConfig.images.banner}
-            alt="Inspire Oman — Celebrating Success. Creating Legacy. Inspiring Investment."
+            alt="Inspire Oman - Celebrating Success. Creating Legacy. Inspiring Investment."
             width={2501}
             height={626}
             className="w-full h-auto object-cover max-h-32 sm:max-h-36"

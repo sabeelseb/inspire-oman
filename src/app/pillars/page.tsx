@@ -28,7 +28,7 @@ const pillarDetails = [
   {
     extras: [
       { icon: Users, text: "500+ delegates expected" },
-      { icon: Landmark, text: "Government–private sector dialogue" },
+      { icon: Landmark, text: "Government-private sector dialogue" },
       { icon: Award, text: "Recognition & awards ceremony" },
       { icon: Globe, text: "Cross-border networking" },
     ],
@@ -66,7 +66,7 @@ export default function PillarsPage() {
             transition={{ delay: 0.2 }}
             className="text-white/50 text-lg max-w-2xl mx-auto"
           >
-            Each pillar is designed to document, amplify, and connect — creating a comprehensive
+            Each pillar is designed to document, amplify, and connect - creating a comprehensive
             ecosystem for celebrating Oman&apos;s business excellence
           </motion.p>
         </div>

@@ -70,7 +70,7 @@ export default function SummitPage() {
             transition={{ delay: 0.2 }}
             className="text-white/50 text-lg max-w-2xl mx-auto mb-8"
           >
-            Discover, Connect &amp; Prosper — a flagship gathering of business leaders,
+            Discover, Connect &amp; Prosper - a flagship gathering of business leaders,
             investors, and government officials shaping Oman&apos;s future
           </motion.p>
           <motion.div

@@ -78,7 +78,7 @@ export default function ContactPage() {
               {
                 icon: Clock,
                 title: "Office Hours",
-                lines: ["Sunday – Thursday", "9:00 AM – 6:00 PM (GST)"],
+                lines: ["Sunday - Thursday", "9:00 AM - 6:00 PM (GST)"],
               },
               {
                 icon: Globe,
@@ -109,7 +109,7 @@ export default function ContactPage() {
                 </h2>
                 <p className="text-white/50 leading-relaxed mb-8">
                   Whether you&apos;re interested in partnership opportunities, summit registration,
-                  media inquiries, or general questions — we&apos;re here to help.
+                  media inquiries, or general questions - we&apos;re here to help.
                 </p>
 
                 <div className="glass-card p-6 border-l-2 border-l-gold">

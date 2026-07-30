@@ -37,7 +37,7 @@ export const siteConfig = {
       name: "mefriend",
       role: "Execution Partner",
       src: "/images/logos/MF-logo.svg",
-      fullName: "mefriend — Where Brands Find Solutions",
+      fullName: "mefriend - Where Brands Find Solutions",
       bg: "dark",
     },
   ],
@@ -150,7 +150,7 @@ export const pillars = [
     icon: "Landmark",
     features: [
       "Visionary keynote sessions",
-      "Government–private collaboration",
+      "Government-private collaboration",
       "Investment opportunity showcase",
       "Premium networking experiences",
     ],
@@ -194,7 +194,7 @@ export const packages = [
     color: "from-gold to-gold-light",
     features: [
       "3 full pages in publication",
-      "3–5 minute brand film",
+      "3-5 minute brand film",
       "8 summit official entries",
       "Title sponsor branding",
       "VIP networking & lounge",
@@ -236,7 +236,7 @@ export const speakers = [
 export const agenda = [
   { time: "09:00 AM", title: "Registration & Welcome Coffee", type: "general" },
   { time: "10:00 AM", title: "Opening Ceremony & Keynote Address", type: "keynote" },
-  { time: "10:45 AM", title: "Oman Vision 2040 — Investment Landscape", type: "session" },
+  { time: "10:45 AM", title: "Oman Vision 2040 - Investment Landscape", type: "session" },
   { time: "11:30 AM", title: "Networking Break", type: "break" },
   { time: "12:00 PM", title: "Industry Panel: Cross-Border Opportunities", type: "session" },
   { time: "01:00 PM", title: "Lunch & Business Networking", type: "break" },

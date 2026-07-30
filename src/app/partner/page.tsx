@@ -127,17 +127,17 @@ export default function PartnerPage() {
                 <tbody>
                   {[
                     ["Publication Pages", "1 page", "2 pages", "3 pages"],
-                    ["Brand Video", "45 sec", "90 sec", "3–5 min"],
+                    ["Brand Video", "45 sec", "90 sec", "3-5 min"],
                     ["Summit Entries", "2 officials", "5 officials", "8 officials"],
                     ["Logo Placement", "Basic", "Premium", "Title Sponsor"],
                     ["Networking Access", "Standard", "Priority", "VIP & Lounge"],
-                    ["Stage Mention", "—", "—", "Keynote"],
-                    ["Media Package", "—", "Included", "Full Package"],
+                    ["Stage Mention", "-", "-", "Keynote"],
+                    ["Media Package", "-", "Included", "Full Package"],
                   ].map(([feature, ...values], i) => (
                     <tr key={i} className="border-b border-white/5">
                       <td className="p-5 text-white/60">{feature}</td>
                       {values.map((v, j) => (
-                        <td key={j} className={`p-5 text-center ${j === 1 ? "bg-gold/5" : ""} ${v === "—" ? "text-white/20" : "text-white/70"}`}>
+                        <td key={j} className={`p-5 text-center ${j === 1 ? "bg-gold/5" : ""} ${v === "-" ? "text-white/20" : "text-white/70"}`}>
                           {v}
                         </td>
                       ))}
@@ -203,7 +203,7 @@ export default function PartnerPage() {
                     onChange={(e) => setForm({ ...form, tier: e.target.value })}
                     className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
                   >
-                    {["Associate Partnership — 1,000 OMR", "Leadership Partnership — 2,000 OMR", "Premier Partnership — 3,000 OMR"].map((t) => (
+                    {["Associate Partnership - 1,000 OMR", "Leadership Partnership - 2,000 OMR", "Premier Partnership - 3,000 OMR"].map((t) => (
                       <option key={t} value={t} className="bg-primary text-white">{t}</option>
                     ))}
                   </select>

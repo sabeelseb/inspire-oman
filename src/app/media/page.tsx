@@ -9,19 +9,19 @@ import { siteConfig } from "@/lib/data";
 
 const videos = [
   {
-    title: "Inspire Oman — Official Teaser",
+    title: "Inspire Oman - Official Teaser",
     description: "A glimpse into Oman's growth story and the vision behind Inspire Oman.",
     tag: "COMING SOON",
     image: siteConfig.images.hero,
   },
   {
-    title: "Arfeen Khan — Special Message",
+    title: "Arfeen Khan - Special Message",
     description: "A powerful message from our featured speaker on unlocking business potential.",
     tag: "COMING SOON",
     image: siteConfig.images.summit,
   },
   {
-    title: "Oman Vision 2040 — Investment Landscape",
+    title: "Oman Vision 2040 - Investment Landscape",
     description: "Exploring the opportunities that make Oman a top destination for global investment.",
     tag: "COMING SOON",
     image: "/images/gallery/investment.jpg",

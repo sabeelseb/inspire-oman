@@ -1,6 +1,6 @@
-# Inspire Oman — Website
+# Inspire Oman - Website
 
-A premium, UI/UX-rich website for **Inspire Oman** — a prestigious initiative aligned with Oman Vision 2040, combining legacy documentation, digital storytelling, and the flagship Investors Summit (11 October 2026).
+A premium, UI/UX-rich website for **Inspire Oman** - a prestigious initiative aligned with Oman Vision 2040, combining legacy documentation, digital storytelling, and the flagship Investors Summit (11 October 2026).
 
 ## Getting Started
 
@@ -17,15 +17,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## Tech Stack
 
 - **Next.js 14** (App Router) with TypeScript
-- **Tailwind CSS** — black/charcoal + metallic gold brand palette
-- **Framer Motion** — scroll animations, hover effects, animated counters
-- **Lucide React** — icon library
+- **Tailwind CSS** - black/charcoal + metallic gold brand palette
+- **Framer Motion** - scroll animations, hover effects, animated counters
+- **Lucide React** - icon library
 
 ## Pages
 
 | Route | Description |
 |-------|-------------|
-| `/` | Home — Hero, Stats, About, Pillars, Summit, Packages, Testimonials, CTA, Contact |
+| `/` | Home - Hero, Stats, About, Pillars, Summit, Packages, Testimonials, CTA, Contact |
 | `/about` | Mission, values, stakeholders |
 | `/pillars` | Three pillars deep-dive |
 | `/summit` | Agenda, speakers, registration form |

@@ -136,7 +136,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </AnimatePresence>
 
       {/*
-        Do NOT wrap children in Framer Motion — transforms on an ancestor break
+        Do NOT wrap children in Framer Motion - transforms on an ancestor break
         position:fixed on the Navbar (nav appears mid-page while scrolling).
         Splash overlay covers content until ready; fade with CSS opacity only.
       */}

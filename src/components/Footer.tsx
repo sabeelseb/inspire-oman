@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Contact — Oman</h4>
+            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Contact - Oman</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Phone size={16} className="text-gold/60 mt-0.5 shrink-0" />
@@ -90,7 +90,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Contact — India</h4>
+            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Contact - India</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Phone size={16} className="text-gold/60 mt-0.5 shrink-0" />

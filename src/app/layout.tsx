@@ -8,9 +8,9 @@ import AppShell from "@/components/AppShell";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Inspire Oman — Telling Oman's Growth Story Globally",
+  title: "Inspire Oman - Telling Oman's Growth Story Globally",
   description:
-    "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit — 11 October 2026, Oman Convention & Exhibition Centre.",
+    "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 11 October 2026, Oman Convention & Exhibition Centre.",
   keywords: [
     "Inspire Oman",
     "Oman Vision 2040",
