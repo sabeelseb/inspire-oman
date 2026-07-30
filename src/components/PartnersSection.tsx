@@ -20,10 +20,13 @@ export default function PartnersSection() {
           </p>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-3 gap-4 items-stretch">
-          {siteConfig.partnerLogos.map((partner, i) => (
-            <ScrollReveal key={partner.name} delay={i * 0.1}>
-              <div className="glass-card-hover p-5 h-full flex flex-col items-center justify-center text-center">
+        <ScrollReveal>
+          <div className="grid sm:grid-cols-3 gap-4 items-stretch">
+            {siteConfig.partnerLogos.map((partner) => (
+              <div
+                key={partner.name}
+                className="glass-card-hover p-5 h-full flex flex-col items-center justify-center text-center"
+              >
                 <p className="text-gold/70 text-xs font-semibold uppercase tracking-wider mb-4">
                   {partner.role}
                 </p>
@@ -36,9 +39,9 @@ export default function PartnersSection() {
                 </div>
                 <p className="text-white/70 text-sm font-medium">{partner.fullName}</p>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

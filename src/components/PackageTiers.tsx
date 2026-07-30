@@ -26,10 +26,11 @@ export default function PackageTiers() {
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-          {packages.map((pkg, i) => (
-            <ScrollReveal key={pkg.tier} delay={i * 0.15} className="h-full">
+        <ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            {packages.map((pkg) => (
               <motion.div
+                key={pkg.tier}
                 whileHover={{ y: -8 }}
                 className={`relative glass-card-hover p-8 flex flex-col h-full ${
                   pkg.highlight ? "border-gold/40 gold-glow" : ""
@@ -69,9 +70,9 @@ export default function PackageTiers() {
                   <ArrowRight size={16} className="ml-2" />
                 </Link>
               </motion.div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -92,10 +92,14 @@ function TestimonialsSection() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <ScrollReveal key={i} delay={i * 0.15}>
-              <motion.div whileHover={{ y: -4 }} className="glass-card-hover p-8 h-full flex flex-col">
+        <ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-6 items-stretch">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -4 }}
+                className="glass-card-hover p-8 h-full flex flex-col"
+              >
                 <Quote size={24} className="text-gold/30 mb-4" />
                 <p className="text-white/60 leading-relaxed flex-1 mb-6 italic">
                   &ldquo;{t.quote}&rdquo;
@@ -104,9 +108,9 @@ function TestimonialsSection() {
                 <p className="text-white font-semibold text-sm">{t.author}</p>
                 <p className="text-gold/60 text-xs">{t.role}</p>
               </motion.div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -127,12 +127,15 @@ export default function SummitPage() {
             </h2>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {speakers.map((speaker, i) => (
-              <ScrollReveal key={i} delay={i * 0.1}>
+          <ScrollReveal>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+              {speakers.map((speaker, i) => (
                 <motion.div
+                  key={i}
                   whileHover={{ y: -4 }}
-                  className={`glass-card-hover p-6 text-center ${speaker.featured ? "border-gold/30 gold-glow" : ""}`}
+                  className={`glass-card-hover p-6 text-center h-full flex flex-col items-center ${
+                    speaker.featured ? "border-gold/30 gold-glow" : ""
+                  }`}
                 >
                   {speaker.featured && (
                     <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-semibold mb-4">
@@ -144,11 +147,11 @@ export default function SummitPage() {
                   </div>
                   <h3 className="text-lg font-semibold text-white">{speaker.name}</h3>
                   <p className="text-gold/70 text-sm mb-3">{speaker.role}</p>
-                  <p className="text-white/40 text-sm">{speaker.description}</p>
+                  <p className="text-white/40 text-sm flex-1">{speaker.description}</p>
                 </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

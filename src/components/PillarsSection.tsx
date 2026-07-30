@@ -26,12 +26,13 @@ export default function PillarsSection() {
           </p>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {pillars.map((pillar, i) => {
-            const Icon = iconMap[pillar.icon];
-            return (
-              <ScrollReveal key={pillar.id} delay={i * 0.15}>
+        <ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            {pillars.map((pillar) => {
+              const Icon = iconMap[pillar.icon];
+              return (
                 <motion.div
+                  key={pillar.id}
                   whileHover={{ y: -8 }}
                   className="glass-card-hover p-8 h-full flex flex-col"
                 >
@@ -60,10 +61,10 @@ export default function PillarsSection() {
                     Learn More <ArrowRight size={14} />
                   </Link>
                 </motion.div>
-              </ScrollReveal>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

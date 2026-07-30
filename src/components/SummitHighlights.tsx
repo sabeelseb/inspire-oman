@@ -24,14 +24,14 @@ export default function SummitHighlights() {
           </p>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-3 gap-4 mb-16">
-          {[
-            { icon: CalendarDays, label: "Date", value: siteConfig.summitDate },
-            { icon: MapPin, label: "Venue", value: siteConfig.venue },
-            { icon: Users, label: "Expected", value: "500+ Delegates" },
-          ].map(({ icon: Icon, label, value }, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="glass-card p-6 flex items-center gap-4">
+        <ScrollReveal>
+          <div className="grid sm:grid-cols-3 gap-4 mb-16 items-stretch">
+            {[
+              { icon: CalendarDays, label: "Date", value: siteConfig.summitDate },
+              { icon: MapPin, label: "Venue", value: siteConfig.venue },
+              { icon: Users, label: "Expected", value: "500+ Delegates" },
+            ].map(({ icon: Icon, label, value }, i) => (
+              <div key={i} className="glass-card p-6 flex items-center gap-4 h-full">
                 <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
                   <Icon size={22} className="text-gold" />
                 </div>
@@ -40,9 +40,9 @@ export default function SummitHighlights() {
                   <p className="text-white font-semibold">{value}</p>
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal>
           <div className="glass-card overflow-hidden mb-12">
@@ -81,20 +81,25 @@ export default function SummitHighlights() {
           </div>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-3 gap-6">
-          {speakers.slice(1).map((speaker, i) => (
-            <ScrollReveal key={i} delay={i * 0.1}>
-              <motion.div whileHover={{ y: -4 }} className="glass-card-hover p-6">
-                <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-4 mx-auto">
+        {/* One reveal for the row so cards stay top/bottom aligned */}
+        <ScrollReveal>
+          <div className="grid sm:grid-cols-3 gap-6 items-stretch">
+            {speakers.slice(1).map((speaker, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -4 }}
+                className="glass-card-hover p-6 h-full flex flex-col items-center text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-4">
                   <Users size={24} className="text-gold/60" />
                 </div>
-                <h4 className="text-lg font-semibold text-white text-center">{speaker.name}</h4>
-                <p className="text-gold/70 text-sm text-center mb-3">{speaker.role}</p>
-                <p className="text-white/40 text-sm text-center">{speaker.description}</p>
+                <h4 className="text-lg font-semibold text-white">{speaker.name}</h4>
+                <p className="text-gold/70 text-sm mb-3">{speaker.role}</p>
+                <p className="text-white/40 text-sm flex-1">{speaker.description}</p>
               </motion.div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
