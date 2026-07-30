@@ -18,8 +18,8 @@ function AboutSection() {
   return (
     <section className="relative pt-14 pb-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <ScrollReveal>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <ScrollReveal className="flex h-full flex-col">
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
               About the Initiative
             </p>
@@ -36,7 +36,7 @@ function AboutSection() {
               to celebrate contributions, strengthen investment pathways, and document the
               remarkable achievements of Oman&apos;s business community.
             </p>
-            <div className="flex flex-wrap gap-2.5">
+            <div className="mt-auto flex flex-wrap gap-2.5 pt-2">
               {["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"].map((tag) => (
                 <span
                   key={tag}
@@ -48,9 +48,9 @@ function AboutSection() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.2}>
-            <div className="relative">
-              <div className="glass-card p-5 sm:p-6 relative overflow-hidden">
+          <ScrollReveal delay={0.2} className="h-full">
+            <div className="relative h-full">
+              <div className="glass-card p-5 sm:p-6 relative overflow-hidden h-full flex flex-col justify-center">
                 <IslamicPattern opacity={0.08} />
                 <div className="relative space-y-3.5">
                   {[
