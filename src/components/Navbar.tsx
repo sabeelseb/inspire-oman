@@ -62,9 +62,9 @@ export default function Navbar() {
               </div>
               <div className="hidden sm:block">
                 <span className="text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
-                  INSPIRE
+                  Inspire
                 </span>
-                <span className="text-lg font-light tracking-widest text-gold ml-1">OMAN</span>
+                <span className="text-lg font-light tracking-widest text-gold ml-1">Oman</span>
               </div>
             </Link>
 

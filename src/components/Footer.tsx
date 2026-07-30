@@ -23,8 +23,8 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <span className="text-lg font-bold text-white">INSPIRE</span>
-                <span className="text-lg font-light text-gold ml-1">OMAN</span>
+                <span className="text-lg font-bold text-white">Inspire</span>
+                <span className="text-lg font-light text-gold ml-1">Oman</span>
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
