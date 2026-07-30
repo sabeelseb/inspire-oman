@@ -32,3 +32,6 @@ next-env.d.ts
 # misc
 coverage/
 .vercel
+
+# Local hero backups
+public/images/hero/*-.jpg
