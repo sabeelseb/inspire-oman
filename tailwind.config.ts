@@ -19,8 +19,9 @@ const config: Config = {
         muted: "#A0A0A0",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        display: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        brand: ["var(--font-brand)", "Montserrat", "system-ui", "sans-serif"],
       },
       backgroundImage: {
         "gold-gradient":

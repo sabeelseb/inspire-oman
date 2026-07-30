@@ -53,9 +53,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6"
+          className="brand-wordmark text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] mb-6"
         >
-          <span className="text-white">Inspire</span>{" "}
+          <span className="brand-wordmark-logo-gold">Inspire</span>{" "}
           <span className="gold-text animate-shimmer bg-[length:200%_auto]">Oman</span>
         </motion.h1>
 

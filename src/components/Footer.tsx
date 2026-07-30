@@ -22,9 +22,9 @@ export default function Footer() {
                   className="h-full w-full"
                 />
               </div>
-              <div>
-                <span className="text-lg font-bold text-white">Inspire</span>
-                <span className="text-lg font-light text-gold ml-1">Oman</span>
+              <div className="brand-wordmark text-lg">
+                <span className="text-white">Inspire</span>
+                <span className="brand-wordmark-logo-gold ml-1.5">Oman</span>
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">

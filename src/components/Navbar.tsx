@@ -60,11 +60,9 @@ export default function Navbar() {
                   priority
                 />
               </div>
-              <div className="hidden sm:block">
-                <span className="text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
-                  Inspire
-                </span>
-                <span className="text-lg font-light tracking-widest text-gold ml-1">Oman</span>
+              <div className="hidden sm:block brand-wordmark text-lg">
+                <span className="text-white group-hover:text-gold transition-colors">Inspire</span>
+                <span className="brand-wordmark-logo-gold ml-1.5">Oman</span>
               </div>
             </Link>
 
