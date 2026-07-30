@@ -36,18 +36,18 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-/** Compact stats + skyline banner — minimal vertical whitespace */
+/** Compact stats + skyline banner — same density on mobile and desktop */
 export default function StatsCounter() {
   return (
-    <section className="relative z-10 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-      <div className="max-w-6xl mx-auto space-y-4 sm:space-y-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
+    <section className="relative z-10 px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto space-y-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {stats.map((stat, i) => (
             <div
               key={i}
               className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-3.5 sm:px-4 sm:py-4 text-center"
             >
-              <div className="text-xl sm:text-2xl md:text-3xl font-black gold-text leading-none mb-1">
+              <div className="text-2xl sm:text-3xl font-black gold-text leading-none mb-1">
                 <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               </div>
               <p className="text-white/45 text-[11px] sm:text-xs font-medium leading-snug">
@@ -63,8 +63,8 @@ export default function StatsCounter() {
             alt="Inspire Oman — Celebrating Success. Creating Legacy. Inspiring Investment."
             width={2501}
             height={626}
-            className="w-full h-auto object-cover max-h-28 sm:max-h-36 md:max-h-44"
-            sizes="(max-width: 768px) 100vw, 1152px"
+            className="w-full h-auto object-cover max-h-32 sm:max-h-36"
+            sizes="(max-width: 768px) 100vw, 1280px"
           />
         </div>
       </div>

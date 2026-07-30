@@ -16,9 +16,9 @@ import { siteConfig, testimonials } from "@/lib/data";
 
 function AboutSection() {
   return (
-    <section className="relative pt-16 pb-6 sm:pt-20 sm:pb-8 md:pt-24 md:pb-10 px-4 sm:px-6 lg:px-8">
+    <section className="relative pt-14 pb-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <ScrollReveal>
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
               About the Initiative
@@ -52,7 +52,7 @@ function AboutSection() {
             <div className="relative">
               <div className="glass-card p-5 sm:p-6 relative overflow-hidden">
                 <IslamicPattern opacity={0.08} />
-                <div className="relative space-y-4">
+                <div className="relative space-y-3.5">
                   {[
                     { label: "Strategic Partner", value: siteConfig.partners.strategic },
                     { label: "Initiative By", value: siteConfig.partners.initiative },
