@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Quote } from "lucide-react";
 import Hero from "@/components/Hero";
 import StatsCounter from "@/components/StatsCounter";
+import PartnersSection from "@/components/PartnersSection";
 import PillarsSection from "@/components/PillarsSection";
 import SummitHighlights from "@/components/SummitHighlights";
 import PackageTiers from "@/components/PackageTiers";
@@ -148,6 +149,7 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <StatsCounter />
+      <PartnersSection />
       <div className="islamic-divider max-w-6xl mx-auto" />
       <PillarsSection />
       <SummitHighlights />
