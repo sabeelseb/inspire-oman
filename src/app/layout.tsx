@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AppShell from "@/components/AppShell";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-brand",
-  weight: ["500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Inspire Oman — Telling Oman's Growth Story Globally",
@@ -29,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className="font-sans bg-primary text-white">
         <AppShell>
           <Navbar />
