@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { siteConfig, navLinks } from "@/lib/data";
+import { navLinks } from "@/lib/data";
+import { useCmsSite } from "@/components/CmsProvider";
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter, Youtube, ArrowUpRight } from "lucide-react";
 import IslamicPattern from "./IslamicPattern";
 import LogoImage from "./LogoImage";
 
 export default function Footer() {
+  const siteConfig = useCmsSite();
   return (
     <footer className="relative bg-primary-dark border-t border-gold/10">
       <IslamicPattern opacity={0.03} />

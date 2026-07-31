@@ -5,10 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { navLinks, siteConfig } from "@/lib/data";
+import { navLinks } from "@/lib/data";
+import { useCmsSite } from "@/components/CmsProvider";
 import LogoImage from "./LogoImage";
 
 export default function Navbar() {
+  const siteConfig = useCmsSite();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();

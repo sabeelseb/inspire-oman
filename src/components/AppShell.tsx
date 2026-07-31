@@ -10,7 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { siteConfig } from "@/lib/data";
+import { useCmsSite } from "@/components/CmsProvider";
 import LogoImage from "./LogoImage";
 
 type LoaderContextValue = {
@@ -37,6 +37,7 @@ function preloadImage(src: string) {
 }
 
 export default function AppShell({ children }: { children: ReactNode }) {
+  const siteConfig = useCmsSite();
   const [sectionReady, setSectionReady] = useState(false);
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
@@ -64,7 +65,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       window.clearTimeout(minTimer);
       window.clearTimeout(failSafe);
     };
-  }, []);
+  }, [siteConfig.images.hero, siteConfig.images.logo]);
 
   useEffect(() => {
     if (!isReady) return;

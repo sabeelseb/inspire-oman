@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import AppShell from "@/components/AppShell";
+import SiteChrome from "@/components/SiteChrome";
+import { CmsProvider } from "@/components/CmsProvider";
+import { getCmsSite } from "@/lib/cms";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -22,15 +22,15 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const site = await getCmsSite();
+
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans bg-primary text-white">
-        <AppShell>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </AppShell>
+        <CmsProvider site={site}>
+          <SiteChrome>{children}</SiteChrome>
+        </CmsProvider>
       </body>
     </html>
   );

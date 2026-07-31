@@ -3,7 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import Image from "next/image";
-import { stats, siteConfig } from "@/lib/data";
+import { stats as fallbackStats } from "@/lib/data";
+import { useCmsSite } from "@/components/CmsProvider";
+
+type Stat = { value: number; suffix: string; label: string };
 
 function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
@@ -36,8 +39,9 @@ function AnimatedNumber({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-/** Compact stats + skyline banner - same density on mobile and desktop */
-export default function StatsCounter() {
+export default function StatsCounter({ stats = fallbackStats }: { stats?: Stat[] }) {
+  const siteConfig = useCmsSite();
+
   return (
     <section className="relative z-10 py-6">
       <div className="site-container space-y-4">

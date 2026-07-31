@@ -2,9 +2,15 @@
 
 import LogoImage from "./LogoImage";
 import ScrollReveal from "./ScrollReveal";
-import { siteConfig } from "@/lib/data";
+import { siteConfig as fallbackSite } from "@/lib/data";
 
-export default function PartnersSection() {
+type Partner = (typeof fallbackSite.partnerLogos)[number];
+
+export default function PartnersSection({
+  partners = fallbackSite.partnerLogos,
+}: {
+  partners?: Partner[];
+}) {
   return (
     <section className="relative py-10 sm:py-12">
       <div className="site-container">
@@ -22,7 +28,7 @@ export default function PartnersSection() {
 
         <ScrollReveal>
           <div className="grid sm:grid-cols-3 gap-4 items-stretch">
-            {siteConfig.partnerLogos.map((partner) => (
+            {partners.map((partner) => (
               <div
                 key={partner.name}
                 className="glass-card-hover p-5 h-full flex flex-col items-center justify-center text-center"

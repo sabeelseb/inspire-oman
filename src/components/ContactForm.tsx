@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { Send, Phone, Mail, MapPin } from "lucide-react";
-import { siteConfig } from "@/lib/data";
+import { useCmsSite } from "@/components/CmsProvider";
 import ScrollReveal from "./ScrollReveal";
 
 export default function ContactForm() {
+  const siteConfig = useCmsSite();
   const [formData, setFormData] = useState({
     name: "",
     email: "",

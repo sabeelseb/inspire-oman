@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { CalendarDays, MapPin, ArrowRight } from "lucide-react";
-import { siteConfig } from "@/lib/data";
+import { useCmsSite } from "@/components/CmsProvider";
 import IslamicPattern from "./IslamicPattern";
 import { usePageLoader } from "./AppShell";
 
 export default function Hero() {
+  const siteConfig = useCmsSite();
   const { markFirstSectionReady } = usePageLoader();
 
   useEffect(() => {
