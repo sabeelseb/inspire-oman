@@ -13,6 +13,7 @@ import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import { useCmsSite } from "@/components/CmsProvider";
+import TitleHighlight from "@/components/TitleHighlight";
 import { testimonials as fallbackTestimonials, pillars as fallbackPillars, packages as fallbackPackages } from "@/lib/data";
 
 type Testimonial = (typeof fallbackTestimonials)[number];
@@ -33,31 +34,44 @@ type Speaker = {
   featured: boolean;
 };
 
-function AboutSection() {
+type HomePage = {
+  aboutEyebrow?: string | null;
+  aboutTitle?: string | null;
+  aboutBody?: string | null;
+  aboutTags?: readonly (string | null)[] | null;
+  ctaTitle?: string | null;
+  ctaBody?: string | null;
+};
+
+function AboutSection({ page }: { page?: HomePage | null }) {
   const siteConfig = useCmsSite();
+  const tags =
+    page?.aboutTags?.filter((t): t is string => Boolean(t)) ||
+    ["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"];
+
   return (
     <section className="relative pt-14 pb-6">
       <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <ScrollReveal>
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
-              About the Initiative
+              {page?.aboutEyebrow || "About the Initiative"}
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Celebrating Oman&apos;s{" "}
-              <span className="gold-text">Growth Story</span>
+              <TitleHighlight
+                title={page?.aboutTitle || "Celebrating Oman's Growth Story"}
+                highlight="Growth Story"
+              />
             </h2>
             <p className="text-white/50 leading-relaxed mb-4">
               {siteConfig.description}
             </p>
             <p className="text-white/40 leading-relaxed mb-6">
-              In strategic partnership with the Oman Chamber of Commerce &amp; Industry (OCCI),
-              Inspire Oman brings together CEOs, investors, government leaders, and entrepreneurs
-              to celebrate contributions, strengthen investment pathways, and document the
-              remarkable achievements of Oman&apos;s business community.
+              {page?.aboutBody ||
+                "In strategic partnership with the Oman Chamber of Commerce & Industry (OCCI), Inspire Oman brings together CEOs, investors, government leaders, and entrepreneurs to celebrate contributions, strengthen investment pathways, and document the remarkable achievements of Oman's business community."}
             </p>
             <div className="flex flex-wrap gap-2.5">
-              {["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"].map((tag) => (
+              {tags.map((tag) => (
                 <span
                   key={tag}
                   className="px-3.5 py-1.5 rounded-full bg-gold/10 text-gold text-sm border border-gold/20"
@@ -140,7 +154,7 @@ function TestimonialsSection({
   );
 }
 
-function CTABanner() {
+function CTABanner({ page }: { page?: HomePage | null }) {
   return (
     <section className="relative py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-gold/10 via-gold/5 to-gold/10" />
@@ -149,12 +163,14 @@ function CTABanner() {
       <div className="relative site-container text-center">
         <ScrollReveal>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            Be Part of Oman&apos;s{" "}
-            <span className="gold-text">Growth Story</span>
+            <TitleHighlight
+              title={page?.ctaTitle || "Be Part of Oman's Growth Story"}
+              highlight="Growth Story"
+            />
           </h2>
           <p className="text-white/50 text-lg mb-10 max-w-2xl mx-auto">
-            Join Inspire Oman as a partner or delegate and connect with the region&apos;s
-            most dynamic business community
+            {page?.ctaBody ||
+              "Join Inspire Oman as a partner or delegate and connect with the region's most dynamic business community"}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/partner" className="btn-primary text-base group">
@@ -172,6 +188,7 @@ function CTABanner() {
 }
 
 export default function HomeClient({
+  page,
   stats,
   partners,
   testimonials,
@@ -179,6 +196,7 @@ export default function HomeClient({
   pillars = fallbackPillars,
   packages = fallbackPackages,
 }: {
+  page?: HomePage | null;
   stats: Stat[];
   partners: Partner[];
   testimonials: Testimonial[];
@@ -189,7 +207,7 @@ export default function HomeClient({
   return (
     <>
       <Hero />
-      <AboutSection />
+      <AboutSection page={page} />
       <StatsCounter stats={stats} />
       <PartnersSection partners={partners} />
       <div className="islamic-divider site-container" />
@@ -197,7 +215,7 @@ export default function HomeClient({
       <SummitHighlights speakers={speakers} />
       <PackageTiers packages={packages} />
       <TestimonialsSection testimonials={testimonials} />
-      <CTABanner />
+      <CTABanner page={page} />
       <ContactForm />
     </>
   );

@@ -47,6 +47,9 @@ export default config({
         linkedin: fields.text({ label: "LinkedIn URL" }),
         twitter: fields.text({ label: "Twitter / X URL" }),
         youtube: fields.text({ label: "YouTube URL" }),
+        partnerStrategic: fields.text({ label: "Strategic partner name" }),
+        partnerInitiative: fields.text({ label: "Initiative by name" }),
+        partnerExecution: fields.text({ label: "Execution partner name" }),
       },
     }),
 
@@ -57,6 +60,10 @@ export default config({
         aboutEyebrow: fields.text({ label: "About eyebrow", defaultValue: "About the Initiative" }),
         aboutTitle: fields.text({ label: "About title", defaultValue: "Celebrating Oman's Growth Story" }),
         aboutBody: fields.text({ label: "About body paragraph", multiline: true }),
+        aboutTags: fields.array(fields.text({ label: "Tag" }), {
+          label: "About tags",
+          itemLabel: (props) => props.value || "Tag",
+        }),
         ctaTitle: fields.text({ label: "CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
         ctaBody: fields.text({ label: "CTA body", multiline: true }),
       },
@@ -68,11 +75,20 @@ export default config({
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
         title: fields.text({ label: "Hero title" }),
+        highlight: fields.text({ label: "Title gold highlight", defaultValue: "Growth Story" }),
         subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
         missionTitle: fields.text({ label: "Mission title" }),
         missionP1: fields.text({ label: "Mission paragraph 1", multiline: true }),
         missionP2: fields.text({ label: "Mission paragraph 2", multiline: true }),
         quote: fields.text({ label: "Mission quote", multiline: true }),
+        valuesEyebrow: fields.text({ label: "Values eyebrow" }),
+        valuesTitle: fields.text({ label: "Values title" }),
+        audienceEyebrow: fields.text({ label: "Audience eyebrow" }),
+        audienceTitle: fields.text({ label: "Audience title" }),
+        stakeholders: fields.array(fields.text({ label: "Audience item" }), {
+          label: "Who we serve",
+          itemLabel: (props) => props.value || "Audience",
+        }),
       },
     }),
 
@@ -82,6 +98,7 @@ export default config({
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
         title: fields.text({ label: "Hero title" }),
+        highlight: fields.text({ label: "Title gold highlight" }),
         subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
       },
     }),
@@ -92,6 +109,7 @@ export default config({
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
         title: fields.text({ label: "Hero title" }),
+        highlight: fields.text({ label: "Title gold highlight" }),
         subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
       },
     }),
@@ -102,6 +120,7 @@ export default config({
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
         title: fields.text({ label: "Hero title" }),
+        highlight: fields.text({ label: "Title gold highlight" }),
         subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
       },
     }),
@@ -112,6 +131,7 @@ export default config({
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
         title: fields.text({ label: "Hero title" }),
+        highlight: fields.text({ label: "Title gold highlight" }),
         subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
       },
     }),
@@ -122,6 +142,7 @@ export default config({
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
         title: fields.text({ label: "Hero title" }),
+        highlight: fields.text({ label: "Title gold highlight" }),
         subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
       },
     }),
@@ -207,6 +228,10 @@ export default config({
           label: "Features",
           itemLabel: (props) => props.value || "Feature",
         }),
+        extras: fields.array(fields.text({ label: "Highlight card" }), {
+          label: "Pillar page highlight cards",
+          itemLabel: (props) => props.value || "Highlight",
+        }),
       },
     }),
 
@@ -254,8 +279,11 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         caption: fields.text({ label: "Caption" }),
+        imageSrc: fields.text({
+          label: "Image path (e.g. /images/gallery/mosque.jpg)",
+        }),
         image: fields.image({
-          label: "Image",
+          label: "Or upload image",
           directory: "public/images/cms/gallery",
           publicPath: "/images/cms/gallery/",
         }),
@@ -270,8 +298,11 @@ export default config({
         title: fields.slug({ name: { label: "Title" } }),
         description: fields.text({ label: "Description", multiline: true }),
         tag: fields.text({ label: "Tag", defaultValue: "COMING SOON" }),
+        imageSrc: fields.text({
+          label: "Thumbnail path (e.g. /images/hero/oman-muscat.jpg)",
+        }),
         image: fields.image({
-          label: "Thumbnail",
+          label: "Or upload thumbnail",
           directory: "public/images/cms/videos",
           publicPath: "/images/cms/videos/",
         }),

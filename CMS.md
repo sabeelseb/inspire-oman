@@ -3,38 +3,40 @@
 Admin: https://inspire-oman.vercel.app/keystatic  
 Local: http://localhost:3000/keystatic (`npm run dev`)
 
+All public site copy and lists below are seeded under `content/` and editable in the dashboard. The live pages read from these files.
+
 ## Dashboard sections
 
 ### Site-wide
 | Section | Edits |
 |--------|--------|
-| **Site Settings** | Name, slogan, dates, venue, images, phones, emails, social links |
+| **Site Settings** | Name, slogan, dates, venue, images, phones, emails, social links, partner org names |
 
 ### Pages
 | Section | Edits |
 |--------|--------|
-| **Page: Home** | About + CTA copy |
-| **Page: About** | Hero + mission copy |
+| **Page: Home** | About copy, tags, CTA |
+| **Page: About** | Hero, mission, quote, audience list, section titles |
 | **Page: Pillars** | Hero copy |
 | **Page: Summit** | Hero copy |
 | **Page: Partner** | Hero copy |
 | **Page: Media** | Hero copy |
 | **Page: Contact** | Hero copy |
 
-### Collections
-| Section | Edits |
+### Collections (wired to the live site)
+| Section | Used on |
 |--------|--------|
-| **Partners** | Logos and names |
+| **Partners** | Home partners strip |
 | **Stats** | Home counters |
-| **Speakers** | Featured + guests |
-| **Testimonials** | Quotes |
-| **Pillars** | Three pillars + features |
-| **Partnership Packages** | Tiers, prices, features |
-| **Summit Agenda** | Programme schedule |
-| **Media Gallery** | Gallery images |
-| **Media Videos** | Video cards |
-| **Press Releases** | Press list |
-| **About Values** | Values grid on About |
+| **Speakers** | Home + Summit |
+| **Testimonials** | Home |
+| **Pillars** | Home + Pillars page (features + highlight cards) |
+| **Partnership Packages** | Home + Partner page |
+| **Summit Agenda** | Summit programme |
+| **Media Gallery** | Media photo gallery |
+| **Media Videos** | Media video cards |
+| **Press Releases** | Media news list |
+| **About Values** | About values grid |
 
 ## Workflow
 1. Prefer editing locally (`npm run dev` → `/keystatic`)

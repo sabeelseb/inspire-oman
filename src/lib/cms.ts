@@ -21,6 +21,65 @@ function slugName(value: unknown, fallback = ""): string {
   return fallback;
 }
 
+const fallbackAboutValues = [
+  {
+    icon: "Target",
+    title: "Vision 2040 Aligned",
+    description:
+      "Directly supporting Oman's national economic diversification and growth strategy.",
+  },
+  {
+    icon: "Globe",
+    title: "Global Perspective",
+    description:
+      "Bridging Oman with international markets, investors, and business communities.",
+  },
+  {
+    icon: "Handshake",
+    title: "Collaborative Spirit",
+    description:
+      "Fostering partnerships between government, private sector, and entrepreneurs.",
+  },
+  {
+    icon: "Heart",
+    title: "Cultural Celebration",
+    description:
+      "Honoring the rich heritage and achievements of Oman's business community.",
+  },
+  {
+    icon: "Eye",
+    title: "Transparency",
+    description:
+      "Building trust through open dialogue, clear processes, and measurable outcomes.",
+  },
+  {
+    icon: "TrendingUp",
+    title: "Sustainable Growth",
+    description: "Creating lasting economic impact beyond a single event.",
+  },
+];
+
+const fallbackPillarExtras: Record<string, string[]> = {
+  "legacy-documenting": [
+    "Professional photography sessions",
+    "Editorial team crafted narratives",
+    "Premium hardbound production",
+    "Embassy & stakeholder distribution",
+  ],
+  "celebrating-the-experience": [
+    "High-production video profiles",
+    "Multi-platform social campaigns",
+    "International audience reach",
+    "Brand storytelling expertise",
+  ],
+  "investors-summit": [
+    "500+ delegates expected",
+    "Government-private sector dialogue",
+    "Recognition & awards ceremony",
+    "Cross-border networking",
+  ],
+};
+
 export async function getCmsSite() {
   try {
     const site = await reader.singletons.site.read();
@@ -36,6 +95,11 @@ export async function getCmsSite() {
       description: site.description || fallbackSite.description,
       summitDate: site.summitDate || fallbackSite.summitDate,
       venue: site.venue || fallbackSite.venue,
+      partners: {
+        strategic: site.partnerStrategic || fallbackSite.partners.strategic,
+        initiative: site.partnerInitiative || fallbackSite.partners.initiative,
+        execution: site.partnerExecution || fallbackSite.partners.execution,
+      },
       images: {
         ...fallbackSite.images,
         hero: site.heroImage || fallbackSite.images.hero,
@@ -76,6 +140,7 @@ export async function getCmsPageHome() {
         aboutEyebrow: "About the Initiative",
         aboutTitle: "Celebrating Oman's Growth Story",
         aboutBody: "",
+        aboutTags: ["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"],
         ctaTitle: "Be Part of Oman's Growth Story",
         ctaBody: "",
       }
@@ -209,7 +274,12 @@ export async function getCmsTestimonials() {
 export async function getCmsPillars() {
   try {
     const entries = await reader.collections.pillars.all();
-    if (!entries.length) return fallbackPillars;
+    if (!entries.length) {
+      return fallbackPillars.map((p) => ({
+        ...p,
+        extras: fallbackPillarExtras[p.id] || [],
+      }));
+    }
     return entries.map(({ slug, entry }) => ({
       id: slug,
       title: slugName(entry.title),
@@ -217,9 +287,16 @@ export async function getCmsPillars() {
       description: entry.description,
       icon: entry.icon,
       features: entry.features?.filter(Boolean) || [],
+      extras:
+        entry.extras?.filter(Boolean) ||
+        fallbackPillarExtras[slug] ||
+        [],
     }));
   } catch {
-    return fallbackPillars;
+    return fallbackPillars.map((p) => ({
+      ...p,
+      extras: fallbackPillarExtras[p.id] || [],
+    }));
   }
 }
 
@@ -261,7 +338,7 @@ export async function getCmsGallery() {
     return entries.map(({ entry }) => ({
       title: slugName(entry.title),
       caption: entry.caption,
-      src: entry.image || "/images/gallery/mosque.jpg",
+      src: entry.image || entry.imageSrc || "/images/gallery/mosque.jpg",
     }));
   } catch {
     return fallbackSite.galleryImages;
@@ -276,7 +353,7 @@ export async function getCmsVideos() {
       title: slugName(entry.title),
       description: entry.description,
       tag: entry.tag || "COMING SOON",
-      image: entry.image || fallbackSite.images.hero,
+      image: entry.image || entry.imageSrc || fallbackSite.images.hero,
     }));
   } catch {
     return [];
@@ -300,13 +377,13 @@ export async function getCmsPress() {
 export async function getCmsValues() {
   try {
     const entries = await reader.collections.values.all();
-    if (!entries.length) return [];
+    if (!entries.length) return fallbackAboutValues;
     return entries.map(({ entry }) => ({
       title: slugName(entry.title),
       description: entry.description,
       icon: entry.icon,
     }));
   } catch {
-    return [];
+    return fallbackAboutValues;
   }
 }
