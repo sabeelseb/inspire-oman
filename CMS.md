@@ -1,13 +1,13 @@
 # Inspire Oman CMS
 
-The site currently reads **Keystatic** YAML (`content/`). **Payload CMS** runs beside it at `/admin` with the same content model (draft/publish). Switching the public site to Payload is a later step.
+Set `CMS_SOURCE=payload` (droplet default) so the public site reads **Payload**. Use `CMS_SOURCE=keystatic` (or unset) to keep reading YAML under `content/`.
 
 ## Two dashboards
 
 | Admin | URL | Storage | Best for |
 |-------|-----|---------|----------|
-| **Keystatic** (current live site source) | `/keystatic` | Git YAML in `content/` | Editing what the public site shows today |
-| **Payload** (open source, MIT) | `/admin` | SQLite locally / Postgres in prod | Draft → Publish workflow, auth, future site source |
+| **Payload** (live site when `CMS_SOURCE=payload`) | `/admin` | Postgres on droplet / SQLite locally | Draft → **Publish** → public pages update |
+| **Keystatic** (when `CMS_SOURCE=keystatic`) | `/keystatic` | Git YAML in `content/` | Local/git workflow; Vercel default |
 
 Local Keystatic: http://localhost:3000/keystatic  
 Local Payload: http://localhost:3000/admin  

@@ -7,6 +7,9 @@ import { getCmsSite } from "@/lib/cms";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+/** Live CMS reads (Payload / Keystatic) must not be baked at build time. */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Inspire Oman - Telling Oman's Growth Story Globally",
   description:

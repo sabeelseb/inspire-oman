@@ -38,6 +38,9 @@ Set at least:
 - `POSTGRES_PASSWORD` — strong password  
 - `NEXT_PUBLIC_SERVER_URL` — `http://YOUR_DROPLET_IP` (or `https://your-domain.com`)  
 - `SITE_ADDRESS` — `:80` for IP, or `your-domain.com` for HTTPS  
+- `CMS_SOURCE=payload` — public site reads Payload `/admin` (default in compose)  
+
+After editing in `/admin`, click **Publish changes** (not only Save Draft) for the public site to update.
 
 ## 4. Build & start
 
