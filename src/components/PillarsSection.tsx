@@ -3,13 +3,15 @@
 import { motion } from "framer-motion";
 import { BookOpen, Video, Landmark, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { pillars } from "@/lib/data";
+import { pillars as fallbackPillars } from "@/lib/data";
 import ScrollReveal from "./ScrollReveal";
 import IslamicPattern from "./IslamicPattern";
 
 const iconMap: Record<string, React.ElementType> = { BookOpen, Video, Landmark };
 
-export default function PillarsSection() {
+type Pillar = (typeof fallbackPillars)[number];
+
+export default function PillarsSection({ pillars = fallbackPillars }: { pillars?: Pillar[] }) {
   return (
     <section className="relative section-padding overflow-hidden">
       <IslamicPattern opacity={0.03} />
@@ -29,7 +31,7 @@ export default function PillarsSection() {
         <ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {pillars.map((pillar) => {
-              const Icon = iconMap[pillar.icon];
+              const Icon = iconMap[pillar.icon] || BookOpen;
               return (
                 <motion.div
                   key={pillar.id}

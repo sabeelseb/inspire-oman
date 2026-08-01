@@ -1,29 +1,44 @@
 # Inspire Oman CMS (Keystatic)
 
-Content is edited in the browser and saved as files in Git under `content/`.
+Admin: https://inspire-oman.vercel.app/keystatic  
+Local: http://localhost:3000/keystatic (`npm run dev`)
 
-## Open the admin
+## Dashboard sections
 
-```bash
-npm run dev
-```
+### Site-wide
+| Section | Edits |
+|--------|--------|
+| **Site Settings** | Name, slogan, dates, venue, images, phones, emails, social links |
 
-Then visit: http://localhost:3000/keystatic
+### Pages
+| Section | Edits |
+|--------|--------|
+| **Page: Home** | About + CTA copy |
+| **Page: About** | Hero + mission copy |
+| **Page: Pillars** | Hero copy |
+| **Page: Summit** | Hero copy |
+| **Page: Partner** | Hero copy |
+| **Page: Media** | Hero copy |
+| **Page: Contact** | Hero copy |
 
-Live: https://inspire-oman.vercel.app/keystatic
+### Collections
+| Section | Edits |
+|--------|--------|
+| **Partners** | Logos and names |
+| **Stats** | Home counters |
+| **Speakers** | Featured + guests |
+| **Testimonials** | Quotes |
+| **Pillars** | Three pillars + features |
+| **Partnership Packages** | Tiers, prices, features |
+| **Summit Agenda** | Programme schedule |
+| **Media Gallery** | Gallery images |
+| **Media Videos** | Video cards |
+| **Press Releases** | Press list |
+| **About Values** | Values grid on About |
 
-## What you can edit
+## Workflow
+1. Prefer editing locally (`npm run dev` → `/keystatic`)
+2. Save → files update under `content/`
+3. Commit & push → Vercel redeploys
 
-| Section | Controls |
-|--------|----------|
-| Site Settings | Name, slogan, dates, venue, hero/banner images |
-| Partners | Logos and names |
-| Stats | Home counters |
-| Speakers | Featured + guest speakers |
-| Testimonials | Home quotes |
-
-## Important
-
-- Seeded content lives in `content/*.yaml` (in Git).
-- Prefer editing with `npm run dev` locally, then commit and push.
-- On Vercel, **viewing** entries works after deploy; **saving** from the live admin is unreliable with local storage. Switch to GitHub mode later for production editing.
+Saving from the live Vercel admin is unreliable with local storage; use Git commits for lasting changes.

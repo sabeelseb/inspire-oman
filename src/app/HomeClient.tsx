@@ -13,9 +13,11 @@ import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import { useCmsSite } from "@/components/CmsProvider";
-import { testimonials as fallbackTestimonials } from "@/lib/data";
+import { testimonials as fallbackTestimonials, pillars as fallbackPillars, packages as fallbackPackages } from "@/lib/data";
 
 type Testimonial = (typeof fallbackTestimonials)[number];
+type Pillar = (typeof fallbackPillars)[number];
+type Package = (typeof fallbackPackages)[number];
 type Stat = { value: number; suffix: string; label: string };
 type Partner = {
   name: string;
@@ -174,11 +176,15 @@ export default function HomeClient({
   partners,
   testimonials,
   speakers,
+  pillars = fallbackPillars,
+  packages = fallbackPackages,
 }: {
   stats: Stat[];
   partners: Partner[];
   testimonials: Testimonial[];
   speakers: Speaker[];
+  pillars?: Pillar[];
+  packages?: Package[];
 }) {
   return (
     <>
@@ -187,9 +193,9 @@ export default function HomeClient({
       <StatsCounter stats={stats} />
       <PartnersSection partners={partners} />
       <div className="islamic-divider site-container" />
-      <PillarsSection />
+      <PillarsSection pillars={pillars} />
       <SummitHighlights speakers={speakers} />
-      <PackageTiers />
+      <PackageTiers packages={packages} />
       <TestimonialsSection testimonials={testimonials} />
       <CTABanner />
       <ContactForm />

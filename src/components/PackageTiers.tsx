@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Check, ArrowRight, Crown } from "lucide-react";
-import { packages } from "@/lib/data";
+import { packages as fallbackPackages } from "@/lib/data";
 import ScrollReveal from "./ScrollReveal";
 import IslamicPattern from "./IslamicPattern";
 
-export default function PackageTiers() {
+type Package = (typeof fallbackPackages)[number];
+
+export default function PackageTiers({ packages = fallbackPackages }: { packages?: Package[] }) {
   return (
     <section className="relative section-padding overflow-hidden">
       <IslamicPattern opacity={0.03} />

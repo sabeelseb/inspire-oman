@@ -1,10 +1,8 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 
 /**
- * Keystatic CMS - content stored as files in Git (content/).
- * Admin UI: http://localhost:3000/keystatic
- *
- * Local mode for now. Later switch storage.kind to "github" for team edits on DigitalOcean.
+ * Keystatic CMS - all page content editable via /keystatic
+ * Content files live in content/ (Git). Prefer editing via npm run dev.
  */
 export default config({
   storage: {
@@ -19,26 +17,11 @@ export default config({
       path: "content/site",
       schema: {
         name: fields.text({ label: "Site name", defaultValue: "Inspire Oman" }),
-        tagline: fields.text({
-          label: "Tagline",
-          defaultValue: "Telling Oman's Growth Story Globally",
-        }),
-        slogan: fields.text({
-          label: "Slogan",
-          defaultValue: "Celebrating Success. Creating Legacy. Inspiring Investment.",
-        }),
-        description: fields.text({
-          label: "About description",
-          multiline: true,
-        }),
-        summitDate: fields.text({
-          label: "Summit date",
-          defaultValue: "11 October 2026",
-        }),
-        venue: fields.text({
-          label: "Venue",
-          defaultValue: "Oman Convention & Exhibition Centre",
-        }),
+        tagline: fields.text({ label: "Tagline" }),
+        slogan: fields.text({ label: "Slogan" }),
+        description: fields.text({ label: "Short description", multiline: true }),
+        summitDate: fields.text({ label: "Summit date" }),
+        venue: fields.text({ label: "Venue" }),
         heroImage: fields.image({
           label: "Hero background image",
           directory: "public/images/cms",
@@ -54,9 +37,96 @@ export default config({
           directory: "public/images/cms",
           publicPath: "/images/cms/",
         }),
+        omanPhone1: fields.text({ label: "Oman phone 1" }),
+        omanPhone2: fields.text({ label: "Oman phone 2" }),
+        omanEmail: fields.text({ label: "Oman email" }),
+        indiaPhone: fields.text({ label: "India phone" }),
+        indiaEmail: fields.text({ label: "India email" }),
+        instagram: fields.text({ label: "Instagram URL" }),
+        facebook: fields.text({ label: "Facebook URL" }),
+        linkedin: fields.text({ label: "LinkedIn URL" }),
+        twitter: fields.text({ label: "Twitter / X URL" }),
+        youtube: fields.text({ label: "YouTube URL" }),
+      },
+    }),
+
+    homePage: singleton({
+      label: "Page: Home",
+      path: "content/pages/home",
+      schema: {
+        aboutEyebrow: fields.text({ label: "About eyebrow", defaultValue: "About the Initiative" }),
+        aboutTitle: fields.text({ label: "About title", defaultValue: "Celebrating Oman's Growth Story" }),
+        aboutBody: fields.text({ label: "About body paragraph", multiline: true }),
+        ctaTitle: fields.text({ label: "CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
+        ctaBody: fields.text({ label: "CTA body", multiline: true }),
+      },
+    }),
+
+    aboutPage: singleton({
+      label: "Page: About",
+      path: "content/pages/about",
+      schema: {
+        eyebrow: fields.text({ label: "Hero eyebrow" }),
+        title: fields.text({ label: "Hero title" }),
+        subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
+        missionTitle: fields.text({ label: "Mission title" }),
+        missionP1: fields.text({ label: "Mission paragraph 1", multiline: true }),
+        missionP2: fields.text({ label: "Mission paragraph 2", multiline: true }),
+        quote: fields.text({ label: "Mission quote", multiline: true }),
+      },
+    }),
+
+    pillarsPage: singleton({
+      label: "Page: Pillars",
+      path: "content/pages/pillars",
+      schema: {
+        eyebrow: fields.text({ label: "Hero eyebrow" }),
+        title: fields.text({ label: "Hero title" }),
+        subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
+      },
+    }),
+
+    summitPage: singleton({
+      label: "Page: Summit",
+      path: "content/pages/summit",
+      schema: {
+        eyebrow: fields.text({ label: "Hero eyebrow" }),
+        title: fields.text({ label: "Hero title" }),
+        subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
+      },
+    }),
+
+    partnerPage: singleton({
+      label: "Page: Partner",
+      path: "content/pages/partner",
+      schema: {
+        eyebrow: fields.text({ label: "Hero eyebrow" }),
+        title: fields.text({ label: "Hero title" }),
+        subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
+      },
+    }),
+
+    mediaPage: singleton({
+      label: "Page: Media",
+      path: "content/pages/media",
+      schema: {
+        eyebrow: fields.text({ label: "Hero eyebrow" }),
+        title: fields.text({ label: "Hero title" }),
+        subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
+      },
+    }),
+
+    contactPage: singleton({
+      label: "Page: Contact",
+      path: "content/pages/contact",
+      schema: {
+        eyebrow: fields.text({ label: "Hero eyebrow" }),
+        title: fields.text({ label: "Hero title" }),
+        subtitle: fields.text({ label: "Hero subtitle", multiline: true }),
       },
     }),
   },
+
   collections: {
     partners: collection({
       label: "Partners",
@@ -81,6 +151,7 @@ export default config({
         }),
       },
     }),
+
     stats: collection({
       label: "Stats",
       slugField: "label",
@@ -91,6 +162,7 @@ export default config({
         suffix: fields.text({ label: "Suffix (e.g. +)", defaultValue: "+" }),
       },
     }),
+
     speakers: collection({
       label: "Speakers",
       slugField: "name",
@@ -102,6 +174,7 @@ export default config({
         featured: fields.checkbox({ label: "Featured speaker", defaultValue: false }),
       },
     }),
+
     testimonials: collection({
       label: "Testimonials",
       slugField: "author",
@@ -110,6 +183,131 @@ export default config({
         author: fields.slug({ name: { label: "Author" } }),
         role: fields.text({ label: "Role" }),
         quote: fields.text({ label: "Quote", multiline: true }),
+      },
+    }),
+
+    pillars: collection({
+      label: "Pillars",
+      slugField: "title",
+      path: "content/pillars/*",
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        subtitle: fields.text({ label: "Subtitle" }),
+        description: fields.text({ label: "Description", multiline: true }),
+        icon: fields.select({
+          label: "Icon",
+          options: [
+            { label: "Book", value: "BookOpen" },
+            { label: "Video", value: "Video" },
+            { label: "Landmark", value: "Landmark" },
+          ],
+          defaultValue: "BookOpen",
+        }),
+        features: fields.array(fields.text({ label: "Feature" }), {
+          label: "Features",
+          itemLabel: (props) => props.value || "Feature",
+        }),
+      },
+    }),
+
+    packages: collection({
+      label: "Partnership Packages",
+      slugField: "tier",
+      path: "content/packages/*",
+      schema: {
+        tier: fields.slug({ name: { label: "Tier name" } }),
+        price: fields.text({ label: "Price" }),
+        currency: fields.text({ label: "Currency", defaultValue: "OMR" }),
+        highlight: fields.checkbox({ label: "Most popular", defaultValue: false }),
+        features: fields.array(fields.text({ label: "Feature" }), {
+          label: "Features",
+          itemLabel: (props) => props.value || "Feature",
+        }),
+      },
+    }),
+
+    agenda: collection({
+      label: "Summit Agenda",
+      slugField: "title",
+      path: "content/agenda/*",
+      schema: {
+        title: fields.slug({ name: { label: "Session title" } }),
+        time: fields.text({ label: "Time (e.g. 10:00 AM)" }),
+        type: fields.select({
+          label: "Type",
+          options: [
+            { label: "General", value: "general" },
+            { label: "Keynote", value: "keynote" },
+            { label: "Session", value: "session" },
+            { label: "Break", value: "break" },
+            { label: "Featured", value: "featured" },
+          ],
+          defaultValue: "session",
+        }),
+      },
+    }),
+
+    gallery: collection({
+      label: "Media Gallery",
+      slugField: "title",
+      path: "content/gallery/*",
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        caption: fields.text({ label: "Caption" }),
+        image: fields.image({
+          label: "Image",
+          directory: "public/images/cms/gallery",
+          publicPath: "/images/cms/gallery/",
+        }),
+      },
+    }),
+
+    videos: collection({
+      label: "Media Videos",
+      slugField: "title",
+      path: "content/videos/*",
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        description: fields.text({ label: "Description", multiline: true }),
+        tag: fields.text({ label: "Tag", defaultValue: "COMING SOON" }),
+        image: fields.image({
+          label: "Thumbnail",
+          directory: "public/images/cms/videos",
+          publicPath: "/images/cms/videos/",
+        }),
+      },
+    }),
+
+    press: collection({
+      label: "Press Releases",
+      slugField: "title",
+      path: "content/press/*",
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        date: fields.text({ label: "Date label", defaultValue: "Coming Soon" }),
+        excerpt: fields.text({ label: "Excerpt", multiline: true }),
+      },
+    }),
+
+    values: collection({
+      label: "About Values",
+      slugField: "title",
+      path: "content/values/*",
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        description: fields.text({ label: "Description", multiline: true }),
+        icon: fields.select({
+          label: "Icon",
+          options: [
+            { label: "Target", value: "Target" },
+            { label: "Globe", value: "Globe" },
+            { label: "Handshake", value: "Handshake" },
+            { label: "Heart", value: "Heart" },
+            { label: "Eye", value: "Eye" },
+            { label: "TrendingUp", value: "TrendingUp" },
+          ],
+          defaultValue: "Target",
+        }),
       },
     }),
   },
