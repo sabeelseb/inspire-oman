@@ -48,6 +48,17 @@ export default buildConfig({
     user: Users.slug,
     meta: {
       titleSuffix: " · Inspire Oman CMS",
+      icons: [
+        {
+          rel: "icon",
+          type: "image/svg+xml",
+          url: "/images/logos/IO-logo-white.svg",
+        },
+        {
+          rel: "apple-touch-icon",
+          url: "/images/logos/IO-logo-white.svg",
+        },
+      ],
     },
     components: {
       graphics: {
