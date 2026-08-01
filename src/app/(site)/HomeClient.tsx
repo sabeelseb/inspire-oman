@@ -52,7 +52,7 @@ type HomePage = {
   aboutTitleHighlight?: string | null;
   aboutIntro?: string | null;
   aboutBody?: string | null;
-  aboutTags?: readonly (string | null)[] | null;
+  aboutTags?: readonly (string | { tag?: string | null } | null)[] | null;
   aboutFacts?: readonly ({ label: string | null; value: string | null } | null)[] | null;
   homeStats?: readonly ({ value: number | null; suffix: string | null; label: string | null } | null)[] | null;
   statsBannerSrc?: string | null;
@@ -63,29 +63,49 @@ type HomePage = {
 
 function AboutSection({ page }: { page?: HomePage | null }) {
   const siteConfig = useCmsSite();
-  const tags =
-    page?.aboutTags?.filter((t): t is string => Boolean(t)) ||
-    ["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"];
+  const defaultTags = [
+    "Oman Vision 2040",
+    "OCCI Partnership",
+    "Cross-Border Investment",
+  ];
+  const defaultFacts = [
+    { label: "Strategic Partner", value: siteConfig.partners.strategic },
+    { label: "Initiative By", value: siteConfig.partners.initiative },
+    { label: "Execution Partner", value: siteConfig.partners.execution },
+    { label: "Summit Date", value: siteConfig.summitDate },
+    { label: "Venue", value: siteConfig.venue },
+  ];
 
-  const facts =
-    page?.aboutFacts
-      ?.filter((f): f is { label: string | null; value: string | null } => Boolean(f))
-      .map((f) => ({
-        label: f.label || "",
-        value: f.value || "",
-      }))
-      .filter((f) => f.label || f.value) || [
-      { label: "Strategic Partner", value: siteConfig.partners.strategic },
-      { label: "Initiative By", value: siteConfig.partners.initiative },
-      { label: "Execution Partner", value: siteConfig.partners.execution },
-      { label: "Summit Date", value: siteConfig.summitDate },
-      { label: "Venue", value: siteConfig.venue },
-    ];
+  // Empty arrays from CMS are truthy — treat them as missing so defaults show.
+  const tagsFromCms = (page?.aboutTags ?? [])
+    .map((t) => {
+      if (typeof t === "string") return t.trim();
+      if (t && typeof t === "object" && "tag" in t) {
+        const tag = (t as { tag?: string | null }).tag;
+        return typeof tag === "string" ? tag.trim() : "";
+      }
+      return "";
+    })
+    .filter(Boolean);
+  const tags = tagsFromCms.length ? tagsFromCms : defaultTags;
+
+  const factsFromCms = (page?.aboutFacts ?? [])
+    .filter((f): f is { label: string | null; value: string | null } => Boolean(f))
+    .map((f) => ({
+      label: (f.label || "").trim(),
+      value: (f.value || "").trim(),
+    }))
+    .filter((f) => f.label || f.value);
+  const facts = factsFromCms.length ? factsFromCms : defaultFacts;
 
   const intro =
-    page?.aboutIntro ||
+    page?.aboutIntro?.trim() ||
     siteConfig.description ||
     "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.";
+
+  const body =
+    page?.aboutBody?.trim() ||
+    "In strategic partnership with the Oman Chamber of Commerce & Industry (OCCI), Inspire Oman brings together CEOs, investors, government leaders, and entrepreneurs to celebrate contributions, strengthen investment pathways, and document the remarkable achievements of Oman's business community.";
 
   return (
     <section className="relative pt-14 pb-6">
@@ -102,10 +122,7 @@ function AboutSection({ page }: { page?: HomePage | null }) {
               />
             </h2>
             <p className="text-white/50 leading-relaxed mb-4">{intro}</p>
-            <p className="text-white/40 leading-relaxed mb-6">
-              {page?.aboutBody ||
-                "In strategic partnership with the Oman Chamber of Commerce & Industry (OCCI), Inspire Oman brings together CEOs, investors, government leaders, and entrepreneurs to celebrate contributions, strengthen investment pathways, and document the remarkable achievements of Oman's business community."}
-            </p>
+            <p className="text-white/40 leading-relaxed mb-6">{body}</p>
             <div className="flex flex-wrap gap-2.5">
               {tags.map((tag) => (
                 <span

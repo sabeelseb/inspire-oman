@@ -192,10 +192,12 @@ export async function getCmsPageHome() {
 
     const aboutTags = items(page.aboutTags);
     const aboutFacts = Array.isArray(page.aboutFacts)
-      ? (page.aboutFacts as { label?: string; value?: string }[]).map((f) => ({
-          label: f.label || "",
-          value: f.value || "",
-        }))
+      ? (page.aboutFacts as { label?: string; value?: string }[])
+          .map((f) => ({
+            label: f.label || "",
+            value: f.value || "",
+          }))
+          .filter((f) => f.label || f.value)
       : [];
     const homeStats = Array.isArray(page.homeStats)
       ? (page.homeStats as { value?: number; suffix?: string; label?: string }[]).map(
@@ -222,11 +224,12 @@ export async function getCmsPageHome() {
       aboutEyebrow: page.aboutEyebrow,
       aboutTitle: page.aboutTitle,
       aboutTitleHighlight: page.aboutTitleHighlight,
-      aboutIntro: page.aboutIntro,
-      aboutBody: page.aboutBody,
-      aboutTags,
-      aboutFacts,
-      homeStats,
+      aboutIntro: typeof page.aboutIntro === "string" ? page.aboutIntro.trim() : page.aboutIntro,
+      aboutBody: typeof page.aboutBody === "string" ? page.aboutBody.trim() : page.aboutBody,
+      // Omit empty arrays so the UI can use built-in defaults
+      aboutTags: aboutTags.length ? aboutTags : null,
+      aboutFacts: aboutFacts.length ? aboutFacts : null,
+      homeStats: homeStats.length ? homeStats : null,
       statsBannerSrc:
         mediaUrl(page.statsBanner) ||
         (page.statsBannerSrc as string) ||
