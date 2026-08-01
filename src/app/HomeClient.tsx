@@ -53,7 +53,7 @@ function AboutSection({ page }: { page?: HomePage | null }) {
     <section className="relative pt-14 pb-6">
       <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <ScrollReveal>
+          <div>
             <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
               {page?.aboutEyebrow || "About the Initiative"}
             </p>
@@ -80,32 +80,30 @@ function AboutSection({ page }: { page?: HomePage | null }) {
                 </span>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={0.2}>
-            <div className="relative">
-              <div className="glass-card p-5 sm:p-6 relative overflow-hidden">
-                <IslamicPattern opacity={0.08} />
-                <div className="relative space-y-3.5">
-                  {[
-                    { label: "Strategic Partner", value: siteConfig.partners.strategic },
-                    { label: "Initiative By", value: siteConfig.partners.initiative },
-                    { label: "Execution Partner", value: siteConfig.partners.execution },
-                    { label: "Summit Date", value: siteConfig.summitDate },
-                    { label: "Venue", value: siteConfig.venue },
-                  ].map(({ label, value }) => (
-                    <div key={label} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
-                      <div>
-                        <p className="text-white/30 text-[10px] uppercase tracking-wider">{label}</p>
-                        <p className="text-white/80 text-sm font-medium">{value}</p>
-                      </div>
+          <div className="relative">
+            <div className="glass-card p-5 sm:p-6 relative overflow-hidden">
+              <IslamicPattern opacity={0.08} />
+              <div className="relative space-y-3.5">
+                {[
+                  { label: "Strategic Partner", value: siteConfig.partners.strategic },
+                  { label: "Initiative By", value: siteConfig.partners.initiative },
+                  { label: "Execution Partner", value: siteConfig.partners.execution },
+                  { label: "Summit Date", value: siteConfig.summitDate },
+                  { label: "Venue", value: siteConfig.venue },
+                ].map(({ label, value }) => (
+                  <div key={label} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
+                    <div>
+                      <p className="text-white/30 text-[10px] uppercase tracking-wider">{label}</p>
+                      <p className="text-white/80 text-sm font-medium">{value}</p>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>

@@ -6,20 +6,23 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useCmsSite } from "@/components/CmsProvider";
 import LogoImage from "./LogoImage";
 
 type LoaderContextValue = {
-  markFirstSectionReady: () => void;
+  /** Mark one of the top-of-page assets/sections as ready */
+  markTopReady: (key: string) => void;
   isReady: boolean;
 };
 
 const LoaderContext = createContext<LoaderContextValue>({
-  markFirstSectionReady: () => {},
+  markTopReady: () => {},
   isReady: true,
 });
 
@@ -27,54 +30,93 @@ export function usePageLoader() {
   return useContext(LoaderContext);
 }
 
-function preloadImage(src: string) {
+export function preloadImage(src: string) {
   return new Promise<void>((resolve) => {
     const img = new window.Image();
-    img.onload = () => resolve();
+    img.decoding = "async";
+    img.onload = () => {
+      if (typeof img.decode === "function") {
+        img.decode().then(() => resolve()).catch(() => resolve());
+      } else {
+        resolve();
+      }
+    };
     img.onerror = () => resolve();
     img.src = src;
   });
 }
 
+/** Home: wait for hero + stats banner + preloaded pack before dismissing splash */
+const HOME_TOP_KEYS = ["hero", "banner", "pack"] as const;
+
 export default function AppShell({ children }: { children: ReactNode }) {
   const siteConfig = useCmsSite();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const readyKeys = useRef(new Set<string>());
   const [sectionReady, setSectionReady] = useState(false);
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
 
   const isReady = sectionReady && minTimeDone;
 
-  const markFirstSectionReady = useCallback(() => {
-    setSectionReady(true);
-  }, []);
+  const checkReady = useCallback(
+    (keys: Set<string>) => {
+      if (isHome) {
+        return HOME_TOP_KEYS.every((k) => keys.has(k));
+      }
+      return keys.has("pack");
+    },
+    [isHome]
+  );
+
+  const markTopReady = useCallback(
+    (key: string) => {
+      readyKeys.current.add(key);
+      if (checkReady(readyKeys.current)) {
+        setSectionReady(true);
+      }
+    },
+    [checkReady]
+  );
 
   useEffect(() => {
-    const minTimer = window.setTimeout(() => setMinTimeDone(true), 400);
-    const failSafe = window.setTimeout(() => setSectionReady(true), 2000);
+    readyKeys.current = new Set();
+    setSectionReady(false);
+    setMinTimeDone(false);
+    setShowLoader(true);
 
-    // Warm logo + hero so first paint is smooth
-    void Promise.all([
-      preloadImage(siteConfig.images.logo),
-      preloadImage(siteConfig.images.hero),
-      preloadImage(siteConfig.images.banner),
-    ]).then(() => {
-      // If Hero hasn't reported yet, allow ready soon after assets are warm
-      window.setTimeout(() => setSectionReady(true), 100);
-    });
+    const minTimer = window.setTimeout(() => setMinTimeDone(true), isHome ? 800 : 400);
+    const failSafe = window.setTimeout(() => setSectionReady(true), isHome ? 5000 : 2000);
+
+    void (async () => {
+      await Promise.all([
+        preloadImage(siteConfig.images.logo),
+        preloadImage(siteConfig.images.hero),
+        preloadImage(siteConfig.images.banner),
+      ]);
+      markTopReady("pack");
+    })();
 
     return () => {
       window.clearTimeout(minTimer);
       window.clearTimeout(failSafe);
     };
-  }, [siteConfig.images.banner, siteConfig.images.hero, siteConfig.images.logo]);
+  }, [
+    isHome,
+    markTopReady,
+    pathname,
+    siteConfig.images.banner,
+    siteConfig.images.hero,
+    siteConfig.images.logo,
+  ]);
 
   useEffect(() => {
     if (!isReady) return;
-    const hide = window.setTimeout(() => setShowLoader(false), 280);
+    const hide = window.setTimeout(() => setShowLoader(false), 220);
     return () => window.clearTimeout(hide);
   }, [isReady]);
 
-  // Soft-lock scroll only while splash is visible
   useEffect(() => {
     if (!showLoader) return;
     const prev = document.body.style.overflow;
@@ -85,8 +127,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
   }, [showLoader]);
 
   const value = useMemo(
-    () => ({ markFirstSectionReady, isReady }),
-    [markFirstSectionReady, isReady]
+    () => ({ markTopReady, isReady }),
+    [markTopReady, isReady]
   );
 
   return (
@@ -99,14 +141,14 @@ export default function AppShell({ children }: { children: ReactNode }) {
             initial={{ opacity: 1 }}
             animate={{ opacity: isReady ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             aria-hidden={isReady}
             aria-busy={!isReady}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="flex flex-col items-center gap-6 px-6"
             >
               <div className="h-28 w-28 sm:h-36 sm:w-36">
@@ -138,17 +180,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </AnimatePresence>
 
       {/*
-        Do NOT wrap children in Framer Motion - transforms on an ancestor break
-        position:fixed on the Navbar (nav appears mid-page while scrolling).
-        Splash overlay covers content until ready; fade with CSS opacity only.
+        Keep content fully opaque under the splash so Hero / About / Stats
+        paint and decode while the loader is visible. Do not wrap in Motion.
       */}
-      <div
-        className={`transition-opacity duration-300 ease-out ${
-          isReady ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {children}
-      </div>
+      <div>{children}</div>
     </LoaderContext.Provider>
   );
 }
