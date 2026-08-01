@@ -35,3 +35,11 @@ coverage/
 
 # Local hero backups
 public/images/hero/*-.jpg
+
+# Payload local DB / uploads
+payload.db
+payload.db-*
+*.db
+public/media/
+src/payload/payload-types.ts
+

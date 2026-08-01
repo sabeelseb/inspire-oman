@@ -1,0 +1,103 @@
+import path from "path";
+import { fileURLToPath } from "url";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import { sqliteAdapter } from "@payloadcms/db-sqlite";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { buildConfig } from "payload";
+import sharp from "sharp";
+
+import { Users } from "./src/payload/collections/Users";
+import { Media } from "./src/payload/collections/Media";
+import {
+  Partners,
+  Stats,
+  Speakers,
+  Testimonials,
+  Pillars,
+  Packages,
+  Values,
+  Agenda,
+  Gallery,
+  Videos,
+  Press,
+} from "./src/payload/collections/content";
+import {
+  Site,
+  HomePage,
+  AboutPage,
+  PillarsPage,
+  SummitPage,
+  PartnerPage,
+  MediaPage,
+  ContactPage,
+} from "./src/payload/globals/pages";
+
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+const databaseUri =
+  process.env.DATABASE_URI ||
+  process.env.DATABASE_URL ||
+  "file:./payload.db";
+
+const isPostgres = /^postgres(ql)?:\/\//i.test(databaseUri);
+
+export default buildConfig({
+  admin: {
+    user: Users.slug,
+    meta: {
+      titleSuffix: " · Inspire Oman CMS",
+    },
+    components: {
+      graphics: {
+        Logo: "/src/payload/components/Logo#default",
+        Icon: "/src/payload/components/Icon#default",
+      },
+    },
+    importMap: {
+      baseDir: path.resolve(dirname),
+    },
+  },
+  collections: [
+    Users,
+    Media,
+    Partners,
+    Stats,
+    Speakers,
+    Testimonials,
+    Pillars,
+    Packages,
+    Values,
+    Agenda,
+    Gallery,
+    Videos,
+    Press,
+  ],
+  globals: [
+    HomePage,
+    AboutPage,
+    PillarsPage,
+    SummitPage,
+    PartnerPage,
+    MediaPage,
+    ContactPage,
+    Site,
+  ],
+  editor: lexicalEditor(),
+  secret: process.env.PAYLOAD_SECRET || "inspire-oman-dev-secret-change-me",
+  typescript: {
+    outputFile: path.resolve(dirname, "src/payload/payload-types.ts"),
+  },
+  db: isPostgres
+    ? postgresAdapter({
+        pool: {
+          connectionString: databaseUri,
+        },
+      })
+    : sqliteAdapter({
+        client: {
+          url: databaseUri,
+        },
+      }),
+  sharp,
+});

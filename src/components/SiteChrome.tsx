@@ -9,7 +9,8 @@ import AppShell from "@/components/AppShell";
 
 export default function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isCms = pathname?.startsWith("/keystatic");
+  const isCms =
+    pathname?.startsWith("/keystatic") || pathname?.startsWith("/admin");
 
   useEffect(() => {
     const body = document.body;

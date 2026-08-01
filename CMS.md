@@ -1,17 +1,35 @@
-# Inspire Oman CMS (Keystatic)
+# Inspire Oman CMS
 
-Admin: https://inspire-oman.vercel.app/keystatic  
-Local (recommended): http://localhost:3000/keystatic (`npm run dev`)
+The site currently reads **Keystatic** YAML (`content/`). **Payload CMS** runs beside it at `/admin` with the same content model (draft/publish). Switching the public site to Payload is a later step.
 
-All public site copy is stored under `content/` and shown in the dashboard. Live pages read from these files.
+## Two dashboards
 
-## Dashboard navigation
+| Admin | URL | Storage | Best for |
+|-------|-----|---------|----------|
+| **Keystatic** (current live site source) | `/keystatic` | Git YAML in `content/` | Editing what the public site shows today |
+| **Payload** (open source, MIT) | `/admin` | SQLite locally / Postgres in prod | Draft → Publish workflow, auth, future site source |
+
+Local Keystatic: http://localhost:3000/keystatic  
+Local Payload: http://localhost:3000/admin  
+
+Live Keystatic: https://inspire-oman.vercel.app/keystatic  
+
+## Payload setup
+
+1. Copy `.env.example` → `.env`
+2. Default `DATABASE_URI=file:./payload.db` (SQLite, no Docker)
+3. For Postgres: `docker compose up -d` and set `DATABASE_URI=postgresql://payload:payload@127.0.0.1:5432/inspire_oman`
+4. `npm install` then `npm run seed:payload` (copies Keystatic YAML into Payload; does **not** change `content/`)
+5. `npm run dev` → open `/admin` → login with `PAYLOAD_ADMIN_EMAIL` / `PAYLOAD_ADMIN_PASSWORD`
+
+Payload has native **draft / publish** on all mirrored pages and collections. Logo branding matches Inspire Oman.
+
+## Keystatic dashboard navigation
 
 ### Pages
-Edit hero / section copy for each route:
 | Dashboard item | Live page |
 |----------------|-----------|
-| **Home** | `/` **Hero** (date, city, title, slogan, venue, CTAs, image) + About + bottom CTA |
+| **Home** | `/` Hero + About + bottom CTA |
 | **About** | `/about` |
 | **Pillars page** | `/pillars` hero |
 | **Summit page** | `/summit` hero |
@@ -20,36 +38,22 @@ Edit hero / section copy for each route:
 | **Contact page** | `/contact` hero |
 
 ### Site content
-| Dashboard item | Used on |
-|----------------|---------|
-| **Partners** | Home partners |
-| **Stats** | Home counters |
-| **Speakers** | Home + Summit |
-| **Testimonials** | Home |
-| **Pillars** | Home + Pillars page body |
-| **Partnership Packages** | Home + Partner page |
-| **About Values** | About values grid |
+Partners, Stats, Speakers, Testimonials, Pillars, Partnership Packages, About Values
 
 ### Summit & media
-| Dashboard item | Used on |
-|----------------|---------|
-| **Summit Agenda** | Summit programme |
-| **Media Gallery** | Media photos |
-| **Media Videos** | Media videos |
-| **Press Releases** | Media news |
+Summit Agenda, Media Gallery, Media Videos, Press Releases
 
 ### Settings
-| Dashboard item | Used on |
-|----------------|---------|
-| **Site Settings** | Global name, slogan, dates, venue, phones, emails, social, partner org names, images |
+Site Settings
 
-## Workflow
+## Keystatic workflow
 1. Prefer editing locally (`npm run dev` → `/keystatic`)
-2. Give lists a few seconds to load (first open can look empty while files sync)
-3. Use the CMS toolbar:
-   - **Save** – triggers Keystatic's entry Save (writes `content/`)
-   - **Save to draft** – local git commit of content (no push)
-   - **Publish** – commit (if needed) and push to live
+2. Give lists a few seconds to load
+3. CMS toolbar: **Save** / **Save to draft** (git commit) / **Publish** (push)
 4. Or commit & push manually → Vercel redeploys
 
-Saving from the live Vercel admin is unreliable with local storage; Draft/Publish git actions only work locally.
+Saving from the live Vercel Keystatic admin is unreliable with local storage; Draft/Publish git actions only work locally.
+
+## Notes
+- Public pages still use [`src/lib/cms.ts`](src/lib/cms.ts) → Keystatic. Payload is parallel until a `CMS_SOURCE` switch is added.
+- Do not remove Keystatic or `content/` while the site depends on them.
