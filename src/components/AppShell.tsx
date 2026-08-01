@@ -16,7 +16,6 @@ import { useCmsSite } from "@/components/CmsProvider";
 import LogoImage from "./LogoImage";
 
 type LoaderContextValue = {
-  /** Mark one of the top-of-page assets/sections as ready */
   markTopReady: (key: string) => void;
   isReady: boolean;
 };
@@ -46,13 +45,13 @@ export function preloadImage(src: string) {
   });
 }
 
-/** Home: wait for hero + stats banner + preloaded pack before dismissing splash */
 const HOME_TOP_KEYS = ["hero", "banner", "pack"] as const;
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const siteConfig = useCmsSite();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const booted = useRef(false);
   const readyKeys = useRef(new Set<string>());
   const [sectionReady, setSectionReady] = useState(false);
   const [minTimeDone, setMinTimeDone] = useState(false);
@@ -62,9 +61,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
   const checkReady = useCallback(
     (keys: Set<string>) => {
-      if (isHome) {
-        return HOME_TOP_KEYS.every((k) => keys.has(k));
-      }
+      if (isHome) return HOME_TOP_KEYS.every((k) => keys.has(k));
       return keys.has("pack");
     },
     [isHome]
@@ -80,11 +77,15 @@ export default function AppShell({ children }: { children: ReactNode }) {
     [checkReady]
   );
 
+  // First paint only - never re-flash splash on client navigations (mWeb glitch)
   useEffect(() => {
-    readyKeys.current = new Set();
-    setSectionReady(false);
-    setMinTimeDone(false);
-    setShowLoader(true);
+    if (booted.current) {
+      setShowLoader(false);
+      setSectionReady(true);
+      setMinTimeDone(true);
+      return;
+    }
+    booted.current = true;
 
     const minTimer = window.setTimeout(() => setMinTimeDone(true), isHome ? 800 : 400);
     const failSafe = window.setTimeout(() => setSectionReady(true), isHome ? 5000 : 2000);
@@ -94,6 +95,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
         preloadImage(siteConfig.images.logo),
         preloadImage(siteConfig.images.hero),
         preloadImage(siteConfig.images.banner),
+        preloadImage("/images/logos/OCC-logo.svg"),
+        preloadImage("/images/logos/GM-logo.png"),
+        preloadImage("/images/logos/MF-logo.svg"),
       ]);
       markTopReady("pack");
     })();
@@ -102,27 +106,26 @@ export default function AppShell({ children }: { children: ReactNode }) {
       window.clearTimeout(minTimer);
       window.clearTimeout(failSafe);
     };
-  }, [
-    isHome,
-    markTopReady,
-    pathname,
-    siteConfig.images.banner,
-    siteConfig.images.hero,
-    siteConfig.images.logo,
-  ]);
+    // Intentionally once on mount - navigation must not restart splash
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!isReady) return;
-    const hide = window.setTimeout(() => setShowLoader(false), 220);
+    const hide = window.setTimeout(() => setShowLoader(false), 180);
     return () => window.clearTimeout(hide);
   }, [isReady]);
 
   useEffect(() => {
     if (!showLoader) return;
-    const prev = document.body.style.overflow;
+    const html = document.documentElement;
+    const prevBody = document.body.style.overflow;
+    const prevHtml = html.style.overflow;
     document.body.style.overflow = "hidden";
+    html.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = prev || "";
+      document.body.style.overflow = prevBody || "";
+      html.style.overflow = prevHtml || "";
     };
   }, [showLoader]);
 
@@ -141,16 +144,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
             initial={{ opacity: 1 }}
             animate={{ opacity: isReady ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: isReady ? "none" : "auto" }}
             aria-hidden={isReady}
             aria-busy={!isReady}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex flex-col items-center gap-6 px-6"
-            >
+            <div className="flex flex-col items-center gap-6 px-6">
               <div className="h-28 w-28 sm:h-36 sm:w-36">
                 <LogoImage
                   src={siteConfig.images.logo}
@@ -171,18 +170,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
                   }}
                 />
               </div>
-              <p className="text-xs tracking-[0.25em] text-gold/70">
-                Inspire Oman
-              </p>
-            </motion.div>
+              <p className="text-xs tracking-[0.25em] text-gold/70">Inspire Oman</p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/*
-        Keep content fully opaque under the splash so Hero / About / Stats
-        paint and decode while the loader is visible. Do not wrap in Motion.
-      */}
       <div>{children}</div>
     </LoaderContext.Provider>
   );

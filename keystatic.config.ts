@@ -165,11 +165,15 @@ export default config({
           ],
           defaultValue: "dark",
         }),
+        logoSrc: fields.text({
+          label: "Logo path (e.g. /images/logos/OCC-logo.svg)",
+        }),
         logo: fields.image({
-          label: "Logo",
+          label: "Or upload logo",
           directory: "public/images/cms/partners",
           publicPath: "/images/cms/partners/",
         }),
+        order: fields.integer({ label: "Display order", defaultValue: 1 }),
       },
     }),
 

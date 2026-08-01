@@ -198,6 +198,12 @@ export async function getCmsPageContact() {
   }
 }
 
+const partnerLogoFallback: Record<string, string> = {
+  OCCI: "/images/logos/OCC-logo.svg",
+  "Gulf Madhyamam": "/images/logos/GM-logo.png",
+  mefriend: "/images/logos/MF-logo.svg",
+};
+
 export async function getCmsPartners(): Promise<
   { name: string; role: string; fullName: string; bg: "light" | "dark"; src: string }[]
 > {
@@ -210,16 +216,25 @@ export async function getCmsPartners(): Promise<
       }));
     }
 
-    return entries.map(({ entry }) => {
-      const bg: "light" | "dark" = entry.bg === "light" ? "light" : "dark";
-      return {
-        name: slugName(entry.name),
-        role: entry.role,
-        fullName: entry.fullName,
-        bg,
-        src: entry.logo || "/images/logos/IO-logo.svg",
-      };
-    });
+    return entries
+      .map(({ entry }) => {
+        const name = slugName(entry.name);
+        const bg: "light" | "dark" = entry.bg === "light" ? "light" : "dark";
+        return {
+          name,
+          role: entry.role,
+          fullName: entry.fullName,
+          bg,
+          order: entry.order ?? 99,
+          src:
+            entry.logo ||
+            entry.logoSrc ||
+            partnerLogoFallback[name] ||
+            "/images/logos/IO-logo.svg",
+        };
+      })
+      .sort((a, b) => a.order - b.order)
+      .map(({ order: _order, ...partner }) => partner);
   } catch {
     return fallbackSite.partnerLogos.map((p) => ({
       ...p,

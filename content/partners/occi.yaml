@@ -2,3 +2,5 @@ name: OCCI
 role: Strategic Partner
 fullName: Oman Chamber of Commerce & Industry
 bg: light
+logoSrc: /images/logos/OCC-logo.svg
+order: 1

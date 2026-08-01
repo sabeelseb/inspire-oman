@@ -2,3 +2,5 @@ name: mefriend
 role: Execution Partner
 fullName: mefriend - Where Brands Find Solutions
 bg: dark
+logoSrc: /images/logos/MF-logo.svg
+order: 3
