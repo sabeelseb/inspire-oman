@@ -54,6 +54,9 @@ type HomePage = {
   aboutBody?: string | null;
   aboutTags?: readonly (string | null)[] | null;
   aboutFacts?: readonly ({ label: string | null; value: string | null } | null)[] | null;
+  homeStats?: readonly ({ value: number | null; suffix: string | null; label: string | null } | null)[] | null;
+  statsBannerSrc?: string | null;
+  statsBanner?: string | null;
   ctaTitle?: string | null;
   ctaBody?: string | null;
 };
@@ -231,11 +234,26 @@ export default function HomeClient({
   pillars?: Pillar[];
   packages?: Package[];
 }) {
+  const pageStats =
+    page?.homeStats
+      ?.filter((s): s is { value: number | null; suffix: string | null; label: string | null } =>
+        Boolean(s)
+      )
+      .map((s) => ({
+        value: s.value ?? 0,
+        suffix: s.suffix || "+",
+        label: s.label || "",
+      }))
+      .filter((s) => s.label) || [];
+
+  const displayStats = pageStats.length ? pageStats : stats;
+  const bannerSrc = page?.statsBanner || page?.statsBannerSrc || null;
+
   return (
     <>
       <Hero page={page} />
       <AboutSection page={page} />
-      <StatsCounter stats={stats} />
+      <StatsCounter stats={displayStats} bannerSrc={bannerSrc} />
       <PartnersSection partners={partners} />
       <div className="islamic-divider site-container" />
       <PillarsSection pillars={pillars} />

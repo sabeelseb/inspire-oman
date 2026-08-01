@@ -166,6 +166,13 @@ export async function getCmsPageHome() {
           { label: "Summit Date", value: "11 October 2026" },
           { label: "Venue", value: "Oman Convention & Exhibition Centre" },
         ],
+        homeStats: [
+          { value: 15, suffix: "+", label: "Countries" },
+          { value: 500, suffix: "+", label: "Expected Attendees" },
+          { value: 25, suffix: "+", label: "Keynote Speakers" },
+          { value: 50, suffix: "+", label: "Partner Brands" },
+        ],
+        statsBannerSrc: "/images/logos/inspire-oman-banner.jpg",
         ctaTitle: "Be Part of Oman's Growth Story",
         ctaBody: "",
       }

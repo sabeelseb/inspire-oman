@@ -8,9 +8,16 @@ import { usePageLoader } from "@/components/AppShell";
 
 type Stat = { value: number; suffix: string; label: string };
 
-export default function StatsCounter({ stats = fallbackStats }: { stats?: Stat[] }) {
+export default function StatsCounter({
+  stats = fallbackStats,
+  bannerSrc,
+}: {
+  stats?: Stat[];
+  bannerSrc?: string | null;
+}) {
   const siteConfig = useCmsSite();
   const { markTopReady } = usePageLoader();
+  const banner = bannerSrc || siteConfig.images.banner;
 
   useEffect(() => {
     const t = window.setTimeout(() => markTopReady("banner"), 3000);
@@ -39,7 +46,7 @@ export default function StatsCounter({ stats = fallbackStats }: { stats?: Stat[]
 
         <div className="relative overflow-hidden rounded-xl border border-gold/25">
           <Image
-            src={siteConfig.images.banner}
+            src={banner}
             alt="Inspire Oman - Celebrating Success. Creating Legacy. Inspiring Investment."
             width={1280}
             height={320}

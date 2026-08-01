@@ -40,6 +40,22 @@ aboutFacts:
   - label: Venue
     value: Oman Convention & Exhibition Centre
 
+# Stats row
+homeStats:
+  - value: 15
+    suffix: +
+    label: Countries
+  - value: 500
+    suffix: +
+    label: Expected Attendees
+  - value: 25
+    suffix: +
+    label: Keynote Speakers
+  - value: 50
+    suffix: +
+    label: Partner Brands
+statsBannerSrc: /images/logos/inspire-oman-banner.jpg
+
 # Bottom CTA
 ctaTitle: Be Part of Oman's Growth Story
 ctaBody: >-

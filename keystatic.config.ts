@@ -161,6 +161,28 @@ export default config({
             itemLabel: (props) => props.fields.label.value || "Fact",
           }
         ),
+        homeStats: fields.array(
+          fields.object({
+            value: fields.integer({ label: "Number", defaultValue: 0 }),
+            suffix: fields.text({ label: "Suffix", defaultValue: "+" }),
+            label: fields.text({ label: "Label" }),
+          }),
+          {
+            label: "Stats row - counters (15+, 500+, etc.)",
+            itemLabel: (props) =>
+              `${props.fields.value.value ?? 0}${props.fields.suffix.value || ""} ${props.fields.label.value || ""}`.trim() ||
+              "Stat",
+          }
+        ),
+        statsBannerSrc: fields.text({
+          label: "Stats - banner image path (e.g. /images/logos/inspire-oman-banner.jpg)",
+          defaultValue: "/images/logos/inspire-oman-banner.jpg",
+        }),
+        statsBanner: fields.image({
+          label: "Stats - or upload banner image",
+          directory: "public/images/cms",
+          publicPath: "/images/cms/",
+        }),
         ctaTitle: fields.text({ label: "Bottom CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
         ctaBody: fields.text({ label: "Bottom CTA body", multiline: true }),
       },
