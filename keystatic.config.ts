@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import { config, fields, collection, singleton } from "@keystatic/core";
 
 /**
@@ -9,7 +10,17 @@ export default config({
     kind: "local",
   },
   ui: {
-    brand: { name: "Inspire Oman CMS" },
+    brand: {
+      name: "Inspire Oman CMS",
+      mark: () =>
+        createElement("img", {
+          src: "/images/logos/IO-logo.svg",
+          alt: "Inspire Oman",
+          height: 24,
+          width: 24,
+          style: { display: "block", height: 24, width: "auto" },
+        }),
+    },
     navigation: {
       Pages: [
         "homePage",

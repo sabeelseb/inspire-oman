@@ -46,7 +46,10 @@ Edit hero / section copy for each route:
 ## Workflow
 1. Prefer editing locally (`npm run dev` → `/keystatic`)
 2. Give lists a few seconds to load (first open can look empty while files sync)
-3. Save → files update under `content/`
-4. Commit & push → Vercel redeploys
+3. Use the CMS toolbar:
+   - **Save** – triggers Keystatic's entry Save (writes `content/`)
+   - **Save to draft** – local git commit of content (no push)
+   - **Publish** – commit (if needed) and push to live
+4. Or commit & push manually → Vercel redeploys
 
-Saving from the live Vercel admin is unreliable with local storage; use local edits + Git for lasting changes.
+Saving from the live Vercel admin is unreliable with local storage; Draft/Publish git actions only work locally.
