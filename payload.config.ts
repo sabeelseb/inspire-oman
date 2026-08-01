@@ -8,6 +8,7 @@ import sharp from "sharp";
 
 import { Users } from "./src/payload/collections/Users";
 import { Media } from "./src/payload/collections/Media";
+import { Submissions } from "./src/payload/collections/Submissions";
 import {
   Partners,
   Stats,
@@ -61,6 +62,7 @@ export default buildConfig({
   collections: [
     Users,
     Media,
+    Submissions,
     Partners,
     Stats,
     Speakers,

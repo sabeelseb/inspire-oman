@@ -50,17 +50,17 @@
     box-shadow: 0 0 30px rgba(197, 165, 90, 0.15);
   }
 
-  /* No backdrop-blur: expensive on scroll with many cards */
+  /* Glass cards — soft blur restored from original build */
   .glass-card {
-    @apply bg-white/[0.04] border border-white/[0.08] rounded-2xl;
+    @apply bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-2xl;
   }
 
   .glass-card-hover {
-    @apply glass-card transition-[background-color,border-color,box-shadow] duration-200;
+    @apply glass-card transition-all duration-500;
   }
   .glass-card-hover:hover {
-    @apply bg-white/[0.07] border-gold/30;
-    box-shadow: 0 0 24px rgba(197, 165, 90, 0.08);
+    @apply bg-white/[0.06] border-gold/30;
+    box-shadow: 0 0 40px rgba(197, 165, 90, 0.1);
   }
 
   .section-padding {

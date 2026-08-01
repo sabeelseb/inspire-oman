@@ -23,6 +23,13 @@ export const metadata: Metadata = {
     "Business Oman",
     "Investment Oman",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/images/logos/IO-logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/images/logos/IO-logo.svg" }],
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

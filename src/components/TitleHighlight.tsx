@@ -1,9 +1,11 @@
 export default function TitleHighlight({
   title,
   highlight,
+  highlightClassName = "gold-text",
 }: {
   title: string;
   highlight?: string | null;
+  highlightClassName?: string;
 }) {
   if (!highlight || !title.includes(highlight)) {
     return <>{title}</>;
@@ -16,7 +18,7 @@ export default function TitleHighlight({
   return (
     <>
       {before}
-      <span className="gold-text">{highlight}</span>
+      <span className={highlightClassName}>{highlight}</span>
       {after}
     </>
   );

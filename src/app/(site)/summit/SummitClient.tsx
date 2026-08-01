@@ -18,6 +18,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
 import { useCmsSite } from "@/components/CmsProvider";
+import { submitToAdmin } from "@/lib/submit-form";
 
 const typeColors: Record<string, string> = {
   keynote: "border-l-gold",
@@ -68,8 +69,24 @@ export default function SummitClient({
     role: "CEO",
   });
 
-  const handleRegister = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    const result = await submitToAdmin("summit", {
+      name: regForm.name,
+      email: regForm.email,
+      phone: regForm.phone,
+      organization: regForm.organization,
+      role: regForm.role,
+      message: `Summit registration — role: ${regForm.role}`,
+    });
+    setSending(false);
+    if (!result.ok) {
+      alert(result.error);
+      return;
+    }
     alert("Thank you for registering! You will receive a confirmation email shortly.");
     setRegForm({ name: "", email: "", phone: "", organization: "", role: "CEO" });
   };
@@ -265,8 +282,8 @@ export default function SummitClient({
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
                   />
                 </div>
-                <button type="submit" className="btn-primary w-full">
-                  Register Now
+                <button type="submit" className="btn-primary w-full" disabled={sending}>
+                  {sending ? "Registering..." : "Register Now"}
                   <Send size={16} className="ml-2" />
                 </button>
                 <p className="text-white/30 text-xs text-center">

@@ -6,6 +6,7 @@ import { Check, Crown, ArrowRight, Send, ChevronDown, FileText, Shield } from "l
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
+import { submitToAdmin } from "@/lib/submit-form";
 
 type PageData = {
   eyebrow?: string | null;
@@ -41,10 +42,30 @@ export default function PartnerClient({
     agreeTerms: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.agreeTerms) {
       alert("Please agree to the terms and conditions.");
+      return;
+    }
+    setSending(true);
+    const result = await submitToAdmin("partner", {
+      name: form.contactPerson || form.companyName,
+      email: form.email,
+      phone: form.phone,
+      companyName: form.companyName,
+      contactPerson: form.contactPerson,
+      designation: form.designation,
+      address: form.address,
+      tier: form.tier,
+      paymentMethod: form.paymentMethod,
+      message: `Partnership application — ${form.tier}`,
+    });
+    setSending(false);
+    if (!result.ok) {
+      alert(result.error);
       return;
     }
     alert(
@@ -328,8 +349,8 @@ export default function PartnerClient({
                   </span>
                 </label>
 
-                <button type="submit" className="btn-primary w-full">
-                  Submit Application
+                <button type="submit" className="btn-primary w-full" disabled={sending}>
+                  {sending ? "Submitting..." : "Submit Application"}
                   <Send size={16} className="ml-2" />
                 </button>
               </form>

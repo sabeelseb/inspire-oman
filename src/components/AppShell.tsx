@@ -112,7 +112,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isReady) return;
-    const hide = window.setTimeout(() => setShowLoader(false), 180);
+    const hide = window.setTimeout(() => setShowLoader(false), 650);
     return () => window.clearTimeout(hide);
   }, [isReady]);
 
@@ -144,12 +144,17 @@ export default function AppShell({ children }: { children: ReactNode }) {
             initial={{ opacity: 1 }}
             animate={{ opacity: isReady ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={{ pointerEvents: isReady ? "none" : "auto" }}
             aria-hidden={isReady}
             aria-busy={!isReady}
           >
-            <div className="flex flex-col items-center gap-6 px-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex flex-col items-center gap-6 px-6"
+            >
               <div className="h-28 w-28 sm:h-36 sm:w-36">
                 <LogoImage
                   src={siteConfig.images.logo}
@@ -170,13 +175,25 @@ export default function AppShell({ children }: { children: ReactNode }) {
                   }}
                 />
               </div>
-              <p className="text-xs tracking-[0.25em] text-gold/70">Inspire Oman</p>
-            </div>
+              <p className="text-xs uppercase tracking-[0.35em] text-gold/70">
+                Inspire Oman
+              </p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div>{children}</div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isReady || !showLoader ? 1 : 0 }}
+        transition={{
+          duration: 0.65,
+          ease: [0.22, 1, 0.36, 1],
+          delay: isReady ? 0.08 : 0,
+        }}
+      >
+        {children}
+      </motion.div>
     </LoaderContext.Provider>
   );
 }

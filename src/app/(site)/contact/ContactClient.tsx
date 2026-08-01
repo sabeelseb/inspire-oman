@@ -7,6 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
 import { useCmsSite } from "@/components/CmsProvider";
+import { submitToAdmin } from "@/lib/submit-form";
 
 type PageData = {
   eyebrow?: string | null;
@@ -25,8 +26,17 @@ export default function ContactClient({ page }: { page: PageData | null }) {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSending(true);
+    const result = await submitToAdmin("contact", form);
+    setSending(false);
+    if (!result.ok) {
+      alert(result.error);
+      return;
+    }
     alert("Thank you for your message! We will get back to you shortly.");
     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
   };
@@ -172,8 +182,8 @@ export default function ContactClient({ page }: { page: PageData | null }) {
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors resize-none"
                 />
-                <button type="submit" className="btn-primary w-full sm:w-auto">
-                  Send Message
+                <button type="submit" className="btn-primary w-full sm:w-auto" disabled={sending}>
+                  {sending ? "Sending..." : "Send Message"}
                   <Send size={16} className="ml-2" />
                 </button>
               </form>
