@@ -131,13 +131,36 @@ export default config({
           directory: "public/images/cms",
           publicPath: "/images/cms/",
         }),
-        aboutEyebrow: fields.text({ label: "About eyebrow", defaultValue: "About the Initiative" }),
-        aboutTitle: fields.text({ label: "About title", defaultValue: "Celebrating Oman's Growth Story" }),
-        aboutBody: fields.text({ label: "About body paragraph", multiline: true }),
+        aboutEyebrow: fields.text({ label: "About - eyebrow", defaultValue: "About the Initiative" }),
+        aboutTitle: fields.text({
+          label: "About - title",
+          defaultValue: "Celebrating Oman's Growth Story",
+        }),
+        aboutTitleHighlight: fields.text({
+          label: "About - gold highlight word(s)",
+          defaultValue: "Growth Story",
+        }),
+        aboutIntro: fields.text({
+          label: "About - first paragraph",
+          multiline: true,
+          defaultValue:
+            "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+        }),
+        aboutBody: fields.text({ label: "About - second paragraph", multiline: true }),
         aboutTags: fields.array(fields.text({ label: "Tag" }), {
-          label: "About tags",
+          label: "About - tags",
           itemLabel: (props) => props.value || "Tag",
         }),
+        aboutFacts: fields.array(
+          fields.object({
+            label: fields.text({ label: "Label" }),
+            value: fields.text({ label: "Value" }),
+          }),
+          {
+            label: "About - side facts card",
+            itemLabel: (props) => props.fields.label.value || "Fact",
+          }
+        ),
         ctaTitle: fields.text({ label: "Bottom CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
         ctaBody: fields.text({ label: "Bottom CTA body", multiline: true }),
       },

@@ -151,8 +151,21 @@ export async function getCmsPageHome() {
         heroSecondaryCtaHref: "/partner",
         aboutEyebrow: "About the Initiative",
         aboutTitle: "Celebrating Oman's Growth Story",
+        aboutTitleHighlight: "Growth Story",
+        aboutIntro:
+          "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
         aboutBody: "",
         aboutTags: ["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"],
+        aboutFacts: [
+          {
+            label: "Strategic Partner",
+            value: "Oman Chamber of Commerce & Industry (OCCI)",
+          },
+          { label: "Initiative By", value: "Gulf Madhyamam" },
+          { label: "Execution Partner", value: "mefriend" },
+          { label: "Summit Date", value: "11 October 2026" },
+          { label: "Venue", value: "Oman Convention & Exhibition Centre" },
+        ],
         ctaTitle: "Be Part of Oman's Growth Story",
         ctaBody: "",
       }

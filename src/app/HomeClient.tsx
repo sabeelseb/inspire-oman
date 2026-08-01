@@ -49,8 +49,11 @@ type HomePage = {
   heroImage?: string | null;
   aboutEyebrow?: string | null;
   aboutTitle?: string | null;
+  aboutTitleHighlight?: string | null;
+  aboutIntro?: string | null;
   aboutBody?: string | null;
   aboutTags?: readonly (string | null)[] | null;
+  aboutFacts?: readonly ({ label: string | null; value: string | null } | null)[] | null;
   ctaTitle?: string | null;
   ctaBody?: string | null;
 };
@@ -60,6 +63,26 @@ function AboutSection({ page }: { page?: HomePage | null }) {
   const tags =
     page?.aboutTags?.filter((t): t is string => Boolean(t)) ||
     ["Oman Vision 2040", "OCCI Partnership", "Cross-Border Investment"];
+
+  const facts =
+    page?.aboutFacts
+      ?.filter((f): f is { label: string | null; value: string | null } => Boolean(f))
+      .map((f) => ({
+        label: f.label || "",
+        value: f.value || "",
+      }))
+      .filter((f) => f.label || f.value) || [
+      { label: "Strategic Partner", value: siteConfig.partners.strategic },
+      { label: "Initiative By", value: siteConfig.partners.initiative },
+      { label: "Execution Partner", value: siteConfig.partners.execution },
+      { label: "Summit Date", value: siteConfig.summitDate },
+      { label: "Venue", value: siteConfig.venue },
+    ];
+
+  const intro =
+    page?.aboutIntro ||
+    siteConfig.description ||
+    "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.";
 
   return (
     <section className="relative pt-14 pb-6">
@@ -72,12 +95,10 @@ function AboutSection({ page }: { page?: HomePage | null }) {
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               <TitleHighlight
                 title={page?.aboutTitle || "Celebrating Oman's Growth Story"}
-                highlight="Growth Story"
+                highlight={page?.aboutTitleHighlight || "Growth Story"}
               />
             </h2>
-            <p className="text-white/50 leading-relaxed mb-4">
-              {siteConfig.description}
-            </p>
+            <p className="text-white/50 leading-relaxed mb-4">{intro}</p>
             <p className="text-white/40 leading-relaxed mb-6">
               {page?.aboutBody ||
                 "In strategic partnership with the Oman Chamber of Commerce & Industry (OCCI), Inspire Oman brings together CEOs, investors, government leaders, and entrepreneurs to celebrate contributions, strengthen investment pathways, and document the remarkable achievements of Oman's business community."}
@@ -98,17 +119,13 @@ function AboutSection({ page }: { page?: HomePage | null }) {
             <div className="glass-card p-5 sm:p-6 relative overflow-hidden">
               <IslamicPattern opacity={0.08} />
               <div className="relative space-y-3.5">
-                {[
-                  { label: "Strategic Partner", value: siteConfig.partners.strategic },
-                  { label: "Initiative By", value: siteConfig.partners.initiative },
-                  { label: "Execution Partner", value: siteConfig.partners.execution },
-                  { label: "Summit Date", value: siteConfig.summitDate },
-                  { label: "Venue", value: siteConfig.venue },
-                ].map(({ label, value }) => (
+                {facts.map(({ label, value }) => (
                   <div key={label} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-gold mt-2 shrink-0" />
                     <div>
-                      <p className="text-white/30 text-[10px] uppercase tracking-wider">{label}</p>
+                      <p className="text-white/30 text-[10px] uppercase tracking-wider">
+                        {label}
+                      </p>
                       <p className="text-white/80 text-sm font-medium">{value}</p>
                     </div>
                   </div>
