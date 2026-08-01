@@ -7,9 +7,20 @@
     scroll-behavior: smooth;
   }
 
+  /* Smooth scroll often feels laggy on mobile browsers */
+  @media (max-width: 767px) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+
+    .animate-shimmer {
+      animation: none !important;
     }
   }
 
@@ -50,17 +61,37 @@
     box-shadow: 0 0 30px rgba(197, 165, 90, 0.15);
   }
 
-  /* Glass cards — soft blur restored from original build */
+  /* Glass cards — soft blur on desktop; solid fill on mobile (blur = scroll jank) */
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-2xl;
+    @apply bg-white/[0.05] border border-white/[0.08] rounded-2xl;
+  }
+
+  @media (min-width: 768px) {
+    .glass-card {
+      @apply bg-white/[0.03] backdrop-blur-md;
+    }
   }
 
   .glass-card-hover {
-    @apply glass-card transition-all duration-500;
+    @apply glass-card transition-colors duration-300 md:transition-all md:duration-500;
   }
   .glass-card-hover:hover {
     @apply bg-white/[0.06] border-gold/30;
-    box-shadow: 0 0 40px rgba(197, 165, 90, 0.1);
+  }
+  @media (min-width: 768px) {
+    .glass-card-hover:hover {
+      box-shadow: 0 0 40px rgba(197, 165, 90, 0.1);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .gold-glow {
+      box-shadow: none;
+    }
+
+    .animate-shimmer {
+      animation: none !important;
+    }
   }
 
   .section-padding {
@@ -116,6 +147,12 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Defer paint for below-fold sections (safe for static marketing blocks) */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
   }
 }
 

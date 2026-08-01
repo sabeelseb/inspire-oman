@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Quote } from "lucide-react";
 import Hero from "@/components/Hero";
@@ -180,10 +179,9 @@ function TestimonialsSection({
         <ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6 items-stretch">
             {testimonials.map((t, i) => (
-              <motion.div
+              <div
                 key={i}
-                whileHover={{ y: -4 }}
-                className="glass-card-hover p-8 h-full flex flex-col"
+                className="glass-card-hover p-8 h-full flex flex-col md:hover:-translate-y-1"
               >
                 <Quote size={24} className="text-gold/30 mb-4" />
                 <p className="text-white/60 leading-relaxed flex-1 mb-6 italic">
@@ -192,7 +190,7 @@ function TestimonialsSection({
                 <div className="islamic-divider mb-4" />
                 <p className="text-white font-semibold text-sm">{t.author}</p>
                 <p className="text-gold/60 text-xs">{t.role}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </ScrollReveal>
@@ -271,14 +269,28 @@ export default function HomeClient({
       <Hero page={page} />
       <AboutSection page={page} />
       <StatsCounter stats={displayStats} bannerSrc={bannerSrc} />
-      <PartnersSection partners={partners} />
+      <div className="cv-auto">
+        <PartnersSection partners={partners} />
+      </div>
       <div className="islamic-divider site-container" />
-      <PillarsSection pillars={pillars} />
-      <SummitHighlights speakers={speakers} />
-      <PackageTiers packages={packages} />
-      <TestimonialsSection testimonials={testimonials} />
-      <CTABanner page={page} />
-      <ContactForm />
+      <div className="cv-auto">
+        <PillarsSection pillars={pillars} />
+      </div>
+      <div className="cv-auto">
+        <SummitHighlights speakers={speakers} />
+      </div>
+      <div className="cv-auto">
+        <PackageTiers packages={packages} />
+      </div>
+      <div className="cv-auto">
+        <TestimonialsSection testimonials={testimonials} />
+      </div>
+      <div className="cv-auto">
+        <CTABanner page={page} />
+      </div>
+      <div className="cv-auto">
+        <ContactForm />
+      </div>
     </>
   );
 }

@@ -5,7 +5,12 @@ import SiteChrome from "@/components/SiteChrome";
 import { CmsProvider } from "@/components/CmsProvider";
 import { getCmsSite } from "@/lib/cms";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
 
 /** Live CMS reads (Payload / Keystatic) must not be baked at build time. */
 export const dynamic = "force-dynamic";

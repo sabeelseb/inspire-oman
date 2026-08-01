@@ -20,7 +20,8 @@ export default function StatsCounter({
   const banner = bannerSrc || siteConfig.images.banner;
 
   useEffect(() => {
-    const t = window.setTimeout(() => markTopReady("banner"), 3000);
+    // Banner is below-fold; don't hold splash long waiting for it
+    const t = window.setTimeout(() => markTopReady("banner"), 1800);
     return () => window.clearTimeout(t);
   }, [markTopReady]);
 
@@ -50,10 +51,9 @@ export default function StatsCounter({
             alt="Inspire Oman - Celebrating Success. Creating Legacy. Inspiring Investment."
             width={1280}
             height={320}
-            priority
-            quality={75}
+            quality={65}
             className="w-full h-auto object-cover max-h-32 sm:max-h-36"
-            sizes="(max-width: 768px) 100vw, 75vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 75vw"
             onLoadingComplete={() => markTopReady("banner")}
             onError={() => markTopReady("banner")}
           />

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Check, ArrowRight, Crown } from "lucide-react";
 import { packages as fallbackPackages } from "@/lib/data";
@@ -31,10 +30,9 @@ export default function PackageTiers({ packages = fallbackPackages }: { packages
         <ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {packages.map((pkg) => (
-              <motion.div
+              <div
                 key={pkg.tier}
-                whileHover={{ y: -8 }}
-                className={`relative glass-card-hover p-8 flex flex-col h-full ${
+                className={`relative glass-card-hover p-8 flex flex-col h-full md:hover:-translate-y-2 ${
                   pkg.highlight ? "border-gold/40 gold-glow" : ""
                 }`}
               >
@@ -71,7 +69,7 @@ export default function PackageTiers({ packages = fallbackPackages }: { packages
                   Get Started
                   <ArrowRight size={16} className="ml-2" />
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </ScrollReveal>

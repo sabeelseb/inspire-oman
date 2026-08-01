@@ -9,6 +9,7 @@ import { useCmsSite } from "@/components/CmsProvider";
 import IslamicPattern from "./IslamicPattern";
 import TitleHighlight from "./TitleHighlight";
 import { usePageLoader } from "./AppShell";
+import { useIsMobile } from "@/hooks/useMobilePerf";
 
 export type HomeHeroContent = {
   heroDate?: string | null;
@@ -29,6 +30,8 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const siteConfig = useCmsSite();
   const { markTopReady } = usePageLoader();
   const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const lightMotion = reduceMotion || isMobile;
 
   const date = page?.heroDate || siteConfig.summitDate;
   const city = page?.heroCity || "Muscat";
@@ -46,18 +49,25 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const heroSrc = page?.heroImage || siteConfig.images.hero;
 
   useEffect(() => {
-    const t = window.setTimeout(() => markTopReady("hero"), 3000);
+    const t = window.setTimeout(() => markTopReady("hero"), isMobile ? 1600 : 3000);
     return () => window.clearTimeout(t);
-  }, [markTopReady]);
+  }, [markTopReady, isMobile]);
 
-  const fade = (delay: number, y = 20, duration = 0.7) =>
-    reduceMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration, delay },
-        };
+  const fade = (delay: number, y = 20, duration = 0.7) => {
+    if (reduceMotion) return {};
+    if (isMobile) {
+      return {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: Math.min(duration, 0.35), delay: delay * 0.35 },
+      };
+    }
+    return {
+      initial: { opacity: 0, y },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration, delay },
+    };
+  };
 
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
@@ -66,9 +76,9 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
         alt={city ? `${city}, Oman` : "Inspire Oman"}
         fill
         priority
-        quality={80}
+        quality={isMobile ? 60 : 75}
         className="object-cover object-center"
-        sizes="100vw"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
         onLoadingComplete={() => markTopReady("hero")}
         onError={() => markTopReady("hero")}
       />
@@ -76,7 +86,11 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/75 to-primary" />
       <IslamicPattern opacity={0.05} />
 
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gold/[0.05] blur-[120px]" />
+      {/* Heavy blur orb — desktop only (GPU costly on mobile) */}
+      <div
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gold/[0.05] hidden md:block md:blur-[120px]"
+        aria-hidden
+      />
 
       <div className="relative z-10 site-container text-center">
         <motion.div
@@ -97,7 +111,9 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
           <TitleHighlight
             title={title}
             highlight={highlight}
-            highlightClassName="gold-text animate-shimmer bg-[length:200%_auto]"
+            highlightClassName={`gold-text bg-[length:200%_auto]${
+              lightMotion ? "" : " animate-shimmer"
+            }`}
           />
         </motion.h1>
 
@@ -142,20 +158,22 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent" />
 
-      <motion.div
-        initial={reduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
+      {!isMobile && (
         <motion.div
-          animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-gold/30 flex items-start justify-center p-1.5"
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="w-1.5 h-2.5 rounded-full bg-gold/60" />
+          <motion.div
+            animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 rounded-full border-2 border-gold/30 flex items-start justify-center p-1.5"
+          >
+            <div className="w-1.5 h-2.5 rounded-full bg-gold/60" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </section>
   );
 }

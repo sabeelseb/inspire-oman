@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
+import { useIsMobile } from "@/hooks/useMobilePerf";
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -26,11 +27,14 @@ export default function ScrollReveal({
   duration = 0.7,
 }: ScrollRevealProps) {
   const reduceMotion = useReducedMotion();
-  const offset = directionMap[direction];
+  const isMobile = useIsMobile();
 
-  if (reduceMotion) {
+  if (reduceMotion || isMobile) {
+    // Mobile: skip scroll-linked motion to avoid main-thread jank while scrolling
     return <div className={className}>{children}</div>;
   }
+
+  const offset = directionMap[direction];
 
   return (
     <motion.div

@@ -10,10 +10,11 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useCmsSite } from "@/components/CmsProvider";
 import LogoImage from "./LogoImage";
+import { getIsMobile } from "@/hooks/useMobilePerf";
 
 type LoaderContextValue = {
   markTopReady: (key: string) => void;
@@ -45,14 +46,14 @@ export function preloadImage(src: string) {
   });
 }
 
-const HOME_TOP_KEYS = ["hero", "banner", "pack"] as const;
-
 export default function AppShell({ children }: { children: ReactNode }) {
   const siteConfig = useCmsSite();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const reduceMotion = useReducedMotion();
   const booted = useRef(false);
   const readyKeys = useRef(new Set<string>());
+  const mobileRef = useRef(false);
   const [sectionReady, setSectionReady] = useState(false);
   const [minTimeDone, setMinTimeDone] = useState(false);
   const [showLoader, setShowLoader] = useState(true);
@@ -61,7 +62,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
   const checkReady = useCallback(
     (keys: Set<string>) => {
-      if (isHome) return HOME_TOP_KEYS.every((k) => keys.has(k));
+      // Mobile: don't block splash on below-fold banner
+      if (isHome) {
+        if (mobileRef.current) return keys.has("hero") && keys.has("pack");
+        return keys.has("hero") && keys.has("banner") && keys.has("pack");
+      }
       return keys.has("pack");
     },
     [isHome]
@@ -86,19 +91,25 @@ export default function AppShell({ children }: { children: ReactNode }) {
       return;
     }
     booted.current = true;
+    const mobile = getIsMobile();
+    mobileRef.current = mobile;
 
-    const minTimer = window.setTimeout(() => setMinTimeDone(true), isHome ? 800 : 400);
-    const failSafe = window.setTimeout(() => setSectionReady(true), isHome ? 5000 : 2000);
+    const minMs = mobile ? (isHome ? 280 : 160) : isHome ? 800 : 400;
+    const failMs = mobile ? (isHome ? 2200 : 1200) : isHome ? 5000 : 2000;
+    const minTimer = window.setTimeout(() => setMinTimeDone(true), minMs);
+    const failSafe = window.setTimeout(() => setSectionReady(true), failMs);
 
     void (async () => {
-      await Promise.all([
-        preloadImage(siteConfig.images.logo),
-        preloadImage(siteConfig.images.hero),
-        preloadImage(siteConfig.images.banner),
-        preloadImage("/images/logos/OCC-logo.svg"),
-        preloadImage("/images/logos/GM-logo.png"),
-        preloadImage("/images/logos/MF-logo.svg"),
-      ]);
+      // Always warm the logo (splash + nav). Skip raw hero/banner preloads —
+      // next/image already fetches optimized sizes and marks hero/banner ready.
+      await preloadImage(siteConfig.images.logo);
+      if (!mobile) {
+        await Promise.all([
+          preloadImage("/images/logos/OCC-logo.svg"),
+          preloadImage("/images/logos/GM-logo.png"),
+          preloadImage("/images/logos/MF-logo.svg"),
+        ]);
+      }
       markTopReady("pack");
     })();
 
@@ -112,9 +123,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!isReady) return;
-    const hide = window.setTimeout(() => setShowLoader(false), 650);
+    const fadeMs = mobileRef.current || reduceMotion ? 220 : 650;
+    const hide = window.setTimeout(() => setShowLoader(false), fadeMs);
     return () => window.clearTimeout(hide);
-  }, [isReady]);
+  }, [isReady, reduceMotion]);
 
   useEffect(() => {
     if (!showLoader) return;
@@ -134,6 +146,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
     [markTopReady, isReady]
   );
 
+  const fadeDuration = mobileRef.current || reduceMotion ? 0.22 : 0.55;
+  const contentFade = mobileRef.current || reduceMotion ? 0.28 : 0.65;
+
   return (
     <LoaderContext.Provider value={value}>
       <AnimatePresence>
@@ -144,15 +159,15 @@ export default function AppShell({ children }: { children: ReactNode }) {
             initial={{ opacity: 1 }}
             animate={{ opacity: isReady ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: fadeDuration, ease: [0.22, 1, 0.36, 1] }}
             style={{ pointerEvents: isReady ? "none" : "auto" }}
             aria-hidden={isReady}
             aria-busy={!isReady}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.92 }}
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              transition={{ duration: mobileRef.current ? 0.25 : 0.5, ease: "easeOut" }}
               className="flex flex-col items-center gap-6 px-6"
             >
               <div className="h-28 w-28 sm:h-36 sm:w-36">
@@ -187,9 +202,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: isReady || !showLoader ? 1 : 0 }}
         transition={{
-          duration: 0.65,
+          duration: contentFade,
           ease: [0.22, 1, 0.36, 1],
-          delay: isReady ? 0.08 : 0,
+          delay: isReady && !mobileRef.current && !reduceMotion ? 0.08 : 0,
         }}
       >
         {children}

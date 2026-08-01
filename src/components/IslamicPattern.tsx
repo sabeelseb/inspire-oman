@@ -1,11 +1,23 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/useMobilePerf";
+
 interface IslamicPatternProps {
   className?: string;
   opacity?: number;
+  /** When true, skip render on small screens (default). */
+  desktopOnly?: boolean;
 }
 
-export default function IslamicPattern({ className = "", opacity = 0.05 }: IslamicPatternProps) {
+export default function IslamicPattern({
+  className = "",
+  opacity = 0.05,
+  desktopOnly = true,
+}: IslamicPatternProps) {
+  const isMobile = useIsMobile();
+
+  if (desktopOnly && isMobile) return null;
+
   // Unique id so multiple patterns on one page don't clash
   const patternId = `islamic-geo-${Math.round(opacity * 1000)}`;
 

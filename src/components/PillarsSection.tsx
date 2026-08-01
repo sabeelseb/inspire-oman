@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { BookOpen, Video, Landmark, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { pillars as fallbackPillars } from "@/lib/data";
@@ -33,10 +32,9 @@ export default function PillarsSection({ pillars = fallbackPillars }: { pillars?
             {pillars.map((pillar) => {
               const Icon = iconMap[pillar.icon] || BookOpen;
               return (
-                <motion.div
+                <div
                   key={pillar.id}
-                  whileHover={{ y: -8 }}
-                  className="glass-card-hover p-8 h-full flex flex-col"
+                  className="glass-card-hover p-8 h-full flex flex-col md:hover:-translate-y-2"
                 >
                   <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-6">
                     <Icon size={28} className="text-gold" />
@@ -62,7 +60,7 @@ export default function PillarsSection({ pillars = fallbackPillars }: { pillars?
                   >
                     Learn More <ArrowRight size={14} />
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
           </div>
