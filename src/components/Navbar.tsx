@@ -43,7 +43,7 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ${
           headerSolid
-            ? "bg-primary/95 backdrop-blur-xl border-b border-gold/10 shadow-lg shadow-black/20"
+            ? "bg-primary/95 border-b border-gold/10 shadow-lg shadow-black/20"
             : "bg-transparent"
         }`}
       >
@@ -135,7 +135,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-[50] bg-black/70 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-[50] bg-black/70 lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
 

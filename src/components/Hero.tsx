@@ -14,7 +14,8 @@ export default function Hero() {
   const { markFirstSectionReady } = usePageLoader();
 
   useEffect(() => {
-    const t = window.setTimeout(() => markFirstSectionReady(), 2200);
+    // Failsafe only - do not hold the page for a long artificial delay
+    const t = window.setTimeout(() => markFirstSectionReady(), 1200);
     return () => window.clearTimeout(t);
   }, [markFirstSectionReady]);
 
@@ -25,6 +26,7 @@ export default function Hero() {
         alt="Muscat, Oman"
         fill
         priority
+        quality={75}
         className="object-cover object-center"
         sizes="100vw"
         onLoadingComplete={() => markFirstSectionReady()}
@@ -32,15 +34,15 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-primary/80" />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/75 to-primary" />
-      <IslamicPattern opacity={0.05} />
+      <IslamicPattern opacity={0.04} />
 
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gold/[0.05] blur-[120px]" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gold/[0.04] blur-[80px] will-change-transform" />
 
       <div className="relative z-10 site-container text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.05 }}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-8"
         >
           <CalendarDays size={16} />
@@ -51,37 +53,37 @@ export default function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.12 }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6"
         >
           <span className="text-white">Inspire</span>{" "}
-          <span className="gold-text animate-shimmer bg-[length:200%_auto]">Oman</span>
+          <span className="gold-text">Oman</span>
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
+          transition={{ duration: 0.45, delay: 0.2 }}
           className="text-xl sm:text-2xl md:text-3xl font-light text-white/70 mb-4 tracking-wide"
         >
           {siteConfig.slogan}
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.75 }}
+          transition={{ duration: 0.45, delay: 0.28 }}
           className="text-base sm:text-lg text-white/40 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Legacy Documentation &bull; Celebrating the Experience &bull; Inspire Oman Summit
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.85 }}
+          transition={{ duration: 0.45, delay: 0.34 }}
           className="flex items-center justify-center gap-2 text-white/40 text-sm mb-10"
         >
           <MapPin size={16} className="text-gold/60" />
@@ -89,9 +91,9 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1 }}
+          transition={{ duration: 0.45, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link href="/summit" className="btn-primary text-base group">
@@ -109,7 +111,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 0.7 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

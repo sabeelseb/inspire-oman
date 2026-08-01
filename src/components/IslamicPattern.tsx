@@ -6,14 +6,18 @@ interface IslamicPatternProps {
 }
 
 export default function IslamicPattern({ className = "", opacity = 0.05 }: IslamicPatternProps) {
+  // Unique id so multiple patterns on one page don't clash
+  const patternId = `islamic-geo-${Math.round(opacity * 1000)}`;
+
   return (
     <svg
       className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       style={{ opacity }}
+      aria-hidden
     >
       <defs>
-        <pattern id="islamic-geo" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <pattern id={patternId} x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
           <path
             d="M40 0 L80 20 L80 60 L40 80 L0 60 L0 20 Z"
             fill="none"
@@ -30,7 +34,7 @@ export default function IslamicPattern({ className = "", opacity = 0.05 }: Islam
           <circle cx="40" cy="40" r="3" fill="none" stroke="#C5A55A" strokeWidth="0.5" />
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#islamic-geo)" />
+      <rect width="100%" height="100%" fill={`url(#${patternId})`} />
     </svg>
   );
 }

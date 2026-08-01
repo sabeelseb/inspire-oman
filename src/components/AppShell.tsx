@@ -49,27 +49,28 @@ export default function AppShell({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const minTimer = window.setTimeout(() => setMinTimeDone(true), 900);
-    const failSafe = window.setTimeout(() => setSectionReady(true), 3500);
+    const minTimer = window.setTimeout(() => setMinTimeDone(true), 400);
+    const failSafe = window.setTimeout(() => setSectionReady(true), 2000);
 
     // Warm logo + hero so first paint is smooth
     void Promise.all([
       preloadImage(siteConfig.images.logo),
       preloadImage(siteConfig.images.hero),
+      preloadImage(siteConfig.images.banner),
     ]).then(() => {
       // If Hero hasn't reported yet, allow ready soon after assets are warm
-      window.setTimeout(() => setSectionReady(true), 200);
+      window.setTimeout(() => setSectionReady(true), 100);
     });
 
     return () => {
       window.clearTimeout(minTimer);
       window.clearTimeout(failSafe);
     };
-  }, [siteConfig.images.hero, siteConfig.images.logo]);
+  }, [siteConfig.images.banner, siteConfig.images.hero, siteConfig.images.logo]);
 
   useEffect(() => {
     if (!isReady) return;
-    const hide = window.setTimeout(() => setShowLoader(false), 650);
+    const hide = window.setTimeout(() => setShowLoader(false), 280);
     return () => window.clearTimeout(hide);
   }, [isReady]);
 
@@ -98,7 +99,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
             initial={{ opacity: 1 }}
             animate={{ opacity: isReady ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             aria-hidden={isReady}
             aria-busy={!isReady}
           >
@@ -142,7 +143,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
         Splash overlay covers content until ready; fade with CSS opacity only.
       */}
       <div
-        className={`transition-opacity duration-500 ease-out ${
+        className={`transition-opacity duration-300 ease-out ${
           isReady ? "opacity-100" : "opacity-0"
         }`}
       >

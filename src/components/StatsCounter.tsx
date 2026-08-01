@@ -65,10 +65,11 @@ export default function StatsCounter({ stats = fallbackStats }: { stats?: Stat[]
           <Image
             src={siteConfig.images.banner}
             alt="Inspire Oman - Celebrating Success. Creating Legacy. Inspiring Investment."
-            width={2501}
-            height={626}
+            width={1280}
+            height={320}
+            quality={70}
             className="w-full h-auto object-cover max-h-32 sm:max-h-36"
-            sizes="(max-width: 768px) 100vw, 1280px"
+            sizes="(max-width: 768px) 100vw, 75vw"
           />
         </div>
       </div>
