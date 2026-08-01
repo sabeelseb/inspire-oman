@@ -11,6 +11,8 @@ RUN npm ci --legacy-peer-deps
 FROM node:22-bookworm-slim AS builder
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
+# 1GB droplets need a larger Node heap + swap during `next build`
+ENV NODE_OPTIONS=--max-old-space-size=1536
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # Prefer Postgres in image builds (compose overrides at runtime)
