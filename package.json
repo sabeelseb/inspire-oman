@@ -10,6 +10,7 @@
     "postinstall": "node scripts/patch-payload-loadenv.mjs",
     "payload": "payload",
     "seed:payload": "tsx --env-file=.env scripts/seed-payload-from-keystatic.ts",
+    "migrate:submissions": "tsx --env-file=.env scripts/migrate-submissions-split.ts",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap"
   },

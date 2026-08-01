@@ -8,6 +8,9 @@ import sharp from "sharp";
 
 import { Users } from "./src/payload/collections/Users";
 import { Media } from "./src/payload/collections/Media";
+import { GetInTouch } from "./src/payload/collections/GetInTouch";
+import { SummitRegistrations } from "./src/payload/collections/SummitRegistrations";
+import { PartnerApplications } from "./src/payload/collections/PartnerApplications";
 import { Submissions } from "./src/payload/collections/Submissions";
 import {
   Partners,
@@ -73,6 +76,9 @@ export default buildConfig({
   collections: [
     Users,
     Media,
+    GetInTouch,
+    SummitRegistrations,
+    PartnerApplications,
     Submissions,
     Partners,
     Stats,

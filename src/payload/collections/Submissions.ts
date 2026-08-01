@@ -1,20 +1,22 @@
 import type { CollectionConfig } from "payload";
 
+/**
+ * Legacy unified inbox — kept only so existing rows can be migrated.
+ * Hidden from admin; new posts go to get-in-touch / summit-registrations / partner-applications.
+ */
 export const Submissions: CollectionConfig = {
   slug: "submissions",
   labels: {
-    singular: "Submission",
-    plural: "Submissions",
+    singular: "Legacy Submission",
+    plural: "Legacy Submissions",
   },
   admin: {
+    hidden: true,
     useAsTitle: "name",
     group: "Inbox",
-    defaultColumns: ["type", "name", "email", "createdAt"],
-    description: "Contact, partner applications, and summit registrations from the website.",
   },
   access: {
-    // Public site forms create rows; only logged-in admins can read/manage.
-    create: () => true,
+    create: () => false,
     read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),
@@ -30,7 +32,6 @@ export const Submissions: CollectionConfig = {
         { label: "Summit Registration", value: "summit" },
         { label: "Message", value: "message" },
       ],
-      admin: { position: "sidebar" },
     },
     { name: "name", type: "text", required: true },
     { name: "email", type: "email", required: true },
@@ -54,7 +55,6 @@ export const Submissions: CollectionConfig = {
         { label: "In progress", value: "in-progress" },
         { label: "Closed", value: "closed" },
       ],
-      admin: { position: "sidebar" },
     },
   ],
 };
