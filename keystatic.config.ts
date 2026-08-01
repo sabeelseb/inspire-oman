@@ -10,6 +10,28 @@ export default config({
   },
   ui: {
     brand: { name: "Inspire Oman CMS" },
+    navigation: {
+      Pages: [
+        "homePage",
+        "aboutPage",
+        "pillarsPage",
+        "summitPage",
+        "partnerPage",
+        "mediaPage",
+        "contactPage",
+      ],
+      "Site content": [
+        "partners",
+        "stats",
+        "speakers",
+        "testimonials",
+        "pillars",
+        "packages",
+        "values",
+      ],
+      "Summit & media": ["agenda", "gallery", "videos", "press"],
+      Settings: ["site"],
+    },
   },
   singletons: {
     site: singleton({
@@ -54,7 +76,7 @@ export default config({
     }),
 
     homePage: singleton({
-      label: "Page: Home",
+      label: "Home",
       path: "content/pages/home",
       schema: {
         aboutEyebrow: fields.text({ label: "About eyebrow", defaultValue: "About the Initiative" }),
@@ -70,7 +92,7 @@ export default config({
     }),
 
     aboutPage: singleton({
-      label: "Page: About",
+      label: "About",
       path: "content/pages/about",
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
@@ -93,7 +115,7 @@ export default config({
     }),
 
     pillarsPage: singleton({
-      label: "Page: Pillars",
+      label: "Pillars page",
       path: "content/pages/pillars",
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
@@ -104,7 +126,7 @@ export default config({
     }),
 
     summitPage: singleton({
-      label: "Page: Summit",
+      label: "Summit page",
       path: "content/pages/summit",
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
@@ -115,7 +137,7 @@ export default config({
     }),
 
     partnerPage: singleton({
-      label: "Page: Partner",
+      label: "Partner page",
       path: "content/pages/partner",
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
@@ -126,7 +148,7 @@ export default config({
     }),
 
     mediaPage: singleton({
-      label: "Page: Media",
+      label: "Media page",
       path: "content/pages/media",
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
@@ -137,7 +159,7 @@ export default config({
     }),
 
     contactPage: singleton({
-      label: "Page: Contact",
+      label: "Contact page",
       path: "content/pages/contact",
       schema: {
         eyebrow: fields.text({ label: "Hero eyebrow" }),
@@ -153,6 +175,7 @@ export default config({
       label: "Partners",
       slugField: "name",
       path: "content/partners/*",
+      columns: ["role", "fullName"],
       schema: {
         name: fields.slug({ name: { label: "Short name" } }),
         role: fields.text({ label: "Role (e.g. Strategic Partner)" }),
@@ -181,6 +204,7 @@ export default config({
       label: "Stats",
       slugField: "label",
       path: "content/stats/*",
+      columns: ["value", "suffix"],
       schema: {
         label: fields.slug({ name: { label: "Label" } }),
         value: fields.integer({ label: "Number", defaultValue: 0 }),
@@ -192,6 +216,7 @@ export default config({
       label: "Speakers",
       slugField: "name",
       path: "content/speakers/*",
+      columns: ["role", "featured"],
       schema: {
         name: fields.slug({ name: { label: "Name" } }),
         role: fields.text({ label: "Role / title" }),
@@ -204,6 +229,7 @@ export default config({
       label: "Testimonials",
       slugField: "author",
       path: "content/testimonials/*",
+      columns: ["role"],
       schema: {
         author: fields.slug({ name: { label: "Author" } }),
         role: fields.text({ label: "Role" }),
@@ -215,6 +241,7 @@ export default config({
       label: "Pillars",
       slugField: "title",
       path: "content/pillars/*",
+      columns: ["subtitle", "icon"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         subtitle: fields.text({ label: "Subtitle" }),
@@ -243,6 +270,7 @@ export default config({
       label: "Partnership Packages",
       slugField: "tier",
       path: "content/packages/*",
+      columns: ["price", "currency", "highlight"],
       schema: {
         tier: fields.slug({ name: { label: "Tier name" } }),
         price: fields.text({ label: "Price" }),
@@ -259,6 +287,7 @@ export default config({
       label: "Summit Agenda",
       slugField: "title",
       path: "content/agenda/*",
+      columns: ["time", "type"],
       schema: {
         title: fields.slug({ name: { label: "Session title" } }),
         time: fields.text({ label: "Time (e.g. 10:00 AM)" }),
@@ -280,6 +309,7 @@ export default config({
       label: "Media Gallery",
       slugField: "title",
       path: "content/gallery/*",
+      columns: ["caption", "imageSrc"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         caption: fields.text({ label: "Caption" }),
@@ -298,6 +328,7 @@ export default config({
       label: "Media Videos",
       slugField: "title",
       path: "content/videos/*",
+      columns: ["tag", "imageSrc"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         description: fields.text({ label: "Description", multiline: true }),
@@ -317,6 +348,7 @@ export default config({
       label: "Press Releases",
       slugField: "title",
       path: "content/press/*",
+      columns: ["date"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         date: fields.text({ label: "Date label", defaultValue: "Coming Soon" }),
@@ -328,6 +360,7 @@ export default config({
       label: "About Values",
       slugField: "title",
       path: "content/values/*",
+      columns: ["icon"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         description: fields.text({ label: "Description", multiline: true }),
