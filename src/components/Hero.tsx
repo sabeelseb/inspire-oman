@@ -76,7 +76,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
         alt={city ? `${city}, Oman` : "Inspire Oman"}
         fill
         priority
-        quality={isMobile ? 60 : 75}
+        quality={65}
         className="object-cover object-center"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
         onLoadingComplete={() => markTopReady("hero")}

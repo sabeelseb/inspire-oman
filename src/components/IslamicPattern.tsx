@@ -1,11 +1,9 @@
 "use client";
 
-import { useIsMobile } from "@/hooks/useMobilePerf";
-
 interface IslamicPatternProps {
   className?: string;
   opacity?: number;
-  /** When true, skip render on small screens (default). */
+  /** When true, hide on small screens via CSS (default). */
   desktopOnly?: boolean;
 }
 
@@ -14,16 +12,14 @@ export default function IslamicPattern({
   opacity = 0.05,
   desktopOnly = true,
 }: IslamicPatternProps) {
-  const isMobile = useIsMobile();
-
-  if (desktopOnly && isMobile) return null;
-
   // Unique id so multiple patterns on one page don't clash
   const patternId = `islamic-geo-${Math.round(opacity * 1000)}`;
 
   return (
     <svg
-      className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
+      className={`absolute inset-0 w-full h-full pointer-events-none ${
+        desktopOnly ? "hidden md:block" : ""
+      } ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       style={{ opacity }}
       aria-hidden
