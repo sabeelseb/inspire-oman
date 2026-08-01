@@ -54,6 +54,9 @@ Site Settings
 
 Saving from the live Vercel Keystatic admin is unreliable with local storage; Draft/Publish git actions only work locally.
 
-## Notes
-- Public pages still use [`src/lib/cms.ts`](src/lib/cms.ts) → Keystatic. Payload is parallel until a `CMS_SOURCE` switch is added.
-- Do not remove Keystatic or `content/` while the site depends on them.
+## Droplet (full stack)
+
+Production on DigitalOcean: Next.js + Payload + Postgres + Caddy.
+
+See [deploy/DEPLOY.md](deploy/DEPLOY.md).
+

@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+.env
+.env.*
+!.env.production.example
+payload.db
+payload.db-*
+public/media
+coverage
+.vercel
+npm-debug.log*
+Dockerfile*
+docker-compose*.yml
+deploy

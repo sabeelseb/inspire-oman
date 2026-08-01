@@ -1,0 +1,14 @@
+# SITE_ADDRESS from compose env:
+#   - Domain with HTTPS:  example.com
+#   - IP / HTTP only:     :80
+
+{$SITE_ADDRESS} {
+	encode gzip zstd
+	reverse_proxy app:3000
+
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+}
