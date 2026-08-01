@@ -29,19 +29,29 @@ export default function ScrollReveal({
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
 
-  if (reduceMotion || isMobile) {
-    // Mobile: skip scroll-linked motion to avoid main-thread jank while scrolling
+  if (reduceMotion) {
     return <div className={className}>{children}</div>;
   }
 
-  const offset = directionMap[direction];
+  const base = directionMap[direction];
+  // Mobile: same reveal experience, smaller travel + snappier timing (transform/opacity only)
+  const offset = isMobile
+    ? {
+        x: base.x ? Math.sign(base.x) * 18 : 0,
+        y: base.y ? Math.sign(base.y) * 18 : 0,
+      }
+    : base;
 
   return (
     <motion.div
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      viewport={{ once: true, margin: isMobile ? "-48px" : "-80px" }}
+      transition={{
+        duration: isMobile ? Math.min(duration, 0.5) : duration,
+        delay: isMobile ? delay * 0.55 : delay,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
       className={className}
     >
       {children}

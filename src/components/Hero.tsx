@@ -31,7 +31,6 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const { markTopReady } = usePageLoader();
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
-  const lightMotion = reduceMotion || isMobile;
 
   const date = page?.heroDate || siteConfig.summitDate;
   const city = page?.heroCity || "Muscat";
@@ -55,11 +54,16 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
   const fade = (delay: number, y = 20, duration = 0.7) => {
     if (reduceMotion) return {};
+    // Mobile keeps stagger + translate; shorter travel/duration for smoother main-thread work
     if (isMobile) {
       return {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        transition: { duration: Math.min(duration, 0.35), delay: delay * 0.35 },
+        initial: { opacity: 0, y: Math.min(y, 18) },
+        animate: { opacity: 1, y: 0 },
+        transition: {
+          duration: Math.min(duration, 0.5),
+          delay: delay * 0.45,
+          ease: [0.22, 1, 0.36, 1],
+        },
       };
     }
     return {
@@ -112,7 +116,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
             title={title}
             highlight={highlight}
             highlightClassName={`gold-text bg-[length:200%_auto]${
-              lightMotion ? "" : " animate-shimmer"
+              reduceMotion ? "" : " animate-shimmer"
             }`}
           />
         </motion.h1>
@@ -158,22 +162,20 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent" />
 
-      {!isMobile && (
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: isMobile ? 0.85 : 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={reduceMotion ? undefined : { y: [0, isMobile ? 6 : 8, 0] }}
+          transition={{ duration: isMobile ? 2.4 : 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-6 h-10 rounded-full border-2 border-gold/30 flex items-start justify-center p-1.5"
         >
-          <motion.div
-            animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 rounded-full border-2 border-gold/30 flex items-start justify-center p-1.5"
-          >
-            <div className="w-1.5 h-2.5 rounded-full bg-gold/60" />
-          </motion.div>
+          <div className="w-1.5 h-2.5 rounded-full bg-gold/60" />
         </motion.div>
-      )}
+      </motion.div>
     </section>
   );
 }

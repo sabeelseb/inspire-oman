@@ -89,8 +89,9 @@
       box-shadow: none;
     }
 
+    /* Keep shimmer on mobile — slightly slower to reduce paint churn */
     .animate-shimmer {
-      animation: none !important;
+      animation-duration: 4.5s;
     }
   }
 
