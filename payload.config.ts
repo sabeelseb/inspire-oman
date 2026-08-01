@@ -93,11 +93,15 @@ export default buildConfig({
         pool: {
           connectionString: databaseUri,
         },
+        // Create/update tables on boot (needed for fresh droplet Postgres).
+        // Set PAYLOAD_PUSH=false once you switch to formal migrations.
+        push: process.env.PAYLOAD_PUSH !== "false",
       })
     : sqliteAdapter({
         client: {
           url: databaseUri,
         },
+        push: process.env.PAYLOAD_PUSH !== "false",
       }),
   sharp,
 });
