@@ -1,3 +1,18 @@
+# Hero (first screen)
+heroDate: 11 October 2026
+heroCity: Muscat
+heroTitle: Inspire Oman
+heroTitleHighlight: Oman
+heroSlogan: Celebrating Success. Creating Legacy. Inspiring Investment.
+heroSupportLine: >-
+  Legacy Documentation • Celebrating the Experience • Inspire Oman Summit
+heroVenue: Oman Convention & Exhibition Centre
+heroPrimaryCta: Register for Summit
+heroPrimaryCtaHref: /summit
+heroSecondaryCta: Become a Partner
+heroSecondaryCtaHref: /partner
+
+# About section
 aboutEyebrow: About the Initiative
 aboutTitle: Celebrating Oman's Growth Story
 aboutBody: >-
@@ -9,6 +24,8 @@ aboutTags:
   - Oman Vision 2040
   - OCCI Partnership
   - Cross-Border Investment
+
+# Bottom CTA
 ctaTitle: Be Part of Oman's Growth Story
 ctaBody: >-
   Join Inspire Oman as a partner or delegate and connect with the region's

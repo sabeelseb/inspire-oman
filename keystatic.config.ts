@@ -79,6 +79,58 @@ export default config({
       label: "Home",
       path: "content/pages/home",
       schema: {
+        heroDate: fields.text({
+          label: "Hero - date badge",
+          defaultValue: "11 October 2026",
+        }),
+        heroCity: fields.text({
+          label: "Hero - city badge",
+          defaultValue: "Muscat",
+        }),
+        heroTitle: fields.text({
+          label: "Hero - title",
+          defaultValue: "Inspire Oman",
+        }),
+        heroTitleHighlight: fields.text({
+          label: "Hero - gold highlight word(s)",
+          defaultValue: "Oman",
+        }),
+        heroSlogan: fields.text({
+          label: "Hero - slogan",
+          defaultValue: "Celebrating Success. Creating Legacy. Inspiring Investment.",
+          multiline: true,
+        }),
+        heroSupportLine: fields.text({
+          label: "Hero - support line (pillars)",
+          defaultValue:
+            "Legacy Documentation • Celebrating the Experience • Inspire Oman Summit",
+          multiline: true,
+        }),
+        heroVenue: fields.text({
+          label: "Hero - venue",
+          defaultValue: "Oman Convention & Exhibition Centre",
+        }),
+        heroPrimaryCta: fields.text({
+          label: "Hero - primary button label",
+          defaultValue: "Register for Summit",
+        }),
+        heroPrimaryCtaHref: fields.text({
+          label: "Hero - primary button link",
+          defaultValue: "/summit",
+        }),
+        heroSecondaryCta: fields.text({
+          label: "Hero - secondary button label",
+          defaultValue: "Become a Partner",
+        }),
+        heroSecondaryCtaHref: fields.text({
+          label: "Hero - secondary button link",
+          defaultValue: "/partner",
+        }),
+        heroImage: fields.image({
+          label: "Hero - background image (optional override)",
+          directory: "public/images/cms",
+          publicPath: "/images/cms/",
+        }),
         aboutEyebrow: fields.text({ label: "About eyebrow", defaultValue: "About the Initiative" }),
         aboutTitle: fields.text({ label: "About title", defaultValue: "Celebrating Oman's Growth Story" }),
         aboutBody: fields.text({ label: "About body paragraph", multiline: true }),
@@ -86,8 +138,8 @@ export default config({
           label: "About tags",
           itemLabel: (props) => props.value || "Tag",
         }),
-        ctaTitle: fields.text({ label: "CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
-        ctaBody: fields.text({ label: "CTA body", multiline: true }),
+        ctaTitle: fields.text({ label: "Bottom CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
+        ctaBody: fields.text({ label: "Bottom CTA body", multiline: true }),
       },
     }),
 

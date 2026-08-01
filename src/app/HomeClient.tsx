@@ -35,6 +35,18 @@ type Speaker = {
 };
 
 type HomePage = {
+  heroDate?: string | null;
+  heroCity?: string | null;
+  heroTitle?: string | null;
+  heroTitleHighlight?: string | null;
+  heroSlogan?: string | null;
+  heroSupportLine?: string | null;
+  heroVenue?: string | null;
+  heroPrimaryCta?: string | null;
+  heroPrimaryCtaHref?: string | null;
+  heroSecondaryCta?: string | null;
+  heroSecondaryCtaHref?: string | null;
+  heroImage?: string | null;
   aboutEyebrow?: string | null;
   aboutTitle?: string | null;
   aboutBody?: string | null;
@@ -204,7 +216,7 @@ export default function HomeClient({
 }) {
   return (
     <>
-      <Hero />
+      <Hero page={page} />
       <AboutSection page={page} />
       <StatsCounter stats={stats} />
       <PartnersSection partners={partners} />

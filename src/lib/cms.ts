@@ -137,6 +137,18 @@ export async function getCmsPageHome() {
     const page = await reader.singletons.homePage.read();
     return (
       page || {
+        heroDate: "11 October 2026",
+        heroCity: "Muscat",
+        heroTitle: "Inspire Oman",
+        heroTitleHighlight: "Oman",
+        heroSlogan: "Celebrating Success. Creating Legacy. Inspiring Investment.",
+        heroSupportLine:
+          "Legacy Documentation • Celebrating the Experience • Inspire Oman Summit",
+        heroVenue: "Oman Convention & Exhibition Centre",
+        heroPrimaryCta: "Register for Summit",
+        heroPrimaryCtaHref: "/summit",
+        heroSecondaryCta: "Become a Partner",
+        heroSecondaryCtaHref: "/partner",
         aboutEyebrow: "About the Initiative",
         aboutTitle: "Celebrating Oman's Growth Story",
         aboutBody: "",

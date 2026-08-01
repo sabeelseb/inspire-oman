@@ -6,11 +6,42 @@ import Image from "next/image";
 import { CalendarDays, MapPin, ArrowRight } from "lucide-react";
 import { useCmsSite } from "@/components/CmsProvider";
 import IslamicPattern from "./IslamicPattern";
+import TitleHighlight from "./TitleHighlight";
 import { usePageLoader } from "./AppShell";
 
-export default function Hero() {
+export type HomeHeroContent = {
+  heroDate?: string | null;
+  heroCity?: string | null;
+  heroTitle?: string | null;
+  heroTitleHighlight?: string | null;
+  heroSlogan?: string | null;
+  heroSupportLine?: string | null;
+  heroVenue?: string | null;
+  heroPrimaryCta?: string | null;
+  heroPrimaryCtaHref?: string | null;
+  heroSecondaryCta?: string | null;
+  heroSecondaryCtaHref?: string | null;
+  heroImage?: string | null;
+};
+
+export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const siteConfig = useCmsSite();
   const { markTopReady } = usePageLoader();
+
+  const date = page?.heroDate || siteConfig.summitDate;
+  const city = page?.heroCity || "Muscat";
+  const title = page?.heroTitle || siteConfig.name || "Inspire Oman";
+  const highlight = page?.heroTitleHighlight || "Oman";
+  const slogan = page?.heroSlogan || siteConfig.slogan;
+  const support =
+    page?.heroSupportLine ||
+    "Legacy Documentation • Celebrating the Experience • Inspire Oman Summit";
+  const venue = page?.heroVenue || siteConfig.venue;
+  const primaryCta = page?.heroPrimaryCta || "Register for Summit";
+  const primaryHref = page?.heroPrimaryCtaHref || "/summit";
+  const secondaryCta = page?.heroSecondaryCta || "Become a Partner";
+  const secondaryHref = page?.heroSecondaryCtaHref || "/partner";
+  const heroSrc = page?.heroImage || siteConfig.images.hero;
 
   useEffect(() => {
     const t = window.setTimeout(() => markTopReady("hero"), 3000);
@@ -20,8 +51,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       <Image
-        src={siteConfig.images.hero}
-        alt="Muscat, Oman"
+        src={heroSrc}
+        alt={city ? `${city}, Oman` : "Inspire Oman"}
         fill
         priority
         quality={75}
@@ -39,37 +70,39 @@ export default function Hero() {
       <div className="relative z-10 site-container text-center">
         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-8">
           <CalendarDays size={16} />
-          <span>{siteConfig.summitDate}</span>
+          <span>{date}</span>
           <span className="w-1 h-1 rounded-full bg-gold/60" />
           <MapPin size={14} />
-          <span className="text-gold/80">Muscat</span>
+          <span className="text-gold/80">{city}</span>
         </div>
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6">
-          <span className="text-white">Inspire</span>{" "}
-          <span className="gold-text">Oman</span>
+          <TitleHighlight title={title} highlight={highlight} />
         </h1>
 
         <p className="text-xl sm:text-2xl md:text-3xl font-light text-white/70 mb-4 tracking-wide">
-          {siteConfig.slogan}
+          {slogan}
         </p>
 
         <p className="text-base sm:text-lg text-white/40 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Legacy Documentation &bull; Celebrating the Experience &bull; Inspire Oman Summit
+          {support}
         </p>
 
         <div className="flex items-center justify-center gap-2 text-white/40 text-sm mb-10">
           <MapPin size={16} className="text-gold/60" />
-          <span>{siteConfig.venue}</span>
+          <span>{venue}</span>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/summit" className="btn-primary text-base group">
-            Register for Summit
-            <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          <Link href={primaryHref} className="btn-primary text-base group">
+            {primaryCta}
+            <ArrowRight
+              size={18}
+              className="ml-2 group-hover:translate-x-1 transition-transform"
+            />
           </Link>
-          <Link href="/partner" className="btn-outline text-base">
-            Become a Partner
+          <Link href={secondaryHref} className="btn-outline text-base">
+            {secondaryCta}
           </Link>
         </div>
       </div>

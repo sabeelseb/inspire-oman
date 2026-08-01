@@ -11,7 +11,7 @@ All public site copy is stored under `content/` and shown in the dashboard. Live
 Edit hero / section copy for each route:
 | Dashboard item | Live page |
 |----------------|-----------|
-| **Home** | `/` about + CTA |
+| **Home** | `/` **Hero** (date, city, title, slogan, venue, CTAs, image) + About + bottom CTA |
 | **About** | `/about` |
 | **Pillars page** | `/pillars` hero |
 | **Summit page** | `/summit` hero |
