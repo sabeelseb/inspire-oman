@@ -54,12 +54,19 @@ export default buildConfig({
       icons: [
         {
           rel: "icon",
-          type: "image/svg+xml",
-          url: "/images/logos/findown-favicon.svg",
+          type: "image/png",
+          sizes: "32x32",
+          url: "/images/logos/findown-favicon.png",
+        },
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          url: "/images/logos/findown-favicon.ico",
         },
         {
           rel: "apple-touch-icon",
-          url: "/images/logos/findown-logo.png",
+          sizes: "180x180",
+          url: "/images/logos/findown-favicon-180.png",
         },
       ],
     },
