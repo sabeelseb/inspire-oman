@@ -39,6 +39,7 @@ Set at least:
 - `NEXT_PUBLIC_SERVER_URL` — `http://YOUR_DROPLET_IP` (or `https://your-domain.com`)  
 - `SITE_ADDRESS` — `:80` for IP, or `your-domain.com` for HTTPS  
 - `CMS_SOURCE=payload` — public site reads Payload `/admin` (default in compose)  
+- `ENABLE_KEYSTATIC=false` — Keystatic UI/API off on the droplet (code stays in git for local use)  
 
 After editing in `/admin`, click **Publish changes** (not only Save Draft) for the public site to update.
 
@@ -51,8 +52,9 @@ docker compose -f docker-compose.prod.yml logs -f app
 ```
 
 Site: `http://YOUR_DROPLET_IP`  
-Admin: `http://YOUR_DROPLET_IP/admin`  
-Keystatic: `http://YOUR_DROPLET_IP/keystatic`
+Admin (Payload): `http://YOUR_DROPLET_IP/admin`  
+
+`/keystatic` redirects to `/admin` on production. Keystatic remains in the git repo for local development — see [CMS.md](../CMS.md).
 
 ## 5. Seed Payload (once)
 
@@ -90,7 +92,9 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 ## Notes
 
-- Public site still reads **Keystatic** YAML in `content/` (bundled in the image).  
+- Public site reads **Payload** (`CMS_SOURCE=payload`).  
+- **Keystatic** code and `content/` YAML stay in git for local/seed workflows; the Keystatic UI is **disabled** on the droplet (`ENABLE_KEYSTATIC=false`).  
 - Payload `/admin` uses **Postgres** on the droplet.  
+- Form inbox: **Get in Touch**, **Summit Registrations**, **Partner Applications** under Inbox.  
 - Media uploads live in the `media_data` Docker volume.  
 - Keep Vercel as a backup or turn it off once the droplet is primary.

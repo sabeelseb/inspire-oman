@@ -1,18 +1,47 @@
 # Inspire Oman CMS
 
-Set `CMS_SOURCE=payload` (droplet default) so the public site reads **Payload**. Use `CMS_SOURCE=keystatic` (or unset) to keep reading YAML under `content/`.
+## Production rule (droplet)
 
-## Two dashboards
+- **Live content source:** Payload (`CMS_SOURCE=payload`)
+- **Live editor:** `/admin` only  
+- **Keystatic on production:** **disabled** by default (`ENABLE_KEYSTATIC` unset/false). Visiting `/keystatic` redirects to `/admin`.
+- **Keystatic code + `content/` YAML:** kept in **git** for local development, seeding Payload, and optional git/Vercel workflows.
 
-| Admin | URL | Storage | Best for |
-|-------|-----|---------|----------|
-| **Payload** (live site when `CMS_SOURCE=payload`) | `/admin` | Postgres on droplet / SQLite locally | Draft → **Publish** → public pages update |
-| **Keystatic** (when `CMS_SOURCE=keystatic`) | `/keystatic` | Git YAML in `content/` | Local/git workflow; Vercel default |
+| Environment | Public site reads | Editor to use |
+|-------------|-------------------|---------------|
+| Droplet (prod) | Payload Postgres | `/admin` |
+| Local (`CMS_SOURCE=payload`) | Payload | `/admin` (Keystatic still available at `/keystatic` in dev) |
+| Local (`CMS_SOURCE=keystatic` or unset) | Keystatic YAML `content/` | `/keystatic` |
+| Vercel (if still deployed) | Usually Keystatic YAML | `/keystatic` |
+
+## Two dashboards (both kept in the repo)
+
+| Admin | URL | Storage | Role |
+|-------|-----|---------|------|
+| **Payload** | `/admin` | Postgres (prod) / SQLite (local) | **Production CMS** — draft → publish → live pages |
+| **Keystatic** | `/keystatic` | Git YAML in `content/` | **Dev / git** — kept in repo; not served on prod droplet |
 
 Local Keystatic: http://localhost:3000/keystatic  
 Local Payload: http://localhost:3000/admin  
 
-Live Keystatic: https://inspire-oman.vercel.app/keystatic  
+## Env flags
+
+```env
+# Public site content
+CMS_SOURCE=payload          # production droplet
+# CMS_SOURCE=keystatic      # local YAML-driven site
+
+# Keystatic UI + /api/keystatic
+# ENABLE_KEYSTATIC=false    # explicit off (prod compose default)
+# ENABLE_KEYSTATIC=true     # force on even in prod (not recommended)
+```
+
+Default behaviour of `isKeystaticEnabled()`:
+
+1. `ENABLE_KEYSTATIC=true` → on  
+2. `ENABLE_KEYSTATIC=false` → off  
+3. Else: **off** when `NODE_ENV=production` and `CMS_SOURCE=payload`  
+4. Else: **on** (local/dev)
 
 ## Payload setup
 
@@ -20,13 +49,23 @@ Live Keystatic: https://inspire-oman.vercel.app/keystatic
 2. Default `DATABASE_URI=file:./payload.db` (SQLite, no Docker)
 3. For Postgres: `docker compose up -d` and set `DATABASE_URI=postgresql://payload:payload@127.0.0.1:5432/inspire_oman`
 4. `npm install` then `npm run seed:payload` (copies Keystatic YAML into Payload; does **not** change `content/`)
-5. `npm run dev` → open `/admin` → login with `PAYLOAD_ADMIN_EMAIL` / `PAYLOAD_ADMIN_PASSWORD`
+5. `npm run dev` → open `/admin`
 
-Payload has native **draft / publish** on all mirrored pages and collections. Logo branding matches Inspire Oman.
+Payload has draft/publish on mirrored pages and collections. Production admin branding uses Findown marks; public site stays Inspire Oman.
 
-## Keystatic dashboard navigation
+## Keystatic (local / git only on droplet)
 
-### Pages
+Still in the repo: `keystatic.config.ts`, `content/**`, `src/app/(site)/keystatic/**`, `/api/keystatic`.
+
+### When to use it
+
+- Local content editing against YAML  
+- Updating seed source before `npm run seed:payload`  
+- Optional Vercel Keystatic deploy  
+
+### Dashboard map (Keystatic)
+
+#### Pages
 | Dashboard item | Live page |
 |----------------|-----------|
 | **Home** | `/` Hero + About + bottom CTA |
@@ -37,26 +76,25 @@ Payload has native **draft / publish** on all mirrored pages and collections. Lo
 | **Media page** | `/media` hero |
 | **Contact page** | `/contact` hero |
 
-### Site content
+#### Site content
 Partners, Stats, Speakers, Testimonials, Pillars, Partnership Packages, About Values
 
-### Summit & media
+#### Summit & media
 Summit Agenda, Media Gallery, Media Videos, Press Releases
 
-### Settings
+#### Settings
 Site Settings
 
-## Keystatic workflow
-1. Prefer editing locally (`npm run dev` → `/keystatic`)
-2. Give lists a few seconds to load
-3. CMS toolbar: **Save** / **Save to draft** (git commit) / **Publish** (push)
-4. Or commit & push manually → Vercel redeploys
+### Keystatic workflow (local)
 
-Saving from the live Vercel Keystatic admin is unreliable with local storage; Draft/Publish git actions only work locally.
+1. `npm run dev` → `/keystatic`
+2. Toolbar: **Save** / **Save to draft** (git commit) / **Publish** (push)
+3. Or commit & push manually
+
+Draft/Publish git actions need a local git checkout (not the droplet).
 
 ## Droplet (full stack)
 
-Production on DigitalOcean: Next.js + Payload + Postgres + Caddy.
+Production: Next.js + **Payload `/admin`** + Postgres + Caddy. Keystatic UI is off.
 
 See [deploy/DEPLOY.md](deploy/DEPLOY.md).
-

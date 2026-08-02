@@ -37,6 +37,7 @@ services:
       DATABASE_URI: postgresql://${POSTGRES_USER:-payload}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-inspire_oman}
       NEXT_PUBLIC_SERVER_URL: ${NEXT_PUBLIC_SERVER_URL:-http://localhost}
       CMS_SOURCE: ${CMS_SOURCE:-payload}
+      ENABLE_KEYSTATIC: ${ENABLE_KEYSTATIC:-false}
       PAYLOAD_ADMIN_EMAIL: ${PAYLOAD_ADMIN_EMAIL:-}
       PAYLOAD_ADMIN_PASSWORD: ${PAYLOAD_ADMIN_PASSWORD:-}
     volumes:

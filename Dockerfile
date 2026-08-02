@@ -18,6 +18,9 @@ COPY . .
 # Prefer Postgres in image builds (compose overrides at runtime)
 ENV DATABASE_URI=postgresql://payload:payload@postgres:5432/inspire_oman
 ENV PAYLOAD_SECRET=build-time-placeholder-not-used-at-runtime
+# Bake prod CMS flags into middleware (Edge inlines env at build time)
+ENV CMS_SOURCE=payload
+ENV ENABLE_KEYSTATIC=false
 RUN npm run build
 
 FROM node:22-bookworm-slim AS runner
