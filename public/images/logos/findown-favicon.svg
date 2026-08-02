@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Findown">
+  <rect width="64" height="64" fill="#000"/>
+  <rect x="8" y="6" width="48" height="52" rx="18" ry="18" fill="none" stroke="#F15A29" stroke-width="10"/>
+  <mask id="bite">
+    <rect x="22" y="18" width="20" height="30" rx="7" ry="7" fill="#fff"/>
+    <circle cx="42" cy="18" r="9" fill="#000"/>
+  </mask>
+  <rect x="22" y="18" width="20" height="30" rx="7" ry="7" fill="#29ABE2" mask="url(#bite)"/>
+</svg>

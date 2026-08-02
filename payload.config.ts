@@ -55,11 +55,11 @@ export default buildConfig({
         {
           rel: "icon",
           type: "image/svg+xml",
-          url: "/images/logos/IO-logo-white.svg",
+          url: "/images/logos/findown-favicon.svg",
         },
         {
           rel: "apple-touch-icon",
-          url: "/images/logos/IO-logo-white.svg",
+          url: "/images/logos/findown-logo.png",
         },
       ],
     },
