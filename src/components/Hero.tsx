@@ -117,13 +117,13 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
             width={280}
             height={320}
             priority
-            className="h-[5.5rem] sm:h-[6.5rem] md:h-28 lg:h-[6.75rem] xl:h-32 w-auto object-contain"
+            className="h-[7rem] sm:h-[7.5rem] md:h-28 lg:h-[6.75rem] xl:h-32 w-auto object-contain"
           />
         </motion.div>
 
         <motion.h1
           {...fade(0.35, 30, 0.8)}
-          className="text-[clamp(2rem,calc(1.2rem+3.8vw),4.5rem)] font-black tracking-tight leading-[1.08] mb-4 sm:mb-5 lg:mb-4 xl:mb-6"
+          className="text-[clamp(2.4rem,calc(1.45rem+4.6vw),4.5rem)] font-black tracking-tight leading-[1.08] mb-4 sm:mb-5 lg:mb-4 xl:mb-6"
         >
           <TitleHighlight
             title={title}
