@@ -62,6 +62,7 @@ export default function Navbar() {
               <div className="h-11 w-11 sm:h-14 sm:w-14 shrink-0 flex items-center justify-center">
                 <LogoImage
                   src={siteConfig.images.logo}
+                  alt="Inspire Oman"
                   className="h-full w-full"
                   priority
                 />
