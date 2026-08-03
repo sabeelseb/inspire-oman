@@ -5,12 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { navLinks } from "@/lib/data";
 import { useCmsSite } from "@/components/CmsProvider";
 import LogoImage from "./LogoImage";
 
 export default function Navbar() {
   const siteConfig = useCmsSite();
+  const { header } = siteConfig;
+  const navLinks = header.navLinks;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
@@ -61,16 +62,17 @@ export default function Navbar() {
               <div className="h-11 w-11 sm:h-14 sm:w-14 shrink-0 flex items-center justify-center">
                 <LogoImage
                   src={siteConfig.images.logo}
-                  alt="Inspire Oman"
                   className="h-full w-full"
                   priority
                 />
               </div>
               <div className="hidden sm:block">
                 <span className="text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
-                  Inspire
+                  {header.brandPrimary}
                 </span>
-                <span className="text-lg font-light tracking-widest text-gold ml-1">Oman</span>
+                <span className="text-lg font-light tracking-widest text-gold ml-1">
+                  {header.brandHighlight}
+                </span>
               </div>
             </Link>
 
@@ -88,8 +90,8 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="/partner" className="btn-primary ml-4 text-sm py-2.5 px-6">
-                Partner With Us
+              <Link href={header.ctaHref} className="btn-primary ml-4 text-sm py-2.5 px-6">
+                {header.ctaLabel}
               </Link>
             </nav>
 
@@ -202,11 +204,11 @@ export default function Navbar() {
 
               <div className="border-t border-white/5 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
                 <Link
-                  href="/partner"
+                  href={header.ctaHref}
                   onClick={() => setMobileOpen(false)}
                   className="btn-primary w-full text-center"
                 >
-                  Partner With Us
+                  {header.ctaLabel}
                 </Link>
               </div>
             </motion.aside>

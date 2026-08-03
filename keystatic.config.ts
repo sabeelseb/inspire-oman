@@ -41,10 +41,52 @@ export default config({
         "values",
       ],
       "Summit & media": ["agenda", "gallery", "videos", "press"],
-      Settings: ["site"],
+      Settings: ["header", "site"],
     },
   },
   singletons: {
+    header: singleton({
+      label: "Header",
+      path: "content/header",
+      schema: {
+        logoSrc: fields.text({
+          label: "Logo path",
+          defaultValue: "/images/logos/IO-logo.svg",
+        }),
+        logo: fields.image({
+          label: "Or upload logo",
+          directory: "public/images/cms",
+          publicPath: "/images/cms/",
+        }),
+        brandPrimary: fields.text({
+          label: "Brand wordmark (primary)",
+          defaultValue: "Inspire",
+        }),
+        brandHighlight: fields.text({
+          label: "Brand wordmark (gold)",
+          defaultValue: "Oman",
+        }),
+        navLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: "Label" }),
+            href: fields.text({ label: "Link" }),
+          }),
+          {
+            label: "Navigation links",
+            itemLabel: (props) => props.fields.label.value || "Link",
+          }
+        ),
+        ctaLabel: fields.text({
+          label: "CTA button label",
+          defaultValue: "Partner With Us",
+        }),
+        ctaHref: fields.text({
+          label: "CTA button link",
+          defaultValue: "/partner",
+        }),
+      },
+    }),
+
     site: singleton({
       label: "Site Settings",
       path: "content/site",

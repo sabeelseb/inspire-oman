@@ -82,53 +82,90 @@ const fallbackPillarExtras: Record<string, string[]> = {
 
 export async function getCmsSite() {
   try {
-    const site = await reader.singletons.site.read();
-    if (!site) {
-      return { ...fallbackSite, images: { ...fallbackSite.images } };
+    const [site, header] = await Promise.all([
+      reader.singletons.site.read(),
+      reader.singletons.header.read(),
+    ]);
+    if (!site && !header) {
+      return {
+        ...fallbackSite,
+        images: { ...fallbackSite.images },
+        header: {
+          ...fallbackSite.header,
+          navLinks: [...fallbackSite.header.navLinks],
+        },
+      };
     }
+
+    const headerNav = Array.isArray(header?.navLinks)
+      ? header.navLinks
+          .map((l) => ({
+            label: (l.label || "").trim(),
+            href: (l.href || "").trim(),
+          }))
+          .filter((l) => l.label && l.href)
+      : [];
 
     return {
       ...fallbackSite,
-      name: site.name || fallbackSite.name,
-      tagline: site.tagline || fallbackSite.tagline,
-      slogan: site.slogan || fallbackSite.slogan,
-      description: site.description || fallbackSite.description,
-      summitDate: site.summitDate || fallbackSite.summitDate,
-      venue: site.venue || fallbackSite.venue,
+      name: site?.name || fallbackSite.name,
+      tagline: site?.tagline || fallbackSite.tagline,
+      slogan: site?.slogan || fallbackSite.slogan,
+      description: site?.description || fallbackSite.description,
+      summitDate: site?.summitDate || fallbackSite.summitDate,
+      venue: site?.venue || fallbackSite.venue,
       partners: {
-        strategic: site.partnerStrategic || fallbackSite.partners.strategic,
-        initiative: site.partnerInitiative || fallbackSite.partners.initiative,
-        execution: site.partnerExecution || fallbackSite.partners.execution,
+        strategic: site?.partnerStrategic || fallbackSite.partners.strategic,
+        initiative: site?.partnerInitiative || fallbackSite.partners.initiative,
+        execution: site?.partnerExecution || fallbackSite.partners.execution,
       },
       images: {
         ...fallbackSite.images,
-        hero: site.heroImage || fallbackSite.images.hero,
-        banner: site.bannerImage || fallbackSite.images.banner,
-        summit: site.summitImage || fallbackSite.images.summit,
+        logo: header?.logo || header?.logoSrc || fallbackSite.images.logo,
+        hero: site?.heroImage || fallbackSite.images.hero,
+        banner: site?.bannerImage || fallbackSite.images.banner,
+        summit: site?.summitImage || fallbackSite.images.summit,
+      },
+      header: {
+        brandPrimary: header?.brandPrimary || fallbackSite.header.brandPrimary,
+        brandHighlight:
+          header?.brandHighlight || fallbackSite.header.brandHighlight,
+        ctaLabel: header?.ctaLabel || fallbackSite.header.ctaLabel,
+        ctaHref: header?.ctaHref || fallbackSite.header.ctaHref,
+        navLinks: headerNav.length
+          ? headerNav
+          : [...fallbackSite.header.navLinks],
       },
       contact: {
         oman: {
           ...fallbackSite.contact.oman,
-          phone1: site.omanPhone1 || fallbackSite.contact.oman.phone1,
-          phone2: site.omanPhone2 || fallbackSite.contact.oman.phone2,
-          email: site.omanEmail || fallbackSite.contact.oman.email,
+          phone1: site?.omanPhone1 || fallbackSite.contact.oman.phone1,
+          phone2: site?.omanPhone2 || fallbackSite.contact.oman.phone2,
+          email: site?.omanEmail || fallbackSite.contact.oman.email,
         },
         india: {
           ...fallbackSite.contact.india,
-          phone: site.indiaPhone || fallbackSite.contact.india.phone,
-          email: site.indiaEmail || fallbackSite.contact.india.email,
+          phone: site?.indiaPhone || fallbackSite.contact.india.phone,
+          email: site?.indiaEmail || fallbackSite.contact.india.email,
         },
       },
       social: {
-        instagram: site.instagram || fallbackSite.social.instagram,
-        facebook: site.facebook || fallbackSite.social.facebook,
-        linkedin: site.linkedin || fallbackSite.social.linkedin,
-        twitter: site.twitter || fallbackSite.social.twitter,
-        youtube: site.youtube || fallbackSite.social.youtube,
+        instagram: site?.instagram || fallbackSite.social.instagram,
+        facebook: site?.facebook || fallbackSite.social.facebook,
+        linkedin: site?.linkedin || fallbackSite.social.linkedin,
+        twitter: site?.twitter || fallbackSite.social.twitter,
+        youtube: site?.youtube || fallbackSite.social.youtube,
       },
     };
   } catch {
-    return { ...fallbackSite, images: { ...fallbackSite.images } };
+    return {
+      ...fallbackSite,
+      images: { ...fallbackSite.images },
+      header: {
+        ...fallbackSite.header,
+        navLinks: [...fallbackSite.header.navLinks],
+      },
+    };
   }
 }
 

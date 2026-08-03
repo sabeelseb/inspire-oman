@@ -116,6 +116,18 @@ async function main() {
   }[] = [
     { file: "content/site.yaml", slug: "site" },
     {
+      file: "content/header.yaml",
+      slug: "header",
+      transform: (d) => ({
+        logoSrc: d.logoSrc,
+        brandPrimary: d.brandPrimary,
+        brandHighlight: d.brandHighlight,
+        ctaLabel: d.ctaLabel,
+        ctaHref: d.ctaHref,
+        navLinks: Array.isArray(d.navLinks) ? d.navLinks : [],
+      }),
+    },
+    {
       file: "content/pages/home.yaml",
       slug: "home-page",
       transform: (d) => ({

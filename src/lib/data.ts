@@ -18,6 +18,21 @@ export const siteConfig = {
     summit: "/images/hero/business-summit.jpg",
     brandBanner: "/images/hero/inspire-banner.jpg",
   },
+  header: {
+    brandPrimary: "Inspire",
+    brandHighlight: "Oman",
+    ctaLabel: "Partner With Us",
+    ctaHref: "/partner",
+    navLinks: [
+      { href: "/", label: "Home" },
+      { href: "/about", label: "About" },
+      { href: "/pillars", label: "Pillars" },
+      { href: "/summit", label: "Summit 2026" },
+      { href: "/partner", label: "Partner With Us" },
+      { href: "/media", label: "Media" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
   partnerLogos: [
     {
       name: "OCCI",
@@ -246,15 +261,7 @@ export const agenda = [
   { time: "06:00 PM", title: "Gala Dinner & Networking", type: "general" },
 ];
 
-export const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/pillars", label: "Pillars" },
-  { href: "/summit", label: "Summit 2026" },
-  { href: "/partner", label: "Partner With Us" },
-  { href: "/media", label: "Media" },
-  { href: "/contact", label: "Contact" },
-];
+export const navLinks = siteConfig.header.navLinks;
 
 export const testimonials = [
   {

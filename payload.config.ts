@@ -27,6 +27,7 @@ import {
 } from "./src/payload/collections/content";
 import {
   Site,
+  Header,
   HomePage,
   AboutPage,
   PillarsPage,
@@ -107,6 +108,7 @@ export default buildConfig({
     PartnerPage,
     MediaPage,
     ContactPage,
+    Header,
     Site,
   ],
   editor: lexicalEditor(),

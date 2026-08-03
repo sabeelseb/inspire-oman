@@ -123,65 +123,106 @@ async function readGlobal(slug: string) {
 
 export async function getCmsSite() {
   try {
-    const site = await readGlobal("site");
-    if (!site) {
-      return { ...fallbackSite, images: { ...fallbackSite.images } };
+    const [site, header] = await Promise.all([
+      readGlobal("site"),
+      readGlobal("header"),
+    ]);
+    if (!site && !header) {
+      return {
+        ...fallbackSite,
+        images: { ...fallbackSite.images },
+        header: {
+          ...fallbackSite.header,
+          navLinks: [...fallbackSite.header.navLinks],
+        },
+      };
     }
+
+    const headerNav = Array.isArray(header?.navLinks)
+      ? (header.navLinks as { label?: string; href?: string }[])
+          .map((l) => ({
+            label: (l.label || "").trim(),
+            href: (l.href || "").trim(),
+          }))
+          .filter((l) => l.label && l.href)
+      : [];
 
     return {
       ...fallbackSite,
-      name: (site.name as string) || fallbackSite.name,
-      tagline: (site.tagline as string) || fallbackSite.tagline,
-      slogan: (site.slogan as string) || fallbackSite.slogan,
-      description: (site.description as string) || fallbackSite.description,
-      summitDate: (site.summitDate as string) || fallbackSite.summitDate,
-      venue: (site.venue as string) || fallbackSite.venue,
+      name: (site?.name as string) || fallbackSite.name,
+      tagline: (site?.tagline as string) || fallbackSite.tagline,
+      slogan: (site?.slogan as string) || fallbackSite.slogan,
+      description: (site?.description as string) || fallbackSite.description,
+      summitDate: (site?.summitDate as string) || fallbackSite.summitDate,
+      venue: (site?.venue as string) || fallbackSite.venue,
       partners: {
         strategic:
-          (site.partnerStrategic as string) || fallbackSite.partners.strategic,
+          (site?.partnerStrategic as string) || fallbackSite.partners.strategic,
         initiative:
-          (site.partnerInitiative as string) || fallbackSite.partners.initiative,
+          (site?.partnerInitiative as string) || fallbackSite.partners.initiative,
         execution:
-          (site.partnerExecution as string) || fallbackSite.partners.execution,
+          (site?.partnerExecution as string) || fallbackSite.partners.execution,
       },
       images: {
         ...fallbackSite.images,
+        logo:
+          mediaUrl(header?.logo) ||
+          (header?.logoSrc as string) ||
+          fallbackSite.images.logo,
         hero:
-          mediaUrl(site.heroImage) ||
-          (site.heroImage as string) ||
+          mediaUrl(site?.heroImage) ||
+          (site?.heroImage as string) ||
           fallbackSite.images.hero,
         banner:
-          mediaUrl(site.bannerImage) ||
-          (site.bannerImage as string) ||
+          mediaUrl(site?.bannerImage) ||
+          (site?.bannerImage as string) ||
           fallbackSite.images.banner,
         summit:
-          mediaUrl(site.summitImage) ||
-          (site.summitImage as string) ||
+          mediaUrl(site?.summitImage) ||
+          (site?.summitImage as string) ||
           fallbackSite.images.summit,
+      },
+      header: {
+        brandPrimary:
+          (header?.brandPrimary as string) || fallbackSite.header.brandPrimary,
+        brandHighlight:
+          (header?.brandHighlight as string) || fallbackSite.header.brandHighlight,
+        ctaLabel: (header?.ctaLabel as string) || fallbackSite.header.ctaLabel,
+        ctaHref: (header?.ctaHref as string) || fallbackSite.header.ctaHref,
+        navLinks: headerNav.length
+          ? headerNav
+          : [...fallbackSite.header.navLinks],
       },
       contact: {
         oman: {
           ...fallbackSite.contact.oman,
-          phone1: (site.omanPhone1 as string) || fallbackSite.contact.oman.phone1,
-          phone2: (site.omanPhone2 as string) || fallbackSite.contact.oman.phone2,
-          email: (site.omanEmail as string) || fallbackSite.contact.oman.email,
+          phone1: (site?.omanPhone1 as string) || fallbackSite.contact.oman.phone1,
+          phone2: (site?.omanPhone2 as string) || fallbackSite.contact.oman.phone2,
+          email: (site?.omanEmail as string) || fallbackSite.contact.oman.email,
         },
         india: {
           ...fallbackSite.contact.india,
-          phone: (site.indiaPhone as string) || fallbackSite.contact.india.phone,
-          email: (site.indiaEmail as string) || fallbackSite.contact.india.email,
+          phone: (site?.indiaPhone as string) || fallbackSite.contact.india.phone,
+          email: (site?.indiaEmail as string) || fallbackSite.contact.india.email,
         },
       },
       social: {
-        instagram: (site.instagram as string) || fallbackSite.social.instagram,
-        facebook: (site.facebook as string) || fallbackSite.social.facebook,
-        linkedin: (site.linkedin as string) || fallbackSite.social.linkedin,
-        twitter: (site.twitter as string) || fallbackSite.social.twitter,
-        youtube: (site.youtube as string) || fallbackSite.social.youtube,
+        instagram: (site?.instagram as string) || fallbackSite.social.instagram,
+        facebook: (site?.facebook as string) || fallbackSite.social.facebook,
+        linkedin: (site?.linkedin as string) || fallbackSite.social.linkedin,
+        twitter: (site?.twitter as string) || fallbackSite.social.twitter,
+        youtube: (site?.youtube as string) || fallbackSite.social.youtube,
       },
     };
   } catch {
-    return { ...fallbackSite, images: { ...fallbackSite.images } };
+    return {
+      ...fallbackSite,
+      images: { ...fallbackSite.images },
+      header: {
+        ...fallbackSite.header,
+        navLinks: [...fallbackSite.header.navLinks],
+      },
+    };
   }
 }
 

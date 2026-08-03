@@ -37,6 +37,85 @@ export const Site: GlobalConfig = {
   ],
 };
 
+export const Header: GlobalConfig = {
+  slug: "header",
+  label: "Header",
+  admin: {
+    group: "Settings",
+    description: "Logo, brand wordmark, navigation links, and header CTA button.",
+  },
+  versions: draftVersions,
+  fields: [
+    {
+      name: "logo",
+      type: "upload",
+      relationTo: "media",
+      label: "Logo",
+    },
+    {
+      name: "logoSrc",
+      type: "text",
+      defaultValue: "/images/logos/IO-logo.svg",
+      label: "Logo path fallback",
+      admin: {
+        description: "Used when no logo upload is set (e.g. /images/logos/IO-logo.svg).",
+      },
+    },
+    {
+      name: "brandPrimary",
+      type: "text",
+      defaultValue: "Inspire",
+      label: "Brand wordmark (primary)",
+    },
+    {
+      name: "brandHighlight",
+      type: "text",
+      defaultValue: "Oman",
+      label: "Brand wordmark (gold)",
+    },
+    {
+      name: "navLinks",
+      type: "array",
+      label: "Navigation links",
+      labels: { singular: "Link", plural: "Links" },
+      admin: {
+        initCollapsed: false,
+      },
+      fields: [
+        { name: "label", type: "text", required: true, label: "Label" },
+        {
+          name: "href",
+          type: "text",
+          required: true,
+          label: "Link",
+          admin: { description: "Path or URL, e.g. /about" },
+        },
+      ],
+      defaultValue: [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Pillars", href: "/pillars" },
+        { label: "Summit 2026", href: "/summit" },
+        { label: "Partner With Us", href: "/partner" },
+        { label: "Media", href: "/media" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      name: "ctaLabel",
+      type: "text",
+      defaultValue: "Partner With Us",
+      label: "CTA button label",
+    },
+    {
+      name: "ctaHref",
+      type: "text",
+      defaultValue: "/partner",
+      label: "CTA button link",
+    },
+  ],
+};
+
 export const HomePage: GlobalConfig = {
   slug: "home-page",
   label: "Home",

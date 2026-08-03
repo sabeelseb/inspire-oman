@@ -1,0 +1,20 @@
+logoSrc: /images/logos/IO-logo.svg
+brandPrimary: Inspire
+brandHighlight: Oman
+ctaLabel: Partner With Us
+ctaHref: /partner
+navLinks:
+  - label: Home
+    href: /
+  - label: About
+    href: /about
+  - label: Pillars
+    href: /pillars
+  - label: Summit 2026
+    href: /summit
+  - label: Partner With Us
+    href: /partner
+  - label: Media
+    href: /media
+  - label: Contact
+    href: /contact

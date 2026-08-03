@@ -21,6 +21,8 @@
 | **Payload** | `/admin` | Postgres (prod) / SQLite (local) | **Production CMS** — draft → publish → live pages |
 | **Keystatic** | `/keystatic` | Git YAML in `content/` | **Dev / git** — kept in repo; not served on prod droplet |
 
+**Settings → Header** (Payload global `header`, Keystatic `content/header.yaml`): logo, brand wordmark, nav links, CTA. Controls the public Navbar and Footer quick links.
+
 Local Keystatic: http://localhost:3000/keystatic  
 Local Payload: http://localhost:3000/admin  
 

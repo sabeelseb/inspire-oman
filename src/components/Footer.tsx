@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { navLinks } from "@/lib/data";
 import { useCmsSite } from "@/components/CmsProvider";
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter, Youtube, ArrowUpRight } from "lucide-react";
 import IslamicPattern from "./IslamicPattern";
@@ -9,6 +8,7 @@ import LogoImage from "./LogoImage";
 
 export default function Footer() {
   const siteConfig = useCmsSite();
+  const { header } = siteConfig;
   return (
     <footer className="relative bg-primary-dark border-t border-gold/10">
       <IslamicPattern opacity={0.03} />
@@ -25,8 +25,8 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <span className="text-lg font-bold text-white">Inspire</span>
-                <span className="text-lg font-light text-gold ml-1">Oman</span>
+                <span className="text-lg font-bold text-white">{header.brandPrimary}</span>
+                <span className="text-lg font-light text-gold ml-1">{header.brandHighlight}</span>
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
@@ -56,7 +56,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {navLinks.map((link) => (
+              {header.navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
