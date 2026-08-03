@@ -33,6 +33,7 @@ type AboutPageData = {
   missionP1?: string | null;
   missionP2?: string | null;
   quote?: string | null;
+  missionFacts?: readonly ({ label: string | null; value: string | null } | null)[] | null;
   valuesEyebrow?: string | null;
   valuesTitle?: string | null;
   audienceEyebrow?: string | null;
@@ -66,6 +67,18 @@ export default function AboutClient({
 
   const title = page?.title || "Telling Oman's Growth Story Globally";
   const highlight = page?.highlight || "Growth Story";
+
+  const defaultMissionFacts = [
+    { label: "Strategic Partner", value: "OCCI" },
+    { label: "Initiative By", value: siteConfig.partners.initiative },
+    { label: "Execution", value: siteConfig.partners.execution },
+    { label: "Summit Date", value: "11 Oct 2026" },
+  ];
+  const missionFacts = (page?.missionFacts ?? [])
+    .filter((f): f is { label: string | null; value: string | null } => Boolean(f))
+    .map((f) => ({ label: f.label || "", value: f.value || "" }))
+    .filter((f) => f.label || f.value);
+  const facts = missionFacts.length ? missionFacts : defaultMissionFacts;
 
   return (
     <>
@@ -123,13 +136,8 @@ export default function AboutClient({
 
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Strategic Partner", value: "OCCI" },
-                  { label: "Initiative By", value: siteConfig.partners.initiative },
-                  { label: "Execution", value: siteConfig.partners.execution },
-                  { label: "Summit Date", value: "11 Oct 2026" },
-                ].map((item, i) => (
-                  <div key={i} className="glass-card p-5 text-center">
+                {facts.map((item, i) => (
+                  <div key={`${item.label}-${i}`} className="glass-card p-5 text-center">
                     <p className="text-white/30 text-xs uppercase tracking-wider mb-2">
                       {item.label}
                     </p>

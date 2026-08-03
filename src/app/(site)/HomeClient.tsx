@@ -34,10 +34,13 @@ type Speaker = {
 };
 
 type HomePage = {
+  heroLogo?: string | null;
+  heroLogoSrc?: string | null;
   heroDate?: string | null;
   heroCity?: string | null;
   heroTitle?: string | null;
   heroTitleHighlight?: string | null;
+  heroTitleBreakAfter?: string | null;
   heroSlogan?: string | null;
   heroSupportLine?: string | null;
   heroVenue?: string | null;

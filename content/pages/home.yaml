@@ -1,16 +1,19 @@
-# Hero (first screen)
-heroDate: 11 October 2026
-heroCity: Muscat
-heroTitle: Inspire Oman
-heroTitleHighlight: Oman
+# Hero (first screen) — order: logo → title → slogan → support → date/city chip → buttons
+heroLogoSrc: /images/logos/inspire-oman-hero-logo.png
+heroTitle: Telling Oman's Growth Story Globally
+heroTitleHighlight: Growth Story
+heroTitleBreakAfter: Telling Oman's
 heroSlogan: Celebrating Success. Creating Legacy. Inspiring Investment.
 heroSupportLine: >-
   Legacy Documentation • Celebrating the Experience • Inspire Oman Summit
-heroVenue: Oman Convention & Exhibition Centre
+heroDate: 11 October 2026
+heroCity: Muscat
 heroPrimaryCta: Register for Summit
 heroPrimaryCtaHref: /summit
 heroSecondaryCta: Become a Partner
 heroSecondaryCtaHref: /partner
+# Not shown on public hero (kept for older content)
+heroVenue: Oman Convention & Exhibition Centre
 
 # About section
 aboutEyebrow: About the Initiative

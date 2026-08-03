@@ -12,10 +12,13 @@ import { usePageLoader } from "./AppShell";
 import { useIsMobile } from "@/hooks/useMobilePerf";
 
 export type HomeHeroContent = {
+  heroLogo?: string | null;
+  heroLogoSrc?: string | null;
   heroDate?: string | null;
   heroCity?: string | null;
   heroTitle?: string | null;
   heroTitleHighlight?: string | null;
+  heroTitleBreakAfter?: string | null;
   heroSlogan?: string | null;
   heroSupportLine?: string | null;
   heroVenue?: string | null;
@@ -36,16 +39,23 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const city = page?.heroCity || "Muscat";
   const title = page?.heroTitle || siteConfig.name || "Inspire Oman";
   const highlight = page?.heroTitleHighlight || "Oman";
+  const titleBreakAfter =
+    page?.heroTitleBreakAfter === undefined || page?.heroTitleBreakAfter === null
+      ? "Telling Oman's"
+      : page.heroTitleBreakAfter.trim();
   const slogan = page?.heroSlogan || siteConfig.slogan;
   const support =
     page?.heroSupportLine ||
     "Legacy Documentation • Celebrating the Experience • Inspire Oman Summit";
-  const venue = page?.heroVenue || siteConfig.venue;
   const primaryCta = page?.heroPrimaryCta || "Register for Summit";
   const primaryHref = page?.heroPrimaryCtaHref || "/summit";
   const secondaryCta = page?.heroSecondaryCta || "Become a Partner";
   const secondaryHref = page?.heroSecondaryCtaHref || "/partner";
   const heroSrc = page?.heroImage || siteConfig.images.hero;
+  const heroLogoSrc =
+    page?.heroLogo ||
+    page?.heroLogoSrc ||
+    "/images/logos/inspire-oman-hero-logo.png";
 
   useEffect(() => {
     const t = window.setTimeout(() => markTopReady("hero"), isMobile ? 1600 : 3000);
@@ -96,25 +106,29 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
         aria-hidden
       />
 
-      <div className="relative z-10 site-container text-center">
+      <div className="relative z-10 site-container text-center pt-20 sm:pt-24 lg:pt-20 xl:pt-16">
         <motion.div
-          {...fade(0.2, 20, 0.6)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-8"
+          {...fade(0.2, 16, 0.65)}
+          className="flex justify-center mb-4 sm:mb-5 lg:mb-4 xl:mb-6"
         >
-          <CalendarDays size={16} />
-          <span>{date}</span>
-          <span className="w-1 h-1 rounded-full bg-gold/60" />
-          <MapPin size={14} />
-          <span className="text-gold/80">{city}</span>
+          <Image
+            src={heroLogoSrc}
+            alt="Inspire Oman"
+            width={280}
+            height={320}
+            priority
+            className="h-[5.5rem] sm:h-[6.5rem] md:h-28 lg:h-[6.75rem] xl:h-32 w-auto object-contain"
+          />
         </motion.div>
 
         <motion.h1
-          {...fade(0.4, 30, 0.8)}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6"
+          {...fade(0.35, 30, 0.8)}
+          className="text-[clamp(2rem,calc(1.2rem+3.8vw),4.5rem)] font-black tracking-tight leading-[1.08] mb-4 sm:mb-5 lg:mb-4 xl:mb-6"
         >
           <TitleHighlight
             title={title}
             highlight={highlight}
+            breakAfter={titleBreakAfter || undefined}
             highlightClassName={`gold-text bg-[length:200%_auto]${
               reduceMotion ? "" : " animate-shimmer"
             }`}
@@ -122,60 +136,48 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
         </motion.h1>
 
         <motion.p
-          {...fade(0.6)}
-          className="text-xl sm:text-2xl md:text-3xl font-light text-white/70 mb-4 tracking-wide"
+          {...fade(0.5)}
+          className="text-base sm:text-xl md:text-2xl xl:text-3xl font-light text-white/70 mb-3 sm:mb-4 tracking-wide max-w-4xl mx-auto"
         >
           {slogan}
         </motion.p>
 
         <motion.p
-          {...fade(0.75)}
-          className="text-base sm:text-lg text-white/40 max-w-2xl mx-auto mb-10 leading-relaxed"
+          {...fade(0.65)}
+          className="text-sm sm:text-base lg:text-[15px] xl:text-lg text-white/40 max-w-2xl mx-auto mb-5 sm:mb-6 lg:mb-5 xl:mb-8 leading-relaxed"
         >
           {support}
         </motion.p>
 
         <motion.div
-          {...fade(0.85)}
-          className="flex items-center justify-center gap-2 text-white/40 text-sm mb-10"
+          {...fade(0.85, 20, 0.6)}
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs sm:text-sm font-medium mb-5 sm:mb-6 lg:mb-5 xl:mb-8"
         >
-          <MapPin size={16} className="text-gold/60" />
-          <span>{venue}</span>
+          <CalendarDays size={14} className="shrink-0" />
+          <span>{date}</span>
+          <span className="w-1 h-1 rounded-full bg-gold/60 shrink-0" />
+          <MapPin size={13} className="shrink-0" />
+          <span className="text-gold/80">{city}</span>
         </motion.div>
 
         <motion.div
           {...fade(1)}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
         >
-          <Link href={primaryHref} className="btn-primary text-base group">
+          <Link href={primaryHref} className="btn-primary text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-8 group">
             {primaryCta}
             <ArrowRight
               size={18}
               className="ml-2 group-hover:translate-x-1 transition-transform"
             />
           </Link>
-          <Link href={secondaryHref} className="btn-outline text-base">
+          <Link href={secondaryHref} className="btn-outline text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-8">
             {secondaryCta}
           </Link>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-primary to-transparent" />
-
-      <motion.div
-        initial={reduceMotion ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: isMobile ? 0.85 : 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={reduceMotion ? undefined : { y: [0, isMobile ? 6 : 8, 0] }}
-          transition={{ duration: isMobile ? 2.4 : 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 border-gold/30 flex items-start justify-center p-1.5"
-        >
-          <div className="w-1.5 h-2.5 rounded-full bg-gold/60" />
-        </motion.div>
-      </motion.div>
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-t from-primary to-transparent" />
     </section>
   );
 }

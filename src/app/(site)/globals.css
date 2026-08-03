@@ -99,7 +99,11 @@
     @apply py-12 md:py-16 lg:py-20;
   }
 
-  /* 6 of 8 grid: ~75% content width on desktop, generous side padding on smaller screens */
+  /*
+   * Page grid: 8 columns total.
+   * Header + body content use 6 columns (centered), 1-column gutter each side.
+   * Mobile/tablet keeps full width with side padding.
+   */
   .site-container {
     @apply mx-auto w-full;
     max-width: 100%;
@@ -121,10 +125,11 @@
     }
   }
 
+  /* Desktop (any inch): 6 of 8 = 75% width, centered */
   @media (min-width: 1024px) {
     .site-container {
-      width: 75%;
-      max-width: 72rem;
+      width: calc(100% * 6 / 8);
+      max-width: none;
       padding-left: 0;
       padding-right: 0;
     }

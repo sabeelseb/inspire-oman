@@ -174,10 +174,12 @@ export async function getCmsPageHome() {
     const page = await reader.singletons.homePage.read();
     return (
       page || {
+        heroLogoSrc: "/images/logos/inspire-oman-hero-logo.png",
         heroDate: "11 October 2026",
         heroCity: "Muscat",
-        heroTitle: "Inspire Oman",
-        heroTitleHighlight: "Oman",
+        heroTitle: "Telling Oman's Growth Story Globally",
+        heroTitleHighlight: "Growth Story",
+        heroTitleBreakAfter: "Telling Oman's",
         heroSlogan: "Celebrating Success. Creating Legacy. Inspiring Investment.",
         heroSupportLine:
           "Legacy Documentation • Celebrating the Experience • Inspire Oman Summit",

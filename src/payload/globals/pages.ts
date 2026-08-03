@@ -119,17 +119,56 @@ export const Header: GlobalConfig = {
 export const HomePage: GlobalConfig = {
   slug: "home-page",
   label: "Home",
-  admin: { group: "Pages" },
+  admin: {
+    group: "Pages",
+    description:
+      "Hero order (top → bottom): logo → title → slogan → support → date/city chip → buttons. Venue line is not shown on the public hero.",
+  },
   versions: draftVersions,
   fields: [
-    { name: "heroDate", type: "text", defaultValue: "11 October 2026", label: "Hero - date badge" },
-    { name: "heroCity", type: "text", defaultValue: "Muscat", label: "Hero - city badge" },
-    { name: "heroTitle", type: "text", defaultValue: "Inspire Oman", label: "Hero - title" },
+    {
+      name: "heroLogo",
+      type: "upload",
+      relationTo: "media",
+      label: "Hero - logo",
+      admin: {
+        description: "Centered mark above the title (e.g. lighthouse / inspire oman lockup).",
+      },
+    },
+    {
+      name: "heroLogoSrc",
+      type: "text",
+      defaultValue: "/images/logos/inspire-oman-hero-logo.png",
+      label: "Hero - logo path fallback",
+      admin: {
+        description: "Used when no logo upload is set.",
+      },
+    },
+    {
+      name: "heroTitle",
+      type: "text",
+      defaultValue: "Telling Oman's Growth Story Globally",
+      label: "Hero - title",
+      admin: {
+        description:
+          "Full title as one string. On desktop it can split into two lines using “line break after” below.",
+      },
+    },
     {
       name: "heroTitleHighlight",
       type: "text",
-      defaultValue: "Oman",
+      defaultValue: "Growth Story",
       label: "Hero - gold highlight word(s)",
+    },
+    {
+      name: "heroTitleBreakAfter",
+      type: "text",
+      defaultValue: "Telling Oman's",
+      label: "Hero - desktop line break after",
+      admin: {
+        description:
+          "On desktop only, insert a line break after this exact text. Example: “Telling Oman's” → second line “Growth Story Globally”. Leave empty for a single line.",
+      },
     },
     {
       name: "heroSlogan",
@@ -145,10 +184,19 @@ export const HomePage: GlobalConfig = {
       label: "Hero - support line (pillars)",
     },
     {
-      name: "heroVenue",
+      name: "heroDate",
       type: "text",
-      defaultValue: "Oman Convention & Exhibition Centre",
-      label: "Hero - venue",
+      defaultValue: "11 October 2026",
+      label: "Hero - date (chip)",
+      admin: {
+        description: "Shown in the chip directly above the CTA buttons.",
+      },
+    },
+    {
+      name: "heroCity",
+      type: "text",
+      defaultValue: "Muscat",
+      label: "Hero - city (chip)",
     },
     {
       name: "heroPrimaryCta",
@@ -179,6 +227,16 @@ export const HomePage: GlobalConfig = {
       type: "upload",
       relationTo: "media",
       label: "Hero - background image (optional override)",
+    },
+    {
+      name: "heroVenue",
+      type: "text",
+      defaultValue: "Oman Convention & Exhibition Centre",
+      label: "Hero - venue (unused on public hero)",
+      admin: {
+        hidden: true,
+        description: "Kept for older content; not rendered on the public hero.",
+      },
     },
     {
       name: "aboutEyebrow",
@@ -268,6 +326,20 @@ export const AboutPage: GlobalConfig = pageGlobal("about-page", "About", [
   { name: "missionP1", type: "textarea", label: "Mission paragraph 1" },
   { name: "missionP2", type: "textarea", label: "Mission paragraph 2" },
   { name: "quote", type: "textarea", label: "Mission quote" },
+  {
+    name: "missionFacts",
+    type: "array",
+    label: "Mission - side facts cards",
+    labels: { singular: "Fact", plural: "Facts" },
+    admin: {
+      description:
+        "2×2 cards beside the mission (Strategic Partner, Initiative By, etc.)",
+    },
+    fields: [
+      { name: "label", type: "text", required: true, label: "Label" },
+      { name: "value", type: "text", required: true, label: "Value" },
+    ],
+  },
   { name: "valuesEyebrow", type: "text", label: "Values eyebrow" },
   { name: "valuesTitle", type: "text", label: "Values title" },
   { name: "audienceEyebrow", type: "text", label: "Audience eyebrow" },

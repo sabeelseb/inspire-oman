@@ -53,13 +53,13 @@ export default function Navbar() {
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="site-container">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-[4.25rem]">
             <Link
               href="/"
-              className="flex items-center gap-3 group relative z-[70]"
+              className="flex items-center gap-2 sm:gap-2.5 group relative z-[70] shrink-0"
               onClick={() => setMobileOpen(false)}
             >
-              <div className="h-11 w-11 sm:h-14 sm:w-14 shrink-0 flex items-center justify-center">
+              <div className="h-9 w-9 sm:h-11 sm:w-11 shrink-0 flex items-center justify-center">
                 <LogoImage
                   src={siteConfig.images.logo}
                   alt="Inspire Oman"
@@ -68,21 +68,21 @@ export default function Navbar() {
                 />
               </div>
               <div className="hidden sm:block">
-                <span className="text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
+                <span className="text-sm sm:text-base font-bold tracking-wide text-white group-hover:text-gold transition-colors">
                   {header.brandPrimary}
                 </span>
-                <span className="text-lg font-light tracking-widest text-gold ml-1">
+                <span className="text-sm sm:text-base font-light tracking-widest text-gold ml-1">
                   {header.brandHighlight}
                 </span>
               </div>
             </Link>
 
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 min-w-0">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                  className={`whitespace-nowrap px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-medium rounded-md transition-colors duration-200 ${
                     pathname === link.href
                       ? "text-gold bg-gold/10"
                       : "text-white/70 hover:text-white hover:bg-white/5"
@@ -91,7 +91,10 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link href={header.ctaHref} className="btn-primary ml-4 text-sm py-2.5 px-6">
+              <Link
+                href={header.ctaHref}
+                className="btn-primary ml-2 xl:ml-3 whitespace-nowrap text-xs xl:text-sm py-1.5 xl:py-2 px-4 xl:px-5"
+              >
                 {header.ctaLabel}
               </Link>
             </nav>

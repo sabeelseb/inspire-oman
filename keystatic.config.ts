@@ -132,21 +132,26 @@ export default config({
       label: "Home",
       path: "content/pages/home",
       schema: {
-        heroDate: fields.text({
-          label: "Hero - date badge",
-          defaultValue: "11 October 2026",
+        heroLogoSrc: fields.text({
+          label: "Hero - logo path",
+          defaultValue: "/images/logos/inspire-oman-hero-logo.png",
         }),
-        heroCity: fields.text({
-          label: "Hero - city badge",
-          defaultValue: "Muscat",
+        heroLogo: fields.image({
+          label: "Hero - logo upload",
+          directory: "public/images/cms",
+          publicPath: "/images/cms/",
         }),
         heroTitle: fields.text({
           label: "Hero - title",
-          defaultValue: "Inspire Oman",
+          defaultValue: "Telling Oman's Growth Story Globally",
         }),
         heroTitleHighlight: fields.text({
           label: "Hero - gold highlight word(s)",
-          defaultValue: "Oman",
+          defaultValue: "Growth Story",
+        }),
+        heroTitleBreakAfter: fields.text({
+          label: "Hero - desktop line break after",
+          defaultValue: "Telling Oman's",
         }),
         heroSlogan: fields.text({
           label: "Hero - slogan",
@@ -159,9 +164,13 @@ export default config({
             "Legacy Documentation • Celebrating the Experience • Inspire Oman Summit",
           multiline: true,
         }),
-        heroVenue: fields.text({
-          label: "Hero - venue",
-          defaultValue: "Oman Convention & Exhibition Centre",
+        heroDate: fields.text({
+          label: "Hero - date (chip above buttons)",
+          defaultValue: "11 October 2026",
+        }),
+        heroCity: fields.text({
+          label: "Hero - city (chip)",
+          defaultValue: "Muscat",
         }),
         heroPrimaryCta: fields.text({
           label: "Hero - primary button label",
@@ -183,6 +192,10 @@ export default config({
           label: "Hero - background image (optional override)",
           directory: "public/images/cms",
           publicPath: "/images/cms/",
+        }),
+        heroVenue: fields.text({
+          label: "Hero - venue (unused on public hero)",
+          defaultValue: "Oman Convention & Exhibition Centre",
         }),
         aboutEyebrow: fields.text({ label: "About - eyebrow", defaultValue: "About the Initiative" }),
         aboutTitle: fields.text({
@@ -253,6 +266,16 @@ export default config({
         missionP1: fields.text({ label: "Mission paragraph 1", multiline: true }),
         missionP2: fields.text({ label: "Mission paragraph 2", multiline: true }),
         quote: fields.text({ label: "Mission quote", multiline: true }),
+        missionFacts: fields.array(
+          fields.object({
+            label: fields.text({ label: "Label" }),
+            value: fields.text({ label: "Value" }),
+          }),
+          {
+            label: "Mission - side facts cards",
+            itemLabel: (props) => props.fields.label.value || "Fact",
+          }
+        ),
         valuesEyebrow: fields.text({ label: "Values eyebrow" }),
         valuesTitle: fields.text({ label: "Values title" }),
         audienceEyebrow: fields.text({ label: "Audience eyebrow" }),

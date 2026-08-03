@@ -17,6 +17,15 @@ quote: >-
   Inspire Oman is more than an event - it is a movement to document
   excellence, celebrate achievement, and inspire the next generation of business
   leaders in the Sultanate.
+missionFacts:
+  - label: Strategic Partner
+    value: OCCI
+  - label: Initiative By
+    value: Gulf Madhyamam
+  - label: Execution
+    value: mefriend
+  - label: Summit Date
+    value: 11 Oct 2026
 valuesEyebrow: Our Values
 valuesTitle: What Drives Us
 audienceEyebrow: Our Audience

@@ -251,10 +251,17 @@ export async function getCmsPageHome() {
       : [];
 
     return {
+      heroLogo:
+        mediaUrl(page.heroLogo) ||
+        (page.heroLogoSrc as string) ||
+        "/images/logos/inspire-oman-hero-logo.png",
+      heroLogoSrc:
+        (page.heroLogoSrc as string) || "/images/logos/inspire-oman-hero-logo.png",
       heroDate: page.heroDate,
       heroCity: page.heroCity,
       heroTitle: page.heroTitle,
       heroTitleHighlight: page.heroTitleHighlight,
+      heroTitleBreakAfter: page.heroTitleBreakAfter,
       heroSlogan: page.heroSlogan,
       heroSupportLine: page.heroSupportLine,
       heroVenue: page.heroVenue,
@@ -262,6 +269,9 @@ export async function getCmsPageHome() {
       heroPrimaryCtaHref: page.heroPrimaryCtaHref,
       heroSecondaryCta: page.heroSecondaryCta,
       heroSecondaryCtaHref: page.heroSecondaryCtaHref,
+      heroImage:
+        mediaUrl(page.heroImage) ||
+        (typeof page.heroImage === "string" ? page.heroImage : null),
       aboutEyebrow: page.aboutEyebrow,
       aboutTitle: page.aboutTitle,
       aboutTitleHighlight: page.aboutTitleHighlight,
@@ -287,9 +297,18 @@ export async function getCmsPageAbout() {
   try {
     const page = await readGlobal("about-page");
     if (!page) return null;
+    const missionFacts = Array.isArray(page.missionFacts)
+      ? (page.missionFacts as { label?: string; value?: string }[])
+          .map((f) => ({
+            label: f.label || "",
+            value: f.value || "",
+          }))
+          .filter((f) => f.label || f.value)
+      : [];
     return {
       ...page,
       stakeholders: items(page.stakeholders),
+      missionFacts: missionFacts.length ? missionFacts : null,
     };
   } catch {
     return null;
