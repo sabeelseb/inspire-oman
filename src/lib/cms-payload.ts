@@ -123,17 +123,23 @@ async function readGlobal(slug: string) {
 
 export async function getCmsSite() {
   try {
-    const [site, header] = await Promise.all([
+    const [site, header, footer] = await Promise.all([
       readGlobal("site"),
       readGlobal("header"),
+      readGlobal("footer"),
     ]);
-    if (!site && !header) {
+    if (!site && !header && !footer) {
       return {
         ...fallbackSite,
         images: { ...fallbackSite.images },
         header: {
           ...fallbackSite.header,
           navLinks: [...fallbackSite.header.navLinks],
+        },
+        footer: {
+          ...fallbackSite.footer,
+          quickLinks: [...fallbackSite.footer.quickLinks],
+          social: { ...fallbackSite.footer.social },
         },
       };
     }
@@ -146,6 +152,37 @@ export async function getCmsSite() {
           }))
           .filter((l) => l.label && l.href)
       : [];
+
+    const footerLinks = Array.isArray(footer?.quickLinks)
+      ? (footer.quickLinks as { label?: string; href?: string }[])
+          .map((l) => ({
+            label: (l.label || "").trim(),
+            href: (l.href || "").trim(),
+          }))
+          .filter((l) => l.label && l.href)
+      : [];
+
+    const siteSocial = {
+      instagram: (site?.instagram as string) || fallbackSite.social.instagram,
+      facebook: (site?.facebook as string) || fallbackSite.social.facebook,
+      linkedin: (site?.linkedin as string) || fallbackSite.social.linkedin,
+      twitter: (site?.twitter as string) || fallbackSite.social.twitter,
+      youtube: (site?.youtube as string) || fallbackSite.social.youtube,
+    };
+
+    const siteContact = {
+      oman: {
+        ...fallbackSite.contact.oman,
+        phone1: (site?.omanPhone1 as string) || fallbackSite.contact.oman.phone1,
+        phone2: (site?.omanPhone2 as string) || fallbackSite.contact.oman.phone2,
+        email: (site?.omanEmail as string) || fallbackSite.contact.oman.email,
+      },
+      india: {
+        ...fallbackSite.contact.india,
+        phone: (site?.indiaPhone as string) || fallbackSite.contact.india.phone,
+        email: (site?.indiaEmail as string) || fallbackSite.contact.india.email,
+      },
+    };
 
     return {
       ...fallbackSite,
@@ -193,26 +230,62 @@ export async function getCmsSite() {
           ? headerNav
           : [...fallbackSite.header.navLinks],
       },
-      contact: {
-        oman: {
-          ...fallbackSite.contact.oman,
-          phone1: (site?.omanPhone1 as string) || fallbackSite.contact.oman.phone1,
-          phone2: (site?.omanPhone2 as string) || fallbackSite.contact.oman.phone2,
-          email: (site?.omanEmail as string) || fallbackSite.contact.oman.email,
-        },
-        india: {
-          ...fallbackSite.contact.india,
-          phone: (site?.indiaPhone as string) || fallbackSite.contact.india.phone,
-          email: (site?.indiaEmail as string) || fallbackSite.contact.india.email,
+      footer: {
+        brandPrimary:
+          (footer?.brandPrimary as string) ||
+          (header?.brandPrimary as string) ||
+          fallbackSite.footer.brandPrimary,
+        brandHighlight:
+          (footer?.brandHighlight as string) ||
+          (header?.brandHighlight as string) ||
+          fallbackSite.footer.brandHighlight,
+        description:
+          (footer?.description as string) ||
+          (site?.description as string) ||
+          fallbackSite.footer.description,
+        quickLinksTitle:
+          (footer?.quickLinksTitle as string) ||
+          fallbackSite.footer.quickLinksTitle,
+        quickLinks: footerLinks.length
+          ? footerLinks
+          : headerNav.length
+            ? headerNav
+            : [...fallbackSite.footer.quickLinks],
+        omanTitle:
+          (footer?.omanTitle as string) || fallbackSite.footer.omanTitle,
+        omanPhone1:
+          (footer?.omanPhone1 as string) || siteContact.oman.phone1,
+        omanPhone2:
+          (footer?.omanPhone2 as string) || siteContact.oman.phone2,
+        omanEmail: (footer?.omanEmail as string) || siteContact.oman.email,
+        omanAddress:
+          (footer?.omanAddress as string) || fallbackSite.footer.omanAddress,
+        indiaTitle:
+          (footer?.indiaTitle as string) || fallbackSite.footer.indiaTitle,
+        indiaPhone:
+          (footer?.indiaPhone as string) || siteContact.india.phone,
+        indiaEmail:
+          (footer?.indiaEmail as string) || siteContact.india.email,
+        partnerLabel:
+          (footer?.partnerLabel as string) || fallbackSite.footer.partnerLabel,
+        partnerName:
+          (footer?.partnerName as string) ||
+          (site?.partnerStrategic as string) ||
+          fallbackSite.footer.partnerName,
+        copyrightText:
+          (footer?.copyrightText as string) ||
+          fallbackSite.footer.copyrightText,
+        social: {
+          instagram:
+            (footer?.instagram as string) || siteSocial.instagram,
+          facebook: (footer?.facebook as string) || siteSocial.facebook,
+          linkedin: (footer?.linkedin as string) || siteSocial.linkedin,
+          twitter: (footer?.twitter as string) || siteSocial.twitter,
+          youtube: (footer?.youtube as string) || siteSocial.youtube,
         },
       },
-      social: {
-        instagram: (site?.instagram as string) || fallbackSite.social.instagram,
-        facebook: (site?.facebook as string) || fallbackSite.social.facebook,
-        linkedin: (site?.linkedin as string) || fallbackSite.social.linkedin,
-        twitter: (site?.twitter as string) || fallbackSite.social.twitter,
-        youtube: (site?.youtube as string) || fallbackSite.social.youtube,
-      },
+      contact: siteContact,
+      social: siteSocial,
     };
   } catch {
     return {
@@ -221,6 +294,11 @@ export async function getCmsSite() {
       header: {
         ...fallbackSite.header,
         navLinks: [...fallbackSite.header.navLinks],
+      },
+      footer: {
+        ...fallbackSite.footer,
+        quickLinks: [...fallbackSite.footer.quickLinks],
+        social: { ...fallbackSite.footer.social },
       },
     };
   }

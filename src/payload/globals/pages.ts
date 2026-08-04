@@ -116,6 +116,130 @@ export const Header: GlobalConfig = {
   ],
 };
 
+export const Footer: GlobalConfig = {
+  slug: "footer",
+  label: "Footer",
+  admin: {
+    group: "Settings",
+    description:
+      "Footer brand, blurb, quick links, contact blocks, partner callout, social links, and copyright.",
+  },
+  versions: draftVersions,
+  fields: [
+    {
+      name: "brandPrimary",
+      type: "text",
+      defaultValue: "Inspire",
+      label: "Brand wordmark (primary)",
+    },
+    {
+      name: "brandHighlight",
+      type: "text",
+      defaultValue: "Oman",
+      label: "Brand wordmark (gold)",
+    },
+    {
+      name: "description",
+      type: "textarea",
+      label: "Short description",
+      admin: {
+        description: "Shown under the brand in the footer.",
+      },
+    },
+    {
+      name: "quickLinksTitle",
+      type: "text",
+      defaultValue: "Quick Links",
+      label: "Quick links heading",
+    },
+    {
+      name: "quickLinks",
+      type: "array",
+      label: "Quick links",
+      labels: { singular: "Link", plural: "Links" },
+      fields: [
+        { name: "label", type: "text", required: true, label: "Label" },
+        {
+          name: "href",
+          type: "text",
+          required: true,
+          label: "Link",
+          admin: { description: "Path or URL, e.g. /about" },
+        },
+      ],
+      defaultValue: [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Pillars", href: "/pillars" },
+        { label: "Summit 2026", href: "/summit" },
+        { label: "Partner With Us", href: "/partner" },
+        { label: "Media", href: "/media" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      name: "omanTitle",
+      type: "text",
+      defaultValue: "Contact - Oman",
+      label: "Oman contact heading",
+    },
+    { name: "omanPhone1", type: "text", label: "Oman phone 1" },
+    { name: "omanPhone2", type: "text", label: "Oman phone 2" },
+    { name: "omanEmail", type: "text", label: "Oman email" },
+    {
+      name: "omanAddress",
+      type: "textarea",
+      defaultValue: "Oman Convention & Exhibition Centre, Muscat",
+      label: "Oman address",
+    },
+    {
+      name: "indiaTitle",
+      type: "text",
+      defaultValue: "Contact - India",
+      label: "India contact heading",
+    },
+    { name: "indiaPhone", type: "text", label: "India phone" },
+    { name: "indiaEmail", type: "text", label: "India email" },
+    {
+      name: "partnerLabel",
+      type: "text",
+      defaultValue: "Strategic Partner",
+      label: "Partner callout label",
+    },
+    {
+      name: "partnerName",
+      type: "text",
+      defaultValue: "Oman Chamber of Commerce & Industry",
+      label: "Partner callout name",
+    },
+    {
+      type: "row",
+      fields: [
+        { name: "instagram", type: "text", label: "Instagram URL", admin: { width: "50%" } },
+        { name: "facebook", type: "text", label: "Facebook URL", admin: { width: "50%" } },
+      ],
+    },
+    {
+      type: "row",
+      fields: [
+        { name: "linkedin", type: "text", label: "LinkedIn URL", admin: { width: "50%" } },
+        { name: "twitter", type: "text", label: "Twitter / X URL", admin: { width: "50%" } },
+      ],
+    },
+    { name: "youtube", type: "text", label: "YouTube URL" },
+    {
+      name: "copyrightText",
+      type: "text",
+      defaultValue:
+        "Inspire Oman. All rights reserved. An initiative by Gulf Madhyamam.",
+      label: "Copyright text",
+      admin: {
+        description: "Shown after © and the current year.",
+      },
+    },
+  ],
+};
+
 export const HomePage: GlobalConfig = {
   slug: "home-page",
   label: "Home",

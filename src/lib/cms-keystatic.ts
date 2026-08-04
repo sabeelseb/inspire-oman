@@ -94,6 +94,11 @@ export async function getCmsSite() {
           ...fallbackSite.header,
           navLinks: [...fallbackSite.header.navLinks],
         },
+        footer: {
+          ...fallbackSite.footer,
+          quickLinks: [...fallbackSite.footer.quickLinks],
+          social: { ...fallbackSite.footer.social },
+        },
       };
     }
 
@@ -164,6 +169,11 @@ export async function getCmsSite() {
       header: {
         ...fallbackSite.header,
         navLinks: [...fallbackSite.header.navLinks],
+      },
+      footer: {
+        ...fallbackSite.footer,
+        quickLinks: [...fallbackSite.footer.quickLinks],
+        social: { ...fallbackSite.footer.social },
       },
     };
   }

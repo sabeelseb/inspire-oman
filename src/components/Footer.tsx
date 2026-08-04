@@ -8,7 +8,7 @@ import LogoImage from "./LogoImage";
 
 export default function Footer() {
   const siteConfig = useCmsSite();
-  const { header } = siteConfig;
+  const { footer } = siteConfig;
   return (
     <footer className="relative bg-primary-dark border-t border-gold/10">
       <IslamicPattern opacity={0.03} />
@@ -25,20 +25,20 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <span className="text-lg font-bold text-white">{header.brandPrimary}</span>
-                <span className="text-lg font-light text-gold ml-1">{header.brandHighlight}</span>
+                <span className="text-lg font-bold text-white">{footer.brandPrimary}</span>
+                <span className="text-lg font-light text-gold ml-1">{footer.brandHighlight}</span>
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
-              {siteConfig.description.slice(0, 140)}...
+              {footer.description}
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Instagram, href: siteConfig.social.instagram },
-                { icon: Facebook, href: siteConfig.social.facebook },
-                { icon: Linkedin, href: siteConfig.social.linkedin },
-                { icon: Twitter, href: siteConfig.social.twitter },
-                { icon: Youtube, href: siteConfig.social.youtube },
+                { icon: Instagram, href: footer.social.instagram },
+                { icon: Facebook, href: footer.social.facebook },
+                { icon: Linkedin, href: footer.social.linkedin },
+                { icon: Twitter, href: footer.social.twitter },
+                { icon: Youtube, href: footer.social.youtube },
               ].map(({ icon: Icon, href }, i) => (
                 <a
                   key={i}
@@ -54,9 +54,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Quick Links</h4>
+            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">
+              {footer.quickLinksTitle}
+            </h4>
             <ul className="space-y-3">
-              {header.navLinks.map((link) => (
+              {footer.quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -71,49 +73,53 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Contact - Oman</h4>
+            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">
+              {footer.omanTitle}
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Phone size={16} className="text-gold/60 mt-0.5 shrink-0" />
                 <div>
-                  <p>{siteConfig.contact.oman.phone1}</p>
-                  <p>{siteConfig.contact.oman.phone2}</p>
+                  <p>{footer.omanPhone1}</p>
+                  <p>{footer.omanPhone2}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Mail size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {siteConfig.contact.oman.email}
+                {footer.omanEmail}
               </li>
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <MapPin size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                Oman Convention & Exhibition Centre, Muscat
+                {footer.omanAddress}
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">Contact - India</h4>
+            <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-6">
+              {footer.indiaTitle}
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Phone size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {siteConfig.contact.india.phone}
+                {footer.indiaPhone}
               </li>
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Mail size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {siteConfig.contact.india.email}
+                {footer.indiaEmail}
               </li>
             </ul>
 
             <div className="mt-8 p-4 rounded-xl bg-gold/5 border border-gold/10">
-              <p className="text-xs text-gold/80 font-medium mb-1">Strategic Partner</p>
-              <p className="text-sm text-white/70">Oman Chamber of Commerce & Industry</p>
+              <p className="text-xs text-gold/80 font-medium mb-1">{footer.partnerLabel}</p>
+              <p className="text-sm text-white/70">{footer.partnerName}</p>
             </div>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/5">
           <p className="text-white/30 text-xs text-center">
-            &copy; {new Date().getFullYear()} Inspire Oman. All rights reserved. An initiative by Gulf Madhyamam.
+            &copy; {new Date().getFullYear()} {footer.copyrightText}
           </p>
         </div>
       </div>

@@ -42,4 +42,5 @@ payload.db-*
 *.db
 public/media/
 src/payload/payload-types.ts
+payload-live-export.json
 

@@ -28,6 +28,7 @@ import {
 import {
   Site,
   Header,
+  Footer,
   HomePage,
   AboutPage,
   PillarsPage,
@@ -109,6 +110,7 @@ export default buildConfig({
     MediaPage,
     ContactPage,
     Header,
+    Footer,
     Site,
   ],
   editor: lexicalEditor(),

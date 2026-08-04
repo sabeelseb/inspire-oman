@@ -33,6 +33,41 @@ export const siteConfig = {
       { href: "/contact", label: "Contact" },
     ],
   },
+  footer: {
+    brandPrimary: "Inspire",
+    brandHighlight: "Oman",
+    description:
+      "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+    quickLinksTitle: "Quick Links",
+    quickLinks: [
+      { href: "/", label: "Home" },
+      { href: "/about", label: "About" },
+      { href: "/pillars", label: "Pillars" },
+      { href: "/summit", label: "Summit 2026" },
+      { href: "/partner", label: "Partner With Us" },
+      { href: "/media", label: "Media" },
+      { href: "/contact", label: "Contact" },
+    ],
+    omanTitle: "Contact - Oman",
+    omanPhone1: "+968 9916 8230",
+    omanPhone2: "+968 7738 5585",
+    omanEmail: "inspireoman@gulfmadhyamam.net",
+    omanAddress: "Oman Convention & Exhibition Centre, Muscat",
+    indiaTitle: "Contact - India",
+    indiaPhone: "+91 9645 009444",
+    indiaEmail: "events@madhyamam.com",
+    partnerLabel: "Strategic Partner",
+    partnerName: "Oman Chamber of Commerce & Industry",
+    copyrightText:
+      "Inspire Oman. All rights reserved. An initiative by Gulf Madhyamam.",
+    social: {
+      instagram: "#",
+      facebook: "#",
+      linkedin: "#",
+      twitter: "#",
+      youtube: "#",
+    },
+  },
   partnerLogos: [
     {
       name: "OCCI",
