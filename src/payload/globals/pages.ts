@@ -246,7 +246,7 @@ export const HomePage: GlobalConfig = {
   admin: {
     group: "Pages",
     description:
-      "Hero order (top → bottom): logo → title → slogan → support → date/city chip → buttons. Venue line is not shown on the public hero.",
+      "Home sections top → bottom: Hero → About → Stats → Partners headings → Bottom CTA. Partner logos live under Site content → Partners. Other home blocks (Pillars, Summit speakers, Packages, Testimonials) are separate collections.",
   },
   versions: draftVersions,
   fields: [
@@ -418,6 +418,31 @@ export const HomePage: GlobalConfig = {
       type: "upload",
       relationTo: "media",
       label: "Stats - or upload banner image",
+    },
+    {
+      name: "partnersEyebrow",
+      type: "text",
+      defaultValue: "Our Partners",
+      label: "Partners - eyebrow",
+    },
+    {
+      name: "partnersTitle",
+      type: "text",
+      defaultValue: "Trusted by Leaders",
+      label: "Partners - title",
+    },
+    {
+      name: "partnersTitleHighlight",
+      type: "text",
+      defaultValue: "Leaders",
+      label: "Partners - gold highlight word(s)",
+    },
+    {
+      name: "partnersSubtitle",
+      type: "textarea",
+      defaultValue:
+        "Inspire Oman is powered by strategic collaboration between OCCI, Gulf Madhyamam, and mefriend",
+      label: "Partners - subtitle",
     },
     {
       name: "ctaTitle",

@@ -363,6 +363,10 @@ export async function getCmsPageHome() {
         mediaUrl(page.statsBanner) ||
         (page.statsBannerSrc as string) ||
         "/images/logos/inspire-oman-banner.jpg",
+      partnersEyebrow: page.partnersEyebrow,
+      partnersTitle: page.partnersTitle,
+      partnersTitleHighlight: page.partnersTitleHighlight,
+      partnersSubtitle: page.partnersSubtitle,
       ctaTitle: page.ctaTitle,
       ctaBody: page.ctaBody,
     };

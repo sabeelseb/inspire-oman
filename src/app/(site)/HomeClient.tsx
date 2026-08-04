@@ -59,6 +59,10 @@ type HomePage = {
   homeStats?: readonly ({ value: number | null; suffix: string | null; label: string | null } | null)[] | null;
   statsBannerSrc?: string | null;
   statsBanner?: string | null;
+  partnersEyebrow?: string | null;
+  partnersTitle?: string | null;
+  partnersTitleHighlight?: string | null;
+  partnersSubtitle?: string | null;
   ctaTitle?: string | null;
   ctaBody?: string | null;
 };
@@ -273,7 +277,13 @@ export default function HomeClient({
       <AboutSection page={page} />
       <StatsCounter stats={displayStats} bannerSrc={bannerSrc} />
       <div className="cv-auto">
-        <PartnersSection partners={partners} />
+        <PartnersSection
+          partners={partners}
+          eyebrow={page?.partnersEyebrow}
+          title={page?.partnersTitle}
+          titleHighlight={page?.partnersTitleHighlight}
+          subtitle={page?.partnersSubtitle}
+        />
       </div>
       <div className="islamic-divider site-container" />
       <div className="cv-auto">
