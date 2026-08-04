@@ -17,8 +17,16 @@ import {
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
+import FormThankYou from "@/components/FormThankYou";
 import { useCmsSite } from "@/components/CmsProvider";
 import { submitToAdmin } from "@/lib/submit-form";
+import {
+  EMAIL_PATTERN,
+  NAME_PATTERN,
+  SUMMIT_THANK_YOU,
+  validateContactFields,
+  type FieldErrors,
+} from "@/lib/form-validation";
 
 const typeColors: Record<string, string> = {
   keynote: "border-l-gold",
@@ -70,13 +78,19 @@ export default function SummitClient({
   });
 
   const [sending, setSending] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [submitted, setSubmitted] = useState(false);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    const nextErrors = validateContactFields(regForm);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) return;
+
     setSending(true);
     const result = await submitToAdmin("summit", {
-      name: regForm.name,
-      email: regForm.email,
+      name: regForm.name.trim(),
+      email: regForm.email.trim(),
       phone: regForm.phone,
       organization: regForm.organization,
       role: regForm.role,
@@ -84,10 +98,10 @@ export default function SummitClient({
     });
     setSending(false);
     if (!result.ok) {
-      alert(result.error);
+      setErrors({ form: result.error });
       return;
     }
-    alert("Thank you for registering! You will receive a confirmation email shortly.");
+    setSubmitted(true);
     setRegForm({ name: "", email: "", phone: "", organization: "", role: "CEO" });
   };
 
@@ -230,66 +244,115 @@ export default function SummitClient({
             </ScrollReveal>
 
             <ScrollReveal>
-              <form onSubmit={handleRegister} className="glass-card p-8 space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  {(
-                    [
-                      { name: "name" as const, placeholder: "Full Name", type: "text" },
-                      { name: "email" as const, placeholder: "Email Address", type: "email" },
-                      { name: "phone" as const, placeholder: "Phone Number", type: "tel" },
-                      {
-                        name: "organization" as const,
-                        placeholder: "Organization",
-                        type: "text",
-                      },
-                    ] as const
-                  ).map((field) => (
+              {submitted ? (
+                <FormThankYou
+                  title={SUMMIT_THANK_YOU.title}
+                  paragraphs={SUMMIT_THANK_YOU.paragraphs}
+                />
+              ) : (
+                <form onSubmit={handleRegister} className="glass-card p-8 space-y-5" noValidate>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        required
+                        autoComplete="name"
+                        pattern={NAME_PATTERN.source}
+                        title="Letters only (A–Z)"
+                        value={regForm.name}
+                        onChange={(e) => {
+                          setRegForm({ ...regForm, name: e.target.value });
+                          if (errors.name) setErrors({ ...errors, name: "" });
+                        }}
+                        className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                        aria-invalid={Boolean(errors.name)}
+                      />
+                      {errors.name ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                        autoComplete="email"
+                        pattern={EMAIL_PATTERN.source}
+                        title="Valid email like name@example.com"
+                        value={regForm.email}
+                        onChange={(e) => {
+                          setRegForm({ ...regForm, email: e.target.value });
+                          if (errors.email) setErrors({ ...errors, email: "" });
+                        }}
+                        className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                        aria-invalid={Boolean(errors.email)}
+                      />
+                      {errors.email ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+                      ) : null}
+                    </div>
                     <input
-                      key={field.name}
-                      type={field.type}
-                      placeholder={field.placeholder}
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone Number"
                       required
-                      value={regForm[field.name]}
+                      autoComplete="tel"
+                      value={regForm.phone}
+                      onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })}
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                    />
+                    <input
+                      type="text"
+                      name="organization"
+                      placeholder="Organization"
+                      required
+                      value={regForm.organization}
                       onChange={(e) =>
-                        setRegForm({ ...regForm, [field.name]: e.target.value })
+                        setRegForm({ ...regForm, organization: e.target.value })
                       }
                       className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
                     />
-                  ))}
-                </div>
-                <div className="relative">
-                  <select
-                    value={regForm.role}
-                    onChange={(e) => setRegForm({ ...regForm, role: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
-                  >
-                    {[
-                      "CEO / Business Owner",
-                      "Investor",
-                      "Government Official",
-                      "Corporate Executive",
-                      "SME Leader",
-                      "Media",
-                      "Delegate",
-                    ].map((r) => (
-                      <option key={r} value={r} className="bg-primary text-white">
-                        {r}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown
-                    size={16}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
-                  />
-                </div>
-                <button type="submit" className="btn-primary w-full" disabled={sending}>
-                  {sending ? "Registering..." : "Register Now"}
-                  <Send size={16} className="ml-2" />
-                </button>
-                <p className="text-white/30 text-xs text-center">
-                  By registering, you agree to receive communications regarding Inspire Oman.
-                </p>
-              </form>
+                  </div>
+                  <div className="relative">
+                    <select
+                      value={regForm.role}
+                      onChange={(e) => setRegForm({ ...regForm, role: e.target.value })}
+                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
+                    >
+                      {[
+                        "CEO / Business Owner",
+                        "Investor",
+                        "Government Official",
+                        "Corporate Executive",
+                        "SME Leader",
+                        "Media",
+                        "Delegate",
+                      ].map((r) => (
+                        <option key={r} value={r} className="bg-primary text-white">
+                          {r}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown
+                      size={16}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
+                    />
+                  </div>
+                  {errors.form ? (
+                    <p className="text-sm text-red-400">{errors.form}</p>
+                  ) : null}
+                  <button type="submit" className="btn-primary w-full" disabled={sending}>
+                    {sending ? "Registering..." : "Register Now"}
+                    <Send size={16} className="ml-2" />
+                  </button>
+                  <p className="text-white/30 text-xs text-center">
+                    By registering, you agree to receive communications regarding Inspire Oman.
+                  </p>
+                </form>
+              )}
             </ScrollReveal>
           </div>
         </div>

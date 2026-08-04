@@ -6,8 +6,16 @@ import { Send, Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
+import FormThankYou from "@/components/FormThankYou";
 import { useCmsSite } from "@/components/CmsProvider";
 import { submitToAdmin } from "@/lib/submit-form";
+import {
+  CONTACT_THANK_YOU,
+  EMAIL_PATTERN,
+  NAME_PATTERN,
+  validateContactFields,
+  type FieldErrors,
+} from "@/lib/form-validation";
 
 type PageData = {
   eyebrow?: string | null;
@@ -15,6 +23,9 @@ type PageData = {
   highlight?: string | null;
   subtitle?: string | null;
 };
+
+const inputClass =
+  "w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors";
 
 export default function ContactClient({ page }: { page: PageData | null }) {
   const siteConfig = useCmsSite();
@@ -25,19 +36,28 @@ export default function ContactClient({ page }: { page: PageData | null }) {
     subject: "",
     message: "",
   });
-
+  const [errors, setErrors] = useState<FieldErrors>({});
   const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const nextErrors = validateContactFields(form);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) return;
+
     setSending(true);
-    const result = await submitToAdmin("contact", form);
+    const result = await submitToAdmin("contact", {
+      ...form,
+      name: form.name.trim(),
+      email: form.email.trim(),
+    });
     setSending(false);
     if (!result.ok) {
-      alert(result.error);
+      setErrors({ form: result.error });
       return;
     }
-    alert("Thank you for your message! We will get back to you shortly.");
+    setSubmitted(true);
     setForm({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
@@ -153,40 +173,93 @@ export default function ContactClient({ page }: { page: PageData | null }) {
             </div>
 
             <ScrollReveal className="lg:col-span-3" delay={0.1}>
-              <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  {(
-                    [
-                      { name: "name" as const, placeholder: "Your Name", type: "text" },
-                      { name: "email" as const, placeholder: "Email Address", type: "email" },
-                      { name: "phone" as const, placeholder: "Phone Number", type: "tel" },
-                      { name: "subject" as const, placeholder: "Subject", type: "text" },
-                    ] as const
-                  ).map((field) => (
-                    <input
-                      key={field.name}
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      required={field.name !== "phone"}
-                      value={form[field.name]}
-                      onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
-                    />
-                  ))}
-                </div>
-                <textarea
-                  placeholder="Your Message"
-                  rows={6}
-                  required
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors resize-none"
+              {submitted ? (
+                <FormThankYou
+                  title={CONTACT_THANK_YOU.title}
+                  paragraphs={CONTACT_THANK_YOU.paragraphs}
                 />
-                <button type="submit" className="btn-primary w-full sm:w-auto" disabled={sending}>
-                  {sending ? "Sending..." : "Send Message"}
-                  <Send size={16} className="ml-2" />
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5" noValidate>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        required
+                        autoComplete="name"
+                        pattern={NAME_PATTERN.source}
+                        title="Letters only (A–Z)"
+                        value={form.name}
+                        onChange={(e) => {
+                          setForm({ ...form, name: e.target.value });
+                          if (errors.name) setErrors({ ...errors, name: "" });
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.name)}
+                      />
+                      {errors.name ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                        autoComplete="email"
+                        pattern={EMAIL_PATTERN.source}
+                        title="Valid email like name@example.com"
+                        value={form.email}
+                        onChange={(e) => {
+                          setForm({ ...form, email: e.target.value });
+                          if (errors.email) setErrors({ ...errors, email: "" });
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.email)}
+                      />
+                      {errors.email ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+                      ) : null}
+                    </div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone Number"
+                      autoComplete="tel"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      className={inputClass}
+                    />
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder="Subject"
+                      required
+                      value={form.subject}
+                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                      className={inputClass}
+                    />
+                  </div>
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    rows={6}
+                    required
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className={`${inputClass} resize-none`}
+                  />
+                  {errors.form ? (
+                    <p className="text-sm text-red-400">{errors.form}</p>
+                  ) : null}
+                  <button type="submit" className="btn-primary w-full sm:w-auto" disabled={sending}>
+                    {sending ? "Sending..." : "Send Message"}
+                    <Send size={16} className="ml-2" />
+                  </button>
+                </form>
+              )}
             </ScrollReveal>
           </div>
         </div>
