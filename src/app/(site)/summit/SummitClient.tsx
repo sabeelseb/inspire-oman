@@ -22,7 +22,11 @@ import { useCmsSite } from "@/components/CmsProvider";
 import { submitToAdmin } from "@/lib/submit-form";
 import {
   EMAIL_PATTERN,
+  MIN_TEXT_LENGTH,
   NAME_PATTERN,
+  PHONE_MAX_LENGTH,
+  PHONE_PATTERN,
+  sanitizePhoneInput,
   SUMMIT_THANK_YOU,
   validateContactFields,
   type FieldErrors,
@@ -244,13 +248,7 @@ export default function SummitClient({
             </ScrollReveal>
 
             <ScrollReveal>
-              {submitted ? (
-                <FormThankYou
-                  title={SUMMIT_THANK_YOU.title}
-                  paragraphs={SUMMIT_THANK_YOU.paragraphs}
-                />
-              ) : (
-                <form onSubmit={handleRegister} className="glass-card p-8 space-y-5" noValidate>
+              <form onSubmit={handleRegister} className="glass-card p-8 space-y-5" noValidate>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <input
@@ -259,8 +257,9 @@ export default function SummitClient({
                         placeholder="Full Name"
                         required
                         autoComplete="name"
+                        minLength={MIN_TEXT_LENGTH}
                         pattern={NAME_PATTERN.source}
-                        title="Letters only (A–Z)"
+                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
                         value={regForm.name}
                         onChange={(e) => {
                           setRegForm({ ...regForm, name: e.target.value });
@@ -294,27 +293,54 @@ export default function SummitClient({
                         <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
                       ) : null}
                     </div>
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="Phone Number"
-                      required
-                      autoComplete="tel"
-                      value={regForm.phone}
-                      onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
-                    />
-                    <input
-                      type="text"
-                      name="organization"
-                      placeholder="Organization"
-                      required
-                      value={regForm.organization}
-                      onChange={(e) =>
-                        setRegForm({ ...regForm, organization: e.target.value })
-                      }
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
-                    />
+                    <div>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number"
+                        required
+                        autoComplete="tel"
+                        inputMode="tel"
+                        maxLength={PHONE_MAX_LENGTH}
+                        pattern={PHONE_PATTERN.source}
+                        title="Digits only, optional leading +, max 15 characters"
+                        value={regForm.phone}
+                        onChange={(e) => {
+                          setRegForm({
+                            ...regForm,
+                            phone: sanitizePhoneInput(e.target.value),
+                          });
+                          if (errors.phone) setErrors({ ...errors, phone: "" });
+                        }}
+                        className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                        aria-invalid={Boolean(errors.phone)}
+                      />
+                      {errors.phone ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="organization"
+                        placeholder="Organization"
+                        required
+                        minLength={MIN_TEXT_LENGTH}
+                        title={`At least ${MIN_TEXT_LENGTH} characters`}
+                        value={regForm.organization}
+                        onChange={(e) => {
+                          setRegForm({ ...regForm, organization: e.target.value });
+                          if (errors.organization) {
+                            setErrors({ ...errors, organization: "" });
+                          }
+                        }}
+                        className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                        aria-invalid={Boolean(errors.organization)}
+                      />
+                      {errors.organization ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.organization}</p>
+                      ) : null}
+                    </div>
                   </div>
                   <div className="relative">
                     <select
@@ -352,11 +378,18 @@ export default function SummitClient({
                     By registering, you agree to receive communications regarding Inspire Oman.
                   </p>
                 </form>
-              )}
             </ScrollReveal>
           </div>
         </div>
       </section>
+
+      <FormThankYou
+        open={submitted}
+        title={SUMMIT_THANK_YOU.title}
+        paragraphs={SUMMIT_THANK_YOU.paragraphs}
+        onClose={() => setSubmitted(false)}
+        ctaLabel="Done"
+      />
     </>
   );
 }

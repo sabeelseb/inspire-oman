@@ -9,7 +9,11 @@ import { submitToAdmin } from "@/lib/submit-form";
 import {
   CONTACT_THANK_YOU,
   EMAIL_PATTERN,
+  MIN_TEXT_LENGTH,
   NAME_PATTERN,
+  PHONE_MAX_LENGTH,
+  PHONE_PATTERN,
+  sanitizePhoneInput,
   validateContactFields,
   type FieldErrors,
 } from "@/lib/form-validation";
@@ -108,84 +112,118 @@ export default function ContactForm() {
           </div>
 
           <ScrollReveal className="lg:col-span-3">
-            {submitted ? (
-              <FormThankYou
-                title={CONTACT_THANK_YOU.title}
-                paragraphs={CONTACT_THANK_YOU.paragraphs}
-              />
-            ) : (
-              <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5" noValidate>
+            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5" noValidate>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <input
                       type="text"
                       name="name"
                       placeholder="Your Name"
-                      required
-                      autoComplete="name"
-                      pattern={NAME_PATTERN.source}
-                      title="Letters only (A–Z)"
-                      value={formData.name}
-                      onChange={(e) => {
-                        setFormData({ ...formData, name: e.target.value });
-                        if (errors.name) setErrors({ ...errors, name: "" });
-                      }}
-                      className={inputClass}
-                      aria-invalid={Boolean(errors.name)}
-                    />
-                    {errors.name ? (
-                      <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>
-                    ) : null}
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email Address"
-                      required
-                      autoComplete="email"
-                      pattern={EMAIL_PATTERN.source}
-                      title="Valid email like name@example.com"
-                      value={formData.email}
-                      onChange={(e) => {
-                        setFormData({ ...formData, email: e.target.value });
-                        if (errors.email) setErrors({ ...errors, email: "" });
-                      }}
-                      className={inputClass}
-                      aria-invalid={Boolean(errors.email)}
-                    />
-                    {errors.email ? (
-                      <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
-                    ) : null}
-                  </div>
+                    required
+                    autoComplete="name"
+                    minLength={MIN_TEXT_LENGTH}
+                    pattern={NAME_PATTERN.source}
+                    title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                    value={formData.name}
+                    onChange={(e) => {
+                      setFormData({ ...formData, name: e.target.value });
+                      if (errors.name) setErrors({ ...errors, name: "" });
+                    }}
+                    className={inputClass}
+                    aria-invalid={Boolean(errors.name)}
+                  />
+                  {errors.name ? (
+                    <p className="mt-1.5 text-xs text-red-400">{errors.name}</p>
+                  ) : null}
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    autoComplete="email"
+                    pattern={EMAIL_PATTERN.source}
+                    title="Valid email like name@example.com"
+                    value={formData.email}
+                    onChange={(e) => {
+                      setFormData({ ...formData, email: e.target.value });
+                      if (errors.email) setErrors({ ...errors, email: "" });
+                    }}
+                    className={inputClass}
+                    aria-invalid={Boolean(errors.email)}
+                  />
+                  {errors.email ? (
+                    <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+                  ) : null}
+                </div>
+                <div>
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Phone Number"
+                    required
                     autoComplete="tel"
+                    inputMode="tel"
+                    maxLength={PHONE_MAX_LENGTH}
+                    pattern={PHONE_PATTERN.source}
+                    title="Digits only, optional leading +, max 15 characters"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({
+                        ...formData,
+                        phone: sanitizePhoneInput(e.target.value),
+                      });
+                      if (errors.phone) setErrors({ ...errors, phone: "" });
+                    }}
                     className={inputClass}
+                    aria-invalid={Boolean(errors.phone)}
                   />
+                  {errors.phone ? (
+                    <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>
+                  ) : null}
+                </div>
+                <div>
                   <input
                     type="text"
                     name="subject"
                     placeholder="Subject"
                     required
+                    minLength={MIN_TEXT_LENGTH}
+                    title={`At least ${MIN_TEXT_LENGTH} characters`}
                     value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, subject: e.target.value });
+                      if (errors.subject) setErrors({ ...errors, subject: "" });
+                    }}
                     className={inputClass}
+                    aria-invalid={Boolean(errors.subject)}
                   />
+                  {errors.subject ? (
+                    <p className="mt-1.5 text-xs text-red-400">{errors.subject}</p>
+                  ) : null}
                 </div>
+              </div>
+              <div>
                 <textarea
                   name="message"
                   placeholder="Your Message"
                   rows={5}
                   required
+                  minLength={MIN_TEXT_LENGTH}
+                  title={`At least ${MIN_TEXT_LENGTH} characters`}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, message: e.target.value });
+                    if (errors.message) setErrors({ ...errors, message: "" });
+                  }}
                   className={`${inputClass} resize-none`}
+                  aria-invalid={Boolean(errors.message)}
                 />
+                {errors.message ? (
+                  <p className="mt-1.5 text-xs text-red-400">{errors.message}</p>
+                ) : null}
+              </div>
                 {errors.form ? (
                   <p className="text-sm text-red-400">{errors.form}</p>
                 ) : null}
@@ -194,10 +232,16 @@ export default function ContactForm() {
                   <Send size={16} className="ml-2" />
                 </button>
               </form>
-            )}
           </ScrollReveal>
         </div>
       </div>
+
+      <FormThankYou
+        open={submitted}
+        title={CONTACT_THANK_YOU.title}
+        paragraphs={CONTACT_THANK_YOU.paragraphs}
+        onClose={() => setSubmitted(false)}
+      />
     </section>
   );
 }

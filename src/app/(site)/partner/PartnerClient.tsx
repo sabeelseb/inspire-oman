@@ -6,7 +6,19 @@ import { Check, Crown, ArrowRight, Send, ChevronDown, FileText, Shield } from "l
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
+import FormThankYou from "@/components/FormThankYou";
 import { submitToAdmin } from "@/lib/submit-form";
+import {
+  EMAIL_PATTERN,
+  MIN_TEXT_LENGTH,
+  NAME_PATTERN,
+  PARTNER_THANK_YOU,
+  PHONE_MAX_LENGTH,
+  PHONE_PATTERN,
+  sanitizePhoneInput,
+  validatePartnerFields,
+  type FieldErrors,
+} from "@/lib/form-validation";
 
 type PageData = {
   eyebrow?: string | null;
@@ -23,6 +35,21 @@ type Package = {
   features: string[];
 };
 
+const inputClass =
+  "w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors";
+
+const emptyForm = {
+  companyName: "",
+  contactPerson: "",
+  email: "",
+  phone: "",
+  designation: "",
+  address: "",
+  tier: "Leadership Partnership",
+  paymentMethod: "Bank Transfer",
+  agreeTerms: false,
+};
+
 export default function PartnerClient({
   page,
   packages,
@@ -30,58 +57,41 @@ export default function PartnerClient({
   page: PageData | null;
   packages: Package[];
 }) {
-  const [form, setForm] = useState({
-    companyName: "",
-    contactPerson: "",
-    email: "",
-    phone: "",
-    designation: "",
-    address: "",
-    tier: "Leadership Partnership",
-    paymentMethod: "Bank Transfer",
-    agreeTerms: false,
-  });
-
+  const [form, setForm] = useState(emptyForm);
   const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  const clearError = (key: string) => {
+    if (errors[key]) setErrors({ ...errors, [key]: "" });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.agreeTerms) {
-      alert("Please agree to the terms and conditions.");
-      return;
-    }
+    const nextErrors = validatePartnerFields(form);
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) return;
+
     setSending(true);
     const result = await submitToAdmin("partner", {
-      name: form.contactPerson || form.companyName,
-      email: form.email,
-      phone: form.phone,
-      companyName: form.companyName,
-      contactPerson: form.contactPerson,
-      designation: form.designation,
-      address: form.address,
+      name: form.contactPerson.trim() || form.companyName.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      companyName: form.companyName.trim(),
+      contactPerson: form.contactPerson.trim(),
+      designation: form.designation.trim(),
+      address: form.address.trim(),
       tier: form.tier,
       paymentMethod: form.paymentMethod,
       message: `Partnership application — ${form.tier}`,
     });
     setSending(false);
     if (!result.ok) {
-      alert(result.error);
+      setErrors({ form: result.error });
       return;
     }
-    alert(
-      "Thank you! Your sponsorship application has been submitted. Our team will contact you shortly."
-    );
-    setForm({
-      companyName: "",
-      contactPerson: "",
-      email: "",
-      phone: "",
-      designation: "",
-      address: "",
-      tier: "Leadership Partnership",
-      paymentMethod: "Bank Transfer",
-      agreeTerms: false,
-    });
+    setSubmitted(true);
+    setForm(emptyForm);
   };
 
   const title = page?.title || "Partner With Inspire Oman";
@@ -249,115 +259,230 @@ export default function PartnerClient({
             </ScrollReveal>
 
             <ScrollReveal>
-              <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  {(
-                    [
-                      {
-                        name: "companyName" as const,
-                        placeholder: "Company / Brand Name",
-                        type: "text",
-                      },
-                      {
-                        name: "contactPerson" as const,
-                        placeholder: "Contact Person",
-                        type: "text",
-                      },
-                      { name: "email" as const, placeholder: "Email Address", type: "email" },
-                      { name: "phone" as const, placeholder: "Phone Number", type: "tel" },
-                      { name: "designation" as const, placeholder: "Designation", type: "text" },
-                      { name: "address" as const, placeholder: "Address", type: "text" },
-                    ] as const
-                  ).map((field) => (
+              <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5" noValidate>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <input
+                        type="text"
+                        name="companyName"
+                        placeholder="Company / Brand Name"
+                        required
+                        minLength={MIN_TEXT_LENGTH}
+                        title={`At least ${MIN_TEXT_LENGTH} characters`}
+                        value={form.companyName}
+                        onChange={(e) => {
+                          setForm({ ...form, companyName: e.target.value });
+                          clearError("companyName");
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.companyName)}
+                      />
+                      {errors.companyName ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.companyName}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="contactPerson"
+                        placeholder="Contact Person"
+                        required
+                        minLength={MIN_TEXT_LENGTH}
+                        pattern={NAME_PATTERN.source}
+                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                        value={form.contactPerson}
+                        onChange={(e) => {
+                          setForm({ ...form, contactPerson: e.target.value });
+                          clearError("contactPerson");
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.contactPerson)}
+                      />
+                      {errors.contactPerson ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.contactPerson}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                        autoComplete="email"
+                        pattern={EMAIL_PATTERN.source}
+                        title="Valid email like name@example.com"
+                        value={form.email}
+                        onChange={(e) => {
+                          setForm({ ...form, email: e.target.value });
+                          clearError("email");
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.email)}
+                      />
+                      {errors.email ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number"
+                        required
+                        autoComplete="tel"
+                        inputMode="tel"
+                        maxLength={PHONE_MAX_LENGTH}
+                        pattern={PHONE_PATTERN.source}
+                        title="Digits only, optional leading +, max 15 characters"
+                        value={form.phone}
+                        onChange={(e) => {
+                          setForm({ ...form, phone: sanitizePhoneInput(e.target.value) });
+                          clearError("phone");
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.phone)}
+                      />
+                      {errors.phone ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="designation"
+                        placeholder="Designation"
+                        required
+                        minLength={MIN_TEXT_LENGTH}
+                        pattern={NAME_PATTERN.source}
+                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                        value={form.designation}
+                        onChange={(e) => {
+                          setForm({ ...form, designation: e.target.value });
+                          clearError("designation");
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.designation)}
+                      />
+                      {errors.designation ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.designation}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="address"
+                        placeholder="Address"
+                        required
+                        minLength={MIN_TEXT_LENGTH}
+                        title={`At least ${MIN_TEXT_LENGTH} characters`}
+                        value={form.address}
+                        onChange={(e) => {
+                          setForm({ ...form, address: e.target.value });
+                          clearError("address");
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.address)}
+                      />
+                      {errors.address ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.address}</p>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="relative">
+                      <select
+                        value={form.tier}
+                        onChange={(e) => setForm({ ...form, tier: e.target.value })}
+                        className={`${inputClass} appearance-none`}
+                      >
+                        {(tierOptions.length
+                          ? tierOptions
+                          : [
+                              "Associate Partnership - 1,000 OMR",
+                              "Leadership Partnership - 2,000 OMR",
+                              "Premier Partnership - 3,000 OMR",
+                            ]
+                        ).map((t) => (
+                          <option key={t} value={t} className="bg-primary text-white">
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown
+                        size={16}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
+                      />
+                    </div>
+                    <div className="relative">
+                      <select
+                        value={form.paymentMethod}
+                        onChange={(e) => setForm({ ...form, paymentMethod: e.target.value })}
+                        className={`${inputClass} appearance-none`}
+                      >
+                        {["Bank Transfer", "Cheque"].map((m) => (
+                          <option key={m} value={m} className="bg-primary text-white">
+                            {m}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown
+                        size={16}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="glass-card p-5 text-sm text-white/40 space-y-2">
+                    <div className="flex items-center gap-2 text-gold/70 font-medium">
+                      <Shield size={16} /> Terms & Conditions
+                    </div>
+                    <p>
+                      Payment is to be made in advance via cheque or bank transfer to Gulf Madhyamam
+                      L.L.C. (Bank Muscat). The partnership includes all deliverables specified in the
+                      selected tier. Content and schedules are subject to editorial guidelines.
+                    </p>
+                  </div>
+
+                  <label className="flex items-start gap-3 cursor-pointer">
                     <input
-                      key={field.name}
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      required
-                      value={form[field.name]}
-                      onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                      type="checkbox"
+                      checked={form.agreeTerms}
+                      onChange={(e) => {
+                        setForm({ ...form, agreeTerms: e.target.checked });
+                        clearError("agreeTerms");
+                      }}
+                      className="mt-1 accent-gold-DEFAULT"
                     />
-                  ))}
-                </div>
+                    <span className="text-white/50 text-sm">
+                      I acknowledge and agree to the terms and conditions of the Inspire Oman
+                      Sponsorship Agreement.
+                    </span>
+                  </label>
+                  {errors.agreeTerms ? (
+                    <p className="text-xs text-red-400">{errors.agreeTerms}</p>
+                  ) : null}
+                  {errors.form ? (
+                    <p className="text-sm text-red-400">{errors.form}</p>
+                  ) : null}
 
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div className="relative">
-                    <select
-                      value={form.tier}
-                      onChange={(e) => setForm({ ...form, tier: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
-                    >
-                      {(tierOptions.length
-                        ? tierOptions
-                        : [
-                            "Associate Partnership - 1,000 OMR",
-                            "Leadership Partnership - 2,000 OMR",
-                            "Premier Partnership - 3,000 OMR",
-                          ]
-                      ).map((t) => (
-                        <option key={t} value={t} className="bg-primary text-white">
-                          {t}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      size={16}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
-                    />
-                  </div>
-                  <div className="relative">
-                    <select
-                      value={form.paymentMethod}
-                      onChange={(e) => setForm({ ...form, paymentMethod: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
-                    >
-                      {["Bank Transfer", "Cheque"].map((m) => (
-                        <option key={m} value={m} className="bg-primary text-white">
-                          {m}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      size={16}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="glass-card p-5 text-sm text-white/40 space-y-2">
-                  <div className="flex items-center gap-2 text-gold/70 font-medium">
-                    <Shield size={16} /> Terms & Conditions
-                  </div>
-                  <p>
-                    Payment is to be made in advance via cheque or bank transfer to Gulf Madhyamam
-                    L.L.C. (Bank Muscat). The partnership includes all deliverables specified in the
-                    selected tier. Content and schedules are subject to editorial guidelines.
-                  </p>
-                </div>
-
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={form.agreeTerms}
-                    onChange={(e) => setForm({ ...form, agreeTerms: e.target.checked })}
-                    className="mt-1 accent-gold-DEFAULT"
-                  />
-                  <span className="text-white/50 text-sm">
-                    I acknowledge and agree to the terms and conditions of the Inspire Oman
-                    Sponsorship Agreement.
-                  </span>
-                </label>
-
-                <button type="submit" className="btn-primary w-full" disabled={sending}>
-                  {sending ? "Submitting..." : "Submit Application"}
-                  <Send size={16} className="ml-2" />
-                </button>
-              </form>
+                  <button type="submit" className="btn-primary w-full" disabled={sending}>
+                    {sending ? "Submitting..." : "Submit Application"}
+                    <Send size={16} className="ml-2" />
+                  </button>
+                </form>
             </ScrollReveal>
           </div>
         </div>
       </section>
+
+      <FormThankYou
+        open={submitted}
+        title={PARTNER_THANK_YOU.title}
+        paragraphs={PARTNER_THANK_YOU.paragraphs}
+        onClose={() => setSubmitted(false)}
+        ctaLabel="Done"
+      />
     </>
   );
 }

@@ -12,7 +12,11 @@ import { submitToAdmin } from "@/lib/submit-form";
 import {
   CONTACT_THANK_YOU,
   EMAIL_PATTERN,
+  MIN_TEXT_LENGTH,
   NAME_PATTERN,
+  PHONE_MAX_LENGTH,
+  PHONE_PATTERN,
+  sanitizePhoneInput,
   validateContactFields,
   type FieldErrors,
 } from "@/lib/form-validation";
@@ -173,13 +177,7 @@ export default function ContactClient({ page }: { page: PageData | null }) {
             </div>
 
             <ScrollReveal className="lg:col-span-3" delay={0.1}>
-              {submitted ? (
-                <FormThankYou
-                  title={CONTACT_THANK_YOU.title}
-                  paragraphs={CONTACT_THANK_YOU.paragraphs}
-                />
-              ) : (
-                <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5" noValidate>
+              <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5" noValidate>
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <input
@@ -188,8 +186,9 @@ export default function ContactClient({ page }: { page: PageData | null }) {
                         placeholder="Your Name"
                         required
                         autoComplete="name"
+                        minLength={MIN_TEXT_LENGTH}
                         pattern={NAME_PATTERN.source}
-                        title="Letters only (A–Z)"
+                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
                         value={form.name}
                         onChange={(e) => {
                           setForm({ ...form, name: e.target.value });
@@ -223,34 +222,70 @@ export default function ContactClient({ page }: { page: PageData | null }) {
                         <p className="mt-1.5 text-xs text-red-400">{errors.email}</p>
                       ) : null}
                     </div>
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="Phone Number"
-                      autoComplete="tel"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className={inputClass}
-                    />
-                    <input
-                      type="text"
-                      name="subject"
-                      placeholder="Subject"
-                      required
-                      value={form.subject}
-                      onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                      className={inputClass}
-                    />
+                    <div>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number"
+                        required
+                        autoComplete="tel"
+                        inputMode="tel"
+                        maxLength={PHONE_MAX_LENGTH}
+                        pattern={PHONE_PATTERN.source}
+                        title="Digits only, optional leading +, max 15 characters"
+                        value={form.phone}
+                        onChange={(e) => {
+                          setForm({ ...form, phone: sanitizePhoneInput(e.target.value) });
+                          if (errors.phone) setErrors({ ...errors, phone: "" });
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.phone)}
+                      />
+                      {errors.phone ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.phone}</p>
+                      ) : null}
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        required
+                        minLength={MIN_TEXT_LENGTH}
+                        title={`At least ${MIN_TEXT_LENGTH} characters`}
+                        value={form.subject}
+                        onChange={(e) => {
+                          setForm({ ...form, subject: e.target.value });
+                          if (errors.subject) setErrors({ ...errors, subject: "" });
+                        }}
+                        className={inputClass}
+                        aria-invalid={Boolean(errors.subject)}
+                      />
+                      {errors.subject ? (
+                        <p className="mt-1.5 text-xs text-red-400">{errors.subject}</p>
+                      ) : null}
+                    </div>
                   </div>
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    rows={6}
-                    required
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className={`${inputClass} resize-none`}
-                  />
+                  <div>
+                    <textarea
+                      name="message"
+                      placeholder="Your Message"
+                      rows={6}
+                      required
+                      minLength={MIN_TEXT_LENGTH}
+                      title={`At least ${MIN_TEXT_LENGTH} characters`}
+                      value={form.message}
+                      onChange={(e) => {
+                        setForm({ ...form, message: e.target.value });
+                        if (errors.message) setErrors({ ...errors, message: "" });
+                      }}
+                      className={`${inputClass} resize-none`}
+                      aria-invalid={Boolean(errors.message)}
+                    />
+                    {errors.message ? (
+                      <p className="mt-1.5 text-xs text-red-400">{errors.message}</p>
+                    ) : null}
+                  </div>
                   {errors.form ? (
                     <p className="text-sm text-red-400">{errors.form}</p>
                   ) : null}
@@ -259,11 +294,17 @@ export default function ContactClient({ page }: { page: PageData | null }) {
                     <Send size={16} className="ml-2" />
                   </button>
                 </form>
-              )}
             </ScrollReveal>
           </div>
         </div>
       </section>
+
+      <FormThankYou
+        open={submitted}
+        title={CONTACT_THANK_YOU.title}
+        paragraphs={CONTACT_THANK_YOU.paragraphs}
+        onClose={() => setSubmitted(false)}
+      />
 
       <section className="relative h-[400px] bg-primary-light">
         <IslamicPattern opacity={0.04} />
