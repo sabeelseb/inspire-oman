@@ -1,6 +1,5 @@
 import HomeClient from "./HomeClient";
 import {
-  getCmsPackages,
   getCmsPageHome,
   getCmsPartners,
   getCmsPillars,
@@ -10,7 +9,7 @@ import {
 } from "@/lib/cms";
 
 export default async function Home() {
-  const [page, stats, partners, testimonials, speakers, pillars, packages] =
+  const [page, stats, partners, testimonials, speakers, pillars] =
     await Promise.all([
       getCmsPageHome(),
       getCmsStats(),
@@ -18,7 +17,6 @@ export default async function Home() {
       getCmsTestimonials(),
       getCmsSpeakers(),
       getCmsPillars(),
-      getCmsPackages(),
     ]);
 
   return (
@@ -29,7 +27,6 @@ export default async function Home() {
       testimonials={testimonials}
       speakers={speakers}
       pillars={pillars}
-      packages={packages}
     />
   );
 }

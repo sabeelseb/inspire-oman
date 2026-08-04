@@ -50,6 +50,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const siteConfig = useCmsSite();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isAbout = pathname === "/about";
+  /** Home + About share the full splash / first-paint experience. */
+  const isSplashPage = isHome || isAbout;
   const reduceMotion = useReducedMotion();
   const booted = useRef(false);
   const readyKeys = useRef(new Set<string>());
@@ -67,9 +70,12 @@ export default function AppShell({ children }: { children: ReactNode }) {
         if (mobileRef.current) return keys.has("hero") && keys.has("pack");
         return keys.has("hero") && keys.has("banner") && keys.has("pack");
       }
+      if (isAbout) {
+        return keys.has("about-hero") && keys.has("pack");
+      }
       return keys.has("pack");
     },
-    [isHome]
+    [isHome, isAbout]
   );
 
   const markTopReady = useCallback(
@@ -94,8 +100,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
     const mobile = getIsMobile();
     mobileRef.current = mobile;
 
-    const minMs = mobile ? (isHome ? 280 : 160) : isHome ? 800 : 400;
-    const failMs = mobile ? (isHome ? 2200 : 1200) : isHome ? 5000 : 2000;
+    const minMs = mobile ? (isSplashPage ? 280 : 160) : isSplashPage ? 800 : 400;
+    const failMs = mobile ? (isSplashPage ? 2200 : 1200) : isSplashPage ? 5000 : 2000;
     const minTimer = window.setTimeout(() => setMinTimeDone(true), minMs);
     const failSafe = window.setTimeout(() => setSectionReady(true), failMs);
 

@@ -7,17 +7,15 @@ import StatsCounter from "@/components/StatsCounter";
 import PartnersSection from "@/components/PartnersSection";
 import PillarsSection from "@/components/PillarsSection";
 import SummitHighlights from "@/components/SummitHighlights";
-import PackageTiers from "@/components/PackageTiers";
 import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import { useCmsSite } from "@/components/CmsProvider";
 import TitleHighlight from "@/components/TitleHighlight";
-import { testimonials as fallbackTestimonials, pillars as fallbackPillars, packages as fallbackPackages } from "@/lib/data";
+import { testimonials as fallbackTestimonials, pillars as fallbackPillars } from "@/lib/data";
 
 type Testimonial = (typeof fallbackTestimonials)[number];
 type Pillar = (typeof fallbackPillars)[number];
-type Package = (typeof fallbackPackages)[number];
 type Stat = { value: number; suffix: string; label: string };
 type Partner = {
   name: string;
@@ -64,7 +62,12 @@ type HomePage = {
   partnersTitleHighlight?: string | null;
   partnersSubtitle?: string | null;
   ctaTitle?: string | null;
+  ctaTitleHighlight?: string | null;
   ctaBody?: string | null;
+  ctaPrimaryLabel?: string | null;
+  ctaPrimaryHref?: string | null;
+  ctaSecondaryLabel?: string | null;
+  ctaSecondaryHref?: string | null;
 };
 
 function AboutSection({ page }: { page?: HomePage | null }) {
@@ -217,7 +220,7 @@ function CTABanner({ page }: { page?: HomePage | null }) {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
             <TitleHighlight
               title={page?.ctaTitle || "Be Part of Oman's Growth Story"}
-              highlight="Growth Story"
+              highlight={page?.ctaTitleHighlight || "Growth Story"}
             />
           </h2>
           <p className="text-white/50 text-lg mb-10 max-w-2xl mx-auto">
@@ -225,12 +228,18 @@ function CTABanner({ page }: { page?: HomePage | null }) {
               "Join Inspire Oman as a partner or delegate and connect with the region's most dynamic business community"}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/partner" className="btn-primary text-base group">
-              Become a Partner
+            <Link
+              href={page?.ctaPrimaryHref || "/partner"}
+              className="btn-primary text-base group"
+            >
+              {page?.ctaPrimaryLabel || "Become a Partner"}
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/summit" className="btn-outline text-base">
-              Register for Summit
+            <Link
+              href={page?.ctaSecondaryHref || "/summit"}
+              className="btn-outline text-base"
+            >
+              {page?.ctaSecondaryLabel || "Register for Summit"}
             </Link>
           </div>
         </ScrollReveal>
@@ -246,7 +255,6 @@ export default function HomeClient({
   testimonials,
   speakers,
   pillars = fallbackPillars,
-  packages = fallbackPackages,
 }: {
   page?: HomePage | null;
   stats: Stat[];
@@ -254,7 +262,6 @@ export default function HomeClient({
   testimonials: Testimonial[];
   speakers: Speaker[];
   pillars?: Pillar[];
-  packages?: Package[];
 }) {
   const pageStats =
     page?.homeStats
@@ -291,9 +298,6 @@ export default function HomeClient({
       </div>
       <div className="cv-auto">
         <SummitHighlights speakers={speakers} />
-      </div>
-      <div className="cv-auto">
-        <PackageTiers packages={packages} />
       </div>
       <div className="cv-auto">
         <TestimonialsSection testimonials={testimonials} />

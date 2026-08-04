@@ -368,7 +368,12 @@ export async function getCmsPageHome() {
       partnersTitleHighlight: page.partnersTitleHighlight,
       partnersSubtitle: page.partnersSubtitle,
       ctaTitle: page.ctaTitle,
+      ctaTitleHighlight: page.ctaTitleHighlight,
       ctaBody: page.ctaBody,
+      ctaPrimaryLabel: page.ctaPrimaryLabel,
+      ctaPrimaryHref: page.ctaPrimaryHref,
+      ctaSecondaryLabel: page.ctaSecondaryLabel,
+      ctaSecondaryHref: page.ctaSecondaryHref,
     };
   } catch {
     return null;

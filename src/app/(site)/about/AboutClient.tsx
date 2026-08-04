@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Target,
   Eye,
@@ -14,6 +15,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
 import TitleHighlight from "@/components/TitleHighlight";
 import { useCmsSite } from "@/components/CmsProvider";
+import { usePageLoader } from "@/components/AppShell";
+import { useIsMobile } from "@/hooks/useMobilePerf";
 
 const iconMap: Record<string, LucideIcon> = {
   Target,
@@ -55,6 +58,10 @@ export default function AboutClient({
   values: ValueItem[];
 }) {
   const siteConfig = useCmsSite();
+  const { markTopReady } = usePageLoader();
+  const reduceMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+
   const stakeholders =
     page?.stakeholders?.filter((s): s is string => Boolean(s)) || [
       "Senior Government Representatives",
@@ -80,33 +87,73 @@ export default function AboutClient({
     .filter((f) => f.label || f.value);
   const facts = missionFacts.length ? missionFacts : defaultMissionFacts;
 
+  // Same splash gate as Home: paint-ready + failsafe timeout
+  useEffect(() => {
+    let cancelled = false;
+    let paintTimer: number | undefined;
+    const failsafe = window.setTimeout(
+      () => markTopReady("about-hero"),
+      isMobile ? 1600 : 3000
+    );
+    const raf = window.requestAnimationFrame(() => {
+      paintTimer = window.setTimeout(() => {
+        if (!cancelled) markTopReady("about-hero");
+      }, isMobile ? 480 : 720);
+    });
+    return () => {
+      cancelled = true;
+      window.clearTimeout(failsafe);
+      window.cancelAnimationFrame(raf);
+      if (paintTimer) window.clearTimeout(paintTimer);
+    };
+  }, [markTopReady, isMobile]);
+
+  const fade = (delay: number, y = 20, duration = 0.7) => {
+    if (reduceMotion) return {};
+    if (isMobile) {
+      return {
+        initial: { opacity: 0, y: Math.min(y, 18) },
+        animate: { opacity: 1, y: 0 },
+        transition: {
+          duration: Math.min(duration, 0.5),
+          delay: delay * 0.45,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      };
+    }
+    return {
+      initial: { opacity: 0, y },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration, delay },
+    };
+  };
+
   return (
     <>
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-dark-gradient" />
         <IslamicPattern opacity={0.05} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/[0.03] blur-[100px]" />
+        {/* Heavy blur orb — desktop only (same as Home hero) */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/[0.03] hidden md:block md:blur-[100px]"
+          aria-hidden
+        />
 
         <div className="relative site-container text-center">
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...fade(0.2, 16, 0.65)}
             className="text-gold text-sm font-semibold uppercase tracking-widest mb-4"
           >
             {page?.eyebrow || "About the Initiative"}
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            {...fade(0.35, 30, 0.8)}
             className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6"
           >
             <TitleHighlight title={title} highlight={highlight} />
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            {...fade(0.5)}
             className="text-white/50 text-lg leading-relaxed max-w-2xl mx-auto"
           >
             {page?.subtitle || siteConfig.description}
@@ -162,17 +209,20 @@ export default function AboutClient({
             </h2>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {values.map((v, i) => {
               const Icon = iconMap[v.icon] || Target;
               return (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <motion.div whileHover={{ y: -4 }} className="glass-card-hover p-6">
-                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4">
+                <ScrollReveal key={i} delay={i * 0.1} className="h-full">
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    className="glass-card-hover p-6 h-full flex flex-col"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4 shrink-0">
                       <Icon size={24} className="text-gold" />
                     </div>
                     <h3 className="text-lg font-semibold text-white mb-2">{v.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{v.description}</p>
+                    <p className="text-white/50 text-sm leading-relaxed flex-1">{v.description}</p>
                   </motion.div>
                 </ScrollReveal>
               );

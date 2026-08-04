@@ -448,9 +448,45 @@ export const HomePage: GlobalConfig = {
       name: "ctaTitle",
       type: "text",
       defaultValue: "Be Part of Oman's Growth Story",
-      label: "Bottom CTA title",
+      label: "Bottom CTA - title",
     },
-    { name: "ctaBody", type: "textarea", label: "Bottom CTA body" },
+    {
+      name: "ctaTitleHighlight",
+      type: "text",
+      defaultValue: "Growth Story",
+      label: "Bottom CTA - gold highlight word(s)",
+    },
+    {
+      name: "ctaBody",
+      type: "textarea",
+      defaultValue:
+        "Join Inspire Oman as a partner or delegate and connect with the region's most dynamic business community",
+      label: "Bottom CTA - body",
+    },
+    {
+      name: "ctaPrimaryLabel",
+      type: "text",
+      defaultValue: "Become a Partner",
+      label: "Bottom CTA - primary button label",
+    },
+    {
+      name: "ctaPrimaryHref",
+      type: "text",
+      defaultValue: "/partner",
+      label: "Bottom CTA - primary button link",
+    },
+    {
+      name: "ctaSecondaryLabel",
+      type: "text",
+      defaultValue: "Register for Summit",
+      label: "Bottom CTA - secondary button label",
+    },
+    {
+      name: "ctaSecondaryHref",
+      type: "text",
+      defaultValue: "/summit",
+      label: "Bottom CTA - secondary button link",
+    },
   ],
 };
 
