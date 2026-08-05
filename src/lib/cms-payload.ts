@@ -493,7 +493,7 @@ export async function getCmsStats() {
 
 export async function getCmsSpeakers() {
   try {
-    const docs = await findPublished("speakers", "createdAt");
+    const docs = await findPublished("speakers", "_order");
     if (!docs.length) return fallbackSpeakers;
     return docs.map((doc) => ({
       name: String(doc.name || ""),

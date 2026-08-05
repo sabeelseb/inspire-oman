@@ -60,10 +60,13 @@ export const Stats: CollectionConfig = {
 
 export const Speakers: CollectionConfig = {
   slug: "speakers",
+  orderable: true,
+  defaultSort: "_order",
   admin: {
     useAsTitle: "name",
     group: "Site content",
     defaultColumns: ["name", "role", "featured", "_status"],
+    description: "Drag rows to set speaker order on the site.",
   },
   versions: draftVersions,
   fields: [
