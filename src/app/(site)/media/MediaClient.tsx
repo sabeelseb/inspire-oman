@@ -111,10 +111,10 @@ export default function MediaClient({
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-primary/50 group-hover:bg-primary/40 transition-colors" />
+                    <div className="absolute inset-0 bg-primary/50 opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center group-hover:bg-gold/30 transition-colors">
-                        <Play size={28} className="text-gold ml-1" />
+                      <div className="w-16 h-16 rounded-full border border-gold/40 bg-gold/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold group-hover:shadow-[0_0_28px_rgba(201,162,39,0.55)]">
+                        <Play size={28} className="text-gold ml-1 transition-colors duration-300 group-hover:text-primary" fill="currentColor" />
                       </div>
                     </div>
                     <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/80 text-gold text-xs font-semibold">
