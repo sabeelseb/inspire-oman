@@ -89,11 +89,6 @@ export default function ContactForm() {
                 label: "Venue",
                 lines: [siteConfig.venue, `${siteConfig.city}, Oman`],
               },
-              {
-                icon: Phone,
-                label: "India",
-                lines: [siteConfig.contact.india.phone, siteConfig.contact.india.email],
-              },
             ].map(({ icon: Icon, label, lines }, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <div className="glass-card p-5 flex items-start gap-4">
