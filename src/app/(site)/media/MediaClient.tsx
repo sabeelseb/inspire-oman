@@ -154,7 +154,7 @@ export default function MediaClient({
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 50vw, 25vw"
                     />
-                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <div className="absolute inset-0 hidden bg-primary/40 opacity-0 transition-opacity lg:flex lg:items-end lg:p-4 lg:group-hover:opacity-100">
                       <div>
                         <h4 className="text-white font-medium text-sm">{item.title}</h4>
                         <p className="text-white/60 text-xs mt-1">{item.caption}</p>
