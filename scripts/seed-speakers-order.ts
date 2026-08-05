@@ -27,7 +27,9 @@ async function main() {
     return String(a.name || "").localeCompare(String(b.name || ""));
   });
 
+  let updated = 0;
   for (const [index, doc] of docs.entries()) {
+    if ((doc as { _order?: string })._order) continue;
     const nextOrder = orderKey(index);
     await payload.update({
       collection: "speakers",
@@ -36,10 +38,11 @@ async function main() {
       overrideAccess: true,
       draft: false,
     });
+    updated += 1;
     console.log(`  ${nextOrder}  ${doc.name}`);
   }
 
-  console.log(`Seeded _order for ${docs.length} speakers.`);
+  console.log(`Seeded _order for ${updated}/${docs.length} speakers.`);
   process.exit(0);
 }
 
