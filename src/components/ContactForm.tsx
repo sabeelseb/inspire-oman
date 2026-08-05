@@ -87,7 +87,7 @@ export default function ContactForm() {
               {
                 icon: MapPin,
                 label: "Venue",
-                lines: [siteConfig.venue, "Muscat, Oman"],
+                lines: [siteConfig.venue, `${siteConfig.city}, Oman`],
               },
               {
                 icon: Phone,

@@ -9,31 +9,105 @@ export const Site: GlobalConfig = {
   label: "Site Settings",
   admin: {
     group: "Settings",
+    description:
+      "Shared brand, SEO, summit details, and default images. Header, footer, contact, social, and partner names are edited in their own Settings tabs.",
   },
   versions: draftVersions,
   fields: [
-    { name: "name", type: "text", defaultValue: "Inspire Oman", label: "Site name" },
-    { name: "tagline", type: "text" },
-    { name: "slogan", type: "text" },
-    { name: "description", type: "textarea", label: "Short description" },
-    { name: "summitDate", type: "text", label: "Summit date" },
-    { name: "venue", type: "text" },
-    { name: "heroImage", type: "upload", relationTo: "media", label: "Hero background image" },
-    { name: "bannerImage", type: "upload", relationTo: "media", label: "Skyline / brand banner" },
-    { name: "summitImage", type: "upload", relationTo: "media", label: "Summit featured image" },
-    { name: "omanPhone1", type: "text", label: "Oman phone 1" },
-    { name: "omanPhone2", type: "text", label: "Oman phone 2" },
-    { name: "omanEmail", type: "text", label: "Oman email" },
-    { name: "indiaPhone", type: "text", label: "India phone" },
-    { name: "indiaEmail", type: "text", label: "India email" },
-    { name: "instagram", type: "text", label: "Instagram URL" },
-    { name: "facebook", type: "text", label: "Facebook URL" },
-    { name: "linkedin", type: "text", label: "LinkedIn URL" },
-    { name: "twitter", type: "text", label: "Twitter / X URL" },
-    { name: "youtube", type: "text", label: "YouTube URL" },
-    { name: "partnerStrategic", type: "text", label: "Strategic partner name" },
-    { name: "partnerInitiative", type: "text", label: "Initiative by name" },
-    { name: "partnerExecution", type: "text", label: "Execution partner name" },
+    {
+      type: "tabs",
+      tabs: [
+        {
+          label: "Brand & SEO",
+          fields: [
+            { name: "name", type: "text", defaultValue: "Inspire Oman", label: "Site name" },
+            {
+              name: "seoTitle",
+              type: "text",
+              defaultValue: "Inspire Oman - Telling Oman's Growth Story Globally",
+              label: "Browser / SEO title",
+              admin: {
+                description: "Shown in the browser tab and search results.",
+              },
+            },
+            {
+              name: "seoDescription",
+              type: "textarea",
+              defaultValue:
+                "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 11 October 2026, Oman Convention & Exhibition Centre.",
+              label: "SEO description",
+            },
+            {
+              name: "slogan",
+              type: "text",
+              label: "Default slogan",
+              admin: {
+                description: "Used when a page does not set its own slogan.",
+              },
+            },
+            {
+              name: "description",
+              type: "textarea",
+              label: "Default short description",
+              admin: {
+                description: "Fallback blurb when a page or the footer has no description.",
+              },
+            },
+          ],
+        },
+        {
+          label: "Summit",
+          fields: [
+            { name: "summitDate", type: "text", label: "Summit date" },
+            { name: "venue", type: "text", label: "Venue" },
+            {
+              name: "city",
+              type: "text",
+              defaultValue: "Muscat",
+              label: "City",
+              admin: {
+                description: "Shown with the venue on contact and as the hero city fallback.",
+              },
+            },
+          ],
+        },
+        {
+          label: "Shared images",
+          fields: [
+            {
+              name: "heroImage",
+              type: "upload",
+              relationTo: "media",
+              label: "Default hero / page background",
+            },
+            {
+              name: "bannerImage",
+              type: "upload",
+              relationTo: "media",
+              label: "Skyline / brand banner",
+            },
+            {
+              name: "summitImage",
+              type: "upload",
+              relationTo: "media",
+              label: "Summit featured image",
+              admin: {
+                description: "Large photo on the summit speakers card.",
+              },
+            },
+            {
+              name: "ogImage",
+              type: "upload",
+              relationTo: "media",
+              label: "Social share image",
+              admin: {
+                description: "Preview image when the site is shared on WhatsApp, LinkedIn, etc.",
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 
@@ -210,7 +284,22 @@ export const Footer: GlobalConfig = {
       name: "partnerName",
       type: "text",
       defaultValue: "Oman Chamber of Commerce & Industry",
-      label: "Partner callout name",
+      label: "Strategic partner name",
+      admin: {
+        description: "Footer callout and default Strategic Partner label on the site.",
+      },
+    },
+    {
+      name: "partnerInitiative",
+      type: "text",
+      defaultValue: "Gulf Madhyamam",
+      label: "Initiative by name",
+    },
+    {
+      name: "partnerExecution",
+      type: "text",
+      defaultValue: "mefriend",
+      label: "Execution partner name",
     },
     {
       type: "row",

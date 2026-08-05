@@ -118,7 +118,7 @@ export default function ContactClient({ page }: { page: PageData | null }) {
               {
                 icon: MapPin,
                 title: "Summit Venue",
-                lines: [siteConfig.venue, "Muscat, Sultanate of Oman"],
+                lines: [siteConfig.venue, `${siteConfig.city}, Sultanate of Oman`],
               },
               {
                 icon: Phone,
@@ -312,7 +312,7 @@ export default function ContactClient({ page }: { page: PageData | null }) {
           <div className="text-center">
             <MapPin size={48} className="text-gold/20 mx-auto mb-4" />
             <p className="text-white/30 text-lg font-medium">{siteConfig.venue}</p>
-            <p className="text-white/20 text-sm mt-2">Muscat, Sultanate of Oman</p>
+            <p className="text-white/20 text-sm mt-2">{siteConfig.city}, Sultanate of Oman</p>
           </div>
         </div>
       </section>

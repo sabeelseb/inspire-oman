@@ -79,7 +79,7 @@ export default function AboutClient({
     { label: "Strategic Partner", value: "OCCI" },
     { label: "Initiative By", value: siteConfig.partners.initiative },
     { label: "Execution", value: siteConfig.partners.execution },
-    { label: "Summit Date", value: "11 Oct 2026" },
+    { label: "Summit Date", value: siteConfig.summitDate },
   ];
   const missionFacts = (page?.missionFacts ?? [])
     .filter((f): f is { label: string | null; value: string | null } => Boolean(f))

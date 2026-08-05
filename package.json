@@ -14,6 +14,7 @@
     "export:payload": "tsx --env-file=.env scripts/export-payload-dump.ts",
     "import:payload": "tsx --env-file=.env scripts/import-payload-dump.ts",
     "seed:speakers-order": "tsx --env-file=.env scripts/seed-speakers-order.ts",
+    "seed:site-settings": "tsx --env-file=.env scripts/seed-site-settings-cleanup.ts",
     "migrate:submissions": "tsx --env-file=.env scripts/migrate-submissions-split.ts",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap"

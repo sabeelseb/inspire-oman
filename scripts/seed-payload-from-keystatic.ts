@@ -146,6 +146,8 @@ async function main() {
         indiaEmail: d.indiaEmail,
         partnerLabel: d.partnerLabel,
         partnerName: d.partnerName,
+        partnerInitiative: d.partnerInitiative,
+        partnerExecution: d.partnerExecution,
         instagram: d.instagram,
         facebook: d.facebook,
         linkedin: d.linkedin,

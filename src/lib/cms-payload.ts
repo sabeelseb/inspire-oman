@@ -162,43 +162,55 @@ export async function getCmsSite() {
           .filter((l) => l.label && l.href)
       : [];
 
-    const siteSocial = {
-      instagram: (site?.instagram as string) || fallbackSite.social.instagram,
-      facebook: (site?.facebook as string) || fallbackSite.social.facebook,
-      linkedin: (site?.linkedin as string) || fallbackSite.social.linkedin,
-      twitter: (site?.twitter as string) || fallbackSite.social.twitter,
-      youtube: (site?.youtube as string) || fallbackSite.social.youtube,
+    const footerSocial = {
+      instagram:
+        (footer?.instagram as string) || fallbackSite.footer.social.instagram,
+      facebook:
+        (footer?.facebook as string) || fallbackSite.footer.social.facebook,
+      linkedin:
+        (footer?.linkedin as string) || fallbackSite.footer.social.linkedin,
+      twitter: (footer?.twitter as string) || fallbackSite.footer.social.twitter,
+      youtube: (footer?.youtube as string) || fallbackSite.footer.social.youtube,
     };
 
     const siteContact = {
       oman: {
         ...fallbackSite.contact.oman,
-        phone1: (site?.omanPhone1 as string) || fallbackSite.contact.oman.phone1,
-        phone2: (site?.omanPhone2 as string) || fallbackSite.contact.oman.phone2,
-        email: (site?.omanEmail as string) || fallbackSite.contact.oman.email,
+        phone1:
+          (footer?.omanPhone1 as string) || fallbackSite.contact.oman.phone1,
+        phone2:
+          (footer?.omanPhone2 as string) || fallbackSite.contact.oman.phone2,
+        email: (footer?.omanEmail as string) || fallbackSite.contact.oman.email,
       },
       india: {
         ...fallbackSite.contact.india,
-        phone: (site?.indiaPhone as string) || fallbackSite.contact.india.phone,
-        email: (site?.indiaEmail as string) || fallbackSite.contact.india.email,
+        phone:
+          (footer?.indiaPhone as string) || fallbackSite.contact.india.phone,
+        email:
+          (footer?.indiaEmail as string) || fallbackSite.contact.india.email,
       },
     };
 
     return {
       ...fallbackSite,
       name: (site?.name as string) || fallbackSite.name,
-      tagline: (site?.tagline as string) || fallbackSite.tagline,
+      seoTitle: (site?.seoTitle as string) || fallbackSite.seoTitle,
+      seoDescription:
+        (site?.seoDescription as string) || fallbackSite.seoDescription,
       slogan: (site?.slogan as string) || fallbackSite.slogan,
       description: (site?.description as string) || fallbackSite.description,
       summitDate: (site?.summitDate as string) || fallbackSite.summitDate,
       venue: (site?.venue as string) || fallbackSite.venue,
+      city: (site?.city as string) || fallbackSite.city,
       partners: {
         strategic:
-          (site?.partnerStrategic as string) || fallbackSite.partners.strategic,
+          (footer?.partnerName as string) || fallbackSite.partners.strategic,
         initiative:
-          (site?.partnerInitiative as string) || fallbackSite.partners.initiative,
+          (footer?.partnerInitiative as string) ||
+          fallbackSite.partners.initiative,
         execution:
-          (site?.partnerExecution as string) || fallbackSite.partners.execution,
+          (footer?.partnerExecution as string) ||
+          fallbackSite.partners.execution,
       },
       images: {
         ...fallbackSite.images,
@@ -218,6 +230,10 @@ export async function getCmsSite() {
           mediaUrl(site?.summitImage) ||
           (site?.summitImage as string) ||
           fallbackSite.images.summit,
+        og:
+          mediaUrl(site?.ogImage) ||
+          (site?.ogImage as string) ||
+          fallbackSite.images.og,
       },
       header: {
         brandPrimary:
@@ -253,39 +269,32 @@ export async function getCmsSite() {
             : [...fallbackSite.footer.quickLinks],
         omanTitle:
           (footer?.omanTitle as string) || fallbackSite.footer.omanTitle,
-        omanPhone1:
-          (footer?.omanPhone1 as string) || siteContact.oman.phone1,
-        omanPhone2:
-          (footer?.omanPhone2 as string) || siteContact.oman.phone2,
-        omanEmail: (footer?.omanEmail as string) || siteContact.oman.email,
+        omanPhone1: siteContact.oman.phone1,
+        omanPhone2: siteContact.oman.phone2,
+        omanEmail: siteContact.oman.email,
         omanAddress:
           (footer?.omanAddress as string) || fallbackSite.footer.omanAddress,
         indiaTitle:
           (footer?.indiaTitle as string) || fallbackSite.footer.indiaTitle,
-        indiaPhone:
-          (footer?.indiaPhone as string) || siteContact.india.phone,
-        indiaEmail:
-          (footer?.indiaEmail as string) || siteContact.india.email,
+        indiaPhone: siteContact.india.phone,
+        indiaEmail: siteContact.india.email,
         partnerLabel:
           (footer?.partnerLabel as string) || fallbackSite.footer.partnerLabel,
         partnerName:
-          (footer?.partnerName as string) ||
-          (site?.partnerStrategic as string) ||
-          fallbackSite.footer.partnerName,
+          (footer?.partnerName as string) || fallbackSite.footer.partnerName,
+        partnerInitiative:
+          (footer?.partnerInitiative as string) ||
+          fallbackSite.footer.partnerInitiative,
+        partnerExecution:
+          (footer?.partnerExecution as string) ||
+          fallbackSite.footer.partnerExecution,
         copyrightText:
           (footer?.copyrightText as string) ||
           fallbackSite.footer.copyrightText,
-        social: {
-          instagram:
-            (footer?.instagram as string) || siteSocial.instagram,
-          facebook: (footer?.facebook as string) || siteSocial.facebook,
-          linkedin: (footer?.linkedin as string) || siteSocial.linkedin,
-          twitter: (footer?.twitter as string) || siteSocial.twitter,
-          youtube: (footer?.youtube as string) || siteSocial.youtube,
-        },
+        social: footerSocial,
       },
       contact: siteContact,
-      social: siteSocial,
+      social: footerSocial,
     };
   } catch {
     return {

@@ -36,7 +36,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const isMobile = useIsMobile();
 
   const date = page?.heroDate || siteConfig.summitDate;
-  const city = page?.heroCity || "Muscat";
+  const city = page?.heroCity || siteConfig.city || "Muscat";
   const title = page?.heroTitle || siteConfig.name || "Inspire Oman";
   const highlight = page?.heroTitleHighlight || "Oman";
   const titleBreakAfter =

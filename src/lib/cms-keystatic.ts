@@ -114,15 +114,17 @@ export async function getCmsSite() {
     return {
       ...fallbackSite,
       name: site?.name || fallbackSite.name,
-      tagline: site?.tagline || fallbackSite.tagline,
+      seoTitle: site?.seoTitle || fallbackSite.seoTitle,
+      seoDescription: site?.seoDescription || fallbackSite.seoDescription,
       slogan: site?.slogan || fallbackSite.slogan,
       description: site?.description || fallbackSite.description,
       summitDate: site?.summitDate || fallbackSite.summitDate,
       venue: site?.venue || fallbackSite.venue,
+      city: site?.city || fallbackSite.city,
       partners: {
-        strategic: site?.partnerStrategic || fallbackSite.partners.strategic,
-        initiative: site?.partnerInitiative || fallbackSite.partners.initiative,
-        execution: site?.partnerExecution || fallbackSite.partners.execution,
+        strategic: fallbackSite.partners.strategic,
+        initiative: fallbackSite.partners.initiative,
+        execution: fallbackSite.partners.execution,
       },
       images: {
         ...fallbackSite.images,
@@ -130,6 +132,7 @@ export async function getCmsSite() {
         hero: site?.heroImage || fallbackSite.images.hero,
         banner: site?.bannerImage || fallbackSite.images.banner,
         summit: site?.summitImage || fallbackSite.images.summit,
+        og: site?.ogImage || fallbackSite.images.og,
       },
       header: {
         brandPrimary: header?.brandPrimary || fallbackSite.header.brandPrimary,
@@ -142,25 +145,10 @@ export async function getCmsSite() {
           : [...fallbackSite.header.navLinks],
       },
       contact: {
-        oman: {
-          ...fallbackSite.contact.oman,
-          phone1: site?.omanPhone1 || fallbackSite.contact.oman.phone1,
-          phone2: site?.omanPhone2 || fallbackSite.contact.oman.phone2,
-          email: site?.omanEmail || fallbackSite.contact.oman.email,
-        },
-        india: {
-          ...fallbackSite.contact.india,
-          phone: site?.indiaPhone || fallbackSite.contact.india.phone,
-          email: site?.indiaEmail || fallbackSite.contact.india.email,
-        },
+        oman: { ...fallbackSite.contact.oman },
+        india: { ...fallbackSite.contact.india },
       },
-      social: {
-        instagram: site?.instagram || fallbackSite.social.instagram,
-        facebook: site?.facebook || fallbackSite.social.facebook,
-        linkedin: site?.linkedin || fallbackSite.social.linkedin,
-        twitter: site?.twitter || fallbackSite.social.twitter,
-        youtube: site?.youtube || fallbackSite.social.youtube,
-      },
+      social: { ...fallbackSite.social },
     };
   } catch {
     return {

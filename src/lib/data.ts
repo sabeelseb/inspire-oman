@@ -1,11 +1,14 @@
 export const siteConfig = {
   name: "Inspire Oman",
-  tagline: "Telling Oman's Growth Story Globally",
+  seoTitle: "Inspire Oman - Telling Oman's Growth Story Globally",
+  seoDescription:
+    "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 11 October 2026, Oman Convention & Exhibition Centre.",
   slogan: "Celebrating Success. Creating Legacy. Inspiring Investment.",
   description:
     "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
   summitDate: "11 October 2026",
   venue: "Oman Convention & Exhibition Centre",
+  city: "Muscat",
   partners: {
     strategic: "Oman Chamber of Commerce & Industry (OCCI)",
     initiative: "Gulf Madhyamam",
@@ -17,6 +20,7 @@ export const siteConfig = {
     hero: "/images/hero/oman-muscat.jpg",
     summit: "/images/hero/business-summit.jpg",
     brandBanner: "/images/hero/inspire-banner.jpg",
+    og: "/images/hero/oman-muscat.jpg",
   },
   header: {
     brandPrimary: "Inspire",
@@ -58,6 +62,8 @@ export const siteConfig = {
     indiaEmail: "events@madhyamam.com",
     partnerLabel: "Strategic Partner",
     partnerName: "Oman Chamber of Commerce & Industry",
+    partnerInitiative: "Gulf Madhyamam",
+    partnerExecution: "mefriend",
     copyrightText:
       "Inspire Oman. All rights reserved. An initiative by Gulf Madhyamam.",
     social: {

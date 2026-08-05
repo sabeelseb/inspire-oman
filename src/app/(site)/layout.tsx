@@ -15,27 +15,38 @@ const inter = Inter({
 /** Live CMS reads (Payload / Keystatic) must not be baked at build time. */
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Inspire Oman - Telling Oman's Growth Story Globally",
-  description:
-    "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 11 October 2026, Oman Convention & Exhibition Centre.",
-  keywords: [
-    "Inspire Oman",
-    "Oman Vision 2040",
-    "Investors Summit",
-    "Gulf Madhyamam",
-    "OCCI",
-    "Business Oman",
-    "Investment Oman",
-  ],
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/images/logos/IO-logo.svg", type: "image/svg+xml" },
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getCmsSite();
+  const title = site.seoTitle || `${site.name} - Telling Oman's Growth Story Globally`;
+  const description = site.seoDescription || site.description;
+  const ogImage = site.images.og || site.images.hero;
+
+  return {
+    title,
+    description,
+    keywords: [
+      "Inspire Oman",
+      "Oman Vision 2040",
+      "Investors Summit",
+      "Gulf Madhyamam",
+      "OCCI",
+      "Business Oman",
+      "Investment Oman",
     ],
-    apple: [{ url: "/images/logos/IO-logo.svg" }],
-  },
-};
+    icons: {
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/images/logos/IO-logo.svg", type: "image/svg+xml" },
+      ],
+      apple: [{ url: "/images/logos/IO-logo.svg" }],
+    },
+    openGraph: {
+      title,
+      description,
+      images: ogImage ? [{ url: ogImage }] : undefined,
+    },
+  };
+}
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const site = await getCmsSite();
