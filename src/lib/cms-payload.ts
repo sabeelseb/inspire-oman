@@ -579,7 +579,7 @@ export async function getCmsPackages() {
 
 export async function getCmsAgenda() {
   try {
-    const docs = await findPublished("agenda", "createdAt");
+    const docs = await findPublished("agenda", "_order");
     if (!docs.length) return fallbackAgenda;
     return docs.map((doc) => ({
       time: String(doc.time || ""),
@@ -593,7 +593,7 @@ export async function getCmsAgenda() {
 
 export async function getCmsGallery() {
   try {
-    const docs = await findPublished("gallery", "createdAt");
+    const docs = await findPublished("gallery", "_order");
     if (!docs.length) return fallbackSite.galleryImages;
     return docs.map((doc) => ({
       title: String(doc.title || ""),
@@ -610,7 +610,7 @@ export async function getCmsGallery() {
 
 export async function getCmsVideos() {
   try {
-    const docs = await findPublished("videos", "createdAt");
+    const docs = await findPublished("videos", "_order");
     if (!docs.length) return [];
     return docs.map((doc) => ({
       title: String(doc.title || ""),
@@ -620,6 +620,10 @@ export async function getCmsVideos() {
         mediaUrl(doc.image) ||
         String(doc.imageSrc || "") ||
         fallbackSite.images.hero,
+      href: String(doc.videoUrl || "").trim(),
+      playMode: (doc.playMode === "iframe" ? "iframe" : "redirect") as
+        | "iframe"
+        | "redirect",
     }));
   } catch {
     return [];
@@ -628,12 +632,14 @@ export async function getCmsVideos() {
 
 export async function getCmsPress() {
   try {
-    const docs = await findPublished("press", "createdAt");
+    const docs = await findPublished("press", "_order");
     if (!docs.length) return [];
     return docs.map((doc) => ({
       title: String(doc.title || ""),
       date: String(doc.date || "Coming Soon"),
       excerpt: String(doc.excerpt || ""),
+      href: String(doc.url || "").trim(),
+      image: mediaUrl(doc.image) || String(doc.imageSrc || "").trim() || "",
     }));
   } catch {
     return [];

@@ -186,10 +186,13 @@ export const Values: CollectionConfig = {
 export const Agenda: CollectionConfig = {
   slug: "agenda",
   labels: { singular: "Summit Agenda item", plural: "Summit Agenda" },
+  orderable: true,
+  defaultSort: "_order",
   admin: {
     useAsTitle: "title",
     group: "Summit & media",
     defaultColumns: ["title", "time", "type", "_status"],
+    description: "Drag rows to set the order shown on the Summit page.",
   },
   versions: draftVersions,
   fields: [
@@ -214,10 +217,13 @@ export const Agenda: CollectionConfig = {
 export const Gallery: CollectionConfig = {
   slug: "gallery",
   labels: { singular: "Gallery item", plural: "Media Gallery" },
+  orderable: true,
+  defaultSort: "_order",
   admin: {
     useAsTitle: "title",
     group: "Summit & media",
     defaultColumns: ["title", "caption", "imageSrc", "_status"],
+    description: "Drag rows to set the order shown on the Media page.",
   },
   versions: draftVersions,
   fields: [
@@ -236,10 +242,13 @@ export const Gallery: CollectionConfig = {
 export const Videos: CollectionConfig = {
   slug: "videos",
   labels: { singular: "Video", plural: "Media Videos" },
+  orderable: true,
+  defaultSort: "_order",
   admin: {
     useAsTitle: "title",
     group: "Summit & media",
-    defaultColumns: ["title", "tag", "imageSrc", "_status"],
+    defaultColumns: ["title", "tag", "playMode", "_status"],
+    description: "Drag rows to set the order shown on the Media page.",
   },
   versions: draftVersions,
   fields: [
@@ -247,6 +256,26 @@ export const Videos: CollectionConfig = {
     { name: "slug", type: "text", required: true, unique: true },
     { name: "description", type: "textarea" },
     { name: "tag", type: "text", defaultValue: "COMING SOON" },
+    {
+      name: "playMode",
+      type: "select",
+      defaultValue: "redirect",
+      required: true,
+      label: "Play behaviour",
+      options: [
+        { label: "Plan 1 — Redirect to URL", value: "redirect" },
+        { label: "Plan 2 — Play iframe in the same window", value: "iframe" },
+      ],
+    },
+    {
+      name: "videoUrl",
+      type: "text",
+      label: "Video URL",
+      admin: {
+        description:
+          "YouTube, Vimeo, or any video page URL. Redirect opens this link. Iframe plays it on the Media page.",
+      },
+    },
     {
       name: "imageSrc",
       type: "text",
@@ -259,10 +288,13 @@ export const Videos: CollectionConfig = {
 export const Press: CollectionConfig = {
   slug: "press",
   labels: { singular: "Press Release", plural: "Press Releases" },
+  orderable: true,
+  defaultSort: "_order",
   admin: {
     useAsTitle: "title",
     group: "Summit & media",
-    defaultColumns: ["title", "date", "_status"],
+    defaultColumns: ["title", "date", "url", "_status"],
+    description: "Drag rows to set the order shown on the Media page.",
   },
   versions: draftVersions,
   fields: [
@@ -270,5 +302,24 @@ export const Press: CollectionConfig = {
     { name: "slug", type: "text", required: true, unique: true },
     { name: "date", type: "text", defaultValue: "Coming Soon", label: "Date label" },
     { name: "excerpt", type: "textarea" },
+    {
+      name: "url",
+      type: "text",
+      label: "Article URL",
+      admin: {
+        description: "Opens when the news strip is clicked (e.g. https://example.com/article).",
+      },
+    },
+    {
+      name: "imageSrc",
+      type: "text",
+      label: "Thumbnail path (e.g. /images/gallery/mosque.jpg)",
+    },
+    {
+      name: "image",
+      type: "upload",
+      relationTo: "media",
+      label: "Or upload 1:1 thumbnail",
+    },
   ],
 };

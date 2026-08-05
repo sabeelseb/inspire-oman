@@ -42,7 +42,6 @@ const STRIP_KEYS = new Set([
   "globalType",
   "collection",
   "sizes",
-  "filename",
   "mimeType",
   "filesize",
   "width",
@@ -53,21 +52,32 @@ const STRIP_KEYS = new Set([
   "url",
 ]);
 
+function isUploadDoc(obj: Record<string, unknown>) {
+  return (
+    ("filename" in obj || "url" in obj) &&
+    ("mimeType" in obj || "filesize" in obj || "filename" in obj)
+  );
+}
+
 function cleanValue(value: unknown): unknown {
   if (Array.isArray(value)) {
     return value.map((item) => cleanValue(item));
   }
   if (value && typeof value === "object") {
     const obj = value as Record<string, unknown>;
-    // Upload relation → keep url as text if present, else drop
-    if ("url" in obj && ("mimeType" in obj || "filename" in obj || "filesize" in obj)) {
-      return typeof obj.url === "string" ? obj.url : null;
+    if (isUploadDoc(obj)) {
+      return {
+        filename: typeof obj.filename === "string" ? obj.filename : null,
+        alt: typeof obj.alt === "string" ? obj.alt : null,
+      };
     }
     const out: Record<string, unknown> = {};
     for (const [k, v] of Object.entries(obj)) {
-      if (STRIP_KEYS.has(k) || k.startsWith("_")) continue;
-      // array row ids
-      if (k === "id" || k === "_uuid") continue;
+      if (k === "_order" || k === "_status") {
+        out[k] = v;
+        continue;
+      }
+      if (STRIP_KEYS.has(k) || k.startsWith("_") || k === "id" || k === "_uuid") continue;
       out[k] = cleanValue(v);
     }
     return out;
@@ -90,10 +100,12 @@ async function main() {
     exportedAt: string;
     globals: Record<string, unknown>;
     collections: Record<string, unknown[]>;
+    media: { filename: string; alt: string }[];
   } = {
     exportedAt: new Date().toISOString(),
     globals: {},
     collections: {},
+    media: [],
   };
 
   console.log("Exporting globals...");
@@ -122,6 +134,20 @@ async function main() {
     );
     console.log(`  ${collection}: ${result.docs.length}`);
   }
+
+  const media = await payload.find({
+    collection: "media",
+    limit: 1000,
+    depth: 0,
+    overrideAccess: true,
+  });
+  dump.media = media.docs
+    .map((doc) => ({
+      filename: String((doc as { filename?: string }).filename || ""),
+      alt: String((doc as { alt?: string }).alt || ""),
+    }))
+    .filter((item) => item.filename);
+  console.log(`  media: ${dump.media.length}`);
 
   fs.writeFileSync(outPath, JSON.stringify(dump, null, 2), "utf8");
   console.log(`Wrote ${outPath}`);
