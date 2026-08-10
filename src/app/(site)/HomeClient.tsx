@@ -7,6 +7,9 @@ import StatsCounter from "@/components/StatsCounter";
 import PartnersSection from "@/components/PartnersSection";
 import PillarsSection from "@/components/PillarsSection";
 import SummitHighlights from "@/components/SummitHighlights";
+import FeaturedVideosCarousel, {
+  type FeaturedVideo,
+} from "@/components/FeaturedVideosCarousel";
 import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
@@ -254,6 +257,7 @@ export default function HomeClient({
   partners,
   testimonials,
   speakers,
+  videos = [],
   pillars = fallbackPillars,
 }: {
   page?: HomePage | null;
@@ -261,6 +265,7 @@ export default function HomeClient({
   partners: Partner[];
   testimonials: Testimonial[];
   speakers: Speaker[];
+  videos?: FeaturedVideo[];
   pillars?: Pillar[];
 }) {
   const pageStats =
@@ -298,6 +303,9 @@ export default function HomeClient({
       </div>
       <div className="cv-auto">
         <SummitHighlights speakers={speakers} />
+      </div>
+      <div className="cv-auto">
+        <FeaturedVideosCarousel videos={videos} />
       </div>
       <div className="cv-auto">
         <TestimonialsSection testimonials={testimonials} />
