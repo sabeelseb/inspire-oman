@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AppShell from "@/components/AppShell";
+import RegisterWidget from "@/components/RegisterWidget";
 
 export default function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -18,17 +19,22 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
       body.classList.add("cms-body");
       body.classList.remove("bg-primary", "text-white");
       body.style.backgroundColor = "#ffffff";
-      body.style.color = "#1a1a1a";
+      body.style.setProperty("color", "#1a1a1a");
     } else {
       body.classList.remove("cms-body");
-      body.classList.add("bg-primary", "text-white");
+      body.classList.add("bg-primary");
+      body.classList.remove("text-white");
       body.style.backgroundColor = "";
-      body.style.color = "";
+      const bodyColor = body.style.getPropertyValue("--io-body-color").trim();
+      if (bodyColor) {
+        body.style.color = bodyColor;
+      } else {
+        body.style.removeProperty("color");
+      }
     }
     return () => {
       body.classList.remove("cms-body");
       body.style.backgroundColor = "";
-      body.style.color = "";
     };
   }, [isCms]);
 
@@ -41,6 +47,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
       <Navbar />
       <main className="min-h-screen">{children}</main>
       <Footer />
+      <RegisterWidget />
     </AppShell>
   );
 }

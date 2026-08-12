@@ -5,6 +5,7 @@ import { Send, Phone, Mail, MapPin } from "lucide-react";
 import { useCmsSite } from "@/components/CmsProvider";
 import ScrollReveal from "./ScrollReveal";
 import FormThankYou from "./FormThankYou";
+import TitleHighlight from "./TitleHighlight";
 import { submitToAdmin } from "@/lib/submit-form";
 import {
   CONTACT_THANK_YOU,
@@ -21,7 +22,17 @@ import {
 const inputClass =
   "w-full px-4 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/30 text-sm focus:outline-none focus:border-gold/40 transition-colors";
 
-export default function ContactForm() {
+export default function ContactForm({
+  eyebrow,
+  title,
+  titleHighlight,
+  subtitle,
+}: {
+  eyebrow?: string | null;
+  title?: string | null;
+  titleHighlight?: string | null;
+  subtitle?: string | null;
+} = {}) {
   const siteConfig = useCmsSite();
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -59,15 +70,18 @@ export default function ContactForm() {
     <section className="relative section-padding bg-primary-light">
       <div className="site-container">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
-            Get In Touch
+          <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-4">
+            {eyebrow || "Get In Touch"}
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            We&apos;re Ready to{" "}
-            <span className="gold-text">Help</span>
+            <TitleHighlight
+              title={title || "We're Ready to"}
+              highlight={titleHighlight || "Help"}
+            />
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities
+            {subtitle ||
+              "Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities"}
           </p>
         </ScrollReveal>
 

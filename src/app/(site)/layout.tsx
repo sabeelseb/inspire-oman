@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SiteChrome from "@/components/SiteChrome";
 import { CmsProvider } from "@/components/CmsProvider";
 import { getCmsSite } from "@/lib/cms";
+import { typographyToCssVars } from "@/lib/typography";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,10 +52,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const site = await getCmsSite();
+  const typographyVars = typographyToCssVars(site.typography);
 
   return (
     <html lang="en" className={inter.variable}>
-      <body className="font-sans bg-primary text-white">
+      <body
+        className="font-sans bg-primary"
+        style={typographyVars as CSSProperties}
+      >
         <CmsProvider site={site}>
           <SiteChrome>{children}</SiteChrome>
         </CmsProvider>

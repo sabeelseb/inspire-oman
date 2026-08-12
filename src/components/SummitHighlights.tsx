@@ -7,13 +7,29 @@ import { CalendarDays, MapPin, Users, ArrowRight, Star } from "lucide-react";
 import { speakers as fallbackSpeakers } from "@/lib/data";
 import ScrollReveal from "./ScrollReveal";
 import { useCmsSite } from "@/components/CmsProvider";
+import TitleHighlight from "./TitleHighlight";
 
 type Speaker = (typeof fallbackSpeakers)[number];
 
+type SummitSectionCopy = {
+  eyebrow?: string | null;
+  title?: string | null;
+  titleHighlight?: string | null;
+  subtitle?: string | null;
+  expectedLabel?: string | null;
+  expectedValue?: string | null;
+  featuredBadge?: string | null;
+  featuredSessionLabel?: string | null;
+  agendaCta?: string | null;
+  agendaHref?: string | null;
+};
+
 export default function SummitHighlights({
   speakers = fallbackSpeakers,
+  copy,
 }: {
   speakers?: Speaker[];
+  copy?: SummitSectionCopy | null;
 }) {
   const siteConfig = useCmsSite();
   const featured = speakers.find((s) => s.featured) || speakers[0];
@@ -23,15 +39,18 @@ export default function SummitHighlights({
     <section className="relative section-padding bg-primary-light">
       <div className="site-container">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
-            Flagship Event
+          <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-4">
+            {copy?.eyebrow || "Flagship Event"}
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Investors Summit{" "}
-            <span className="gold-text">2026</span>
+            <TitleHighlight
+              title={copy?.title || "Investors Summit"}
+              highlight={copy?.titleHighlight || "2026"}
+            />
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Discover, Connect &amp; Prosper - bringing together leaders, investors, and visionaries
+            {copy?.subtitle ||
+              "Discover, Connect & Prosper - bringing together leaders, investors, and visionaries"}
           </p>
         </ScrollReveal>
 
@@ -40,7 +59,11 @@ export default function SummitHighlights({
             {[
               { icon: CalendarDays, label: "Date", value: siteConfig.summitDate },
               { icon: MapPin, label: "Venue", value: siteConfig.venue },
-              { icon: Users, label: "Expected", value: "500+ Delegates" },
+              {
+                icon: Users,
+                label: copy?.expectedLabel || "Expected",
+                value: copy?.expectedValue || "500+ Delegates",
+              },
             ].map(({ icon: Icon, label, value }, i) => (
               <div key={i} className="glass-card p-6 flex items-center gap-4 h-full">
                 <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
@@ -62,15 +85,16 @@ export default function SummitHighlights({
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 text-gold text-xs font-semibold w-fit mb-6">
                     <Star size={12} />
-                    FEATURED SPEAKER
+                    {copy?.featuredBadge || "FEATURED SPEAKER"}
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
                     {featured.name}
                   </h3>
                   <p className="text-gold/80 text-sm font-medium mb-4">{featured.role}</p>
                   <p className="text-white/50 leading-relaxed mb-6">{featured.description}</p>
-                  <Link href="/summit" className="btn-primary w-fit text-sm">
-                    View Full Agenda <ArrowRight size={16} className="ml-2" />
+                  <Link href={copy?.agendaHref || "/summit"} className="btn-primary w-fit text-sm">
+                    {copy?.agendaCta || "View Full Agenda"}{" "}
+                    <ArrowRight size={16} className="ml-2" />
                   </Link>
                 </div>
                 <div className="relative min-h-[300px]">
@@ -84,7 +108,9 @@ export default function SummitHighlights({
                   <div className="absolute inset-0 bg-primary/50" />
                   <div className="absolute inset-0 flex items-center justify-center p-8 text-center">
                     <div>
-                      <p className="text-white/80 text-sm">Special Transformational Session</p>
+                      <p className="text-white/80 text-sm">
+                        {copy?.featuredSessionLabel || "Special Transformational Session"}
+                      </p>
                       <p className="text-gold font-bold text-lg mt-2">{siteConfig.summitDate}</p>
                     </div>
                   </div>

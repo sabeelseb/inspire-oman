@@ -5,25 +5,50 @@ import Link from "next/link";
 import { pillars as fallbackPillars } from "@/lib/data";
 import ScrollReveal from "./ScrollReveal";
 import IslamicPattern from "./IslamicPattern";
+import TitleHighlight from "./TitleHighlight";
 
 const iconMap: Record<string, React.ElementType> = { BookOpen, Video, Landmark };
 
 type Pillar = (typeof fallbackPillars)[number];
 
-export default function PillarsSection({ pillars = fallbackPillars }: { pillars?: Pillar[] }) {
+export default function PillarsSection({
+  pillars = fallbackPillars,
+  eyebrow,
+  title,
+  titleHighlight,
+  subtitle,
+  learnMoreLabel,
+  learnMoreHref,
+}: {
+  pillars?: Pillar[];
+  eyebrow?: string | null;
+  title?: string | null;
+  titleHighlight?: string | null;
+  subtitle?: string | null;
+  learnMoreLabel?: string | null;
+  learnMoreHref?: string | null;
+}) {
+  const linkLabel = learnMoreLabel || "Learn More";
+  const linkHref = learnMoreHref || "/pillars";
+
   return (
     <section className="relative section-padding overflow-hidden">
       <IslamicPattern opacity={0.03} />
 
       <div className="relative site-container">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">Three Pillars</p>
+          <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-4">
+            {eyebrow || "Three Pillars"}
+          </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Building Oman&apos;s{" "}
-            <span className="gold-text">Legacy</span>
+            <TitleHighlight
+              title={title || "Building Oman's Legacy"}
+              highlight={titleHighlight || "Legacy"}
+            />
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Three integrated pillars working together to document, celebrate, and connect Oman&apos;s business community
+            {subtitle ||
+              "Three integrated pillars working together to document, celebrate, and connect Oman's business community"}
           </p>
         </ScrollReveal>
 
@@ -55,10 +80,10 @@ export default function PillarsSection({ pillars = fallbackPillars }: { pillars?
                     ))}
                   </ul>
                   <Link
-                    href="/pillars"
+                    href={linkHref}
                     className="inline-flex items-center gap-1 text-gold text-sm font-medium hover:gap-2 transition-all"
                   >
-                    Learn More <ArrowRight size={14} />
+                    {linkLabel} <ArrowRight size={14} />
                   </Link>
                 </div>
               );

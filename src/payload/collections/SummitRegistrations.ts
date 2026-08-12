@@ -21,7 +21,15 @@ export const SummitRegistrations: CollectionConfig = {
   admin: {
     useAsTitle: "name",
     group: "Inbox",
-    defaultColumns: ["name", "email", "organization", "role", "status", "createdAt"],
+    defaultColumns: [
+      "name",
+      "email",
+      "category",
+      "organization",
+      "role",
+      "status",
+      "createdAt",
+    ],
     description: "Summit registration submissions from the website.",
   },
   access: {
@@ -35,6 +43,19 @@ export const SummitRegistrations: CollectionConfig = {
     { name: "email", type: "email", required: true },
     { name: "phone", type: "text" },
     { name: "organization", type: "text", label: "Organisation" },
+    {
+      name: "category",
+      type: "select",
+      label: "Registration category",
+      options: [
+        { label: "VVIP — Investors Inside Oman", value: "vvip" },
+        { label: "VIP — Investors Outside Oman", value: "vip" },
+        { label: "Media — Media Partners", value: "media" },
+      ],
+      admin: {
+        description: "Selected on the public registration flow before the form.",
+      },
+    },
     { name: "role", type: "text", label: "Role / title" },
     { name: "message", type: "textarea" },
     statusField,

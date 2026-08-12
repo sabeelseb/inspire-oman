@@ -12,7 +12,35 @@ export const siteConfig = {
   partners: {
     strategic: "Oman Chamber of Commerce & Industry (OCCI)",
     initiative: "Gulf Madhyamam",
-    execution: "mefriend",
+    execution: "Mefriend - Where Brands Find Solutions",
+  },
+  typography: {
+    body: { fontSize: "default", color: "", style: "default" },
+    heading: { fontSize: "default", color: "", style: "default" },
+    subheading: { fontSize: "default", color: "", style: "default" },
+    paragraph: { fontSize: "default", color: "", style: "default" },
+  },
+  registrationCategories: {
+    vvip: {
+      label: "VVIP",
+      subtitle: "Investors Inside Oman",
+      description:
+        "Exclusive access for investors and decision-makers based in Oman.",
+      badge: "Inside Oman",
+    },
+    vip: {
+      label: "VIP",
+      subtitle: "Investors Outside Oman",
+      description:
+        "Premium access for international investors joining the summit.",
+      badge: "Outside Oman",
+    },
+    media: {
+      label: "Media",
+      subtitle: "Media Partners",
+      description: "Accreditation for publishers, press, and media partners.",
+      badge: "Press Pass",
+    },
   },
   images: {
     logo: "/images/logos/IO-logo.svg",
@@ -27,6 +55,13 @@ export const siteConfig = {
     brandHighlight: "Oman",
     ctaLabel: "Partner With Us",
     ctaHref: "/partner",
+    registerWidget: {
+      enabled: true,
+      label: "Register Now",
+      title: "Register for Summit 2026",
+      subtitle:
+        "Join delegates at the Inspire Oman Investors Summit — 11 October 2026",
+    },
     navLinks: [
       { href: "/", label: "Home" },
       { href: "/about", label: "About" },
@@ -63,7 +98,7 @@ export const siteConfig = {
     partnerLabel: "Strategic Partner",
     partnerName: "Oman Chamber of Commerce & Industry",
     partnerInitiative: "Gulf Madhyamam",
-    partnerExecution: "mefriend",
+    partnerExecution: "Mefriend - Where Brands Find Solutions",
     copyrightText:
       "Inspire Oman. All rights reserved. An initiative by Gulf Madhyamam.",
     social: {

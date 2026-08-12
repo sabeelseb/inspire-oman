@@ -66,7 +66,7 @@ export const Speakers: CollectionConfig = {
     useAsTitle: "name",
     group: "Site content",
     defaultColumns: ["name", "role", "featured", "_status"],
-    description: "Drag rows to set speaker order on the site.",
+    description: "Drag rows to set speaker order on the homepage Summit section.",
   },
   versions: draftVersions,
   fields: [
@@ -84,6 +84,7 @@ export const Testimonials: CollectionConfig = {
     useAsTitle: "author",
     group: "Site content",
     defaultColumns: ["author", "role", "_status"],
+    description: "Quotes shown in the homepage Voices of Support section.",
   },
   versions: draftVersions,
   fields: [
@@ -100,6 +101,7 @@ export const Pillars: CollectionConfig = {
     useAsTitle: "title",
     group: "Site content",
     defaultColumns: ["title", "subtitle", "icon", "_status"],
+    description: "Cards shown in the homepage Three Pillars section.",
   },
   versions: draftVersions,
   fields: [
@@ -248,7 +250,7 @@ export const Videos: CollectionConfig = {
     useAsTitle: "title",
     group: "Summit & media",
     defaultColumns: ["title", "tag", "playMode", "_status"],
-    description: "Drag rows to set the order shown on the Media page.",
+    description: "Drag rows to set the order shown on the homepage carousel and Media page.",
   },
   versions: draftVersions,
   fields: [

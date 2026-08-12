@@ -12,46 +12,71 @@ export default function TitleHighlight({
   breakAfter?: string | null;
   breakClassName?: string;
 }) {
+  const normalize = (value: string) =>
+    value
+      .replace(/[\u2018\u2019\u2032]/g, "'")
+      .replace(/[\u201C\u201D]/g, '"');
+
+  const matchAt = (haystack: string, needle: string) => {
+    const raw = (needle || "").trim();
+    if (!raw || !haystack) return null;
+
+    const tryFind = (h: string, n: string) => {
+      const i = h.indexOf(n);
+      if (i >= 0) return { index: i, length: n.length };
+      const li = h.toLowerCase().indexOf(n.toLowerCase());
+      if (li >= 0) return { index: li, length: n.length };
+      return null;
+    };
+
+    return (
+      tryFind(haystack, raw) ||
+      tryFind(normalize(haystack), normalize(raw))
+    );
+  };
+
   const renderWithBreak = (text: string) => {
-    if (!breakAfter || !text.includes(breakAfter)) return text;
-    const index = text.indexOf(breakAfter) + breakAfter.length;
+    const found = breakAfter ? matchAt(text, breakAfter) : null;
+    if (!found) return text;
+    const cut = found.index + found.length;
     return (
       <>
-        {text.slice(0, index)}
+        {text.slice(0, cut)}
         <br className={breakClassName} />
-        {text.slice(index)}
+        {text.slice(cut)}
       </>
     );
   };
 
-  if (!highlight || !title.includes(highlight)) {
+  const found = matchAt(title, highlight || "");
+  if (!found) {
     return <>{renderWithBreak(title)}</>;
   }
 
-  const index = title.indexOf(highlight);
-  const before = title.slice(0, index);
-  const after = title.slice(index + highlight.length);
+  const before = title.slice(0, found.index);
+  const word = title.slice(found.index, found.index + found.length);
+  const after = title.slice(found.index + found.length);
+  const gold = <span className={highlightClassName}>{word}</span>;
 
-  // Break sits in the "before" segment (e.g. "Telling Oman's " | Growth Story | Globally)
-  if (breakAfter && before.includes(breakAfter)) {
-    const breakAt = before.indexOf(breakAfter) + breakAfter.length;
+  if (breakAfter && matchAt(before, breakAfter)) {
+    const br = matchAt(before, breakAfter)!;
+    const cut = br.index + br.length;
     return (
       <>
-        {before.slice(0, breakAt)}
+        {before.slice(0, cut)}
         <br className={breakClassName} />
-        {before.slice(breakAt)}
-        <span className={highlightClassName}>{highlight}</span>
+        {before.slice(cut)}
+        {gold}
         {after}
       </>
     );
   }
 
-  // Break after highlight into "after"
-  if (breakAfter && `${before}${highlight}`.includes(breakAfter)) {
+  if (breakAfter && matchAt(`${before}${word}`, breakAfter)) {
     return (
       <>
         {before}
-        <span className={highlightClassName}>{highlight}</span>
+        {gold}
         <br className={breakClassName} />
         {after.replace(/^\s+/, "")}
       </>
@@ -61,7 +86,7 @@ export default function TitleHighlight({
   return (
     <>
       {before}
-      <span className={highlightClassName}>{highlight}</span>
+      {gold}
       {renderWithBreak(after)}
     </>
   );

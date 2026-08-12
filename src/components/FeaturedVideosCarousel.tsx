@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import TitleHighlight from "@/components/TitleHighlight";
 
 export type FeaturedVideo = {
   title: string;
@@ -98,8 +99,16 @@ function Thumb({
 
 export default function FeaturedVideosCarousel({
   videos,
+  eyebrow,
+  title,
+  titleHighlight,
+  subtitle,
 }: {
   videos: FeaturedVideo[];
+  eyebrow?: string | null;
+  title?: string | null;
+  titleHighlight?: string | null;
+  subtitle?: string | null;
 }) {
   const items = useMemo(
     () => videos.filter((v) => Boolean(v?.image)),
@@ -156,12 +165,18 @@ export default function FeaturedVideosCarousel({
 
       <div className="relative site-container">
         <ScrollReveal className="text-center mb-12 md:mb-16">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
-            Featured Videos
+          <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-4">
+            {eyebrow || "Featured Videos"}
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-            Watch the <span className="gold-text">Story</span>
+            <TitleHighlight
+              title={title || "Watch the"}
+              highlight={titleHighlight || "Story"}
+            />
           </h2>
+          {subtitle ? (
+            <p className="mx-auto mt-4 max-w-2xl text-white/50">{subtitle}</p>
+          ) : null}
         </ScrollReveal>
 
         <div

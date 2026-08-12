@@ -18,6 +18,7 @@ export async function POST(req: Request) {
       email,
       phone: asString(body.phone, 80) || undefined,
       organization: asString(body.organization, 300) || undefined,
+      category: asString(body.category, 40) || undefined,
       role: asString(body.role, 200) || undefined,
       message: asString(body.message, 8000) || undefined,
       status: "new",

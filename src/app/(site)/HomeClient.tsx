@@ -10,6 +10,7 @@ import SummitHighlights from "@/components/SummitHighlights";
 import FeaturedVideosCarousel, {
   type FeaturedVideo,
 } from "@/components/FeaturedVideosCarousel";
+import HeroSpotlightGrid from "@/components/HeroSpotlightGrid";
 import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import IslamicPattern from "@/components/IslamicPattern";
@@ -71,6 +72,55 @@ type HomePage = {
   ctaPrimaryHref?: string | null;
   ctaSecondaryLabel?: string | null;
   ctaSecondaryHref?: string | null;
+  pillarsEyebrow?: string | null;
+  pillarsTitle?: string | null;
+  pillarsTitleHighlight?: string | null;
+  pillarsSubtitle?: string | null;
+  pillarsLearnMoreLabel?: string | null;
+  pillarsLearnMoreHref?: string | null;
+  summitEyebrow?: string | null;
+  summitTitle?: string | null;
+  summitTitleHighlight?: string | null;
+  summitSubtitle?: string | null;
+  summitExpectedLabel?: string | null;
+  summitExpectedValue?: string | null;
+  summitFeaturedBadge?: string | null;
+  summitFeaturedSessionLabel?: string | null;
+  summitAgendaCta?: string | null;
+  summitAgendaHref?: string | null;
+  videosEyebrow?: string | null;
+  videosTitle?: string | null;
+  videosTitleHighlight?: string | null;
+  videosSubtitle?: string | null;
+  testimonialsEyebrow?: string | null;
+  testimonialsTitle?: string | null;
+  testimonialsTitleHighlight?: string | null;
+  testimonialsSubtitle?: string | null;
+  contactEyebrow?: string | null;
+  contactTitle?: string | null;
+  contactTitleHighlight?: string | null;
+  contactSubtitle?: string | null;
+  heroOcciRole?: string | null;
+  heroOcciTitle?: string | null;
+  heroOcciLogo?: string | null;
+  heroOcciLogoSrc?: string | null;
+  heroMefriendRole?: string | null;
+  heroMefriendTitle?: string | null;
+  heroMefriendLogo?: string | null;
+  heroMefriendLogoSrc?: string | null;
+  spotlightCard1Keynote?: string | null;
+  spotlightCard1Title?: string | null;
+  spotlightCard1Description?: string | null;
+  spotlightCard2Keynote?: string | null;
+  spotlightCard2Title?: string | null;
+  spotlightCard2Description?: string | null;
+  spotlightVideoKeynote?: string | null;
+  spotlightVideoTitle?: string | null;
+  spotlightVideoDescription?: string | null;
+  spotlightVideoHref?: string | null;
+  spotlightVideoPoster?: string | null;
+  spotlightVideoViewMoreLabel?: string | null;
+  spotlightVideoViewMoreHref?: string | null;
 };
 
 function AboutSection({ page }: { page?: HomePage | null }) {
@@ -124,7 +174,7 @@ function AboutSection({ page }: { page?: HomePage | null }) {
       <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
-            <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
+            <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-3">
               {page?.aboutEyebrow || "About the Initiative"}
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -173,20 +223,29 @@ function AboutSection({ page }: { page?: HomePage | null }) {
 
 function TestimonialsSection({
   testimonials = fallbackTestimonials,
+  page,
 }: {
   testimonials?: Testimonial[];
+  page?: HomePage | null;
 }) {
   return (
     <section className="relative section-padding">
       <div className="site-container">
         <ScrollReveal className="text-center mb-16">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-4">
-            Voices of Support
+          <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-4">
+            {page?.testimonialsEyebrow || "Voices of Support"}
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            What Leaders{" "}
-            <span className="gold-text">Say</span>
+            <TitleHighlight
+              title={page?.testimonialsTitle || "What Leaders"}
+              highlight={page?.testimonialsTitleHighlight || "Say"}
+            />
           </h2>
+          {page?.testimonialsSubtitle ? (
+            <p className="mx-auto max-w-2xl text-white/50">
+              {page.testimonialsSubtitle}
+            </p>
+          ) : null}
         </ScrollReveal>
 
         <ScrollReveal>
@@ -286,6 +345,28 @@ export default function HomeClient({
   return (
     <>
       <Hero page={page} />
+      <HeroSpotlightGrid
+        copy={{
+          card1Keynote: page?.spotlightCard1Keynote,
+          card1Title: page?.spotlightCard1Title,
+          card1Description: page?.spotlightCard1Description,
+          card2Keynote: page?.spotlightCard2Keynote,
+          card2Title: page?.spotlightCard2Title,
+          card2Description: page?.spotlightCard2Description,
+          videoKeynote: page?.spotlightVideoKeynote,
+          videoTitle: page?.spotlightVideoTitle,
+          videoDescription: page?.spotlightVideoDescription,
+          videoHref: page?.spotlightVideoHref,
+          videoPoster: page?.spotlightVideoPoster,
+          videoViewMoreLabel: page?.spotlightVideoViewMoreLabel,
+          videoViewMoreHref: page?.spotlightVideoViewMoreHref,
+        }}
+        fallbackVideo={
+          videos.find((v) =>
+            /official launch|muscat highlights/i.test(v.title || ""),
+          ) || videos[0]
+        }
+      />
       <AboutSection page={page} />
       <StatsCounter stats={displayStats} bannerSrc={bannerSrc} />
       <div className="cv-auto">
@@ -299,22 +380,55 @@ export default function HomeClient({
       </div>
       <div className="islamic-divider site-container" />
       <div className="cv-auto">
-        <PillarsSection pillars={pillars} />
+        <PillarsSection
+          pillars={pillars}
+          eyebrow={page?.pillarsEyebrow}
+          title={page?.pillarsTitle}
+          titleHighlight={page?.pillarsTitleHighlight}
+          subtitle={page?.pillarsSubtitle}
+          learnMoreLabel={page?.pillarsLearnMoreLabel}
+          learnMoreHref={page?.pillarsLearnMoreHref}
+        />
       </div>
       <div className="cv-auto">
-        <SummitHighlights speakers={speakers} />
+        <SummitHighlights
+          speakers={speakers}
+          copy={{
+            eyebrow: page?.summitEyebrow,
+            title: page?.summitTitle,
+            titleHighlight: page?.summitTitleHighlight,
+            subtitle: page?.summitSubtitle,
+            expectedLabel: page?.summitExpectedLabel,
+            expectedValue: page?.summitExpectedValue,
+            featuredBadge: page?.summitFeaturedBadge,
+            featuredSessionLabel: page?.summitFeaturedSessionLabel,
+            agendaCta: page?.summitAgendaCta,
+            agendaHref: page?.summitAgendaHref,
+          }}
+        />
       </div>
       <div className="cv-auto">
-        <FeaturedVideosCarousel videos={videos} />
+        <FeaturedVideosCarousel
+          videos={videos}
+          eyebrow={page?.videosEyebrow}
+          title={page?.videosTitle}
+          titleHighlight={page?.videosTitleHighlight}
+          subtitle={page?.videosSubtitle}
+        />
       </div>
       <div className="cv-auto">
-        <TestimonialsSection testimonials={testimonials} />
+        <TestimonialsSection testimonials={testimonials} page={page} />
       </div>
       <div className="cv-auto">
         <CTABanner page={page} />
       </div>
       <div className="cv-auto">
-        <ContactForm />
+        <ContactForm
+          eyebrow={page?.contactEyebrow}
+          title={page?.contactTitle}
+          titleHighlight={page?.contactTitleHighlight}
+          subtitle={page?.contactSubtitle}
+        />
       </div>
     </>
   );

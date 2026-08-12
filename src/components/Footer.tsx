@@ -79,18 +79,18 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Phone size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                <div>
-                  <p>{footer.omanPhone1}</p>
-                  <p>{footer.omanPhone2}</p>
+                <div className="text-white/50">
+                  <p className="text-white/50">{footer.omanPhone1}</p>
+                  <p className="text-white/50">{footer.omanPhone2}</p>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Mail size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {footer.omanEmail}
+                <span className="text-white/50">{footer.omanEmail}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <MapPin size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {footer.omanAddress}
+                <span className="text-white/50">{footer.omanAddress}</span>
               </li>
             </ul>
           </div>
@@ -102,11 +102,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Phone size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {footer.indiaPhone}
+                <span className="text-white/50">{footer.indiaPhone}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/50">
                 <Mail size={16} className="text-gold/60 mt-0.5 shrink-0" />
-                {footer.indiaEmail}
+                <span className="text-white/50">{footer.indiaEmail}</span>
               </li>
             </ul>
 

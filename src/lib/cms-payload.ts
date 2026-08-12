@@ -98,6 +98,65 @@ function items(value: unknown): string[] {
     .filter(Boolean);
 }
 
+function mapTypographyRole(
+  value: unknown,
+  fallback: { fontSize: string; color: string; style: string },
+): { fontSize: string; color: string; style: string } {
+  const row =
+    value && typeof value === "object" ? (value as Record<string, unknown>) : {};
+  return {
+    fontSize: (row.fontSize as string) || fallback.fontSize || "default",
+    color: typeof row.color === "string" ? row.color : fallback.color || "",
+    style: (row.style as string) || fallback.style || "default",
+  };
+}
+
+function mapTypography(value: unknown) {
+  const fb = fallbackSite.typography;
+  const row =
+    value && typeof value === "object" ? (value as Record<string, unknown>) : {};
+  return {
+    body: mapTypographyRole(row.body, fb.body),
+    heading: mapTypographyRole(row.heading, fb.heading),
+    subheading: mapTypographyRole(row.subheading, fb.subheading),
+    paragraph: mapTypographyRole(row.paragraph, fb.paragraph),
+  };
+}
+
+function mapRegCategory(
+  value: unknown,
+  fallback: {
+    label: string;
+    subtitle: string;
+    description: string;
+    badge: string;
+  },
+) {
+  const row =
+    value && typeof value === "object" ? (value as Record<string, unknown>) : {};
+  return {
+    label: (typeof row.label === "string" && row.label.trim()) || fallback.label,
+    subtitle:
+      (typeof row.subtitle === "string" && row.subtitle.trim()) ||
+      fallback.subtitle,
+    description:
+      (typeof row.description === "string" && row.description.trim()) ||
+      fallback.description,
+    badge: (typeof row.badge === "string" && row.badge.trim()) || fallback.badge,
+  };
+}
+
+function mapRegistrationCategories(value: unknown) {
+  const fb = fallbackSite.registrationCategories;
+  const row =
+    value && typeof value === "object" ? (value as Record<string, unknown>) : {};
+  return {
+    vvip: mapRegCategory(row.vvip, fb.vvip),
+    vip: mapRegCategory(row.vip, fb.vip),
+    media: mapRegCategory(row.media, fb.media),
+  };
+}
+
 async function findPublished(collection: string, sort = "createdAt") {
   const payload = await getPayloadClient();
   const result = await payload.find({
@@ -212,6 +271,10 @@ export async function getCmsSite() {
           (footer?.partnerExecution as string) ||
           fallbackSite.partners.execution,
       },
+      typography: mapTypography(site?.typography),
+      registrationCategories: mapRegistrationCategories(
+        site?.registrationCategories,
+      ),
       images: {
         ...fallbackSite.images,
         logo:
@@ -242,6 +305,18 @@ export async function getCmsSite() {
           (header?.brandHighlight as string) || fallbackSite.header.brandHighlight,
         ctaLabel: (header?.ctaLabel as string) || fallbackSite.header.ctaLabel,
         ctaHref: (header?.ctaHref as string) || fallbackSite.header.ctaHref,
+        registerWidget: {
+          enabled: header?.registerWidgetEnabled !== false,
+          label:
+            (header?.registerWidgetLabel as string) ||
+            fallbackSite.header.registerWidget.label,
+          title:
+            (header?.registerWidgetTitle as string) ||
+            fallbackSite.header.registerWidget.title,
+          subtitle:
+            (header?.registerWidgetSubtitle as string) ||
+            fallbackSite.header.registerWidget.subtitle,
+        },
         navLinks: headerNav.length
           ? headerNav
           : [...fallbackSite.header.navLinks],
@@ -376,6 +451,63 @@ export async function getCmsPageHome() {
       partnersTitle: page.partnersTitle,
       partnersTitleHighlight: page.partnersTitleHighlight,
       partnersSubtitle: page.partnersSubtitle,
+      pillarsEyebrow: page.pillarsEyebrow,
+      pillarsTitle: page.pillarsTitle,
+      pillarsTitleHighlight: page.pillarsTitleHighlight,
+      pillarsSubtitle: page.pillarsSubtitle,
+      pillarsLearnMoreLabel: page.pillarsLearnMoreLabel,
+      pillarsLearnMoreHref: page.pillarsLearnMoreHref,
+      summitEyebrow: page.summitEyebrow,
+      summitTitle: page.summitTitle,
+      summitTitleHighlight: page.summitTitleHighlight,
+      summitSubtitle: page.summitSubtitle,
+      summitExpectedLabel: page.summitExpectedLabel,
+      summitExpectedValue: page.summitExpectedValue,
+      summitFeaturedBadge: page.summitFeaturedBadge,
+      summitFeaturedSessionLabel: page.summitFeaturedSessionLabel,
+      summitAgendaCta: page.summitAgendaCta,
+      summitAgendaHref: page.summitAgendaHref,
+      videosEyebrow: page.videosEyebrow,
+      videosTitle: page.videosTitle,
+      videosTitleHighlight: page.videosTitleHighlight,
+      videosSubtitle: page.videosSubtitle,
+      testimonialsEyebrow: page.testimonialsEyebrow,
+      testimonialsTitle: page.testimonialsTitle,
+      testimonialsTitleHighlight: page.testimonialsTitleHighlight,
+      testimonialsSubtitle: page.testimonialsSubtitle,
+      contactEyebrow: page.contactEyebrow,
+      contactTitle: page.contactTitle,
+      contactTitleHighlight: page.contactTitleHighlight,
+      contactSubtitle: page.contactSubtitle,
+      heroOcciRole: page.heroOcciRole,
+      heroOcciTitle: page.heroOcciTitle,
+      heroOcciLogo:
+        mediaUrl(page.heroOcciLogo) ||
+        (page.heroOcciLogoSrc as string) ||
+        "/images/logos/OCC-logo.svg",
+      heroOcciLogoSrc:
+        (page.heroOcciLogoSrc as string) || "/images/logos/OCC-logo.svg",
+      heroMefriendRole: page.heroMefriendRole,
+      heroMefriendTitle: page.heroMefriendTitle,
+      heroMefriendLogo:
+        mediaUrl(page.heroMefriendLogo) ||
+        (page.heroMefriendLogoSrc as string) ||
+        "/images/logos/MF-logo.svg",
+      heroMefriendLogoSrc:
+        (page.heroMefriendLogoSrc as string) || "/images/logos/MF-logo.svg",
+      spotlightCard1Keynote: page.spotlightCard1Keynote,
+      spotlightCard1Title: page.spotlightCard1Title,
+      spotlightCard1Description: page.spotlightCard1Description,
+      spotlightCard2Keynote: page.spotlightCard2Keynote,
+      spotlightCard2Title: page.spotlightCard2Title,
+      spotlightCard2Description: page.spotlightCard2Description,
+      spotlightVideoKeynote: page.spotlightVideoKeynote,
+      spotlightVideoTitle: page.spotlightVideoTitle,
+      spotlightVideoDescription: page.spotlightVideoDescription,
+      spotlightVideoHref: page.spotlightVideoHref,
+      spotlightVideoPoster: page.spotlightVideoPoster,
+      spotlightVideoViewMoreLabel: page.spotlightVideoViewMoreLabel,
+      spotlightVideoViewMoreHref: page.spotlightVideoViewMoreHref,
       ctaTitle: page.ctaTitle,
       ctaTitleHighlight: page.ctaTitleHighlight,
       ctaBody: page.ctaBody,

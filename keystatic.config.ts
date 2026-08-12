@@ -84,6 +84,24 @@ export default config({
           label: "CTA button link",
           defaultValue: "/partner",
         }),
+        registerWidgetEnabled: fields.checkbox({
+          label: "Show Register Now widget",
+          defaultValue: true,
+        }),
+        registerWidgetLabel: fields.text({
+          label: "Widget button label",
+          defaultValue: "Register Now",
+        }),
+        registerWidgetTitle: fields.text({
+          label: "Widget panel title",
+          defaultValue: "Register for Summit 2026",
+        }),
+        registerWidgetSubtitle: fields.text({
+          label: "Widget panel subtitle",
+          multiline: true,
+          defaultValue:
+            "Join delegates at the Inspire Oman Investors Summit — 11 October 2026",
+        }),
       },
     }),
 
@@ -248,6 +266,122 @@ export default config({
           label: "Stats - or upload banner image",
           directory: "public/images/cms",
           publicPath: "/images/cms/",
+        }),
+        partnersEyebrow: fields.text({
+          label: "Partners - eyebrow",
+          defaultValue: "Our Partners",
+        }),
+        partnersTitle: fields.text({
+          label: "Partners - title",
+          defaultValue: "Trusted by Leaders",
+        }),
+        partnersTitleHighlight: fields.text({
+          label: "Partners - gold highlight",
+          defaultValue: "Leaders",
+        }),
+        partnersSubtitle: fields.text({
+          label: "Partners - subtitle",
+          multiline: true,
+          defaultValue:
+            "Inspire Oman is powered by strategic collaboration between OCCI, Gulf Madhyamam, and mefriend",
+        }),
+        pillarsEyebrow: fields.text({ label: "Pillars - eyebrow", defaultValue: "Three Pillars" }),
+        pillarsTitle: fields.text({
+          label: "Pillars - title",
+          defaultValue: "Building Oman's Legacy",
+        }),
+        pillarsTitleHighlight: fields.text({
+          label: "Pillars - gold highlight",
+          defaultValue: "Legacy",
+        }),
+        pillarsSubtitle: fields.text({
+          label: "Pillars - subtitle",
+          multiline: true,
+          defaultValue:
+            "Three integrated pillars working together to document, celebrate, and connect Oman's business community",
+        }),
+        pillarsLearnMoreLabel: fields.text({
+          label: "Pillars - card link label",
+          defaultValue: "Learn More",
+        }),
+        pillarsLearnMoreHref: fields.text({
+          label: "Pillars - card link URL",
+          defaultValue: "/pillars",
+        }),
+        summitEyebrow: fields.text({ label: "Summit - eyebrow", defaultValue: "Flagship Event" }),
+        summitTitle: fields.text({
+          label: "Summit - title",
+          defaultValue: "Investors Summit",
+        }),
+        summitTitleHighlight: fields.text({
+          label: "Summit - gold highlight",
+          defaultValue: "2026",
+        }),
+        summitSubtitle: fields.text({
+          label: "Summit - subtitle",
+          multiline: true,
+          defaultValue:
+            "Discover, Connect & Prosper - bringing together leaders, investors, and visionaries",
+        }),
+        summitExpectedLabel: fields.text({
+          label: "Summit - expected label",
+          defaultValue: "Expected",
+        }),
+        summitExpectedValue: fields.text({
+          label: "Summit - expected value",
+          defaultValue: "500+ Delegates",
+        }),
+        summitFeaturedBadge: fields.text({
+          label: "Summit - featured badge",
+          defaultValue: "FEATURED SPEAKER",
+        }),
+        summitFeaturedSessionLabel: fields.text({
+          label: "Summit - featured session label",
+          defaultValue: "Special Transformational Session",
+        }),
+        summitAgendaCta: fields.text({
+          label: "Summit - agenda button",
+          defaultValue: "View Full Agenda",
+        }),
+        summitAgendaHref: fields.text({
+          label: "Summit - agenda link",
+          defaultValue: "/summit",
+        }),
+        videosEyebrow: fields.text({
+          label: "Videos - eyebrow",
+          defaultValue: "Featured Videos",
+        }),
+        videosTitle: fields.text({ label: "Videos - title", defaultValue: "Watch the" }),
+        videosTitleHighlight: fields.text({
+          label: "Videos - gold highlight",
+          defaultValue: "Story",
+        }),
+        testimonialsEyebrow: fields.text({
+          label: "Testimonials - eyebrow",
+          defaultValue: "Voices of Support",
+        }),
+        testimonialsTitle: fields.text({
+          label: "Testimonials - title",
+          defaultValue: "What Leaders",
+        }),
+        testimonialsTitleHighlight: fields.text({
+          label: "Testimonials - gold highlight",
+          defaultValue: "Say",
+        }),
+        contactEyebrow: fields.text({ label: "Contact - eyebrow", defaultValue: "Get In Touch" }),
+        contactTitle: fields.text({
+          label: "Contact - title",
+          defaultValue: "We're Ready to",
+        }),
+        contactTitleHighlight: fields.text({
+          label: "Contact - gold highlight",
+          defaultValue: "Help",
+        }),
+        contactSubtitle: fields.text({
+          label: "Contact - subtitle",
+          multiline: true,
+          defaultValue:
+            "Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities",
         }),
         ctaTitle: fields.text({ label: "Bottom CTA title", defaultValue: "Be Part of Oman's Growth Story" }),
         ctaBody: fields.text({ label: "Bottom CTA body", multiline: true }),

@@ -16,6 +16,8 @@
     "seed:speakers-order": "tsx --env-file=.env scripts/seed-speakers-order.ts",
     "seed:site-settings": "tsx --env-file=.env scripts/seed-site-settings-cleanup.ts",
     "migrate:submissions": "tsx --env-file=.env scripts/migrate-submissions-split.ts",
+    "db:push": "tsx --env-file=.env scripts/init-payload-db.ts",
+    "db:migrate-local": "tsx --env-file=.env scripts/migrate-local-schema.ts",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap"
   },

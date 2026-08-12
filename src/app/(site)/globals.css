@@ -25,7 +25,29 @@
   }
 
   body {
-    @apply bg-primary text-white antialiased;
+    @apply bg-primary antialiased;
+    /* Default white when CMS body color is empty; CMS sets --io-body-color + inline color */
+    color: var(--io-body-color, #ffffff);
+    font-size: var(--io-body-size, inherit);
+    font-weight: var(--io-body-weight, inherit);
+    font-style: var(--io-body-style, inherit);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--io-heading-color, inherit);
+    font-size: var(--io-heading-size, inherit);
+    font-weight: var(--io-heading-weight, inherit);
+    font-style: var(--io-heading-style, inherit);
+  }
+
+  p {
+    color: var(--io-paragraph-color, var(--io-body-color, inherit));
+    font-size: var(--io-paragraph-size, inherit);
+    font-weight: var(--io-paragraph-weight, inherit);
+    font-style: var(--io-paragraph-style, inherit);
   }
 
   ::selection {
@@ -48,9 +70,12 @@
 
 @layer components {
   .gold-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #c5a55a 0%, #d4af37 50%, #c5a55a 100%);
+    background-image: linear-gradient(135deg, #c5a55a 0%, #d4af37 50%, #c5a55a 100%) !important;
     background-size: 200% auto;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
   }
 
   .gold-border {
@@ -125,16 +150,6 @@
     }
   }
 
-  /* Desktop (any inch): 6 of 8 = 75% width, centered */
-  @media (min-width: 1024px) {
-    .site-container {
-      width: calc(100% * 6 / 8);
-      max-width: none;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-3.5 bg-gold text-primary-dark font-semibold rounded-lg
       transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20 hover:-translate-y-0.5;
@@ -159,6 +174,20 @@
   .cv-auto {
     content-visibility: auto;
     contain-intrinsic-size: auto 480px;
+  }
+}
+
+/*
+ * Desktop page grid: 6 of 8 columns, centered.
+ * Kept unlayered so utility classes like `w-full` cannot override the width
+ * (utilities beat @layer components in Tailwind).
+ */
+@media (min-width: 1024px) {
+  .site-container {
+    width: calc(100% * 6 / 8);
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -203,6 +232,117 @@
 body.cms-body {
   background-color: #ffffff !important;
   color: #1a1a1a !important;
+}
+
+/*
+  CMS typography sync: Tailwind `text-white*` utilities otherwise ignore
+  Site Settings → Typography body/heading/paragraph colors.
+  Only remap when the CSS vars are present (set inline on <body> from CMS).
+*/
+/* Footer keeps the default gold/white theme — not CMS body/heading colors */
+footer {
+  color: rgba(255, 255, 255, 0.5);
+  --io-body-color: #ffffff;
+  --io-heading-color: unset;
+  --io-paragraph-color: unset;
+  --io-subheading-color: unset;
+}
+
+footer p,
+footer a,
+footer li,
+footer span {
+  color: inherit;
+}
+
+footer .text-white {
+  color: #ffffff !important;
+}
+footer .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+footer .text-white\/50 {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+footer .text-white\/40 {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+footer .text-white\/30 {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+footer .text-gold {
+  color: #c5a55a !important;
+}
+footer .text-gold\/80 {
+  color: rgba(197, 165, 90, 0.8) !important;
+}
+footer .text-gold\/60 {
+  color: rgba(197, 165, 90, 0.6) !important;
+}
+
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white {
+  color: var(--io-body-color, #ffffff);
+}
+
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/90 {
+  color: color-mix(in srgb, var(--io-body-color) 90%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/85 {
+  color: color-mix(in srgb, var(--io-body-color) 85%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/80 {
+  color: color-mix(in srgb, var(--io-body-color) 80%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/75 {
+  color: color-mix(in srgb, var(--io-body-color) 75%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/70 {
+  color: color-mix(in srgb, var(--io-body-color) 70%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/60 {
+  color: color-mix(in srgb, var(--io-body-color) 60%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/50 {
+  color: color-mix(in srgb, var(--io-body-color) 50%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/45 {
+  color: color-mix(in srgb, var(--io-body-color) 45%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/40 {
+  color: color-mix(in srgb, var(--io-body-color) 40%, transparent);
+}
+body:not(.cms-body)[style*="--io-body-color"] :is(main, header, nav) .text-white\/30 {
+  color: color-mix(in srgb, var(--io-body-color) 30%, transparent);
+}
+
+body:not(.cms-body)[style*="--io-heading-color"] main :is(h1, h2, h3, h4) {
+  color: var(--io-heading-color);
+}
+
+body:not(.cms-body) main .gold-text {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body:not(.cms-body)[style*="--io-paragraph-color"]
+  main
+  p:not(.gold-text):not(.text-gold):not([class*="text-gold"]):not(.io-keynote) {
+  color: var(--io-paragraph-color);
+}
+
+/* Section keynotes / eyebrows keep theme gold — never follow paragraph color */
+main .io-keynote,
+main p.text-gold,
+main p[class*="text-gold"] {
+  color: #c5a55a !important;
+}
+main p.text-gold\/70,
+main .io-keynote.text-gold\/70 {
+  color: rgba(197, 165, 90, 0.7) !important;
+}
+main p.text-gold\/80,
+main .io-keynote.text-gold\/80 {
+  color: rgba(197, 165, 90, 0.8) !important;
 }
 
 .cms-keystatic-shell > * {

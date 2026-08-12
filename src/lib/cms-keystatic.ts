@@ -126,6 +126,12 @@ export async function getCmsSite() {
         initiative: fallbackSite.partners.initiative,
         execution: fallbackSite.partners.execution,
       },
+      typography: { ...fallbackSite.typography },
+      registrationCategories: {
+        vvip: { ...fallbackSite.registrationCategories.vvip },
+        vip: { ...fallbackSite.registrationCategories.vip },
+        media: { ...fallbackSite.registrationCategories.media },
+      },
       images: {
         ...fallbackSite.images,
         logo: header?.logo || header?.logoSrc || fallbackSite.images.logo,
@@ -140,6 +146,16 @@ export async function getCmsSite() {
           header?.brandHighlight || fallbackSite.header.brandHighlight,
         ctaLabel: header?.ctaLabel || fallbackSite.header.ctaLabel,
         ctaHref: header?.ctaHref || fallbackSite.header.ctaHref,
+        registerWidget: {
+          enabled: header?.registerWidgetEnabled !== false,
+          label:
+            header?.registerWidgetLabel || fallbackSite.header.registerWidget.label,
+          title:
+            header?.registerWidgetTitle || fallbackSite.header.registerWidget.title,
+          subtitle:
+            header?.registerWidgetSubtitle ||
+            fallbackSite.header.registerWidget.subtitle,
+        },
         navLinks: headerNav.length
           ? headerNav
           : [...fallbackSite.header.navLinks],

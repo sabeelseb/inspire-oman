@@ -59,7 +59,7 @@ export default function Navbar() {
               className="flex items-center gap-2 sm:gap-2.5 group relative z-[70] shrink-0"
               onClick={() => setMobileOpen(false)}
             >
-              <div className="h-9 w-9 sm:h-11 sm:w-11 shrink-0 flex items-center justify-center">
+              <div className="h-11 w-11 sm:h-12 sm:w-12 lg:h-[3.25rem] lg:w-[3.25rem] shrink-0 flex items-center justify-center">
                 <LogoImage
                   src={siteConfig.images.logo}
                   alt="Inspire Oman"
@@ -68,10 +68,10 @@ export default function Navbar() {
                 />
               </div>
               <div className="hidden sm:block">
-                <span className="text-sm sm:text-base font-bold tracking-wide text-white group-hover:text-gold transition-colors">
+                <span className="text-base sm:text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
                   {header.brandPrimary}
                 </span>
-                <span className="text-sm sm:text-base font-light tracking-widest text-gold ml-1">
+                <span className="text-base sm:text-lg font-light tracking-widest text-gold ml-1">
                   {header.brandHighlight}
                 </span>
               </div>

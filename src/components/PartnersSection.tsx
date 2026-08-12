@@ -44,7 +44,7 @@ export default function PartnersSection({
     <section className="relative py-10 sm:py-12">
       <div className="site-container">
         <div className="text-center mb-8">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">
+          <p className="io-keynote text-gold text-sm font-semibold uppercase tracking-widest mb-3">
             {eyebrow || "Our Partners"}
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
