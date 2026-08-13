@@ -2,11 +2,11 @@ export const siteConfig = {
   name: "Inspire Oman",
   seoTitle: "Inspire Oman - Telling Oman's Growth Story Globally",
   seoDescription:
-    "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 11 October 2026, Oman Convention & Exhibition Centre.",
+    "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 14 October 2026, Oman Convention & Exhibition Centre.",
   slogan: "Celebrating Success. Creating Legacy. Inspiring Investment.",
   description:
     "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
-  summitDate: "11 October 2026",
+  summitDate: "14 October 2026",
   venue: "Oman Convention & Exhibition Centre",
   city: "Muscat",
   partners: {
@@ -60,7 +60,7 @@ export const siteConfig = {
       label: "Register Now",
       title: "Register for Summit 2026",
       subtitle:
-        "Join delegates at the Inspire Oman Investors Summit — 11 October 2026",
+        "Join delegates at the Inspire Oman Investors Summit — 14 October 2026",
     },
     navLinks: [
       { href: "/", label: "Home" },
@@ -235,7 +235,7 @@ export const pillars = [
   {
     id: "summit",
     title: "Investors Summit",
-    subtitle: "11 October 2026",
+    subtitle: "14 October 2026",
     description:
       "The flagship Inspire Oman Investors Summit brings together CEOs, investors, government leaders, and entrepreneurs for visionary keynotes, industry discussions, and high-value networking opportunities.",
     icon: "Landmark",

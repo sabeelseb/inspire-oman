@@ -182,11 +182,17 @@ async function readGlobal(slug: string) {
 
 export async function getCmsSite() {
   try {
-    const [site, header, footer] = await Promise.all([
+    const settled = await Promise.allSettled([
       readGlobal("site"),
       readGlobal("header"),
       readGlobal("footer"),
     ]);
+    const site =
+      settled[0].status === "fulfilled" ? settled[0].value : null;
+    const header =
+      settled[1].status === "fulfilled" ? settled[1].value : null;
+    const footer =
+      settled[2].status === "fulfilled" ? settled[2].value : null;
     if (!site && !header && !footer) {
       return {
         ...fallbackSite,
