@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useCmsSite } from "@/components/CmsProvider";
 import FormThankYou from "@/components/FormThankYou";
 import SummitRegCategoryPicker from "@/components/SummitRegCategoryPicker";
+import { usePastFirstView } from "@/hooks/usePastFirstView";
 import { submitToAdmin } from "@/lib/submit-form";
 import {
   getSummitRegCategory,
@@ -56,6 +57,8 @@ export default function RegisterWidget() {
   const widget = siteConfig.header.registerWidget;
   const enabled = widget?.enabled !== false;
   const hideOnSummit = pathname === "/summit";
+  const isHome = pathname === "/";
+  const pastFirstView = usePastFirstView(100);
 
   const [open, setOpen] = useState(false);
   const [sending, setSending] = useState(false);
@@ -64,7 +67,6 @@ export default function RegisterWidget() {
   const [form, setForm] = useState(emptyForm);
   const [category, setCategory] = useState<SummitRegCategory | null>(null);
   const [mounted, setMounted] = useState(false);
-  const [heroCtaInView, setHeroCtaInView] = useState(() => pathname === "/");
   const regCategories = resolveSummitRegCategories(
     siteConfig.registrationCategories,
   );
@@ -72,56 +74,12 @@ export default function RegisterWidget() {
     category,
     siteConfig.registrationCategories,
   );
-  const isHome = pathname === "/";
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    if (!mounted) return;
-    if (!isHome) {
-      setHeroCtaInView(false);
-      return;
-    }
-
-    let observer: IntersectionObserver | null = null;
-    let cancelled = false;
-
-    const attach = () => {
-      const el = document.getElementById("hero-register-cta");
-      if (!el || cancelled) return false;
-
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          setHeroCtaInView(entry.isIntersecting && entry.intersectionRatio > 0.2);
-        },
-        {
-          threshold: [0, 0.2, 0.5, 1],
-          // Sticky header offset so "in view" matches what the user can see
-          rootMargin: "-88px 0px -8% 0px",
-        },
-      );
-      observer.observe(el);
-      return true;
-    };
-
-    if (!attach()) {
-      const t = window.setTimeout(attach, 400);
-      return () => {
-        cancelled = true;
-        window.clearTimeout(t);
-        observer?.disconnect();
-      };
-    }
-
-    return () => {
-      cancelled = true;
-      observer?.disconnect();
-    };
-  }, [mounted, isHome, pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -141,7 +99,8 @@ export default function RegisterWidget() {
 
   const label = widget?.label?.trim() || "Register Now";
   const panelTitle = widget?.title?.trim() || "Register for Summit 2026";
-  const showFab = !open && !(isHome && heroCtaInView);
+  // Home: FAB only after scroll. Other pages: FAB always available.
+  const showFab = !open && (!isHome || pastFirstView);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -196,7 +155,7 @@ export default function RegisterWidget() {
             exit={reduceMotion ? undefined : { opacity: 0, y: 12 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed z-[55] btn-primary shadow-md shadow-gold/20 right-3 bottom-[max(1rem,env(safe-area-inset-bottom))] sm:right-6 sm:bottom-6 px-3.5 py-2 text-xs sm:px-5 sm:py-3 sm:text-base opacity-[0.78] hover:opacity-100 hover:shadow-lg hover:shadow-gold/30 transition-opacity"
+            className="fixed z-[55] btn-primary shadow-md shadow-gold/20 right-3 bottom-[max(1rem,env(safe-area-inset-bottom))] sm:right-6 sm:bottom-6 min-h-11 px-4 py-2.5 text-sm sm:min-h-0 sm:px-5 sm:py-3 sm:text-base opacity-[0.78] hover:opacity-100 hover:shadow-lg hover:shadow-gold/30 transition-opacity"
             aria-haspopup="dialog"
             aria-expanded={false}
           >

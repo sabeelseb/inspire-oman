@@ -100,10 +100,12 @@ type HomePage = {
   contactTitle?: string | null;
   contactTitleHighlight?: string | null;
   contactSubtitle?: string | null;
+  heroOcciVisible?: boolean | null;
   heroOcciRole?: string | null;
   heroOcciTitle?: string | null;
   heroOcciLogo?: string | null;
   heroOcciLogoSrc?: string | null;
+  heroMefriendVisible?: boolean | null;
   heroMefriendRole?: string | null;
   heroMefriendTitle?: string | null;
   heroMefriendLogo?: string | null;

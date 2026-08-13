@@ -1,10 +1,10 @@
 export type SubmissionKind = "contact" | "partner" | "summit" | "message";
 
 const ENDPOINT_BY_KIND: Record<SubmissionKind, string> = {
-  contact: "/api/get-in-touch",
-  message: "/api/get-in-touch",
-  summit: "/api/summit-registrations",
-  partner: "/api/partner-applications",
+  contact: "/api/forms/get-in-touch",
+  message: "/api/forms/get-in-touch",
+  summit: "/api/forms/summit-registrations",
+  partner: "/api/forms/partner-applications",
 };
 
 export async function submitToAdmin(

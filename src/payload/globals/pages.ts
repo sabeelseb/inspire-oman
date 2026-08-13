@@ -755,12 +755,30 @@ export const HomePage: GlobalConfig = {
     {
       type: "collapsible",
       label: "Hero partner logos (OCCI & mefriend)",
+      admin: {
+        description:
+          "Toggle visibility to show or hide each partner logo on the homepage hero.",
+      },
       fields: [
+        {
+          name: "heroOcciVisible",
+          type: "checkbox",
+          defaultValue: true,
+          label: "Show Strategic Partner (OCCI) logo",
+          admin: {
+            description:
+              "When off, the Strategic Partner logo is hidden on the frontend hero.",
+          },
+        },
         {
           name: "heroOcciRole",
           type: "text",
           defaultValue: "Strategic Partner",
           label: "OCCI - role label",
+          admin: {
+            condition: (_, siblingData) =>
+              siblingData?.heroOcciVisible !== false,
+          },
         },
         {
           name: "heroOcciTitle",
@@ -770,6 +788,8 @@ export const HomePage: GlobalConfig = {
           admin: {
             description:
               "Shown under the Strategic Partner logo (right of main hero logo).",
+            condition: (_, siblingData) =>
+              siblingData?.heroOcciVisible !== false,
           },
         },
         {
@@ -777,18 +797,40 @@ export const HomePage: GlobalConfig = {
           type: "text",
           defaultValue: "/images/logos/OCC-logo.svg",
           label: "OCCI - logo path fallback",
+          admin: {
+            condition: (_, siblingData) =>
+              siblingData?.heroOcciVisible !== false,
+          },
         },
         {
           name: "heroOcciLogo",
           type: "upload",
           relationTo: "media",
           label: "OCCI - logo upload",
+          admin: {
+            condition: (_, siblingData) =>
+              siblingData?.heroOcciVisible !== false,
+          },
+        },
+        {
+          name: "heroMefriendVisible",
+          type: "checkbox",
+          defaultValue: true,
+          label: "Show Execution Partner (mefriend) logo",
+          admin: {
+            description:
+              "When off, the Execution Partner logo is hidden on the frontend hero.",
+          },
         },
         {
           name: "heroMefriendRole",
           type: "text",
           defaultValue: "Execution Partner",
           label: "mefriend - role label",
+          admin: {
+            condition: (_, siblingData) =>
+              siblingData?.heroMefriendVisible !== false,
+          },
         },
         {
           name: "heroMefriendTitle",
@@ -798,6 +840,8 @@ export const HomePage: GlobalConfig = {
           admin: {
             description:
               "Shown under the Execution Partner logo (left of main hero logo).",
+            condition: (_, siblingData) =>
+              siblingData?.heroMefriendVisible !== false,
           },
         },
         {
@@ -805,12 +849,20 @@ export const HomePage: GlobalConfig = {
           type: "text",
           defaultValue: "/images/logos/MF-logo.svg",
           label: "mefriend - logo path fallback",
+          admin: {
+            condition: (_, siblingData) =>
+              siblingData?.heroMefriendVisible !== false,
+          },
         },
         {
           name: "heroMefriendLogo",
           type: "upload",
           relationTo: "media",
           label: "mefriend - logo upload",
+          admin: {
+            condition: (_, siblingData) =>
+              siblingData?.heroMefriendVisible !== false,
+          },
         },
       ],
     },

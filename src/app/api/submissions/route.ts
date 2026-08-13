@@ -5,10 +5,10 @@ import { NextResponse } from "next/server";
  * New forms hit dedicated endpoints; this forwards by type.
  */
 const TARGET: Record<string, string> = {
-  contact: "/api/get-in-touch",
-  message: "/api/get-in-touch",
-  summit: "/api/summit-registrations",
-  partner: "/api/partner-applications",
+  contact: "/api/forms/get-in-touch",
+  message: "/api/forms/get-in-touch",
+  summit: "/api/forms/summit-registrations",
+  partner: "/api/forms/partner-applications",
 };
 
 export async function POST(req: Request) {

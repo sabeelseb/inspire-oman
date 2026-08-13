@@ -35,10 +35,12 @@ async function main() {
   }
 
   const homeCols = [
+    "hero_occi_visible",
     "hero_occi_role",
     "hero_occi_title",
     "hero_occi_logo_src",
     "hero_occi_logo_id",
+    "hero_mefriend_visible",
     "hero_mefriend_role",
     "hero_mefriend_title",
     "hero_mefriend_logo_src",
@@ -73,7 +75,8 @@ async function main() {
     "contact_subtitle",
   ];
   for (const col of homeCols) {
-    const sqlType = col.endsWith("_id") ? "INTEGER" : "TEXT";
+    const sqlType =
+      col.endsWith("_id") || col.endsWith("_visible") ? "INTEGER" : "TEXT";
     await addColumn("home_page", col, sqlType);
   }
 
@@ -134,6 +137,14 @@ async function main() {
   ];
   for (const col of spotlightCols) {
     await addColumn("home_page", col);
+  }
+
+  const homeVersionBoolCols = [
+    "version_hero_occi_visible",
+    "version_hero_mefriend_visible",
+  ];
+  for (const col of homeVersionBoolCols) {
+    await addColumn("_home_page_v", col, "INTEGER");
   }
 
   console.log("Done.");

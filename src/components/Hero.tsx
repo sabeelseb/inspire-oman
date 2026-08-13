@@ -11,6 +11,7 @@ import TitleHighlight from "./TitleHighlight";
 import LogoImage from "./LogoImage";
 import { usePageLoader } from "./AppShell";
 import { useIsMobile } from "@/hooks/useMobilePerf";
+import { usePastFirstView } from "@/hooks/usePastFirstView";
 import { typographyToStyle } from "@/lib/typography";
 
 export type HomeHeroContent = {
@@ -29,10 +30,12 @@ export type HomeHeroContent = {
   heroSecondaryCta?: string | null;
   heroSecondaryCtaHref?: string | null;
   heroImage?: string | null;
+  heroOcciVisible?: boolean | null;
   heroOcciRole?: string | null;
   heroOcciTitle?: string | null;
   heroOcciLogo?: string | null;
   heroOcciLogoSrc?: string | null;
+  heroMefriendVisible?: boolean | null;
   heroMefriendRole?: string | null;
   heroMefriendTitle?: string | null;
   heroMefriendLogo?: string | null;
@@ -60,11 +63,17 @@ function PartnerBlock({
         : "justify-self-center";
 
   return (
-    <div className={`min-w-0 text-center ${alignClass}`}>
+    <div
+      className={`min-w-0 text-center ${alignClass} ${
+        compact
+          ? "rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4"
+          : ""
+      }`}
+    >
       <p
-        className={`font-medium uppercase tracking-[0.14em] text-gold/70 ${
+        className={`font-semibold uppercase tracking-[0.16em] text-gold/80 ${
           compact
-            ? "mb-1 text-[8px]"
+            ? "mb-2 text-[10px]"
             : "mb-1 text-[8px] sm:mb-1.5 sm:text-[9px] md:text-[10px] md:tracking-[0.16em]"
         }`}
       >
@@ -73,7 +82,7 @@ function PartnerBlock({
       <div
         className={`mx-auto flex items-center justify-center ${
           compact
-            ? "mb-0 h-9"
+            ? "mb-0 h-14"
             : "mb-1 h-10 sm:mb-1.5 sm:h-12 md:h-14 lg:h-16"
         }`}
       >
@@ -82,7 +91,7 @@ function PartnerBlock({
           alt={title}
           priority
           className={`h-full w-auto max-w-full object-contain ${
-            compact ? "max-w-[5.5rem]" : "sm:max-w-[7.5rem] md:max-w-[9rem]"
+            compact ? "max-w-[8.5rem]" : "sm:max-w-[7.5rem] md:max-w-[9rem]"
           }`}
         />
       </div>
@@ -100,6 +109,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const { markTopReady } = usePageLoader();
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
+  const pastFirstView = usePastFirstView(100);
 
   const date = page?.heroDate || siteConfig.summitDate;
   const city = page?.heroCity || siteConfig.city || "Muscat";
@@ -142,6 +152,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
       page?.heroOcciLogo ||
       page?.heroOcciLogoSrc ||
       "/images/logos/OCC-logo.svg",
+    visible: page?.heroOcciVisible !== false,
   };
 
   const executionPartner = {
@@ -152,7 +163,13 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
       page?.heroMefriendLogo ||
       page?.heroMefriendLogoSrc ||
       "/images/logos/MF-logo.svg",
+    visible: page?.heroMefriendVisible !== false,
   };
+
+  const showStrategic = strategicPartner.visible;
+  const showExecution = executionPartner.visible;
+  const showAnyPartner = showStrategic || showExecution;
+  const showBothPartners = showStrategic && showExecution;
 
   const headingStyle = typographyToStyle(siteConfig.typography?.heading);
   const subheadingStyle = typographyToStyle(siteConfig.typography?.subheading);
@@ -207,21 +224,27 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full min-h-[100svh] flex-col justify-center pt-[calc(env(safe-area-inset-top)+4.5rem)] pb-8 sm:pt-[calc(env(safe-area-inset-top)+5.25rem)] sm:pb-12 lg:pt-[calc(env(safe-area-inset-top)+5.5rem)] lg:pb-14">
+      <div className="relative z-10 mx-auto flex w-full min-h-[100svh] flex-col justify-center pt-[calc(env(safe-area-inset-top)+5rem)] pb-7 sm:pt-[calc(env(safe-area-inset-top)+5.25rem)] sm:pb-12 lg:pt-[calc(env(safe-area-inset-top)+5.5rem)] lg:pb-14">
         <div className="site-container">
           <div className="flex w-full min-w-0 flex-col items-center text-center">
             {/* Desktop/tablet: partners flank main logo */}
             <motion.div
               {...fade(0.15, 16, 0.65)}
-              className="mb-3 hidden w-full min-w-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 md:mb-4 md:grid md:gap-6 lg:gap-8"
+              className={
+                showBothPartners
+                  ? "mb-3 hidden w-full min-w-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 md:mb-4 md:grid md:gap-6 lg:gap-8"
+                  : "mb-3 hidden w-full min-w-0 items-center justify-center gap-4 md:mb-4 md:flex md:gap-6 lg:gap-8"
+              }
               aria-label="Partners and brand"
             >
-              <PartnerBlock
-                role={executionPartner.role}
-                title={executionPartner.title}
-                src={executionPartner.src}
-                align="end"
-              />
+              {showExecution ? (
+                <PartnerBlock
+                  role={executionPartner.role}
+                  title={executionPartner.title}
+                  src={executionPartner.src}
+                  align={showBothPartners ? "end" : "center"}
+                />
+              ) : null}
               <div className="flex shrink-0 justify-center px-2">
                 <Image
                   src={heroLogoSrc}
@@ -232,18 +255,20 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
                   className="h-[8.5rem] w-auto max-w-full object-contain object-center md:h-[9.5rem] lg:h-[10.5rem] xl:h-[11.25rem]"
                 />
               </div>
-              <PartnerBlock
-                role={strategicPartner.role}
-                title={strategicPartner.title}
-                src={strategicPartner.src}
-                align="start"
-              />
+              {showStrategic ? (
+                <PartnerBlock
+                  role={strategicPartner.role}
+                  title={strategicPartner.title}
+                  src={strategicPartner.src}
+                  align={showBothPartners ? "start" : "center"}
+                />
+              ) : null}
             </motion.div>
 
-            {/* mWeb: brand first — logo only in the first fold */}
+            {/* mWeb: brand first — larger logo for first-fold presence */}
             <motion.div
               {...fade(0.1, 12, 0.55)}
-              className="mb-3 flex justify-center md:hidden"
+              className="mb-4 flex justify-center md:hidden"
             >
               <Image
                 src={heroLogoSrc}
@@ -251,14 +276,14 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
                 width={280}
                 height={320}
                 priority
-                className="h-[5.75rem] w-auto max-w-[42vw] object-contain object-center"
+                className="h-[7.75rem] w-auto max-w-[58vw] object-contain object-center"
               />
             </motion.div>
 
             <div className="flex min-w-0 w-full flex-col items-center">
               <motion.h1
                 {...fade(0.25, 24, 0.75)}
-                className="mb-2 text-[clamp(1.75rem,calc(1rem+4.2vw),3.35rem)] font-black leading-[1.1] tracking-tight text-white sm:mb-2.5"
+                className="mb-3 text-[clamp(2.1rem,calc(1.15rem+6vw),3.35rem)] font-black leading-[1.12] tracking-tight text-white sm:mb-2.5"
                 style={headingStyle}
               >
                 <TitleHighlight
@@ -273,7 +298,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
               <motion.p
                 {...fade(0.4)}
-                className="mx-auto mb-2 max-w-xl text-[0.95rem] font-light tracking-wide text-white/75 sm:mb-2.5 sm:max-w-2xl sm:text-xl md:text-2xl"
+                className="mx-auto mb-4 max-w-[22rem] text-[1.0625rem] font-light leading-snug tracking-wide text-white/80 sm:mb-2.5 sm:max-w-2xl sm:text-xl md:text-2xl"
                 style={subheadingStyle}
               >
                 {slogan}
@@ -290,17 +315,17 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
               <motion.div
                 {...fade(0.6, 14, 0.5)}
-                className="mb-4 flex w-full min-w-0 flex-col items-center gap-1.5 sm:mb-5 sm:gap-2"
+                className="mb-5 flex w-full min-w-0 flex-col items-center gap-2.5 sm:mb-5 sm:gap-2"
               >
-                <div className="inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-gold/25 bg-gold/10 px-3.5 py-2 text-xs font-medium text-gold sm:px-4 sm:text-sm">
-                  <CalendarDays size={14} className="shrink-0" />
+                <div className="inline-flex max-w-full items-center justify-center gap-2.5 rounded-full border border-gold/30 bg-gold/10 px-4 py-2.5 text-sm font-medium text-gold sm:px-4 sm:py-2 sm:text-sm">
+                  <CalendarDays size={16} className="shrink-0" />
                   <span className="min-w-0 break-words text-center text-balance">
                     {date}
                   </span>
                 </div>
                 {venue || city ? (
-                  <div className="flex max-w-[18rem] items-center justify-center gap-1.5 text-xs font-medium text-gold/80 sm:max-w-full sm:text-sm">
-                    <MapPin size={13} className="shrink-0" />
+                  <div className="flex max-w-[20rem] items-center justify-center gap-2 text-sm font-medium text-gold/85 sm:max-w-full">
+                    <MapPin size={15} className="shrink-0" />
                     <span className="min-w-0 break-words text-center text-balance">
                       {venue || city}
                     </span>
@@ -310,23 +335,25 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
               <motion.div
                 {...fade(0.75)}
-                className="flex w-full max-w-sm flex-col items-stretch justify-center gap-2.5 sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
+                className="flex w-full max-w-[20.5rem] flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
               >
-                <Link
-                  id="hero-register-cta"
-                  href={primaryHref}
-                  className="btn-primary px-8 py-3.5 text-base shadow-lg shadow-gold/25 group sm:px-10 sm:py-4 sm:text-lg"
-                >
-                  {primaryCta}
-                  <ArrowRight
-                    size={20}
-                    className="ml-2 transition-transform group-hover:translate-x-1"
-                  />
-                </Link>
+                {!pastFirstView ? (
+                  <Link
+                    id="hero-register-cta"
+                    href={primaryHref}
+                    className="btn-primary min-h-12 px-8 py-4 text-lg shadow-lg shadow-gold/25 group sm:px-10 sm:py-4"
+                  >
+                    {primaryCta}
+                    <ArrowRight
+                      size={22}
+                      className="ml-2 transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
+                ) : null}
                 {secondaryCta ? (
                   <Link
                     href={secondaryHref}
-                    className="btn-outline px-5 py-2.5 text-sm opacity-90 sm:px-6 sm:py-3 sm:text-base"
+                    className="btn-outline min-h-12 px-6 py-3.5 text-base opacity-95 sm:px-6 sm:py-3"
                   >
                     {secondaryCta}
                   </Link>
@@ -334,25 +361,35 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
               </motion.div>
             </div>
 
-            {/* mWeb partners: compact strip under CTAs — logos + roles only */}
-            <motion.div
-              {...fade(0.9, 12, 0.45)}
-              className="mt-6 grid w-full max-w-md grid-cols-2 items-start gap-4 border-t border-white/10 pt-5 md:hidden"
-              aria-label="Partners"
-            >
-              <PartnerBlock
-                role={executionPartner.role}
-                title={executionPartner.title}
-                src={executionPartner.src}
-                compact
-              />
-              <PartnerBlock
-                role={strategicPartner.role}
-                title={strategicPartner.title}
-                src={strategicPartner.src}
-                compact
-              />
-            </motion.div>
+            {/* mWeb partners: larger strip under CTAs */}
+            {showAnyPartner ? (
+              <motion.div
+                {...fade(0.9, 12, 0.45)}
+                className={
+                  showBothPartners
+                    ? "mt-7 grid w-full max-w-sm grid-cols-2 items-start gap-5 border-t border-white/15 pt-6 md:hidden"
+                    : "mt-7 flex w-full max-w-sm items-start justify-center border-t border-white/15 pt-6 md:hidden"
+                }
+                aria-label="Partners"
+              >
+                {showExecution ? (
+                  <PartnerBlock
+                    role={executionPartner.role}
+                    title={executionPartner.title}
+                    src={executionPartner.src}
+                    compact
+                  />
+                ) : null}
+                {showStrategic ? (
+                  <PartnerBlock
+                    role={strategicPartner.role}
+                    title={strategicPartner.title}
+                    src={strategicPartner.src}
+                    compact
+                  />
+                ) : null}
+              </motion.div>
+            ) : null}
           </div>
         </div>
       </div>

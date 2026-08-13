@@ -53,13 +53,13 @@ export default function Navbar() {
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="site-container">
-          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-[4.25rem]">
+          <div className="flex items-center justify-between h-16 sm:h-16 lg:h-[4.25rem]">
             <Link
               href="/"
-              className="flex items-center gap-2 sm:gap-2.5 group relative z-[70] shrink-0"
+              className="flex items-center gap-2.5 sm:gap-2.5 group relative z-[70] min-w-0 shrink"
               onClick={() => setMobileOpen(false)}
             >
-              <div className="h-11 w-11 sm:h-12 sm:w-12 lg:h-[3.25rem] lg:w-[3.25rem] shrink-0 flex items-center justify-center">
+              <div className="h-12 w-12 sm:h-12 sm:w-12 lg:h-[3.25rem] lg:w-[3.25rem] shrink-0 flex items-center justify-center">
                 <LogoImage
                   src={siteConfig.images.logo}
                   alt="Inspire Oman"
@@ -67,11 +67,11 @@ export default function Navbar() {
                   priority
                 />
               </div>
-              <div className="hidden sm:block">
-                <span className="text-base sm:text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
+              <div className="min-w-0 leading-none">
+                <span className="text-[1.05rem] sm:text-lg font-bold tracking-wide text-white group-hover:text-gold transition-colors">
                   {header.brandPrimary}
                 </span>
-                <span className="text-base sm:text-lg font-light tracking-widest text-gold ml-1">
+                <span className="text-[1.05rem] sm:text-lg font-light tracking-widest text-gold ml-1">
                   {header.brandHighlight}
                 </span>
               </div>
@@ -102,7 +102,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileOpen((o) => !o)}
-              className={`lg:hidden relative z-[95] flex h-11 w-11 items-center justify-center rounded-xl border transition-colors duration-200 ${
+              className={`lg:hidden relative z-[95] flex h-12 w-12 items-center justify-center rounded-xl border transition-colors duration-200 ${
                 mobileOpen
                   ? "border-gold bg-gold text-primary"
                   : "border-gold/40 bg-primary/80 text-gold"

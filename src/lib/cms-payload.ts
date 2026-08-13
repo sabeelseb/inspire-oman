@@ -485,6 +485,7 @@ export async function getCmsPageHome() {
       contactTitle: page.contactTitle,
       contactTitleHighlight: page.contactTitleHighlight,
       contactSubtitle: page.contactSubtitle,
+      heroOcciVisible: page.heroOcciVisible !== false,
       heroOcciRole: page.heroOcciRole,
       heroOcciTitle: page.heroOcciTitle,
       heroOcciLogo:
@@ -493,6 +494,7 @@ export async function getCmsPageHome() {
         "/images/logos/OCC-logo.svg",
       heroOcciLogoSrc:
         (page.heroOcciLogoSrc as string) || "/images/logos/OCC-logo.svg",
+      heroMefriendVisible: page.heroMefriendVisible !== false,
       heroMefriendRole: page.heroMefriendRole,
       heroMefriendTitle: page.heroMefriendTitle,
       heroMefriendLogo:

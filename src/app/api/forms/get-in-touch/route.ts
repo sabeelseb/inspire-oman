@@ -5,6 +5,7 @@ import {
   requireNameEmail,
 } from "@/lib/create-submission";
 
+/** Public form endpoint — kept off `/api/get-in-touch` so Payload admin REST works. */
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as Record<string, unknown>;
