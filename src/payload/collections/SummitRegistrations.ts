@@ -1,4 +1,8 @@
 import type { CollectionConfig } from "payload";
+import {
+  sendRegistrationApprovedEmail,
+  sendRegistrationUnderReviewEmail,
+} from "@/lib/registration-emails";
 
 const statusField: CollectionConfig["fields"][number] = {
   name: "status",
@@ -7,9 +11,15 @@ const statusField: CollectionConfig["fields"][number] = {
   options: [
     { label: "New", value: "new" },
     { label: "In progress", value: "in-progress" },
+    { label: "Approved", value: "approved" },
+    { label: "Rejected", value: "rejected" },
     { label: "Closed", value: "closed" },
   ],
-  admin: { position: "sidebar" },
+  admin: {
+    position: "sidebar",
+    description:
+      "New → under-review email on submit. In progress → no email. Approved → approval email. Rejected → later.",
+  },
 };
 
 export const SummitRegistrations: CollectionConfig = {
@@ -37,6 +47,28 @@ export const SummitRegistrations: CollectionConfig = {
     read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, previousDoc, operation }) => {
+        try {
+          if (operation === "create") {
+            await sendRegistrationUnderReviewEmail(doc);
+            return;
+          }
+
+          const prevStatus = previousDoc?.status;
+          const nextStatus = doc.status;
+
+          // In progress / rejected / closed → no mail for now
+          if (nextStatus === "approved" && prevStatus !== "approved") {
+            await sendRegistrationApprovedEmail(doc);
+          }
+        } catch (err) {
+          console.error("[summit-registrations] email hook failed:", err);
+        }
+      },
+    ],
   },
   fields: [
     { name: "name", type: "text", required: true },
