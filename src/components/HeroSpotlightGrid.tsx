@@ -190,7 +190,7 @@ export default function HeroSpotlightGrid({
   const remotePoster = /^https?:\/\//i.test(videoPoster);
 
   return (
-    <section className="relative z-10 -mt-2 pb-10 sm:pb-14 lg:pb-16">
+    <section className="relative z-10 w-full -mt-2 pb-10 sm:pb-14 lg:pb-16">
       <div className="site-container">
         <ScrollReveal>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:items-stretch lg:gap-5">
