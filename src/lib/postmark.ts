@@ -10,18 +10,20 @@ export type PostmarkSendResult =
   | { ok: true; messageId?: string }
   | { ok: false; error: string };
 
-function getConfig() {
+function getConfig():
+  | { error: string }
+  | { token: string; from: string; replyTo?: string; messageStream: string } {
   const token = process.env.POSTMARK_SERVER_TOKEN?.trim();
   const fromEmail = process.env.POSTMARK_FROM_EMAIL?.trim();
   const fromName = process.env.POSTMARK_FROM_NAME?.trim() || "Inspire Oman Team";
-  const replyTo = process.env.POSTMARK_REPLY_TO?.trim();
+  const replyTo = process.env.POSTMARK_REPLY_TO?.trim() || undefined;
   const messageStream = process.env.POSTMARK_MESSAGE_STREAM?.trim() || "outbound";
 
   if (!token) {
-    return { error: "POSTMARK_SERVER_TOKEN is not set" as const };
+    return { error: "POSTMARK_SERVER_TOKEN is not set" };
   }
   if (!fromEmail) {
-    return { error: "POSTMARK_FROM_EMAIL is not set" as const };
+    return { error: "POSTMARK_FROM_EMAIL is not set" };
   }
 
   const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
