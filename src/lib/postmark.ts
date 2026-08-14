@@ -4,6 +4,8 @@ type SendEmailInput = {
   textBody: string;
   htmlBody?: string;
   tag?: string;
+  /** Overrides POSTMARK_REPLY_TO when set (e.g. registrant email). */
+  replyTo?: string;
 };
 
 export type PostmarkSendResult =
@@ -47,7 +49,8 @@ export async function sendPostmarkEmail(
     HtmlBody: input.htmlBody ?? textToHtml(input.textBody),
     MessageStream: config.messageStream,
   };
-  if (config.replyTo) payload.ReplyTo = config.replyTo;
+  const replyTo = input.replyTo?.trim() || config.replyTo;
+  if (replyTo) payload.ReplyTo = replyTo;
   if (input.tag) payload.Tag = input.tag;
 
   try {

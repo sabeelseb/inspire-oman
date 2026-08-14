@@ -79,6 +79,7 @@ export async function sendRegistrationUnderReviewEmail(
   const { subject, textBody } = buildUnderReviewEmail(doc);
   return sendPostmarkEmail({
     to: doc.email,
+    replyTo: doc.email,
     subject,
     textBody,
     tag: "summit-registration-under-review",
@@ -92,6 +93,7 @@ export async function sendRegistrationApprovedEmail(
   const { subject, textBody } = buildApprovedEmail(doc);
   return sendPostmarkEmail({
     to: doc.email,
+    replyTo: doc.email,
     subject,
     textBody,
     tag: "summit-registration-approved",
