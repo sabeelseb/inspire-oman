@@ -335,25 +335,25 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
               <motion.div
                 {...fade(0.75)}
-                className="flex w-full max-w-[20.5rem] flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
+                className="flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-4"
               >
                 {!pastFirstView ? (
                   <Link
                     id="hero-register-cta"
                     href={primaryHref}
-                    className="btn-primary min-h-12 px-8 py-4 text-lg shadow-lg shadow-gold/25 group sm:px-10 sm:py-4"
+                    className="btn-primary group min-h-11 w-auto px-5 py-2.5 text-sm shadow-lg shadow-gold/25 sm:min-h-12 sm:px-10 sm:py-4 sm:text-lg"
                   >
                     {primaryCta}
                     <ArrowRight
-                      size={22}
-                      className="ml-2 transition-transform group-hover:translate-x-1"
+                      size={18}
+                      className="ml-1.5 transition-transform group-hover:translate-x-1 sm:ml-2 sm:h-[22px] sm:w-[22px]"
                     />
                   </Link>
                 ) : null}
                 {secondaryCta ? (
                   <Link
                     href={secondaryHref}
-                    className="btn-outline min-h-12 px-6 py-3.5 text-base opacity-95 sm:px-6 sm:py-3"
+                    className="btn-outline min-h-11 w-auto px-5 py-2.5 text-sm opacity-95 sm:min-h-12 sm:px-6 sm:py-3 sm:text-base"
                   >
                     {secondaryCta}
                   </Link>
