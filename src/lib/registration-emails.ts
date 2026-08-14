@@ -36,28 +36,34 @@ function p(html: string): string {
   return `<p style="margin:0 0 16px;">${html}</p>`;
 }
 
+function fields(doc: RegistrationMailFields) {
+  return {
+    name: participantName(doc.name),
+    organisation: organisationLabel(doc.organization),
+    category: categoryLabel(doc.category),
+  };
+}
+
 export function buildUnderReviewEmail(doc: RegistrationMailFields) {
-  const name = participantName(doc.name);
-  const organisation = organisationLabel(doc.organization);
-  const category = categoryLabel(doc.category);
+  const { name, organisation, category } = fields(doc);
 
   const subject = "Your Inspire Oman Registration is Under Review";
   const textBody = `Dear ${name},
 
 Thank you for registering for the ${EVENT_NAME}, taking place on ${EVENT_DATE}.
 
-We have received your registration for ${organisation} under ${category} successfully. Your details are currently under review and verification by the Inspire Oman team.
+We confirm that your registration on behalf of ${organisation}, under ${category}, has been received successfully.
 
-We will notify you once the verification process is complete.
+Your registration is currently under review by the Inspire Oman team. We will write to you once the review is complete with an update on your participation.
 
-Thank you for your interest in Inspire Oman.
+We appreciate your interest in being part of Inspire Oman.
 
-Inspire Oman Team
+Team 'Inspire Oman'
 Telling Oman's Growth Story Globally`;
 
   const htmlBody = renderInspireEmailShell({
-    previewText: `Your registration for ${EVENT_NAME} is under review.`,
-    eyebrow: "Registration update",
+    previewText: `Your registration for ${EVENT_NAME} has been received and is under review.`,
+    eyebrow: "Registration received",
     title: "Your registration is under review",
     bodyHtml: [
       p(`Dear ${bold(name)},`),
@@ -65,12 +71,12 @@ Telling Oman's Growth Story Globally`;
         `Thank you for registering for the ${bold(EVENT_NAME)}, taking place on ${bold(EVENT_DATE)}.`,
       ),
       p(
-        `We have received your registration for ${bold(organisation)} under ${bold(category)} successfully. Your details are currently under review and verification by the Inspire Oman team.`,
+        `We confirm that your registration on behalf of ${bold(organisation)}, under ${bold(category)}, has been received successfully.`,
       ),
       p(
-        "We will notify you once the verification process is complete.",
+        "Your registration is currently under review by the Inspire Oman team. We will write to you once the review is complete with an update on your participation.",
       ),
-      p("Thank you for your interest in Inspire Oman."),
+      p("We appreciate your interest in being part of Inspire Oman."),
     ].join(""),
   });
 
@@ -78,22 +84,20 @@ Telling Oman's Growth Story Globally`;
 }
 
 export function buildApprovedEmail(doc: RegistrationMailFields) {
-  const name = participantName(doc.name);
-  const organisation = organisationLabel(doc.organization);
-  const category = categoryLabel(doc.category);
+  const { name, organisation, category } = fields(doc);
 
-  const subject = "Update on Your Inspire Oman Registration";
+  const subject = "Your Inspire Oman Registration Has Been Approved";
   const textBody = `Dear ${name},
 
-Thank you for your interest in the ${EVENT_NAME}, taking place on ${EVENT_DATE}.
+We are pleased to inform you that your registration for the ${EVENT_NAME}, taking place on ${EVENT_DATE}, has been approved.
 
-Following the review of your registration for ${organisation} under ${category}, we are pleased to inform you that your registration has been approved.
+Your registration on behalf of ${organisation}, under ${category}, has been successfully verified.
 
-Further details regarding the Summit, participation and venue will be shared with you shortly.
+Further details regarding the Summit, including the venue, programme and participation arrangements, will be shared with you shortly.
 
 We look forward to welcoming you to ${EVENT_NAME}.
 
-Inspire Oman Team
+Team 'Inspire Oman'
 Telling Oman's Growth Story Globally`;
 
   const htmlBody = renderInspireEmailShell({
@@ -103,13 +107,13 @@ Telling Oman's Growth Story Globally`;
     bodyHtml: [
       p(`Dear ${bold(name)},`),
       p(
-        `Thank you for your interest in the ${bold(EVENT_NAME)}, taking place on ${bold(EVENT_DATE)}.`,
+        `We are pleased to inform you that your registration for the ${bold(EVENT_NAME)}, taking place on ${bold(EVENT_DATE)}, has been <strong style="font-weight:700;color:#0A0A0A;">approved</strong>.`,
       ),
       p(
-        `Following the review of your registration for ${bold(organisation)} under ${bold(category)}, we are pleased to inform you that your registration has been <strong style="font-weight:700;color:#0A0A0A;">approved</strong>.`,
+        `Your registration on behalf of ${bold(organisation)}, under ${bold(category)}, has been successfully verified.`,
       ),
       p(
-        "Further details regarding the Summit, participation and venue will be shared with you shortly.",
+        "Further details regarding the Summit, including the venue, programme and participation arrangements, will be shared with you shortly.",
       ),
       p(
         `We look forward to welcoming you to ${bold(EVENT_NAME)}.`,
@@ -120,32 +124,84 @@ Telling Oman's Growth Story Globally`;
   return { subject, textBody, htmlBody };
 }
 
-export async function sendRegistrationUnderReviewEmail(
+export function buildRejectedEmail(doc: RegistrationMailFields) {
+  const { name, organisation, category } = fields(doc);
+
+  const subject = "Update on Your Inspire Oman Registration";
+  const textBody = `Dear ${name},
+
+Thank you for registering for the ${EVENT_NAME}, taking place on ${EVENT_DATE}.
+
+Following a review of your registration submitted on behalf of ${organisation}, under ${category}, we regret to inform you that we are unable to confirm your participation in this edition of the Summit.
+
+We appreciate your interest in Inspire Oman and thank you for taking the time to register.
+
+Team Inspire Oman
+Telling Oman's Growth Story Globally`;
+
+  const htmlBody = renderInspireEmailShell({
+    previewText: `An update on your registration for ${EVENT_NAME}.`,
+    eyebrow: "Registration update",
+    title: "Update on your registration",
+    bodyHtml: [
+      p(`Dear ${bold(name)},`),
+      p(
+        `Thank you for registering for the ${bold(EVENT_NAME)}, taking place on ${bold(EVENT_DATE)}.`,
+      ),
+      p(
+        `Following a review of your registration submitted on behalf of ${bold(organisation)}, under ${bold(category)}, we regret to inform you that we are unable to confirm your participation in this edition of the Summit.`,
+      ),
+      p(
+        "We appreciate your interest in Inspire Oman and thank you for taking the time to register.",
+      ),
+    ].join(""),
+  });
+
+  return { subject, textBody, htmlBody };
+}
+
+async function sendRegistrationMail(
   doc: RegistrationMailFields,
+  built: { subject: string; textBody: string; htmlBody: string },
+  tag: string,
 ) {
   if (!doc.email) return { ok: false as const, error: "Missing email" };
-  const { subject, textBody, htmlBody } = buildUnderReviewEmail(doc);
   return sendPostmarkEmail({
     to: doc.email,
     replyTo: doc.email,
-    subject,
-    textBody,
-    htmlBody,
-    tag: "summit-registration-under-review",
+    subject: built.subject,
+    textBody: built.textBody,
+    htmlBody: built.htmlBody,
+    tag,
   });
+}
+
+export async function sendRegistrationUnderReviewEmail(
+  doc: RegistrationMailFields,
+) {
+  return sendRegistrationMail(
+    doc,
+    buildUnderReviewEmail(doc),
+    "summit-registration-under-review",
+  );
 }
 
 export async function sendRegistrationApprovedEmail(
   doc: RegistrationMailFields,
 ) {
-  if (!doc.email) return { ok: false as const, error: "Missing email" };
-  const { subject, textBody, htmlBody } = buildApprovedEmail(doc);
-  return sendPostmarkEmail({
-    to: doc.email,
-    replyTo: doc.email,
-    subject,
-    textBody,
-    htmlBody,
-    tag: "summit-registration-approved",
-  });
+  return sendRegistrationMail(
+    doc,
+    buildApprovedEmail(doc),
+    "summit-registration-approved",
+  );
+}
+
+export async function sendRegistrationRejectedEmail(
+  doc: RegistrationMailFields,
+) {
+  return sendRegistrationMail(
+    doc,
+    buildRejectedEmail(doc),
+    "summit-registration-rejected",
+  );
 }

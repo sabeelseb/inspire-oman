@@ -79,7 +79,7 @@ export function renderInspireEmailShell(input: EmailShellInput): string {
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;border-top:1px solid rgba(197,165,90,0.28);">
                 <tr>
                   <td style="padding-top:20px;">
-                    <p style="margin:0 0 4px;font-size:14px;color:#0A0A0A;font-weight:700;">Inspire Oman Team</p>
+                    <p style="margin:0 0 4px;font-size:14px;color:#0A0A0A;font-weight:700;">Team &#39;Inspire Oman&#39;</p>
                     <p style="margin:0 0 16px;font-size:13px;color:#71717A;">Telling Oman&#39;s Growth Story Globally</p>
                     <a href="${SITE_URL}" style="display:inline-block;padding:11px 20px;background-color:#C5A55A;color:#0A0A0A;text-decoration:none;font-size:13px;font-weight:700;border-radius:8px;">
                       Visit inspireoman.findown.in

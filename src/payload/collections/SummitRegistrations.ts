@@ -1,6 +1,7 @@
 import type { CollectionConfig } from "payload";
 import {
   sendRegistrationApprovedEmail,
+  sendRegistrationRejectedEmail,
   sendRegistrationUnderReviewEmail,
 } from "@/lib/registration-emails";
 
@@ -18,7 +19,7 @@ const statusField: CollectionConfig["fields"][number] = {
   admin: {
     position: "sidebar",
     description:
-      "New → under-review email on submit. In progress → no email. Approved → approval email. Rejected → later.",
+      "New → registration email on submit. In progress → no email. Approved / Rejected → status email. Closed → no email.",
   },
 };
 
@@ -60,9 +61,13 @@ export const SummitRegistrations: CollectionConfig = {
           const prevStatus = previousDoc?.status;
           const nextStatus = doc.status;
 
-          // In progress / rejected / closed → no mail for now
           if (nextStatus === "approved" && prevStatus !== "approved") {
             await sendRegistrationApprovedEmail(doc);
+            return;
+          }
+
+          if (nextStatus === "rejected" && prevStatus !== "rejected") {
+            await sendRegistrationRejectedEmail(doc);
           }
         } catch (err) {
           console.error("[summit-registrations] email hook failed:", err);
