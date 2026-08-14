@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Play, Video, X } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import { youtubeThumbnailUrl } from "@/lib/youtube";
 
 export type HeroSpotlightCopy = {
   card1Keynote?: string | null;
@@ -80,18 +81,7 @@ function toEmbedUrl(raw?: string | null) {
 }
 
 function youtubeThumb(raw?: string | null) {
-  const href = normalizeHref(raw);
-  try {
-    const url = new URL(href);
-    const host = url.hostname.replace(/^www\./, "");
-    let id = "";
-    if (host === "youtu.be") id = url.pathname.split("/").filter(Boolean)[0] || "";
-    if (host.includes("youtube")) id = url.searchParams.get("v") || "";
-    if (id) return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-  } catch {
-    return "";
-  }
-  return "";
+  return youtubeThumbnailUrl(raw);
 }
 
 function FeatureCard({

@@ -8,6 +8,7 @@ import {
   agenda as fallbackAgenda,
 } from "./data";
 import { getPayloadClient } from "./payload";
+import { youtubeThumbnailUrl } from "./youtube";
 
 const fallbackAboutValues = [
   {
@@ -513,7 +514,10 @@ export async function getCmsPageHome() {
       spotlightVideoTitle: page.spotlightVideoTitle,
       spotlightVideoDescription: page.spotlightVideoDescription,
       spotlightVideoHref: page.spotlightVideoHref,
-      spotlightVideoPoster: page.spotlightVideoPoster,
+      spotlightVideoPoster:
+        mediaUrl(page.spotlightVideoPosterImage) ||
+        (page.spotlightVideoPoster as string) ||
+        "",
       spotlightVideoViewMoreLabel: page.spotlightVideoViewMoreLabel,
       spotlightVideoViewMoreHref: page.spotlightVideoViewMoreHref,
       ctaTitle: page.ctaTitle,
@@ -758,7 +762,8 @@ export async function getCmsVideos() {
       tag: String(doc.tag || "COMING SOON"),
       image:
         mediaUrl(doc.image) ||
-        String(doc.imageSrc || "") ||
+        String(doc.imageSrc || "").trim() ||
+        youtubeThumbnailUrl(String(doc.videoUrl || "")) ||
         fallbackSite.images.hero,
       href: String(doc.videoUrl || "").trim(),
       playMode: (doc.playMode === "iframe" ? "iframe" : "redirect") as

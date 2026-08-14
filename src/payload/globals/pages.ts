@@ -954,11 +954,22 @@ export const HomePage: GlobalConfig = {
                   },
                 },
                 {
+                  name: "spotlightVideoPosterImage",
+                  type: "upload",
+                  relationTo: "media",
+                  label: "Upload thumbnail (optional)",
+                  admin: {
+                    description:
+                      "Add a custom poster image for the video card. Takes priority over the path/URL below.",
+                  },
+                },
+                {
                   name: "spotlightVideoPoster",
                   type: "text",
                   label: "Poster image path / URL (optional)",
                   admin: {
-                    description: "Leave empty to use the YouTube thumbnail.",
+                    description:
+                      "Leave empty to use the uploaded thumbnail or the YouTube thumbnail.",
                   },
                 },
                 {

@@ -279,11 +279,23 @@ export const Videos: CollectionConfig = {
       },
     },
     {
+      name: "image",
+      type: "upload",
+      relationTo: "media",
+      label: "Upload thumbnail (optional)",
+      admin: {
+        description:
+          "Add a custom poster for this video. Takes priority over the path/URL below.",
+      },
+    },
+    {
       name: "imageSrc",
       type: "text",
-      label: "Thumbnail path (e.g. /images/hero/oman-muscat.jpg)",
+      label: "Poster image path / URL (optional)",
+      admin: {
+        description: "Leave empty to use the uploaded thumbnail or the YouTube thumbnail.",
+      },
     },
-    { name: "image", type: "upload", relationTo: "media", label: "Or upload thumbnail" },
   ],
 };
 
