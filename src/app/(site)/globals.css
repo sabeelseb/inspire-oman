@@ -336,6 +336,27 @@ main p.text-gold,
 main p[class*="text-gold"] {
   color: #c5a55a !important;
 }
+
+/*
+  Contact / UI copy: lock Tailwind text-* sizes over CMS heading/paragraph
+  display sizes from Site Settings → Typography.
+*/
+main .io-theme-size.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+main .io-theme-size.text-base {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+main .io-theme-size.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+main .io-theme-size.text-3xl {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
 main p.text-gold\/70,
 main .io-keynote.text-gold\/70 {
   color: rgba(197, 165, 90, 0.7) !important;

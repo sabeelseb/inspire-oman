@@ -141,9 +141,11 @@ export default function ContactClient({ page }: { page: PageData | null }) {
                   <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4">
                     <Icon size={22} className="text-gold" />
                   </div>
-                  <h3 className="text-white font-semibold mb-3">{cardTitle}</h3>
+                  <h3 className="io-theme-size mb-3 text-lg font-semibold text-white">
+                    {cardTitle}
+                  </h3>
                   {lines.map((line, j) => (
-                    <p key={j} className="text-white/50 text-sm">
+                    <p key={j} className="io-theme-size text-sm text-white/50">
                       {line}
                     </p>
                   ))}
@@ -155,17 +157,19 @@ export default function ContactClient({ page }: { page: PageData | null }) {
           <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2">
               <ScrollReveal>
-                <h2 className="text-3xl font-bold text-white mb-4">
+                <h2 className="io-theme-size mb-4 text-3xl font-bold text-white">
                   Send Us a <span className="gold-text">Message</span>
                 </h2>
-                <p className="text-white/50 leading-relaxed mb-8">
+                <p className="io-theme-size mb-8 text-base leading-relaxed text-white/50">
                   Whether you&apos;re interested in partnership opportunities, summit registration,
                   media inquiries, or general questions - we&apos;re here to help.
                 </p>
 
                 <div className="glass-card p-6 border-l-2 border-l-gold">
-                  <h4 className="text-white font-semibold mb-2">Partnership Inquiries</h4>
-                  <p className="text-white/40 text-sm leading-relaxed">
+                  <h4 className="io-theme-size mb-2 text-base font-semibold text-white">
+                    Partnership Inquiries
+                  </h4>
+                  <p className="io-theme-size text-sm leading-relaxed text-white/40">
                     For sponsorship and partnership discussions, please visit our{" "}
                     <a href="/partner" className="text-gold hover:underline">
                       Partner With Us
