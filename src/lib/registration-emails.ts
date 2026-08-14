@@ -1,5 +1,9 @@
 import { sendPostmarkEmail } from "@/lib/postmark";
-import { bold, renderInspireEmailShell } from "@/lib/email-template";
+import {
+  bold,
+  renderInspireEmailShell,
+  STRATEGIC_INITIATIVE,
+} from "@/lib/email-template";
 
 export type RegistrationMailFields = {
   name?: string | null;
@@ -36,6 +40,12 @@ function p(html: string): string {
   return `<p style="margin:0 0 16px;">${html}</p>`;
 }
 
+function signOffText() {
+  return `Team 'Inspire Oman'
+${STRATEGIC_INITIATIVE}
+Telling Oman's Growth Story Globally`;
+}
+
 function fields(doc: RegistrationMailFields) {
   return {
     name: participantName(doc.name),
@@ -58,8 +68,7 @@ Your registration is currently under review by the Inspire Oman team. We will wr
 
 We appreciate your interest in being part of Inspire Oman.
 
-Team 'Inspire Oman'
-Telling Oman's Growth Story Globally`;
+${signOffText()}`;
 
   const htmlBody = renderInspireEmailShell({
     previewText: `Your registration for ${EVENT_NAME} has been received and is under review.`,
@@ -97,8 +106,7 @@ Further details regarding the Summit, including the venue, programme and partici
 
 We look forward to welcoming you to ${EVENT_NAME}.
 
-Team 'Inspire Oman'
-Telling Oman's Growth Story Globally`;
+${signOffText()}`;
 
   const htmlBody = renderInspireEmailShell({
     previewText: `Your registration for ${EVENT_NAME} has been approved.`,
@@ -136,8 +144,7 @@ Following a review of your registration submitted on behalf of ${organisation}, 
 
 We appreciate your interest in Inspire Oman and thank you for taking the time to register.
 
-Team Inspire Oman
-Telling Oman's Growth Story Globally`;
+${signOffText()}`;
 
   const htmlBody = renderInspireEmailShell({
     previewText: `An update on your registration for ${EVENT_NAME}.`,
