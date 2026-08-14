@@ -60,7 +60,7 @@ export const siteConfig = {
       label: "Register Now",
       title: "Register for Summit 2026",
       subtitle:
-        "Join delegates at the Inspire Oman Investors Summit — 14 October 2026",
+        "Join delegates at the Inspire Oman Investors Summit - 14 October 2026",
     },
     navLinks: [
       { href: "/", label: "Home" },

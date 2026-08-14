@@ -132,7 +132,7 @@ export default function ContactForm({
                     autoComplete="name"
                     minLength={MIN_TEXT_LENGTH}
                     pattern={NAME_PATTERN.source}
-                    title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                    title={`Letters only (A-Z), at least ${MIN_TEXT_LENGTH} characters`}
                     value={formData.name}
                     onChange={(e) => {
                       setFormData({ ...formData, name: e.target.value });

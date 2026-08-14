@@ -124,7 +124,7 @@ export default function RegisterWidget() {
       organization: form.organization,
       category,
       role: form.role,
-      message: `Summit registration (widget) — ${categoryLabel} — role: ${form.role}`,
+      message: `Summit registration (widget) - ${categoryLabel} - role: ${form.role}`,
     });
     setSending(false);
     if (!result.ok) {
@@ -256,7 +256,7 @@ export default function RegisterWidget() {
                         autoComplete="name"
                         minLength={MIN_TEXT_LENGTH}
                         pattern={NAME_PATTERN.source}
-                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                        title={`Letters only (A-Z), at least ${MIN_TEXT_LENGTH} characters`}
                         value={form.name}
                         onChange={(e) => {
                           setForm({ ...form, name: e.target.value });

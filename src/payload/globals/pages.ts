@@ -12,7 +12,7 @@ const typographyRoleFields = (label: string) => [
   {
     name: "fontSize",
     type: "select" as const,
-    label: `${label} – font size`,
+    label: `${label} - font size`,
     defaultValue: "default",
     options: [...TYPOGRAPHY_FONT_SIZE_OPTIONS],
     admin: {
@@ -22,7 +22,7 @@ const typographyRoleFields = (label: string) => [
   {
     name: "color",
     type: "text" as const,
-    label: `${label} – color`,
+    label: `${label} - color`,
     admin: {
       description:
         "CSS color, e.g. #FFFFFF, #C9A227, or rgba(255,255,255,0.7). Empty = theme.",
@@ -31,7 +31,7 @@ const typographyRoleFields = (label: string) => [
   {
     name: "style",
     type: "select" as const,
-    label: `${label} – style`,
+    label: `${label} - style`,
     defaultValue: "default",
     options: [...TYPOGRAPHY_STYLE_OPTIONS],
     admin: {
@@ -167,7 +167,7 @@ export const Site: GlobalConfig = {
               label: "Text styles",
               admin: {
                 description:
-                  "Site-wide text colors and styles. Body = default page text, Heading = h1–h3, Paragraph = p tags. Hero also uses Heading / Subheading / Paragraph.",
+                  "Site-wide text colors and styles. Body = default page text, Heading = h1-h3, Paragraph = p tags. Hero also uses Heading / Subheading / Paragraph.",
               },
               fields: [
                 {
@@ -439,7 +439,7 @@ export const Header: GlobalConfig = {
           name: "registerWidgetSubtitle",
           type: "textarea",
           defaultValue:
-            "Join delegates at the Inspire Oman Investors Summit — 11 October 2026",
+            "Join delegates at the Inspire Oman Investors Summit - 11 October 2026",
           label: "Widget panel subtitle",
         },
       ],
@@ -873,7 +873,7 @@ export const HomePage: GlobalConfig = {
           fields: [
             {
               type: "collapsible",
-              label: "Block 1 — Legacy Documentation",
+              label: "Block 1 - Legacy Documentation",
               fields: [
                 {
                   name: "spotlightCard1Keynote",
@@ -898,7 +898,7 @@ export const HomePage: GlobalConfig = {
             },
             {
               type: "collapsible",
-              label: "Block 2 — Digital Video Campaign",
+              label: "Block 2 - Digital Video Campaign",
               fields: [
                 {
                   name: "spotlightCard2Keynote",
@@ -923,7 +923,7 @@ export const HomePage: GlobalConfig = {
             },
             {
               type: "collapsible",
-              label: "Block 3 — Chairman Video",
+              label: "Block 3 - Chairman Video",
               fields: [
                 {
                   name: "spotlightVideoKeynote",

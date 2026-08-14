@@ -100,7 +100,7 @@ export default config({
           label: "Widget panel subtitle",
           multiline: true,
           defaultValue:
-            "Join delegates at the Inspire Oman Investors Summit — 11 October 2026",
+            "Join delegates at the Inspire Oman Investors Summit - 11 October 2026",
         }),
       },
     }),

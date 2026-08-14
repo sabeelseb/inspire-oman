@@ -192,7 +192,7 @@ export default function ContactClient({ page }: { page: PageData | null }) {
                         autoComplete="name"
                         minLength={MIN_TEXT_LENGTH}
                         pattern={NAME_PATTERN.source}
-                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                        title={`Letters only (A-Z), at least ${MIN_TEXT_LENGTH} characters`}
                         value={form.name}
                         onChange={(e) => {
                           setForm({ ...form, name: e.target.value });

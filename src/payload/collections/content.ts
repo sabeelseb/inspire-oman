@@ -265,8 +265,8 @@ export const Videos: CollectionConfig = {
       required: true,
       label: "Play behaviour",
       options: [
-        { label: "Plan 1 — Redirect to URL", value: "redirect" },
-        { label: "Plan 2 — Play iframe in the same window", value: "iframe" },
+        { label: "Plan 1 - Redirect to URL", value: "redirect" },
+        { label: "Plan 2 - Play iframe in the same window", value: "iframe" },
       ],
     },
     {

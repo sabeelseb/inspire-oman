@@ -80,5 +80,5 @@ export function summitRegCategoryLabel(
 ) {
   const item = getSummitRegCategory(id, cms);
   if (!item) return "";
-  return `${item.label} — ${item.subtitle}`;
+  return `${item.label} - ${item.subtitle}`;
 }

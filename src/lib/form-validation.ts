@@ -1,9 +1,9 @@
 /** Shared client-side form validation for Contact / Summit forms. */
 
-/** Minimum length for name and other free-text fields (rejects 1–2 characters). */
+/** Minimum length for name and other free-text fields (rejects 1-2 characters). */
 export const MIN_TEXT_LENGTH = 3;
 
-/** Letters only (A–Z, a–z), with spaces between words. */
+/** Letters only (A-Z, a-z), with spaces between words. */
 export const NAME_PATTERN = /^[A-Za-z]+(?:\s+[A-Za-z]+)*$/;
 
 /**
@@ -49,7 +49,7 @@ export function validateName(value: string): string | null {
     return `Name must be at least ${MIN_TEXT_LENGTH} characters.`;
   }
   if (!NAME_PATTERN.test(trimmed)) {
-    return "Name can contain letters only (A–Z).";
+    return "Name can contain letters only (A-Z).";
   }
   return null;
 }
@@ -129,7 +129,7 @@ export function validateLettersField(value: string, label: string): string | nul
     return `${label} must be at least ${MIN_TEXT_LENGTH} characters.`;
   }
   if (!NAME_PATTERN.test(trimmed)) {
-    return `${label} can contain letters only (A–Z).`;
+    return `${label} can contain letters only (A-Z).`;
   }
   return null;
 }

@@ -85,9 +85,9 @@ export const SummitRegistrations: CollectionConfig = {
       type: "select",
       label: "Registration category",
       options: [
-        { label: "VVIP — Investors Inside Oman", value: "vvip" },
-        { label: "VIP — Investors Outside Oman", value: "vip" },
-        { label: "Media — Media Partners", value: "media" },
+        { label: "VVIP - Investors Inside Oman", value: "vvip" },
+        { label: "VIP - Investors Outside Oman", value: "vip" },
+        { label: "Media - Media Partners", value: "media" },
       ],
       admin: {
         description: "Selected on the public registration flow before the form.",

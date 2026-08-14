@@ -83,7 +83,7 @@ export default function PartnerClient({
       address: form.address.trim(),
       tier: form.tier,
       paymentMethod: form.paymentMethod,
-      message: `Partnership application — ${form.tier}`,
+      message: `Partnership application - ${form.tier}`,
     });
     setSending(false);
     if (!result.ok) {
@@ -289,7 +289,7 @@ export default function PartnerClient({
                         required
                         minLength={MIN_TEXT_LENGTH}
                         pattern={NAME_PATTERN.source}
-                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                        title={`Letters only (A-Z), at least ${MIN_TEXT_LENGTH} characters`}
                         value={form.contactPerson}
                         onChange={(e) => {
                           setForm({ ...form, contactPerson: e.target.value });
@@ -354,7 +354,7 @@ export default function PartnerClient({
                         required
                         minLength={MIN_TEXT_LENGTH}
                         pattern={NAME_PATTERN.source}
-                        title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                        title={`Letters only (A-Z), at least ${MIN_TEXT_LENGTH} characters`}
                         value={form.designation}
                         onChange={(e) => {
                           setForm({ ...form, designation: e.target.value });

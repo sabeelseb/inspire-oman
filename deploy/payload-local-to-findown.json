@@ -1,0 +1,1386 @@
+{
+  "exportedAt": "2026-08-13T08:54:46.036Z",
+  "globals": {
+    "site": {
+      "name": "Inspire Oman",
+      "seoTitle": "Inspire Oman - Telling Oman's Growth Story Globally",
+      "seoDescription": "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 14 October 2026, Oman Convention & Exhibition Centre.",
+      "slogan": "Celebrating Success. Creating Legacy. Inspiring Investment.",
+      "description": "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+      "summitDate": "14 October 2026",
+      "venue": "Oman Convention & Exhibition Centre",
+      "city": "Muscat",
+      "heroImage": null,
+      "bannerImage": null,
+      "summitImage": {
+        "filename": "areef-2.jpg",
+        "alt": "Inspire Oman"
+      },
+      "ogImage": {
+        "filename": "InspireOmanLogoPNG-5.png",
+        "alt": "InspireOmanLogoPNG.png"
+      },
+      "typography": {
+        "body": {
+          "fontSize": "default",
+          "color": "",
+          "style": "default"
+        },
+        "heading": {
+          "fontSize": "3xl",
+          "color": "",
+          "style": "bold"
+        },
+        "subheading": {
+          "fontSize": "default",
+          "color": "",
+          "style": "regular"
+        },
+        "paragraph": {
+          "fontSize": "default",
+          "color": "#d8d8d8",
+          "style": "default"
+        }
+      },
+      "registrationCategories": {
+        "vvip": {
+          "label": "VVIP",
+          "subtitle": "Investors Inside Oman",
+          "description": "Exclusive access for investors and decision-makers based in Oman.",
+          "badge": "Inside Oman"
+        },
+        "vip": {
+          "label": "VIP",
+          "subtitle": "Investors Outside Oman",
+          "description": "Premium access for international investors joining the summit.",
+          "badge": "Outside Oman"
+        },
+        "media": {
+          "label": "Media",
+          "subtitle": "Media Partners",
+          "description": "Accreditation for publishers, press, and media partners.",
+          "badge": "Press Pass"
+        }
+      },
+      "tagline": "Telling Oman's Growth Story Globally",
+      "omanPhone1": "+968 9916 8230",
+      "omanPhone2": "+968 7738 5585",
+      "omanEmail": "inspireoman@mefriend.com",
+      "indiaPhone": "+91 9645 009444",
+      "indiaEmail": "events@madhyamam.com",
+      "instagram": "#",
+      "facebook": "#",
+      "linkedin": "#",
+      "twitter": "#",
+      "youtube": "#",
+      "partnerStrategic": "Oman Chamber of Commerce & Industry (OCCI)",
+      "partnerInitiative": "Gulf Madhyamam",
+      "partnerExecution": "Mefriend",
+      "_status": "published"
+    },
+    "header": {
+      "logo": null,
+      "logoSrc": "/images/logos/IO-logo.svg",
+      "brandPrimary": "Inspire",
+      "brandHighlight": "Oman",
+      "navLinks": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Pillars",
+          "href": "/pillars"
+        },
+        {
+          "label": "Summit 2026",
+          "href": "/summit"
+        },
+        {
+          "label": "Media",
+          "href": "/media"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "ctaLabel": "Register Now",
+      "ctaHref": "/summit/#register",
+      "registerWidgetEnabled": true,
+      "registerWidgetLabel": "Register Now",
+      "registerWidgetTitle": "Register for Summit 2026",
+      "registerWidgetSubtitle": "Join delegates at the Inspire Oman Investors Summit - 11 October 2026",
+      "_status": "published"
+    },
+    "footer": {
+      "brandPrimary": "Inspire",
+      "brandHighlight": "Oman",
+      "description": "A prestigious Oman Vision 2040 initiative celebrating Oman's business community and enabling future collaborations for shared prosperity.",
+      "quickLinksTitle": "Quick Links",
+      "quickLinks": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Pillars",
+          "href": "/pillars"
+        },
+        {
+          "label": "Summit 2026",
+          "href": "/summit"
+        },
+        {
+          "label": "Partner With Us",
+          "href": "/partner"
+        },
+        {
+          "label": "Media",
+          "href": "/media"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "omanTitle": "Contact - Oman",
+      "omanPhone1": "+968 9916 8230",
+      "omanPhone2": "+968 7738 5585",
+      "omanEmail": "inspireoman@mefriend.com",
+      "omanAddress": "Oman Convention & Exhibition Centre, Muscat",
+      "indiaTitle": "Connect",
+      "indiaPhone": "+968 7738 5585",
+      "indiaEmail": "events@madhyamam.com",
+      "partnerLabel": "Execution Partner",
+      "partnerName": "Oman Chamber of Commerce & Industry",
+      "partnerInitiative": "Gulf Madhyamam",
+      "partnerExecution": "Mefriend - Where Brands Find Solutions",
+      "instagram": "https://www.instagram.com/inspireoman_?igsh=MWF2Zmt0bm9tYnprZQ==",
+      "facebook": "https://www.facebook.com/inspireoman26/",
+      "linkedin": "https://www.linkedin.com/company/inspire-oman/",
+      "twitter": "https://x.com/InspireOman_",
+      "youtube": "https://youtube.com/playlist?list=PLbUchP2SCrow&si=c4HwsB6m4XT6LWMu",
+      "copyrightText": "Inspire Oman 2026. All rights reserved.",
+      "_status": "published"
+    },
+    "home-page": {
+      "heroLogo": null,
+      "heroLogoSrc": "/images/logos/inspire-oman-hero-logo.png",
+      "heroTitle": "Oman’s Largest Investors Summit",
+      "heroTitleHighlight": "Investors",
+      "heroTitleBreakAfter": "",
+      "heroSlogan": "A unique initiative by the Oman Chamber of Commerce to celebrate your success",
+      "heroSupportLine": "Legacy Documentation • Global Business Promotion • Oman Investors Summit ",
+      "heroDate": "14 October 2026 | 10:00 AM - 5:00 PM",
+      "heroCity": "",
+      "heroPrimaryCta": "Register Now",
+      "heroPrimaryCtaHref": "/summit/#register",
+      "heroSecondaryCta": "Investors Summit",
+      "heroSecondaryCtaHref": "/summit",
+      "heroImage": null,
+      "heroVenue": "OCEC, Oman",
+      "heroOcciVisible": true,
+      "heroOcciRole": "Strategic Partner",
+      "heroOcciTitle": null,
+      "heroOcciLogoSrc": "/images/logos/OCC-logo.svg",
+      "heroOcciLogo": null,
+      "heroMefriendVisible": false,
+      "heroMefriendRole": "Execution Partner",
+      "heroMefriendTitle": null,
+      "heroMefriendLogoSrc": "/images/logos/MF-logo.svg",
+      "heroMefriendLogo": null,
+      "spotlightCard1Keynote": "Keynote",
+      "spotlightCard1Title": "Legacy Documentation",
+      "spotlightCard1Description": "Documenting Oman's success stories and institutional memory for Vision 2040.",
+      "spotlightCard2Keynote": "Keynote",
+      "spotlightCard2Title": "Digital Video Campaign",
+      "spotlightCard2Description": "A cinematic campaign amplifying Omani brands and leaders across digital platforms.",
+      "spotlightVideoKeynote": "Chairman Video",
+      "spotlightVideoTitle": "Official Launch of Inspire Oman | Muscat Highlights",
+      "spotlightVideoDescription": "Watch the official launch highlights from Muscat and the vision behind Inspire Oman.",
+      "spotlightVideoHref": "https://youtu.be/j0DS8GX9ht4",
+      "spotlightVideoPoster": null,
+      "spotlightVideoViewMoreLabel": "View More",
+      "spotlightVideoViewMoreHref": "/media",
+      "aboutEyebrow": "About the Initiative",
+      "aboutTitle": "Celebrating Oman's Growth Story",
+      "aboutTitleHighlight": "Growth Story",
+      "aboutIntro": "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+      "aboutBody": "In strategic partnership with the Oman Chamber of Commerce & Industry (OCCI), Inspire Oman brings together Royal Family Members, Ministers, Government Leaders, Investors, CEOs, and Entrepreneurs to celebrate contributions, strengthen investment pathways, and document the remarkable achievements of Oman's business community.",
+      "aboutTags": [
+        {
+          "tag": "Oman Vision 2040"
+        },
+        {
+          "tag": "OCCI Partnership"
+        },
+        {
+          "tag": "Cross-Border Investment"
+        }
+      ],
+      "aboutFacts": [
+        {
+          "label": "Strategic Partner",
+          "value": "Oman Chamber of Commerce & Industry (OCCI)"
+        },
+        {
+          "label": "Execution Partner",
+          "value": "Mefriend - Where Brands Find Solutions"
+        },
+        {
+          "label": "Summit Date",
+          "value": "14 October 2026"
+        },
+        {
+          "label": "Venue",
+          "value": "Oman Convention & Exhibition Centre"
+        }
+      ],
+      "homeStats": [
+        {
+          "value": 15,
+          "suffix": "+",
+          "label": "Countries"
+        },
+        {
+          "value": 500,
+          "suffix": "+",
+          "label": "Expected Attendees"
+        },
+        {
+          "value": 25,
+          "suffix": "+",
+          "label": "Keynote Speakers"
+        },
+        {
+          "value": 50,
+          "suffix": "+",
+          "label": "Partner Brands"
+        }
+      ],
+      "statsBannerSrc": "/images/logos/inspire-oman-banner.jpg",
+      "statsBanner": null,
+      "partnersEyebrow": "Our Partners",
+      "partnersTitle": "Trusted by Leaders",
+      "partnersTitleHighlight": "Leaders",
+      "partnersSubtitle": "Inspire Oman is powered by strategic collaboration between Oman Chamber of Commerce & Industry (OCCI) and Mefriend",
+      "pillarsEyebrow": "Three Pillars",
+      "pillarsTitle": "Building Oman's Legacy",
+      "pillarsTitleHighlight": "Legacy",
+      "pillarsSubtitle": "Three integrated pillars working together to document, celebrate, and connect Oman's business community",
+      "pillarsLearnMoreLabel": "Learn More",
+      "pillarsLearnMoreHref": "/pillars",
+      "summitEyebrow": "Flagship Event",
+      "summitTitle": "Investors Summit 2026",
+      "summitTitleHighlight": "2026",
+      "summitSubtitle": "Discover, Connect & Prosper - bringing together leaders, investors, and visionaries",
+      "summitExpectedLabel": "Expected",
+      "summitExpectedValue": "500+ Delegates",
+      "summitFeaturedBadge": "FEATURED SPEAKER",
+      "summitFeaturedSessionLabel": "Special Transformational Session",
+      "summitAgendaCta": "View Full Agenda",
+      "summitAgendaHref": "/summit",
+      "videosEyebrow": "Featured Videos",
+      "videosTitle": "Watch the Story",
+      "videosTitleHighlight": "Story",
+      "videosSubtitle": null,
+      "testimonialsEyebrow": "Voices of Support",
+      "testimonialsTitle": "What Leaders Say",
+      "testimonialsTitleHighlight": "Say",
+      "testimonialsSubtitle": null,
+      "contactEyebrow": "Get In Touch",
+      "contactTitle": "We're Ready to Help",
+      "contactTitleHighlight": "Help",
+      "contactSubtitle": "Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities",
+      "ctaTitle": "Be Part of Oman's Growth Story",
+      "ctaTitleHighlight": "Growth Story",
+      "ctaBody": "Join Inspire Oman as a partner or delegate and connect with the region's most dynamic business community",
+      "ctaPrimaryLabel": "Register Now",
+      "ctaPrimaryHref": "/summit",
+      "ctaSecondaryLabel": "Connect with Us",
+      "ctaSecondaryHref": "/contact",
+      "_status": "published"
+    },
+    "about-page": {
+      "eyebrow": "About the Initiative",
+      "title": "Telling Oman's Growth Story Globally",
+      "highlight": "Growth Story",
+      "subtitle": "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+      "missionTitle": "Our Mission",
+      "missionP1": "Inspire Oman celebrates the contributions of Oman's expatriate and local business community, strengthening Oman as a destination for investment, innovation, and entrepreneurship.",
+      "missionP2": "Through a powerful combination of premium documentation, digital storytelling, and a flagship investors summit, we create a lasting platform for recognition, collaboration, and growth - aligned with the bold ambitions of Oman Vision 2040.",
+      "quote": "Inspire Oman is more than an event - it is a movement to document excellence, celebrate achievement, and inspire the next generation of business leaders in the Sultanate.",
+      "missionFacts": [
+        {
+          "label": "Strategic Partner",
+          "value": "Oman Chamber of Commerce & Industry"
+        },
+        {
+          "label": "Execution",
+          "value": "Mefriend - Where Brands Find Solutions"
+        },
+        {
+          "label": "Summit Date",
+          "value": "14th October 2026 Wednesday"
+        },
+        {
+          "label": "Venue",
+          "value": "Oman Convention & Exhibition Centre"
+        }
+      ],
+      "valuesEyebrow": "Our Values",
+      "valuesTitle": "What Drives Us",
+      "audienceEyebrow": "Our Audience",
+      "audienceTitle": "Who We Serve",
+      "stakeholders": [
+        {
+          "item": "Senior Government Representatives"
+        },
+        {
+          "item": "CEOs & Business Owners"
+        },
+        {
+          "item": "Investors & Financial Leaders"
+        },
+        {
+          "item": "Corporate Executives & SME Leaders"
+        },
+        {
+          "item": "International Delegates"
+        },
+        {
+          "item": "Media Representatives"
+        }
+      ],
+      "_status": "published"
+    },
+    "pillars-page": {
+      "eyebrow": "Our Foundation",
+      "title": "Three Pillars of Impact",
+      "highlight": "Impact",
+      "subtitle": "Each pillar is designed to document, amplify, and connect - creating a comprehensive ecosystem for celebrating Oman's business excellence",
+      "_status": "published"
+    },
+    "summit-page": {
+      "eyebrow": "Flagship Event",
+      "title": "Investors Summit 2026",
+      "highlight": "2026",
+      "subtitle": "Discover, Connect & Prosper - a flagship gathering of business leaders, investors, and government officials shaping Oman's future",
+      "registerEyebrow": "Register",
+      "registerTitle": "Secure Your Spot",
+      "registerTitleHighlight": "Spot",
+      "registerChooseSubtitle": "Choose your registration category to continue.",
+      "registerFormSubtitle": "Complete your details to confirm your place at the summit.",
+      "_status": "published"
+    },
+    "partner-page": {
+      "eyebrow": "Partnership Opportunities",
+      "title": "Partner With Inspire Oman",
+      "highlight": "Inspire Oman",
+      "subtitle": "Position your brand alongside Oman's most prestigious business initiative and connect with leaders shaping the nation's future",
+      "_status": "published"
+    },
+    "media-page": {
+      "eyebrow": "Stories & Media",
+      "title": "Media Gallery",
+      "highlight": "Gallery",
+      "subtitle": "Videos, galleries, and stories celebrating Oman's business excellence",
+      "_status": "published"
+    },
+    "contact-page": {
+      "eyebrow": "Get In Touch",
+      "title": "Contact Us",
+      "highlight": "Us",
+      "subtitle": "Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities",
+      "_status": "published"
+    }
+  },
+  "collections": {
+    "partners": [
+      {
+        "name": "Mefriend",
+        "slug": "Mefriend",
+        "role": "Execution Partner",
+        "fullName": "Mefriend - Where Brands Find Solutions",
+        "bg": "light",
+        "logoSrc": "/images/logos/MF-logo.svg",
+        "logo": {
+          "filename": "Mefriend_logo-2.png",
+          "alt": "Mefriend Logo"
+        },
+        "order": 2,
+        "_status": "published"
+      },
+      {
+        "name": "OCCI",
+        "slug": "occi",
+        "role": "Strategic Partner",
+        "fullName": "Oman Chamber of Commerce & Industry",
+        "bg": "light",
+        "logoSrc": "/images/logos/OCC-logo.svg",
+        "logo": null,
+        "order": 1,
+        "_status": "published"
+      }
+    ],
+    "stats": [
+      {
+        "label": "Countries",
+        "slug": "countries",
+        "value": 15,
+        "suffix": "+",
+        "_status": "published"
+      },
+      {
+        "label": "Expected Attendees",
+        "slug": "expected-attendees",
+        "value": 500,
+        "suffix": "+",
+        "_status": "published"
+      },
+      {
+        "label": "Keynote Speakers",
+        "slug": "keynote-speakers",
+        "value": 25,
+        "suffix": "+",
+        "_status": "published"
+      },
+      {
+        "label": "Partner Brands",
+        "slug": "partner-brands",
+        "value": 50,
+        "suffix": "+",
+        "_status": "published"
+      }
+    ],
+    "speakers": [
+      {
+        "_order": "a0",
+        "name": "Guest Speaker",
+        "slug": "guest-innovation",
+        "role": "Innovation Expert",
+        "description": "Technology and innovation expert exploring Oman's emerging startup ecosystem.",
+        "featured": false,
+        "_status": "published"
+      },
+      {
+        "_order": "a0i",
+        "name": "Arfeen Khan",
+        "slug": "arfeen-khan",
+        "role": "Transformational Speaker",
+        "description": "Internationally acclaimed peak performance strategist and transformational coach. Featured speaker delivering a special session on unlocking human potential and business excellence.",
+        "featured": true,
+        "_status": "published"
+      },
+      {
+        "_order": "a1",
+        "name": "Guest Speaker",
+        "slug": "guest-industry",
+        "role": "Industry Leader",
+        "description": "Prominent business leader discussing cross-border investment and the Oman-India business corridor.",
+        "featured": false,
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "name": "Guest Speaker",
+        "slug": "guest-government",
+        "role": "Government Representative",
+        "description": "Senior government official sharing Oman's Vision 2040 roadmap and investment opportunities.",
+        "featured": false,
+        "_status": "published"
+      }
+    ],
+    "testimonials": [
+      {
+        "author": "Business Leader",
+        "slug": "business-leader",
+        "role": "CEO, International Trade",
+        "quote": "Inspire Oman represents a transformative platform that bridges cultures and creates meaningful business connections across borders.",
+        "_status": "published"
+      },
+      {
+        "author": "Investment Director",
+        "slug": "investment-director",
+        "role": "Regional Fund Manager",
+        "quote": "The Vision 2040 alignment makes this initiative uniquely positioned to drive real economic impact in the region.",
+        "_status": "published"
+      },
+      {
+        "author": "Media Executive",
+        "slug": "media-executive",
+        "role": "Gulf Madhyamam",
+        "quote": "A remarkable opportunity to document and celebrate the entrepreneurial spirit that drives Oman's economic diversification.",
+        "_status": "published"
+      },
+      {
+        "author": "Mohammed Saleem Ambalan",
+        "slug": "Director",
+        "role": "Director of Mefriend",
+        "quote": "We seek to transfer the expertise and lessons learned from these experiences in a way that enhances the culture of innovation and ambition among future generations.",
+        "_status": "published"
+      },
+      {
+        "author": "Abdul Latif Moideen Kunji",
+        "slug": "OCCI",
+        "role": "Member of the Board of Directors of OCCI",
+        "quote": "Inspire Oman initiative seeks to present a comprehensive picture of the investment environment in the Sultanate of Oman by showcasing economic achievements, highlighting inspiring experiences of entrepreneurs, investors, and national companies, and introducing promising investment opportunities across various economic sectors.",
+        "_status": "published"
+      },
+      {
+        "author": " Faisal bin Abdullah al Rawas",
+        "slug": "chairman",
+        "role": "Chairman of the OCCI",
+        "quote": "This multi-layered initiative stems from a firm belief that Omani success stories represent one of the most important strengths of the national economy, and that investing in showcasing these models contributes to enhancing Oman’s economic standing and reinforcing investors’ confidence in the Omani business environment.",
+        "_status": "published"
+      }
+    ],
+    "pillars": [
+      {
+        "title": "Celebrating the Experience",
+        "slug": "celebrating-the-experience",
+        "subtitle": "Digital Campaign",
+        "description": "A dynamic digital video and social media campaign that amplifies the stories of Oman's business community, reaching global audiences and inspiring the next generation of entrepreneurs and investors.",
+        "icon": "Video",
+        "features": [
+          {
+            "item": "Professional video production"
+          },
+          {
+            "item": "Social media amplification"
+          },
+          {
+            "item": "Global digital reach"
+          },
+          {
+            "item": "Compelling storytelling format"
+          }
+        ],
+        "extras": [
+          {
+            "item": "High-production video profiles"
+          },
+          {
+            "item": "Multi-platform social campaigns"
+          },
+          {
+            "item": "International audience reach"
+          },
+          {
+            "item": "Brand storytelling expertise"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "title": "Investors Summit",
+        "slug": "investors-summit",
+        "subtitle": "14 October 2026",
+        "description": "The flagship Inspire Oman Investors Summit brings together CEOs, investors, government leaders, and entrepreneurs for visionary keynotes, industry discussions, and high-value networking opportunities.",
+        "icon": "Landmark",
+        "features": [
+          {
+            "item": "Visionary keynote sessions"
+          },
+          {
+            "item": "Government-private collaboration"
+          },
+          {
+            "item": "Investment opportunity showcase"
+          },
+          {
+            "item": "Premium networking experiences"
+          }
+        ],
+        "extras": [
+          {
+            "item": "500+ delegates expected"
+          },
+          {
+            "item": "Government-private sector dialogue"
+          },
+          {
+            "item": "Recognition & awards ceremony"
+          },
+          {
+            "item": "Cross-border networking"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "title": "Legacy Documentation",
+        "slug": "legacy-documentation",
+        "subtitle": "Premium Publication",
+        "description": "A prestigious coffee-table publication documenting the journeys, achievements, and contributions of Oman's most inspiring business leaders and entrepreneurs. Each story is a testament to vision, resilience, and impact.",
+        "icon": "BookOpen",
+        "features": [
+          {
+            "item": "Premium quality hardbound publication"
+          },
+          {
+            "item": "Professional photography and editorial"
+          },
+          {
+            "item": "Distribution to key stakeholders and embassies"
+          },
+          {
+            "item": "Permanent record of business excellence"
+          }
+        ],
+        "extras": [
+          {
+            "item": "Professional photography sessions"
+          },
+          {
+            "item": "Editorial team crafted narratives"
+          },
+          {
+            "item": "Premium hardbound production"
+          },
+          {
+            "item": "Embassy & stakeholder distribution"
+          }
+        ],
+        "_status": "published"
+      }
+    ],
+    "packages": [
+      {
+        "tier": "Associate",
+        "slug": "associate",
+        "price": "1,000",
+        "currency": "OMR",
+        "highlight": false,
+        "features": [
+          {
+            "item": "1 full page in publication"
+          },
+          {
+            "item": "45-second brand video"
+          },
+          {
+            "item": "2 summit official entries"
+          },
+          {
+            "item": "Logo on event materials"
+          },
+          {
+            "item": "Basic networking access"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "tier": "Leadership",
+        "slug": "leadership",
+        "price": "2,000",
+        "currency": "OMR",
+        "highlight": true,
+        "features": [
+          {
+            "item": "2 full pages in publication"
+          },
+          {
+            "item": "90-second brand video"
+          },
+          {
+            "item": "5 summit official entries"
+          },
+          {
+            "item": "Premium logo placement"
+          },
+          {
+            "item": "Priority networking access"
+          },
+          {
+            "item": "Media coverage inclusion"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "tier": "Premier",
+        "slug": "premier",
+        "price": "3,000",
+        "currency": "OMR",
+        "highlight": false,
+        "features": [
+          {
+            "item": "3 full pages in publication"
+          },
+          {
+            "item": "3-5 minute brand film"
+          },
+          {
+            "item": "8 summit official entries"
+          },
+          {
+            "item": "Title sponsor branding"
+          },
+          {
+            "item": "VIP networking & lounge"
+          },
+          {
+            "item": "Keynote stage mention"
+          },
+          {
+            "item": "Full media package"
+          }
+        ],
+        "_status": "published"
+      }
+    ],
+    "values": [
+      {
+        "title": "Collaborative Spirit",
+        "slug": "collaborative-spirit",
+        "description": "Fostering partnerships between government, private sector, and entrepreneurs.",
+        "icon": "Handshake",
+        "_status": "published"
+      },
+      {
+        "title": "Cultural Celebration",
+        "slug": "cultural-celebration",
+        "description": "Honoring the rich heritage and achievements of Oman's business community.",
+        "icon": "Heart",
+        "_status": "published"
+      },
+      {
+        "title": "Global Perspective",
+        "slug": "global-perspective",
+        "description": "Bridging Oman with international markets, investors, and business communities.",
+        "icon": "Globe",
+        "_status": "published"
+      },
+      {
+        "title": "Sustainable Growth",
+        "slug": "sustainable-growth",
+        "description": "Creating lasting economic impact beyond a single event.",
+        "icon": "TrendingUp",
+        "_status": "published"
+      },
+      {
+        "title": "Transparency",
+        "slug": "transparency",
+        "description": "Building trust through open dialogue, clear processes, and measurable outcomes.",
+        "icon": "Eye",
+        "_status": "published"
+      },
+      {
+        "title": "Vision 2040 Aligned",
+        "slug": "vision-2040-aligned",
+        "description": "Directly supporting Oman's national economic diversification and growth strategy.",
+        "icon": "Target",
+        "_status": "published"
+      }
+    ],
+    "agenda": [
+      {
+        "_order": "a0",
+        "title": "Registration & Welcome Coffee",
+        "slug": "registration-welcome-coffee",
+        "time": "09:00 AM",
+        "type": "general",
+        "_status": "published"
+      },
+      {
+        "_order": "a1",
+        "title": "Opening Ceremony & Keynote Address",
+        "slug": "opening-ceremony-keynote-address",
+        "time": "10:00 AM",
+        "type": "session",
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": "Oman Vision 2040 - Investment Landscape",
+        "slug": "oman-vision-2040-investment-landscape",
+        "time": "10:45 AM",
+        "type": "featured",
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Networking Break",
+        "slug": "networking-break",
+        "time": "11:30 AM",
+        "type": "break",
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "Industry Panel: Cross-Border Opportunities",
+        "slug": "industry-panel-cross-border-opportunities",
+        "time": "12:00 PM",
+        "type": "keynote",
+        "_status": "published"
+      },
+      {
+        "_order": "a5",
+        "title": "Lunch & Business Networking",
+        "slug": "lunch-business-networking",
+        "time": "01:00 PM",
+        "type": "break",
+        "_status": "published"
+      },
+      {
+        "_order": "a6",
+        "title": "Special Session by Arfeen Khan",
+        "slug": "special-session-by-arfeen-khan",
+        "time": "02:30 PM",
+        "type": "featured",
+        "_status": "published"
+      },
+      {
+        "_order": "a7",
+        "title": "Partner Showcase & Recognition",
+        "slug": "partner-showcase-recognition",
+        "time": "04:00 PM",
+        "type": "session",
+        "_status": "published"
+      },
+      {
+        "_order": "a8",
+        "title": "Awards Ceremony & Closing",
+        "slug": "awards-ceremony-closing",
+        "time": "05:00 PM",
+        "type": "keynote",
+        "_status": "published"
+      },
+      {
+        "_order": "a9",
+        "title": "Gala Dinner & Networking",
+        "slug": "gala-dinner-networking",
+        "time": "06:00 PM",
+        "type": "session",
+        "_status": "published"
+      }
+    ],
+    "gallery": [
+      {
+        "_order": "9z",
+        "title": "Official Launch",
+        "slug": "/",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00730-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9z5",
+        "title": "Official Launch",
+        "slug": "//",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00479-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9z9",
+        "title": "Official Launch",
+        "slug": "omans-heritage",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/mosque.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-2.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9zi",
+        "title": "Official Launch",
+        "slug": "keynote-sessions",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/keynote.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-2.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": "Official Launch",
+        "slug": "partnerships",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/handshake.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-2.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a25",
+        "title": "Official Launch",
+        "slug": "/3",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00632-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a29",
+        "title": "Official Launch",
+        "slug": "///",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00405-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2i",
+        "title": "Official Launch",
+        "slug": "/1",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00791-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Official Launch",
+        "slug": "investors-summit",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/conference.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-2.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "Official Launch",
+        "slug": "investment-growth",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/investment.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-4.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a5",
+        "title": "Official Launch",
+        "slug": "global-ambition",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/skyline.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-5.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a8",
+        "title": "Official Launch",
+        "slug": "/2",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00465-5.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a9",
+        "title": "Business Networking",
+        "slug": "business-networking",
+        "caption": "Creating meaningful connections that drive growth",
+        "imageSrc": "/images/gallery/networking.jpg",
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "aa",
+        "title": "Award Ceremony",
+        "slug": "award-ceremony",
+        "caption": "Recognizing excellence in business achievement",
+        "imageSrc": "/images/gallery/award.jpg",
+        "image": null,
+        "_status": "published"
+      }
+    ],
+    "videos": [
+      {
+        "_order": "a0",
+        "title": " Official Launch of Inspire Oman | Muscat Highlights",
+        "slug": "/summit",
+        "description": "Highlights from the official launch of ‘Inspire Oman’ in Muscat, With the strategic support of the Oman Chamber of Commerce and Industry, An initiative, aimed at highlighting, documenting, and promoting outstanding Omani success stories in economic and social development and entrepreneurship at both local and global levels. ",
+        "tag": "MuscatHighlight",
+        "playMode": "iframe",
+        "videoUrl": "https://youtu.be/j0DS8GX9ht4?si=QOHw6Xr4Kfp0E2Fa",
+        "imageSrc": "",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-4.jpeg",
+          "alt": "Official Launch"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a1",
+        "title": " A New Era. A Global Legacy.",
+        "slug": "https://www.youtube.com/watch?v=rZgsJIy7ljE&list=PLbUchP2SCrow&index=1",
+        "description": "Inspire Oman is a prestigious integrated initiative dedicated to celebrating the Sultanate of Oman’s remarkable journey of growth, innovation, and success. The initiative aims to document and showcase the inspiring stories of successful brands, visionary leaders, and changemakers who are shaping Oman’s future and contributing to its global legacy.",
+        "tag": "InspireOman2026",
+        "playMode": "iframe",
+        "videoUrl": "https://youtu.be/rZgsJIy7ljE?si=yOIR8ghcWoOLCsKr",
+        "imageSrc": "",
+        "image": {
+          "filename": "aaaa-2.png",
+          "alt": "aaaa.png"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": " ഒമാനിൽ പുതിയ വികസന കുതിപ്പ്! ‘ഇൻസ്പയർ ഒമാൻ’ പദ്ധതിക്ക് തുടക്കമായി",
+        "slug": "https://www.youtube.com/watch?v=JV5QyMqf2a8",
+        "description": "ഒമാനിൽ സാമ്പത്തിക-സാമൂഹിക - വികസന രംഗങ്ങളിലെ നേട്ടങ്ങൾ അടയാളപ്പെടുത്തുന്ന ‘ഇൻസ്പയർ ഒമാൻ’ പദ്ധതിക്ക് തുടക്കമായി.",
+        "tag": "Oman Development",
+        "playMode": "iframe",
+        "videoUrl": "https://www.youtube.com/watch?v=JV5QyMqf2a8",
+        "imageSrc": null,
+        "image": {
+          "filename": "Screenshot (35)-2.png",
+          "alt": "Inspire Oman Summit Investors 2026"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Partner Spotlight Series",
+        "slug": "partner-spotlight-series",
+        "description": "Stories of excellence from Inspire Oman's partner community.",
+        "tag": "COMING SOON",
+        "playMode": "redirect",
+        "videoUrl": null,
+        "imageSrc": "/images/gallery/handshake.jpg",
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "Oman Vision 2040 - Investment Landscape",
+        "slug": "oman-vision-2040-investment-landscape",
+        "description": "Exploring the opportunities that make Oman a top destination for global investment.",
+        "tag": "COMING SOON",
+        "playMode": "redirect",
+        "videoUrl": null,
+        "imageSrc": "/images/gallery/investment.jpg",
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a5",
+        "title": "Inspire Oman - Official Teaser",
+        "slug": "inspire-oman-official-teaser",
+        "description": "A glimpse into Oman's growth story and the vision behind Inspire Oman.",
+        "tag": "COMING SOON",
+        "playMode": "redirect",
+        "videoUrl": null,
+        "imageSrc": "/images/hero/oman-muscat.jpg",
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a6",
+        "title": "Arfeen Khan - Special Message",
+        "slug": "arfeen-khan-special-message",
+        "description": "A powerful message from our featured speaker on unlocking business potential.",
+        "tag": "COMING SOON",
+        "playMode": "redirect",
+        "videoUrl": null,
+        "imageSrc": "/images/hero/business-summit.jpg",
+        "image": null,
+        "_status": "published"
+      }
+    ],
+    "press": [
+      {
+        "_order": "9z",
+        "title": "‘Inspire Oman’ initiative launched to showcase success stories, attract investment.",
+        "slug": "https://www.linkedin.com/posts/inspireoman-entrepreneurship-investmentpromotion-share-7475524671694815232-V2aI/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF9O9VUBa5d2TI1_TkSy657aBMKlW0VWulU",
+        "date": "28 JUNE 2026",
+        "excerpt": "A new initiative to document Omani business and entrepreneurial success stories and promote the Sultanate of Oman as an investment destination has been launched by Mefriend, a digital initiative of a regional media house, with strategic support from the Oman Chamber of Commerce and Industry (OCCI).",
+        "imageSrc": null,
+        "image": {
+          "filename": "1782303969341-2.jfif",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a0",
+        "title": "What Is The ‘Inspire Oman’ Initiative & What Opportunities Could It Bring To The Sultanate?",
+        "slug": "https://curlytales.com/middle-east/ct-scoop/what-is-the-inspire-oman-initiative-what-opportunities-could-it-bring-to-the-sultanate/",
+        "date": "27 JUNE 2026",
+        "excerpt": "Oman launches Inspire Oman to attract investors and spotlight local businesses and entrepreneurs.",
+        "imageSrc": null,
+        "image": {
+          "filename": "Oman-National-Day-Holiday-800x450-2.webp",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": "Oman Unveils 'Inspire Oman' Initiative to Attract Investment",
+        "slug": "https://cairoscene.com/Business/Oman-Unveils-Inspire-Oman-Initiative-to-Attract-Investment",
+        "date": "26 JUNE 2026",
+        "excerpt": "The initiative aims to showcase Omani businesses and investment opportunities while supporting Oman Vision 2040.",
+        "imageSrc": null,
+        "image": {
+          "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2i",
+        "title": "\"Inspiring Oman\" initiative",
+        "slug": "https://www.linkedin.com/posts/%D8%A8%D8%AF%D8%B9%D9%85-%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A-%D9%85%D9%86-%D8%BA%D8%B1%D9%81%D8%A9-%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9-%D9%88%D8%B5%D9%86%D8%A7%D8%B9%D8%A9-%D8%B9%D9%85%D8%A7%D9%86-ugcPost-7475249221726601216-0Vct/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9O9VUBa5d2TI1_TkSy657aBMKlW0VWulU",
+        "date": "26 JUNE 2026",
+        "excerpt": "With strategic support from the Oman Chamber of Commerce and Industry (OCCI), \"MyFriend\" company launched the \"Inspiring Oman\" initiative.",
+        "imageSrc": null,
+        "image": {
+          "filename": "1782238294679-2.jfif",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Inspire Oman, new initiative to boost investment scenario launched",
+        "slug": "https://www.zawya.com/en/economy/gcc/inspire-oman-new-initiative-to-boost-investment-scenario-launched-331756",
+        "date": "25 June 2026",
+        "excerpt": "The initiative also seeks to attract investments to the Sultanate of Oman by promoting investment opportunities",
+        "imageSrc": null,
+        "image": {
+          "filename": "zawaya tn-2.jfif",
+          "alt": "zawaya tn.jfif"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "OCCI launches ‘Inspire Oman’ initiative in Oman",
+        "slug": "https://www.muscatdaily.com/2026/06/25/occi-launches-inspire-oman-initiative-in-oman/",
+        "date": "25 JUNE 2026",
+        "excerpt": "“Inspire Oman” initiative launched to showcase success stories in economic development and entrepreneurship.",
+        "imageSrc": null,
+        "image": {
+          "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-2.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a5",
+        "title": "'Inspire Oman' initiative to showcase success stories, attract investment",
+        "slug": "/",
+        "date": "24 JUNE 2026",
+        "excerpt": "The initiative aims to showcase Omani businesses and investment opportunities while supporting Oman Vision 2040.",
+        "imageSrc": null,
+        "image": {
+          "filename": "InspireOmanLogoPNG-4.png",
+          "alt": "InspireOmanLogoPNG.png"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a6",
+        "title": "Partnership Programme Opens for Applications",
+        "slug": "partnership-programme-opens-for-applications",
+        "date": "Coming Soon",
+        "excerpt": "Three-tier partnership programme now available for businesses...",
+        "imageSrc": null,
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a7",
+        "title": "Inspire Oman 2026 Officially Announced",
+        "slug": "inspire-oman-2026-officially-announced",
+        "date": "Coming Soon",
+        "excerpt": "Gulf Madhyamam and OCCI announce the prestigious Inspire Oman initiative...",
+        "imageSrc": null,
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a8",
+        "title": "Arfeen Khan Confirmed as Featured Speaker",
+        "slug": "arfeen-khan-confirmed-as-featured-speaker",
+        "date": "Coming Soon",
+        "excerpt": "Internationally acclaimed performance strategist joins Inspire Oman...",
+        "imageSrc": null,
+        "image": null,
+        "_status": "published"
+      }
+    ]
+  },
+  "media": [
+    {
+      "filename": "Mefriend Logo@150x-1.png",
+      "alt": "Mefriend Logo@150x.png"
+    },
+    {
+      "filename": "Findown Logo Color-1.png",
+      "alt": "Findown Logo Color.png"
+    },
+    {
+      "filename": "MF logo@150x-1.png",
+      "alt": "MF logo@150x.png"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-5.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-2.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-2.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-2.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-2.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-2.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-2.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-5.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-2.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-4.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-5.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-4.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-4.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-5.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-5.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-4.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-2.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-2.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-2.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-2.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-2.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-4.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-2.png",
+      "alt": "Mefriend Logo"
+    }
+  ]
+}

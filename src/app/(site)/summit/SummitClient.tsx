@@ -140,7 +140,7 @@ export default function SummitClient({
       organization: regForm.organization,
       category,
       role: regForm.role,
-      message: `Summit registration — ${categoryLabel} — role: ${regForm.role}`,
+      message: `Summit registration - ${categoryLabel} - role: ${regForm.role}`,
     });
     setSending(false);
     if (!result.ok) {
@@ -359,7 +359,7 @@ export default function SummitClient({
                             autoComplete="name"
                             minLength={MIN_TEXT_LENGTH}
                             pattern={NAME_PATTERN.source}
-                            title={`Letters only (A–Z), at least ${MIN_TEXT_LENGTH} characters`}
+                            title={`Letters only (A-Z), at least ${MIN_TEXT_LENGTH} characters`}
                             value={regForm.name}
                             onChange={(e) => {
                               setRegForm({ ...regForm, name: e.target.value });

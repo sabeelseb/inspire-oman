@@ -13,9 +13,9 @@ export type RegistrationMailFields = {
 };
 
 const CATEGORY_LABELS: Record<string, string> = {
-  vvip: "VVIP — Investors Inside Oman",
-  vip: "VIP — Investors Outside Oman",
-  media: "Media — Media Partners",
+  vvip: "VVIP - Investors Inside Oman",
+  vip: "VIP - Investors Outside Oman",
+  media: "Media - Media Partners",
 };
 
 const EVENT_NAME = "Inspire Oman Investors Summit";
