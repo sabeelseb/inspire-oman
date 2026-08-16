@@ -300,10 +300,9 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
                 {slogan}
               </motion.p>
 
-              {/* Support line stays desktop/tablet — too dense on mWeb first fold */}
               <motion.p
                 {...fade(0.5)}
-                className="mx-auto mb-4 hidden max-w-xl text-sm leading-relaxed text-white/45 sm:mb-4 sm:block sm:text-base"
+                className="mx-auto mb-4 max-w-[20rem] text-center text-sm leading-relaxed text-white/45 sm:mb-4 sm:max-w-xl sm:text-base"
                 style={paragraphStyle}
               >
                 {support}
@@ -331,12 +330,12 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
 
               <motion.div
                 {...fade(0.75)}
-                className="flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-4"
+                className="flex w-full max-w-[15.5rem] flex-col items-stretch gap-2.5 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:gap-4"
               >
                 <Link
                   id="hero-register-cta"
                   href={primaryHref}
-                  className="btn-primary group min-h-11 w-auto px-5 py-2.5 text-sm shadow-lg shadow-gold/25 sm:min-h-12 sm:px-10 sm:py-4 sm:text-lg"
+                  className="btn-primary group min-h-11 w-full px-5 py-2.5 text-sm shadow-lg shadow-gold/25 sm:min-h-12 sm:w-auto sm:px-10 sm:py-4 sm:text-lg"
                 >
                   {primaryCta}
                   <ArrowRight
@@ -347,7 +346,7 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
                 {secondaryCta ? (
                   <Link
                     href={secondaryHref}
-                    className="btn-outline min-h-11 w-auto px-5 py-2.5 text-sm opacity-95 sm:min-h-12 sm:px-6 sm:py-3 sm:text-base"
+                    className="btn-outline min-h-11 w-full px-5 py-2.5 text-sm opacity-95 sm:min-h-12 sm:w-auto sm:px-6 sm:py-3 sm:text-base"
                   >
                     {secondaryCta}
                   </Link>

@@ -1,0 +1,2902 @@
+{
+  "exportedAt": "2026-08-16T06:45:15.751Z",
+  "source": "unknown",
+  "globals": {
+    "site": {
+      "name": "Inspire Oman",
+      "seoTitle": "Inspire Oman - Telling Oman's Growth Story Globally",
+      "seoDescription": "A prestigious integrated initiative aligned with Oman Vision 2040. Investors Summit - 14 October 2026, Oman Convention & Exhibition Centre.",
+      "slogan": "Celebrating Success. Creating Legacy. Inspiring Investment.",
+      "description": "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+      "summitDate": "14 October 2026",
+      "venue": "Oman Convention & Exhibition Centre",
+      "city": "Muscat",
+      "heroImage": null,
+      "bannerImage": null,
+      "summitImage": {
+        "filename": "areef-17.jpg",
+        "alt": "Inspire Oman"
+      },
+      "ogImage": {
+        "filename": "InspireOmanLogoPNG-34.png",
+        "alt": "InspireOmanLogoPNG.png"
+      },
+      "typography": {
+        "body": {
+          "fontSize": "default",
+          "color": "",
+          "style": "default"
+        },
+        "heading": {
+          "fontSize": "3xl",
+          "color": "",
+          "style": "bold"
+        },
+        "subheading": {
+          "fontSize": "xl",
+          "color": "",
+          "style": "semibold"
+        },
+        "paragraph": {
+          "fontSize": "default",
+          "color": "#d8d8d8",
+          "style": "default"
+        }
+      },
+      "registrationCategories": {
+        "vvip": {
+          "label": "VVIP",
+          "subtitle": "Investors Inside Oman",
+          "description": "Exclusive access for investors and decision-makers based in Oman.",
+          "badge": "Inside Oman"
+        },
+        "vip": {
+          "label": "VIP",
+          "subtitle": "Investors Outside Oman",
+          "description": "Premium access for international investors joining the summit.",
+          "badge": "Outside Oman"
+        },
+        "media": {
+          "label": "Media",
+          "subtitle": "Media Partners",
+          "description": "Accreditation for publishers, press, and media partners.",
+          "badge": "Press Pass"
+        }
+      },
+      "tagline": "Telling Oman's Growth Story Globally",
+      "omanPhone1": "+968 9916 8230",
+      "omanPhone2": "+968 7738 5585",
+      "omanEmail": "inspireoman@mefriend.com",
+      "indiaPhone": "+91 9645 009444",
+      "indiaEmail": "events@madhyamam.com",
+      "instagram": "#",
+      "facebook": "#",
+      "linkedin": "#",
+      "twitter": "#",
+      "youtube": "#",
+      "partnerStrategic": "Oman Chamber of Commerce & Industry (OCCI)",
+      "partnerInitiative": "Gulf Madhyamam",
+      "partnerExecution": "Mefriend",
+      "_status": "published"
+    },
+    "header": {
+      "logo": null,
+      "logoSrc": "/images/logos/IO-logo.svg",
+      "brandPrimary": "Inspire",
+      "brandHighlight": "Oman",
+      "navLinks": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Pillars",
+          "href": "/pillars"
+        },
+        {
+          "label": "Summit 2026",
+          "href": "/summit"
+        },
+        {
+          "label": "Media",
+          "href": "/media"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "ctaLabel": "Register Now",
+      "ctaHref": "/summit/#register",
+      "registerWidgetEnabled": true,
+      "registerWidgetLabel": "Register Now",
+      "registerWidgetTitle": "Register for Summit 2026",
+      "registerWidgetSubtitle": "Join delegates at the Inspire Oman Investors Summit - 11 October 2026",
+      "_status": "published"
+    },
+    "footer": {
+      "brandPrimary": "Inspire",
+      "brandHighlight": "Oman",
+      "description": "A prestigious Oman Vision 2040 initiative celebrating Oman's business community and enabling future collaborations for shared prosperity.",
+      "quickLinksTitle": "Quick Links",
+      "quickLinks": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Pillars",
+          "href": "/pillars"
+        },
+        {
+          "label": "Summit 2026",
+          "href": "/summit"
+        },
+        {
+          "label": "Partner With Us",
+          "href": "/partner"
+        },
+        {
+          "label": "Media",
+          "href": "/media"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ],
+      "omanTitle": "Contact - Oman",
+      "omanPhone1": "+968 9916 8230",
+      "omanPhone2": "+968 7738 5585",
+      "omanEmail": "inspireoman@mefriend.com",
+      "omanAddress": "Oman Convention & Exhibition Centre, Muscat",
+      "indiaTitle": "Connect",
+      "indiaPhone": "+968 7738 5585",
+      "indiaEmail": "events@madhyamam.com",
+      "partnerLabel": "Execution Partner",
+      "partnerName": "Oman Chamber of Commerce & Industry",
+      "partnerInitiative": "Gulf Madhyamam",
+      "partnerExecution": "Mefriend - Where Brands Find Solutions",
+      "instagram": "https://www.instagram.com/inspireoman_?igsh=MWF2Zmt0bm9tYnprZQ==",
+      "facebook": "https://www.facebook.com/inspireoman26/",
+      "linkedin": "https://www.linkedin.com/company/inspire-oman/",
+      "twitter": "https://x.com/InspireOman_",
+      "youtube": "https://youtube.com/playlist?list=PLbUchP2SCrow&si=c4HwsB6m4XT6LWMu",
+      "copyrightText": "Inspire Oman 2026. All rights reserved.",
+      "_status": "published"
+    },
+    "home-page": {
+      "heroLogo": null,
+      "heroLogoSrc": "/images/logos/inspire-oman-hero-logo.png",
+      "heroTitle": "Oman’s Largest Investors Summit",
+      "heroTitleHighlight": "Investors",
+      "heroTitleBreakAfter": "",
+      "heroSlogan": "أكبر قمة للمستثمرين في سلطنة عمان",
+      "heroSupportLine": "Registration for the Investors Summit is now open",
+      "heroDate": "14 October 2026 | 10:00 AM - 5:00 PM",
+      "heroCity": "",
+      "heroPrimaryCta": "Register Now",
+      "heroPrimaryCtaHref": "/summit/#register",
+      "heroSecondaryCta": "Investors Summit",
+      "heroSecondaryCtaHref": "/summit",
+      "heroImage": null,
+      "heroVenue": "OCEC, Oman",
+      "heroOcciVisible": true,
+      "heroOcciRole": "Strategic Partner",
+      "heroOcciTitle": null,
+      "heroOcciLogoSrc": "/images/logos/OCC-logo.svg",
+      "heroOcciLogo": null,
+      "heroMefriendVisible": false,
+      "heroMefriendRole": "Execution Partner",
+      "heroMefriendTitle": null,
+      "heroMefriendLogoSrc": "/images/logos/MF-logo.svg",
+      "heroMefriendLogo": null,
+      "spotlightCard1Keynote": "Project 1",
+      "spotlightCard1Title": "Legacy Documentation",
+      "spotlightCard1Description": "Documenting Oman's success stories and institutional memory for Vision 2040.",
+      "spotlightCard1Image": null,
+      "spotlightCard1ImageSrc": "/media/areef.jpg",
+      "spotlightCard1Href": "/pillars",
+      "spotlightCard2Keynote": "Project 2",
+      "spotlightCard2Title": "Digital Video Campaign",
+      "spotlightCard2Description": "A cinematic campaign amplifying Omani brands and leaders across digital platforms.",
+      "spotlightCard2Image": null,
+      "spotlightCard2ImageSrc": "/media/DSC00479.jpg",
+      "spotlightCard2Href": "/media",
+      "spotlightVideoKeynote": " Inspiring a New Era",
+      "spotlightVideoTitle": "Honorable Chairman of OCCI H.E. SHEIKH FAISAL BIN ABDULLAH AL RAWAS ",
+      "spotlightVideoDescription": "A powerful vision for Oman’s future, where ambition, innovation & leadership shape a greater tomorrow.Be part of Oman’s Biggest Investors Summit and be part of the vision!",
+      "spotlightVideoHref": "https://youtu.be/kAkrXPkgQnU",
+      "spotlightVideoPosterImage": {
+        "filename": "Screenshot 2026-08-14 122230-1.jpg",
+        "alt": "inspire-oman-occi"
+      },
+      "spotlightVideoPoster": null,
+      "spotlightVideoViewMoreLabel": "View More",
+      "spotlightVideoViewMoreHref": "/media",
+      "aboutEyebrow": "About the Initiative",
+      "aboutTitle": "Celebrating Oman's Growth Story",
+      "aboutTitleHighlight": "Growth Story",
+      "aboutIntro": "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+      "aboutBody": "In strategic partnership with the Oman Chamber of Commerce & Industry (OCCI), Inspire Oman brings together Royal Family Members, Ministers, Government Leaders, Investors, CEOs, and Entrepreneurs to celebrate contributions, strengthen investment pathways, and document the remarkable achievements of Oman's business community.",
+      "aboutTags": [
+        {
+          "tag": "Oman Vision 2040"
+        },
+        {
+          "tag": "OCCI Partnership"
+        },
+        {
+          "tag": "Cross-Border Investment"
+        }
+      ],
+      "aboutFacts": [
+        {
+          "label": "Strategic Partner",
+          "value": "Oman Chamber of Commerce & Industry (OCCI)"
+        },
+        {
+          "label": "Execution Partner",
+          "value": "Mefriend - Where Brands Find Solutions"
+        },
+        {
+          "label": "Summit Date",
+          "value": "14 October 2026"
+        },
+        {
+          "label": "Venue",
+          "value": "Oman Convention & Exhibition Centre"
+        }
+      ],
+      "homeStats": [
+        {
+          "value": 15,
+          "suffix": "+",
+          "label": "Countries"
+        },
+        {
+          "value": 500,
+          "suffix": "+",
+          "label": "Expected Attendees"
+        },
+        {
+          "value": 25,
+          "suffix": "+",
+          "label": "Keynote Speakers"
+        },
+        {
+          "value": 50,
+          "suffix": "+",
+          "label": "Partner Brands"
+        }
+      ],
+      "statsBannerSrc": "/images/logos/inspire-oman-banner.jpg",
+      "statsBanner": null,
+      "partnersEyebrow": "Our Partners",
+      "partnersTitle": "Trusted by Leaders",
+      "partnersTitleHighlight": "Leaders",
+      "partnersSubtitle": "Inspire Oman is powered by strategic collaboration between Oman Chamber of Commerce & Industry (OCCI) and Mefriend",
+      "pillarsEyebrow": "Three Pillars",
+      "pillarsTitle": "Building Oman's Legacy",
+      "pillarsTitleHighlight": "Legacy",
+      "pillarsSubtitle": "Three integrated pillars working together to document, celebrate, and connect Oman's business community",
+      "pillarsLearnMoreLabel": "Learn More",
+      "pillarsLearnMoreHref": "/pillars",
+      "summitEyebrow": "Flagship Event",
+      "summitTitle": "Investors Summit 2026",
+      "summitTitleHighlight": "2026",
+      "summitSubtitle": "Discover, Connect & Prosper - bringing together leaders, investors, and visionaries",
+      "summitExpectedLabel": "Expected",
+      "summitExpectedValue": "500+ Delegates",
+      "summitFeaturedBadge": "FEATURED SPEAKER",
+      "summitFeaturedSessionLabel": "Special Transformational Session",
+      "summitAgendaCta": "View Full Agenda",
+      "summitAgendaHref": "/summit",
+      "videosEyebrow": "Featured Videos",
+      "videosTitle": "Watch the Story",
+      "videosTitleHighlight": "Story",
+      "videosSubtitle": null,
+      "testimonialsEyebrow": "Voices of Support",
+      "testimonialsTitle": "What Leaders Say",
+      "testimonialsTitleHighlight": "Say",
+      "testimonialsSubtitle": null,
+      "contactEyebrow": "Get In Touch",
+      "contactTitle": "We're Ready to Help",
+      "contactTitleHighlight": "Help",
+      "contactSubtitle": "Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities",
+      "ctaTitle": "Be Part of Oman's Growth Story",
+      "ctaTitleHighlight": "Growth Story",
+      "ctaBody": "Join Inspire Oman as a partner or delegate and connect with the region's most dynamic business community",
+      "ctaPrimaryLabel": "Register Now",
+      "ctaPrimaryHref": "/summit",
+      "ctaSecondaryLabel": "Connect with Us",
+      "ctaSecondaryHref": "/contact",
+      "_status": "published"
+    },
+    "about-page": {
+      "eyebrow": "About the Initiative",
+      "title": "Telling Oman's Growth Story Globally",
+      "highlight": "Growth Story",
+      "subtitle": "A prestigious integrated initiative aligned with Oman Vision 2040, celebrating contributions of Oman's business community and enabling future collaborations.",
+      "missionTitle": "Our Mission",
+      "missionP1": "Inspire Oman celebrates the contributions of Oman's expatriate and local business community, strengthening Oman as a destination for investment, innovation, and entrepreneurship.",
+      "missionP2": "Through a powerful combination of premium documentation, digital storytelling, and a flagship investors summit, we create a lasting platform for recognition, collaboration, and growth - aligned with the bold ambitions of Oman Vision 2040.",
+      "quote": "Inspire Oman is more than an event - it is a movement to document excellence, celebrate achievement, and inspire the next generation of business leaders in the Sultanate.",
+      "missionFacts": [
+        {
+          "label": "Strategic Partner",
+          "value": "Oman Chamber of Commerce & Industry"
+        },
+        {
+          "label": "Execution",
+          "value": "Mefriend - Where Brands Find Solutions"
+        },
+        {
+          "label": "Summit Date",
+          "value": "14th October 2026 Wednesday"
+        },
+        {
+          "label": "Venue",
+          "value": "Oman Convention & Exhibition Centre"
+        }
+      ],
+      "valuesEyebrow": "Our Values",
+      "valuesTitle": "What Drives Us",
+      "audienceEyebrow": "Our Audience",
+      "audienceTitle": "Who We Serve",
+      "stakeholders": [
+        {
+          "item": "Senior Government Representatives"
+        },
+        {
+          "item": "CEOs & Business Owners"
+        },
+        {
+          "item": "Investors & Financial Leaders"
+        },
+        {
+          "item": "Corporate Executives & SME Leaders"
+        },
+        {
+          "item": "International Delegates"
+        },
+        {
+          "item": "Media Representatives"
+        }
+      ],
+      "_status": "published"
+    },
+    "pillars-page": {
+      "eyebrow": "Our Foundation",
+      "title": "Three Pillars of Impact",
+      "highlight": "Impact",
+      "subtitle": "Each pillar is designed to document, amplify, and connect - creating a comprehensive ecosystem for celebrating Oman's business excellence",
+      "_status": "published"
+    },
+    "summit-page": {
+      "eyebrow": "Flagship Event",
+      "title": "Investors Summit 2026",
+      "highlight": "2026",
+      "subtitle": "Discover, Connect & Prosper - a flagship gathering of business leaders, investors, and government officials shaping Oman's future",
+      "registerEyebrow": "Register",
+      "registerTitle": "Secure Your Spot",
+      "registerTitleHighlight": "Spot",
+      "registerChooseSubtitle": "Choose your registration category to continue.",
+      "registerFormSubtitle": "Complete your details to confirm your place at the summit.",
+      "_status": "published"
+    },
+    "partner-page": {
+      "eyebrow": "Partnership Opportunities",
+      "title": "Partner With Inspire Oman",
+      "highlight": "Inspire Oman",
+      "subtitle": "Position your brand alongside Oman's most prestigious business initiative and connect with leaders shaping the nation's future",
+      "_status": "published"
+    },
+    "media-page": {
+      "eyebrow": "Stories & Media",
+      "title": "Media Gallery",
+      "highlight": "Gallery",
+      "subtitle": "Videos, galleries, and stories celebrating Oman's business excellence",
+      "_status": "published"
+    },
+    "contact-page": {
+      "eyebrow": "Get In Touch",
+      "title": "Contact Us",
+      "highlight": "Us",
+      "subtitle": "Reach out for inquiries, partnerships, sponsorships, or collaboration opportunities",
+      "_status": "published"
+    }
+  },
+  "collections": {
+    "partners": [
+      {
+        "name": "Mefriend",
+        "slug": "Mefriend",
+        "role": "Execution Partner",
+        "fullName": "Mefriend - Where Brands Find Solutions",
+        "bg": "light",
+        "logoSrc": "/images/logos/MF-logo.svg",
+        "logo": {
+          "filename": "Mefriend_logo-17.png",
+          "alt": "Mefriend Logo"
+        },
+        "order": 2,
+        "_status": "published"
+      },
+      {
+        "name": "OCCI",
+        "slug": "occi",
+        "role": "Strategic Partner",
+        "fullName": "Oman Chamber of Commerce & Industry",
+        "bg": "light",
+        "logoSrc": "/images/logos/OCC-logo.svg",
+        "logo": null,
+        "order": 1,
+        "_status": "published"
+      }
+    ],
+    "stats": [
+      {
+        "label": "Countries",
+        "slug": "countries",
+        "value": 15,
+        "suffix": "+",
+        "_status": "published"
+      },
+      {
+        "label": "Expected Attendees",
+        "slug": "expected-attendees",
+        "value": 500,
+        "suffix": "+",
+        "_status": "published"
+      },
+      {
+        "label": "Keynote Speakers",
+        "slug": "keynote-speakers",
+        "value": 25,
+        "suffix": "+",
+        "_status": "published"
+      },
+      {
+        "label": "Partner Brands",
+        "slug": "partner-brands",
+        "value": 50,
+        "suffix": "+",
+        "_status": "published"
+      }
+    ],
+    "speakers": [
+      {
+        "_order": "a0i",
+        "name": "Arfeen Khan",
+        "slug": "arfeen-khan",
+        "role": "Transformational Speaker",
+        "description": "Internationally acclaimed peak performance strategist and transformational coach. Featured speaker delivering a special session on unlocking human potential and business excellence.",
+        "featured": true,
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "name": "Guest Speaker",
+        "slug": "guest-government",
+        "role": "Government Representative",
+        "description": "Senior government official sharing Oman's Vision 2040 roadmap and investment opportunities.",
+        "featured": false,
+        "_status": "published"
+      },
+      {
+        "_order": "a1",
+        "name": "Guest Speaker",
+        "slug": "guest-industry",
+        "role": "Industry Leader",
+        "description": "Prominent business leader discussing cross-border investment and the Oman-India business corridor.",
+        "featured": false,
+        "_status": "published"
+      },
+      {
+        "_order": "a0",
+        "name": "Guest Speaker",
+        "slug": "guest-innovation",
+        "role": "Innovation Expert",
+        "description": "Technology and innovation expert exploring Oman's emerging startup ecosystem.",
+        "featured": false,
+        "_status": "published"
+      }
+    ],
+    "testimonials": [
+      {
+        "author": "Mohammed Saleem Ambalan",
+        "slug": "Director",
+        "role": "Director of Mefriend",
+        "quote": "We seek to transfer the expertise and lessons learned from these experiences in a way that enhances the culture of innovation and ambition among future generations.",
+        "_status": "published"
+      },
+      {
+        "author": "Abdul Latif Moideen Kunji",
+        "slug": "OCCI",
+        "role": "Member of the Board of Directors of OCCI",
+        "quote": "Inspire Oman initiative seeks to present a comprehensive picture of the investment environment in the Sultanate of Oman by showcasing economic achievements, highlighting inspiring experiences of entrepreneurs, investors, and national companies, and introducing promising investment opportunities across various economic sectors.",
+        "_status": "published"
+      },
+      {
+        "author": " Faisal bin Abdullah al Rawas",
+        "slug": "chairman",
+        "role": "Chairman of the OCCI",
+        "quote": "This multi-layered initiative stems from a firm belief that Omani success stories represent one of the most important strengths of the national economy, and that investing in showcasing these models contributes to enhancing Oman’s economic standing and reinforcing investors’ confidence in the Omani business environment.",
+        "_status": "published"
+      }
+    ],
+    "pillars": [
+      {
+        "title": "Celebrating the Experience",
+        "slug": "celebrating-the-experience",
+        "subtitle": "Digital Campaign",
+        "description": "A dynamic digital video and social media campaign that amplifies the stories of Oman's business community, reaching global audiences and inspiring the next generation of entrepreneurs and investors.",
+        "icon": "Video",
+        "features": [
+          {
+            "item": "Professional video production"
+          },
+          {
+            "item": "Social media amplification"
+          },
+          {
+            "item": "Global digital reach"
+          },
+          {
+            "item": "Compelling storytelling format"
+          }
+        ],
+        "extras": [
+          {
+            "item": "High-production video profiles"
+          },
+          {
+            "item": "Multi-platform social campaigns"
+          },
+          {
+            "item": "International audience reach"
+          },
+          {
+            "item": "Brand storytelling expertise"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "title": "Investors Summit",
+        "slug": "investors-summit",
+        "subtitle": "14 October 2026",
+        "description": "The flagship Inspire Oman Investors Summit brings together CEOs, investors, government leaders, and entrepreneurs for visionary keynotes, industry discussions, and high-value networking opportunities.",
+        "icon": "Landmark",
+        "features": [
+          {
+            "item": "Visionary keynote sessions"
+          },
+          {
+            "item": "Government-private collaboration"
+          },
+          {
+            "item": "Investment opportunity showcase"
+          },
+          {
+            "item": "Premium networking experiences"
+          }
+        ],
+        "extras": [
+          {
+            "item": "500+ delegates expected"
+          },
+          {
+            "item": "Government-private sector dialogue"
+          },
+          {
+            "item": "Recognition & awards ceremony"
+          },
+          {
+            "item": "Cross-border networking"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "title": "Legacy Documenting",
+        "slug": "legacy-documenting",
+        "subtitle": "Premium Publication",
+        "description": "A prestigious coffee-table publication documenting the journeys, achievements, and contributions of Oman's most inspiring business leaders and entrepreneurs. Each story is a testament to vision, resilience, and impact.",
+        "icon": "BookOpen",
+        "features": [
+          {
+            "item": "Premium quality hardbound publication"
+          },
+          {
+            "item": "Professional photography and editorial"
+          },
+          {
+            "item": "Distribution to key stakeholders and embassies"
+          },
+          {
+            "item": "Permanent record of business excellence"
+          }
+        ],
+        "extras": [
+          {
+            "item": "Professional photography sessions"
+          },
+          {
+            "item": "Editorial team crafted narratives"
+          },
+          {
+            "item": "Premium hardbound production"
+          },
+          {
+            "item": "Embassy & stakeholder distribution"
+          }
+        ],
+        "_status": "published"
+      }
+    ],
+    "packages": [
+      {
+        "tier": "Associate",
+        "slug": "associate",
+        "price": "1,000",
+        "currency": "OMR",
+        "highlight": false,
+        "features": [
+          {
+            "item": "1 full page in publication"
+          },
+          {
+            "item": "45-second brand video"
+          },
+          {
+            "item": "2 summit official entries"
+          },
+          {
+            "item": "Logo on event materials"
+          },
+          {
+            "item": "Basic networking access"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "tier": "Leadership",
+        "slug": "leadership",
+        "price": "2,000",
+        "currency": "OMR",
+        "highlight": true,
+        "features": [
+          {
+            "item": "2 full pages in publication"
+          },
+          {
+            "item": "90-second brand video"
+          },
+          {
+            "item": "5 summit official entries"
+          },
+          {
+            "item": "Premium logo placement"
+          },
+          {
+            "item": "Priority networking access"
+          },
+          {
+            "item": "Media coverage inclusion"
+          }
+        ],
+        "_status": "published"
+      },
+      {
+        "tier": "Premier",
+        "slug": "premier",
+        "price": "3,000",
+        "currency": "OMR",
+        "highlight": false,
+        "features": [
+          {
+            "item": "3 full pages in publication"
+          },
+          {
+            "item": "3-5 minute brand film"
+          },
+          {
+            "item": "8 summit official entries"
+          },
+          {
+            "item": "Title sponsor branding"
+          },
+          {
+            "item": "VIP networking & lounge"
+          },
+          {
+            "item": "Keynote stage mention"
+          },
+          {
+            "item": "Full media package"
+          }
+        ],
+        "_status": "published"
+      }
+    ],
+    "values": [
+      {
+        "title": "Collaborative Spirit",
+        "slug": "collaborative-spirit",
+        "description": "Fostering partnerships between government, private sector, and entrepreneurs.",
+        "icon": "Handshake",
+        "_status": "published"
+      },
+      {
+        "title": "Cultural Celebration",
+        "slug": "cultural-celebration",
+        "description": "Honoring the rich heritage and achievements of Oman's business community.",
+        "icon": "Heart",
+        "_status": "published"
+      },
+      {
+        "title": "Global Perspective",
+        "slug": "global-perspective",
+        "description": "Bridging Oman with international markets, investors, and business communities.",
+        "icon": "Globe",
+        "_status": "published"
+      },
+      {
+        "title": "Sustainable Growth",
+        "slug": "sustainable-growth",
+        "description": "Creating lasting economic impact beyond a single event.",
+        "icon": "TrendingUp",
+        "_status": "published"
+      },
+      {
+        "title": "Transparency",
+        "slug": "transparency",
+        "description": "Building trust through open dialogue, clear processes, and measurable outcomes.",
+        "icon": "Eye",
+        "_status": "published"
+      },
+      {
+        "title": "Vision 2040 Aligned",
+        "slug": "vision-2040-aligned",
+        "description": "Directly supporting Oman's national economic diversification and growth strategy.",
+        "icon": "Target",
+        "_status": "published"
+      }
+    ],
+    "agenda": [
+      {
+        "_order": "a8",
+        "title": "Awards Ceremony & Closing",
+        "slug": "awards-ceremony-closing",
+        "time": "05:00 PM",
+        "type": "keynote",
+        "_status": "published"
+      },
+      {
+        "_order": "a9",
+        "title": "Gala Dinner & Networking",
+        "slug": "gala-dinner-networking",
+        "time": "06:00 PM",
+        "type": "session",
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "Industry Panel: Cross-Border Opportunities",
+        "slug": "industry-panel-cross-border-opportunities",
+        "time": "12:00 PM",
+        "type": "keynote",
+        "_status": "published"
+      },
+      {
+        "_order": "a5",
+        "title": "Lunch & Business Networking",
+        "slug": "lunch-business-networking",
+        "time": "01:00 PM",
+        "type": "break",
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Networking Break",
+        "slug": "networking-break",
+        "time": "11:30 AM",
+        "type": "break",
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": "Oman Vision 2040 - Investment Landscape",
+        "slug": "oman-vision-2040-investment-landscape",
+        "time": "10:45 AM",
+        "type": "featured",
+        "_status": "published"
+      },
+      {
+        "_order": "a1",
+        "title": "Opening Ceremony & Keynote Address",
+        "slug": "opening-ceremony-keynote-address",
+        "time": "10:00 AM",
+        "type": "session",
+        "_status": "published"
+      },
+      {
+        "_order": "a7",
+        "title": "Partner Showcase & Recognition",
+        "slug": "partner-showcase-recognition",
+        "time": "04:00 PM",
+        "type": "session",
+        "_status": "published"
+      },
+      {
+        "_order": "a0",
+        "title": "Registration & Welcome Coffee",
+        "slug": "registration-welcome-coffee",
+        "time": "09:00 AM",
+        "type": "general",
+        "_status": "published"
+      },
+      {
+        "_order": "a6",
+        "title": "Special Session by Arfeen Khan",
+        "slug": "special-session-by-arfeen-khan",
+        "time": "02:30 PM",
+        "type": "featured",
+        "_status": "published"
+      }
+    ],
+    "gallery": [
+      {
+        "_order": "a5",
+        "title": "Official Launch",
+        "slug": "global-ambition",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/skyline.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-34.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "Official Launch",
+        "slug": "investment-growth",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/investment.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-35.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Official Launch",
+        "slug": "investors-summit",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/conference.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-17.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9zi",
+        "title": "Official Launch",
+        "slug": "keynote-sessions",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/keynote.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-17.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9z9",
+        "title": "Official Launch",
+        "slug": "omans-heritage",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/mosque.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-17.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": "Official Launch",
+        "slug": "partnerships",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": "/images/gallery/handshake.jpg",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-17.jpeg",
+          "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9z",
+        "title": "Official Launch",
+        "slug": "/",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00730-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "9z5",
+        "title": "Official Launch",
+        "slug": "//",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00479-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a25",
+        "title": "Official Launch",
+        "slug": "/3",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00632-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a29",
+        "title": "Official Launch",
+        "slug": "///",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00405-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2i",
+        "title": "Official Launch",
+        "slug": "/1",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00791-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a8",
+        "title": "Official Launch",
+        "slug": "/2",
+        "caption": "Official launch moments of the Inspire Oman Investors Summit.",
+        "imageSrc": null,
+        "image": {
+          "filename": "DSC00465-34.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      }
+    ],
+    "videos": [
+      {
+        "_order": "a0",
+        "title": " Official Launch of Inspire Oman | Muscat Highlights",
+        "slug": "/summit",
+        "description": "Highlights from the official launch of ‘Inspire Oman’ in Muscat, With the strategic support of the Oman Chamber of Commerce and Industry, An initiative, aimed at highlighting, documenting, and promoting outstanding Omani success stories in economic and social development and entrepreneurship at both local and global levels. ",
+        "tag": "MuscatHighlight",
+        "playMode": "iframe",
+        "videoUrl": "https://youtu.be/j0DS8GX9ht4?si=QOHw6Xr4Kfp0E2Fa",
+        "image": {
+          "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-35.jpeg",
+          "alt": "Official Launch"
+        },
+        "imageSrc": "",
+        "_status": "published"
+      },
+      {
+        "_order": "a1",
+        "title": " A New Era. A Global Legacy.",
+        "slug": "https://www.youtube.com/watch?v=rZgsJIy7ljE&list=PLbUchP2SCrow&index=1",
+        "description": "Inspire Oman is a prestigious integrated initiative dedicated to celebrating the Sultanate of Oman’s remarkable journey of growth, innovation, and success. The initiative aims to document and showcase the inspiring stories of successful brands, visionary leaders, and changemakers who are shaping Oman’s future and contributing to its global legacy.",
+        "tag": "InspireOman2026",
+        "playMode": "iframe",
+        "videoUrl": "https://youtu.be/rZgsJIy7ljE?si=yOIR8ghcWoOLCsKr",
+        "image": {
+          "filename": "aaaa-17.png",
+          "alt": "aaaa.png"
+        },
+        "imageSrc": "",
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": " ഒമാനിൽ പുതിയ വികസന കുതിപ്പ്! ‘ഇൻസ്പയർ ഒമാൻ’ പദ്ധതിക്ക് തുടക്കമായി",
+        "slug": "https://www.youtube.com/watch?v=JV5QyMqf2a8",
+        "description": "ഒമാനിൽ സാമ്പത്തിക-സാമൂഹിക - വികസന രംഗങ്ങളിലെ നേട്ടങ്ങൾ അടയാളപ്പെടുത്തുന്ന ‘ഇൻസ്പയർ ഒമാൻ’ പദ്ധതിക്ക് തുടക്കമായി.",
+        "tag": "Oman Development",
+        "playMode": "iframe",
+        "videoUrl": "https://www.youtube.com/watch?v=JV5QyMqf2a8",
+        "image": {
+          "filename": "Screenshot (35)-17.png",
+          "alt": "Inspire Oman Summit Investors 2026"
+        },
+        "imageSrc": null,
+        "_status": "published"
+      }
+    ],
+    "press": [
+      {
+        "_order": "a8",
+        "title": "Arfeen Khan Confirmed as Featured Speaker",
+        "slug": "arfeen-khan-confirmed-as-featured-speaker",
+        "date": "Coming Soon",
+        "excerpt": "Internationally acclaimed performance strategist joins Inspire Oman...",
+        "imageSrc": null,
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a7",
+        "title": "Inspire Oman 2026 Officially Announced",
+        "slug": "inspire-oman-2026-officially-announced",
+        "date": "Coming Soon",
+        "excerpt": "Gulf Madhyamam and OCCI announce the prestigious Inspire Oman initiative...",
+        "imageSrc": null,
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "a6",
+        "title": "Partnership Programme Opens for Applications",
+        "slug": "partnership-programme-opens-for-applications",
+        "date": "Coming Soon",
+        "excerpt": "Three-tier partnership programme now available for businesses...",
+        "imageSrc": null,
+        "image": null,
+        "_status": "published"
+      },
+      {
+        "_order": "9z",
+        "title": "‘Inspire Oman’ initiative launched to showcase success stories, attract investment.",
+        "slug": "https://www.linkedin.com/posts/inspireoman-entrepreneurship-investmentpromotion-share-7475524671694815232-V2aI/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF9O9VUBa5d2TI1_TkSy657aBMKlW0VWulU",
+        "date": "28 JUNE 2026",
+        "excerpt": "A new initiative to document Omani business and entrepreneurial success stories and promote the Sultanate of Oman as an investment destination has been launched by Mefriend, a digital initiative of a regional media house, with strategic support from the Oman Chamber of Commerce and Industry (OCCI).",
+        "imageSrc": null,
+        "image": {
+          "filename": "1782303969341-17.jfif",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a0",
+        "title": "What Is The ‘Inspire Oman’ Initiative & What Opportunities Could It Bring To The Sultanate?",
+        "slug": "https://curlytales.com/middle-east/ct-scoop/what-is-the-inspire-oman-initiative-what-opportunities-could-it-bring-to-the-sultanate/",
+        "date": "27 JUNE 2026",
+        "excerpt": "Oman launches Inspire Oman to attract investors and spotlight local businesses and entrepreneurs.",
+        "imageSrc": null,
+        "image": {
+          "filename": "Oman-National-Day-Holiday-800x450-17.webp",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2",
+        "title": "Oman Unveils 'Inspire Oman' Initiative to Attract Investment",
+        "slug": "https://cairoscene.com/Business/Oman-Unveils-Inspire-Oman-Initiative-to-Attract-Investment",
+        "date": "26 JUNE 2026",
+        "excerpt": "The initiative aims to showcase Omani businesses and investment opportunities while supporting Oman Vision 2040.",
+        "imageSrc": null,
+        "image": {
+          "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a2i",
+        "title": "\"Inspiring Oman\" initiative",
+        "slug": "https://www.linkedin.com/posts/%D8%A8%D8%AF%D8%B9%D9%85-%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A-%D9%85%D9%86-%D8%BA%D8%B1%D9%81%D8%A9-%D8%AA%D8%AC%D8%A7%D8%B1%D8%A9-%D9%88%D8%B5%D9%86%D8%A7%D8%B9%D8%A9-%D8%B9%D9%85%D8%A7%D9%86-ugcPost-7475249221726601216-0Vct/?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAF9O9VUBa5d2TI1_TkSy657aBMKlW0VWulU",
+        "date": "26 JUNE 2026",
+        "excerpt": "With strategic support from the Oman Chamber of Commerce and Industry (OCCI), \"MyFriend\" company launched the \"Inspiring Oman\" initiative.",
+        "imageSrc": null,
+        "image": {
+          "filename": "1782238294679-17.jfif",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a3",
+        "title": "Inspire Oman, new initiative to boost investment scenario launched",
+        "slug": "https://www.zawya.com/en/economy/gcc/inspire-oman-new-initiative-to-boost-investment-scenario-launched-331756",
+        "date": "25 June 2026",
+        "excerpt": "The initiative also seeks to attract investments to the Sultanate of Oman by promoting investment opportunities",
+        "imageSrc": null,
+        "image": {
+          "filename": "zawaya tn-17.jfif",
+          "alt": "zawaya tn.jfif"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a4",
+        "title": "OCCI launches ‘Inspire Oman’ initiative in Oman",
+        "slug": "https://www.muscatdaily.com/2026/06/25/occi-launches-inspire-oman-initiative-in-oman/",
+        "date": "25 JUNE 2026",
+        "excerpt": "“Inspire Oman” initiative launched to showcase success stories in economic development and entrepreneurship.",
+        "imageSrc": null,
+        "image": {
+          "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-17.jpg",
+          "alt": "Inspire Oman"
+        },
+        "_status": "published"
+      },
+      {
+        "_order": "a5",
+        "title": "'Inspire Oman' initiative to showcase success stories, attract investment",
+        "slug": "/",
+        "date": "24 JUNE 2026",
+        "excerpt": "The initiative aims to showcase Omani businesses and investment opportunities while supporting Oman Vision 2040.",
+        "imageSrc": null,
+        "image": {
+          "filename": "InspireOmanLogoPNG-35.png",
+          "alt": "InspireOmanLogoPNG.png"
+        },
+        "_status": "published"
+      }
+    ]
+  },
+  "inbox": {
+    "get-in-touch": [
+      {
+        "name": "Sabeel",
+        "email": "pc@madhyamam.com",
+        "phone": "9645001103",
+        "subject": "Need help",
+        "message": "Need help desc",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:12.980Z",
+        "updatedAt": "2026-08-01T18:54:12.981Z"
+      },
+      {
+        "name": "White Logo Check",
+        "email": "white@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:13.094Z",
+        "updatedAt": "2026-08-01T18:54:13.095Z"
+      },
+      {
+        "name": "Final Check",
+        "email": "final@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:13.330Z",
+        "updatedAt": "2026-08-01T18:54:13.335Z"
+      },
+      {
+        "name": "White Logo Final",
+        "email": "white-final@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:13.428Z",
+        "updatedAt": "2026-08-01T18:54:13.431Z"
+      },
+      {
+        "name": "Admin Favicon Deploy",
+        "email": "favicon-check@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:13.513Z",
+        "updatedAt": "2026-08-01T18:54:13.513Z"
+      },
+      {
+        "name": "Inbox Test",
+        "email": "test@example.com",
+        "phone": null,
+        "subject": null,
+        "message": "split tab verify",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:23.395Z",
+        "updatedAt": "2026-08-01T18:54:23.400Z"
+      },
+      {
+        "name": "Sabeel",
+        "email": "pc@madhyamam.com",
+        "phone": "9645001103",
+        "subject": "Need help",
+        "message": "Need help desc",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.734Z",
+        "updatedAt": "2026-08-01T18:58:01.734Z"
+      },
+      {
+        "name": "White Logo Check",
+        "email": "white@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.761Z",
+        "updatedAt": "2026-08-01T18:58:01.761Z"
+      },
+      {
+        "name": "Final Check",
+        "email": "final@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.788Z",
+        "updatedAt": "2026-08-01T18:58:01.788Z"
+      },
+      {
+        "name": "White Logo Final",
+        "email": "white-final@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.835Z",
+        "updatedAt": "2026-08-01T18:58:01.835Z"
+      },
+      {
+        "name": "Admin Favicon Deploy",
+        "email": "favicon-check@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.869Z",
+        "updatedAt": "2026-08-01T18:58:01.869Z"
+      },
+      {
+        "name": "Sabeel",
+        "email": "pc@m.co",
+        "phone": null,
+        "subject": null,
+        "message": "333",
+        "status": "new",
+        "createdAt": "2026-08-04T09:07:51.141Z",
+        "updatedAt": "2026-08-04T09:07:51.145Z"
+      },
+      {
+        "name": "Sabeel Pullan",
+        "email": "sabeel@99.cm",
+        "phone": null,
+        "subject": null,
+        "message": null,
+        "status": "new",
+        "createdAt": "2026-08-04T09:11:44.339Z",
+        "updatedAt": "2026-08-04T09:11:44.343Z"
+      },
+      {
+        "name": "QA Contact",
+        "email": "qa-contact@findown.in",
+        "phone": "96899168230",
+        "subject": "QA",
+        "message": "QA contact form check",
+        "status": "new",
+        "createdAt": "2026-08-14T06:44:48.634Z",
+        "updatedAt": "2026-08-14T06:44:48.637Z"
+      }
+    ],
+    "summit-registrations": [
+      {
+        "name": "Sabeel Register",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9645001103",
+        "organization": "Traders",
+        "category": null,
+        "role": "Investor",
+        "message": "Summit registration - role: Investor",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:12.477Z",
+        "updatedAt": "2026-08-01T18:54:12.477Z"
+      },
+      {
+        "name": "Sabeel Register",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9645001103",
+        "organization": "Traders",
+        "category": null,
+        "role": "Investor",
+        "message": "Summit registration - role: Investor",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.703Z",
+        "updatedAt": "2026-08-01T18:58:01.703Z"
+      },
+      {
+        "name": "Sagar",
+        "email": "aliasjacky@gmail.com",
+        "phone": "9632541875",
+        "organization": "Gangster",
+        "category": null,
+        "role": "CEO",
+        "message": "Summit registration - role: CEO",
+        "status": "new",
+        "createdAt": "2026-08-03T08:19:39.762Z",
+        "updatedAt": "2026-08-03T08:19:39.769Z"
+      },
+      {
+        "name": "123456",
+        "email": "00@00.com",
+        "phone": "0000000000000000000000",
+        "organization": "0000000000000000000#############",
+        "category": null,
+        "role": "CEO",
+        "message": "Summit registration - role: CEO",
+        "status": "new",
+        "createdAt": "2026-08-03T09:27:14.514Z",
+        "updatedAt": "2026-08-03T09:27:14.516Z"
+      },
+      {
+        "name": "sab",
+        "email": "sabeel@99.co",
+        "phone": "9567916614",
+        "organization": "Tes",
+        "category": null,
+        "role": "CEO",
+        "message": "Summit registration - role: CEO",
+        "status": "new",
+        "createdAt": "2026-08-04T10:13:28.363Z",
+        "updatedAt": "2026-08-04T10:13:28.375Z"
+      },
+      {
+        "name": "Sabeel",
+        "email": "pc@madhyamam.com",
+        "phone": "9567916614",
+        "organization": "Test",
+        "category": null,
+        "role": "CEO",
+        "message": "Summit registration - role: CEO",
+        "status": "new",
+        "createdAt": "2026-08-05T06:31:26.265Z",
+        "updatedAt": "2026-08-05T06:31:26.281Z"
+      },
+      {
+        "name": "QA Public Test",
+        "email": "qa-public@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration public QA",
+        "status": "new",
+        "createdAt": "2026-08-13T07:23:24.896Z",
+        "updatedAt": "2026-08-13T07:23:24.900Z"
+      },
+      {
+        "name": "QA After Admin Fix",
+        "email": "qa-adminfix@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "vip",
+        "role": "CEO",
+        "message": "admin route fix",
+        "status": "new",
+        "createdAt": "2026-08-13T07:43:40.886Z",
+        "updatedAt": "2026-08-13T07:43:40.888Z"
+      },
+      {
+        "name": "QA Forms Path",
+        "email": "qa-forms@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "media",
+        "role": "Editor",
+        "message": "forms path",
+        "status": "new",
+        "createdAt": "2026-08-13T08:01:42.722Z",
+        "updatedAt": "2026-08-13T08:01:42.724Z"
+      },
+      {
+        "name": "QA Public Test",
+        "email": "qa-public@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration public QA",
+        "status": "new",
+        "createdAt": "2026-08-13T08:02:46.424Z",
+        "updatedAt": "2026-08-13T08:02:46.427Z"
+      },
+      {
+        "name": "QA Public Forms",
+        "email": "qa-public2@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "public forms path",
+        "status": "new",
+        "createdAt": "2026-08-13T08:02:47.031Z",
+        "updatedAt": "2026-08-13T08:02:47.031Z"
+      },
+      {
+        "name": "QA Deploy",
+        "email": "qa-deploy@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "deploy check",
+        "status": "new",
+        "createdAt": "2026-08-13T09:16:27.242Z",
+        "updatedAt": "2026-08-13T09:16:27.250Z"
+      },
+      {
+        "name": "QA Deploy4",
+        "email": "qa-deploy4@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "deploy4",
+        "status": "new",
+        "createdAt": "2026-08-13T10:06:41.200Z",
+        "updatedAt": "2026-08-13T10:06:41.206Z"
+      },
+      {
+        "name": "QA Final",
+        "email": "qa-final@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "final",
+        "status": "new",
+        "createdAt": "2026-08-13T10:07:27.668Z",
+        "updatedAt": "2026-08-13T10:07:27.674Z"
+      },
+      {
+        "name": "QA NewImage",
+        "email": "qa-newimage@findown.in",
+        "phone": "1",
+        "organization": "F",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "x",
+        "status": "new",
+        "createdAt": "2026-08-13T10:24:41.279Z",
+        "updatedAt": "2026-08-13T10:24:41.281Z"
+      },
+      {
+        "name": "QA Final2",
+        "email": "qa-final2@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "media",
+        "role": "Editor",
+        "message": "final2",
+        "status": "new",
+        "createdAt": "2026-08-13T10:24:43.397Z",
+        "updatedAt": "2026-08-13T10:24:43.398Z"
+      },
+      {
+        "name": "QA NewImage",
+        "email": "qa-newimage@findown.in",
+        "phone": "1",
+        "organization": "F",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "x",
+        "status": "new",
+        "createdAt": "2026-08-13T10:24:52.370Z",
+        "updatedAt": "2026-08-13T10:24:52.370Z"
+      },
+      {
+        "name": "QA Final",
+        "email": "qa-final@findown.in",
+        "phone": "9645001103",
+        "organization": "Findown",
+        "category": "vvip",
+        "role": "CEO",
+        "message": "final",
+        "status": "new",
+        "createdAt": "2026-08-13T10:25:09.198Z",
+        "updatedAt": "2026-08-13T10:25:09.198Z"
+      },
+      {
+        "name": "Sabeel",
+        "email": "pc@madhyamam.com",
+        "phone": "9645001103",
+        "organization": "Findown Tech",
+        "category": "vvip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration (widget) - VVIP - Investors Inside Oman - role: CEO / Business Owner",
+        "status": "approved",
+        "createdAt": "2026-08-14T03:47:35.454Z",
+        "updatedAt": "2026-08-14T03:48:45.466Z"
+      },
+      {
+        "name": "Raghavan",
+        "email": "click4marry@madhyamam.com",
+        "phone": "9400827073",
+        "organization": "Click4Marry",
+        "category": "vip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration - VIP - Investors Outside Oman - role: CEO / Business Owner",
+        "status": "approved",
+        "createdAt": "2026-08-14T03:55:00.264Z",
+        "updatedAt": "2026-08-14T03:56:18.076Z"
+      },
+      {
+        "name": "Seb",
+        "email": "pc@madhyamam.com",
+        "phone": "9567916614",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "Corporate Executive",
+        "message": "Summit registration (widget) - VVIP - Investors Inside Oman - role: Corporate Executive",
+        "status": "approved",
+        "createdAt": "2026-08-14T04:51:57.942Z",
+        "updatedAt": "2026-08-14T04:57:48.560Z"
+      },
+      {
+        "name": "QA Agent Check",
+        "email": "qa-agent-check@findown.in",
+        "phone": "96899168230",
+        "organization": "Findown QA",
+        "category": "vvip",
+        "role": "QA Tester",
+        "message": "Automated pre-deploy QA registration",
+        "status": "new",
+        "createdAt": "2026-08-14T06:40:38.163Z",
+        "updatedAt": "2026-08-14T06:40:38.166Z"
+      },
+      {
+        "name": "Sabeel",
+        "email": "pc@madhyamam.com",
+        "phone": "9645001103",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration — VVIP — Investors Inside Oman — role: CEO / Business Owner",
+        "status": "approved",
+        "createdAt": "2026-08-14T06:58:20.008Z",
+        "updatedAt": "2026-08-14T07:00:08.342Z"
+      },
+      {
+        "name": "Sabeel",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9645001103",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "Corporate Executive",
+        "message": "Summit registration - VVIP - Investors Inside Oman - role: Corporate Executive",
+        "status": "approved",
+        "createdAt": "2026-08-15T12:08:39.771Z",
+        "updatedAt": "2026-08-15T12:11:04.897Z"
+      },
+      {
+        "name": "Sabeel Test",
+        "email": "findowntech@gmail.com",
+        "phone": "9567916614",
+        "organization": "Findown Technologies",
+        "category": "media",
+        "role": "Corporate Executive",
+        "message": "Summit registration - Media - Media Partners - role: Corporate Executive",
+        "status": "approved",
+        "createdAt": "2026-08-15T12:15:45.913Z",
+        "updatedAt": "2026-08-15T16:19:57.251Z"
+      },
+      {
+        "name": "Sabeel Test",
+        "email": "pc@madhyamam.com",
+        "phone": "548574895745894",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration - VVIP - Investors Inside Oman - role: CEO / Business Owner",
+        "status": "rejected",
+        "createdAt": "2026-08-15T16:21:14.036Z",
+        "updatedAt": "2026-08-15T16:38:49.973Z"
+      },
+      {
+        "name": "TLS Test",
+        "email": "inspire-tls-test+20260815215538@mefriend.com",
+        "phone": "+96800000000",
+        "organization": "Local TLS Verify",
+        "category": "media",
+        "role": "QA",
+        "message": "Postmark insecure TLS verification 20260815215538",
+        "status": "approved",
+        "createdAt": "2026-08-15T16:25:38.835Z",
+        "updatedAt": "2026-08-15T16:25:58.578Z"
+      },
+      {
+        "name": "Blackhole Test",
+        "email": "test@blackhole.postmarkapp.com",
+        "phone": null,
+        "organization": "Postmark TLS",
+        "category": "media",
+        "role": "QA",
+        "message": "Approve path TLS verify",
+        "status": "approved",
+        "createdAt": "2026-08-15T16:26:35.693Z",
+        "updatedAt": "2026-08-15T16:26:40.490Z"
+      },
+      {
+        "name": "Walker",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9645001103",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "Corporate Executive",
+        "message": "Summit registration - VVIP - Investors Inside Oman - role: Corporate Executive",
+        "status": "approved",
+        "createdAt": "2026-08-15T16:27:13.098Z",
+        "updatedAt": "2026-08-15T16:34:43.398Z"
+      },
+      {
+        "name": "Logo CID Test",
+        "email": "test@blackhole.postmarkapp.com",
+        "phone": "+96800000000",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "QA",
+        "message": "Logo CID attachment verification",
+        "status": "new",
+        "createdAt": "2026-08-15T16:33:31.653Z",
+        "updatedAt": "2026-08-15T16:33:31.654Z"
+      },
+      {
+        "name": "Project Cordinator",
+        "email": "pc@madhyamam.com",
+        "phone": "9567916614",
+        "organization": "Findown Technologies",
+        "category": "vvip",
+        "role": "CEO / Business Owner",
+        "message": "Summit registration - VVIP - Investors Inside Oman - role: CEO / Business Owner",
+        "status": "approved",
+        "createdAt": "2026-08-15T16:40:49.557Z",
+        "updatedAt": "2026-08-15T16:42:08.687Z"
+      }
+    ],
+    "partner-applications": [
+      {
+        "name": "Sabe",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9567",
+        "companyName": "Sabeel",
+        "contactPerson": "Sabe",
+        "designation": "Tester",
+        "address": "Pamsn",
+        "tier": "Leadership Partnership",
+        "paymentMethod": "Bank Transfer",
+        "message": "Partnership application - Leadership Partnership",
+        "status": "new",
+        "createdAt": "2026-08-01T18:54:12.019Z",
+        "updatedAt": "2026-08-01T18:54:12.056Z"
+      },
+      {
+        "name": "Sabe",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9567",
+        "companyName": "Sabeel",
+        "contactPerson": "Sabe",
+        "designation": "Tester",
+        "address": "Pamsn",
+        "tier": "Leadership Partnership",
+        "paymentMethod": "Bank Transfer",
+        "message": "Partnership application - Leadership Partnership",
+        "status": "new",
+        "createdAt": "2026-08-01T18:58:01.656Z",
+        "updatedAt": "2026-08-01T18:58:01.661Z"
+      },
+      {
+        "name": "QA Agent",
+        "email": "qa-partner@findown.in",
+        "phone": "96899168230",
+        "companyName": "Findown QA",
+        "contactPerson": "QA Agent",
+        "designation": null,
+        "address": null,
+        "tier": "Gold",
+        "paymentMethod": null,
+        "message": "QA partner check",
+        "status": "new",
+        "createdAt": "2026-08-14T06:44:49.934Z",
+        "updatedAt": "2026-08-14T06:44:49.935Z"
+      }
+    ],
+    "submissions": [
+      {
+        "type": "contact",
+        "name": "Admin Favicon Deploy",
+        "email": "favicon-check@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "organization": null,
+        "companyName": null,
+        "contactPerson": null,
+        "designation": null,
+        "address": null,
+        "tier": null,
+        "paymentMethod": null,
+        "role": null,
+        "status": "new",
+        "createdAt": "2026-08-01T15:26:36.789Z",
+        "updatedAt": "2026-08-01T15:26:36.791Z"
+      },
+      {
+        "type": "contact",
+        "name": "White Logo Final",
+        "email": "white-final@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "organization": null,
+        "companyName": null,
+        "contactPerson": null,
+        "designation": null,
+        "address": null,
+        "tier": null,
+        "paymentMethod": null,
+        "role": null,
+        "status": "new",
+        "createdAt": "2026-08-01T15:47:03.652Z",
+        "updatedAt": "2026-08-01T15:47:03.654Z"
+      },
+      {
+        "type": "contact",
+        "name": "Final Check",
+        "email": "final@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "organization": null,
+        "companyName": null,
+        "contactPerson": null,
+        "designation": null,
+        "address": null,
+        "tier": null,
+        "paymentMethod": null,
+        "role": null,
+        "status": "new",
+        "createdAt": "2026-08-01T15:53:11.104Z",
+        "updatedAt": "2026-08-01T15:53:11.104Z"
+      },
+      {
+        "type": "contact",
+        "name": "White Logo Check",
+        "email": "white@inspireoman.local",
+        "phone": null,
+        "subject": null,
+        "message": "ok",
+        "organization": null,
+        "companyName": null,
+        "contactPerson": null,
+        "designation": null,
+        "address": null,
+        "tier": null,
+        "paymentMethod": null,
+        "role": null,
+        "status": "new",
+        "createdAt": "2026-08-01T16:07:42.761Z",
+        "updatedAt": "2026-08-01T16:07:42.763Z"
+      },
+      {
+        "type": "message",
+        "name": "Sabeel",
+        "email": "pc@madhyamam.com",
+        "phone": "9645001103",
+        "subject": "Need help",
+        "message": "Need help desc",
+        "organization": null,
+        "companyName": null,
+        "contactPerson": null,
+        "designation": null,
+        "address": null,
+        "tier": null,
+        "paymentMethod": null,
+        "role": null,
+        "status": "new",
+        "createdAt": "2026-08-01T16:39:30.694Z",
+        "updatedAt": "2026-08-01T16:39:30.695Z"
+      },
+      {
+        "type": "summit",
+        "name": "Sabeel Register",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9645001103",
+        "subject": null,
+        "message": "Summit registration - role: Investor",
+        "organization": "Traders",
+        "companyName": null,
+        "contactPerson": null,
+        "designation": null,
+        "address": null,
+        "tier": null,
+        "paymentMethod": null,
+        "role": "Investor",
+        "status": "new",
+        "createdAt": "2026-08-01T16:41:27.797Z",
+        "updatedAt": "2026-08-01T16:41:27.797Z"
+      },
+      {
+        "type": "partner",
+        "name": "Sabe",
+        "email": "sabeelmji@gmail.com",
+        "phone": "9567",
+        "subject": null,
+        "message": "Partnership application - Leadership Partnership",
+        "organization": null,
+        "companyName": "Sabeel",
+        "contactPerson": "Sabe",
+        "designation": "Tester",
+        "address": "Pamsn",
+        "tier": "Leadership Partnership",
+        "paymentMethod": "Bank Transfer",
+        "role": null,
+        "status": "new",
+        "createdAt": "2026-08-01T16:43:49.741Z",
+        "updatedAt": "2026-08-01T16:43:49.742Z"
+      }
+    ]
+  },
+  "media": [
+    {
+      "filename": "Mefriend Logo@150x-5.png",
+      "alt": "Mefriend Logo@150x.png"
+    },
+    {
+      "filename": "Findown Logo Color-5.png",
+      "alt": "Findown Logo Color.png"
+    },
+    {
+      "filename": "MF logo@150x-5.png",
+      "alt": "MF logo@150x.png"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-18.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-9.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-9.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-9.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-9.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-9.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-9.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-18.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-9.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-19.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-18.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-19.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-19.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-18.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-18.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-19.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-9.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-9.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-9.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-9.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-9.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-19.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-9.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "Mefriend Logo@150x-7.png",
+      "alt": "Mefriend Logo@150x.png"
+    },
+    {
+      "filename": "Findown Logo Color-7.png",
+      "alt": "Findown Logo Color.png"
+    },
+    {
+      "filename": "MF logo@150x-7.png",
+      "alt": "MF logo@150x.png"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-22.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-11.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-11.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-11.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-11.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-11.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-11.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-22.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-11.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-23.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-22.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-23.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-23.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-22.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-22.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-23.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-11.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-11.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-11.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-11.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-11.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-23.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-11.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-24.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-12.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-12.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-12.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-12.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-12.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-12.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-24.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-12.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-25.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-24.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-25.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-25.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-24.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-24.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-25.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-12.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-12.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-12.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-12.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-12.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-25.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-12.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "Mefriend Logo@150x-8.png",
+      "alt": "Mefriend Logo@150x.png"
+    },
+    {
+      "filename": "Findown Logo Color-8.png",
+      "alt": "Findown Logo Color.png"
+    },
+    {
+      "filename": "MF logo@150x-8.png",
+      "alt": "MF logo@150x.png"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-26.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-13.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-13.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-13.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-13.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-13.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-13.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-26.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-13.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-27.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-26.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-27.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-27.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-26.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-26.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-27.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-13.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-13.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-13.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-13.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-13.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-27.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-13.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-28.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-14.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-14.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-14.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-14.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-14.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-14.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-28.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-14.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-29.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-28.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-29.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-29.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-28.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-28.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-29.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-14.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-14.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-14.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-14.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-14.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-29.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-14.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "Mefriend Logo@150x-9.png",
+      "alt": "Mefriend Logo@150x.png"
+    },
+    {
+      "filename": "Findown Logo Color-9.png",
+      "alt": "Findown Logo Color.png"
+    },
+    {
+      "filename": "MF logo@150x-9.png",
+      "alt": "MF logo@150x.png"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-30.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-15.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-15.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-15.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-15.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-15.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-15.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-30.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-15.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-31.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-30.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-31.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-31.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-30.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-30.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-31.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-15.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-15.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-15.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-15.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-15.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-31.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-15.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-32.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-16.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-16.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-16.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-16.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-16.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-16.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-32.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-16.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-33.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-32.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-33.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-33.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-32.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-32.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-33.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-16.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-16.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-16.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-16.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-16.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-33.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-16.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "Mefriend Logo@150x-10.png",
+      "alt": "Mefriend Logo@150x.png"
+    },
+    {
+      "filename": "Findown Logo Color-10.png",
+      "alt": "Findown Logo Color.png"
+    },
+    {
+      "filename": "MF logo@150x-10.png",
+      "alt": "MF logo@150x.png"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-34.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "areef-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (35)-17.png",
+      "alt": "Inspire Oman Summit Investors 2026"
+    },
+    {
+      "filename": "1782303969341-17.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "1782238294679-17.jfif",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "OCCI-launched-Inspire-Oman-initiative-in-Oman-770x578-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "965e3c17-823e-414e-8c71-16318b6f1a9c-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Oman-National-Day-Holiday-800x450-17.webp",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "zawaya tn-17.jfif",
+      "alt": "zawaya tn.jfif"
+    },
+    {
+      "filename": "aaaa-17.png",
+      "alt": "aaaa.png"
+    },
+    {
+      "filename": "DSC00632-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00465-34.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00791-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00405-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00479-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "DSC00730-17.jpg",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "InspireOmanLogoPNG-35.png",
+      "alt": "InspireOmanLogoPNG.png"
+    },
+    {
+      "filename": "Screenshot (26)-34.png",
+      "alt": "Inspire Oman"
+    },
+    {
+      "filename": "Screenshot (26)-35.png",
+      "alt": "Screenshot (26).png"
+    },
+    {
+      "filename": "DSC00465-35.jpg",
+      "alt": "DSC00465.jpg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-34.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.30.32 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-34.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM-1.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.05 PM-35.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.05 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2)-17.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (2).jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.03 PM-17.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.03 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM-17.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM.jpeg"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1)-17.jpeg",
+      "alt": "WhatsApp Image 2026-08-05 at 12.44.04 PM (1).jpeg"
+    },
+    {
+      "filename": "Screenshot (24)-17.png",
+      "alt": "Screenshot (24).png"
+    },
+    {
+      "filename": "WhatsApp Image 2026-08-05 at 12.30.32 PM-35.jpeg",
+      "alt": "Official Launch"
+    },
+    {
+      "filename": "Mefriend_logo-17.png",
+      "alt": "Mefriend Logo"
+    },
+    {
+      "filename": "Screenshot 2026-08-14 122230-1.jpg",
+      "alt": "inspire-oman-occi"
+    }
+  ]
+}
