@@ -42,8 +42,7 @@ function p(html: string): string {
 
 function signOffText() {
   return `Team 'Inspire Oman'
-${STRATEGIC_INITIATIVE}
-Telling Oman's Growth Story Globally`;
+${STRATEGIC_INITIATIVE}`;
 }
 
 function fields(doc: RegistrationMailFields) {

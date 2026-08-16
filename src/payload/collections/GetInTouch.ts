@@ -25,7 +25,8 @@ export const GetInTouch: CollectionConfig = {
     description: "Contact and enquiry messages from the website.",
   },
   access: {
-    create: () => true,
+    // Block anonymous REST create; website uses /api/forms/get-in-touch.
+    create: ({ req: { user } }) => Boolean(user),
     read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),

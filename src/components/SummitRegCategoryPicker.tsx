@@ -104,8 +104,8 @@ export default function SummitRegCategoryPicker({
             </div>
 
             <div
-              className={`relative mt-4 inline-flex items-center gap-1.5 text-xs font-semibold ${
-                selected ? "text-gold" : "text-white/40 group-hover:text-gold/80"
+              className={`relative mt-5 inline-flex items-center gap-1.5 rounded-lg bg-gold font-semibold text-primary-dark shadow-md shadow-gold/25 transition-colors group-hover:bg-gold-light ${
+                compact ? "px-3.5 py-2 text-[11px]" : "px-4 py-2.5 text-xs"
               }`}
             >
               {selected ? "Selected" : "Continue"}

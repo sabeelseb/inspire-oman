@@ -1,12 +1,29 @@
 /** Shared HTML email chrome matching Inspire Oman (black / gold, Inter). */
 
+/**
+ * Public origin used for "Visit site" links.
+ * Prefer env; default is the findown deploy hostname.
+ */
 const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ||
   process.env.SITE_URL ||
   "https://inspireoman.findown.in"
 ).replace(/\/$/, "");
 
-const LOGO_URL = `${SITE_URL}/images/logos/inspire-oman-hero-logo.png`;
+/**
+ * Host for remote images in HTML email.
+ * Gmail (esp. mobile) often fails CID attachments and shows them as broken
+ * paperclip chips — use a public HTTPS URL instead.
+ * Prefer EMAIL_ASSET_BASE_URL when the primary site host is down or private.
+ */
+const ASSET_BASE_URL = (
+  process.env.EMAIL_ASSET_BASE_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.SITE_URL ||
+  "https://inspireoman.com"
+).replace(/\/$/, "");
+
+const LOGO_URL = `${ASSET_BASE_URL}/images/logos/inspire-oman-hero-logo.png`;
 
 /** Matches site font stack (Inter). */
 const FONT =
@@ -70,11 +87,8 @@ export function renderInspireEmailShell(input: EmailShellInput): string {
           <tr>
             <td style="background-color:#0A0A0A;background-image:linear-gradient(165deg,#121212 0%,#0A0A0A 55%,#050505 100%);padding:26px 28px 22px;text-align:center;border-bottom:1px solid rgba(197,165,90,0.55);">
               <img src="${LOGO_URL}" alt="Inspire Oman" width="118" style="display:block;margin:0 auto 12px;max-width:118px;width:118px;height:auto;border:0;" />
-              <p style="margin:0 0 10px;font-family:${FONT};font-size:11px;line-height:1.55;font-weight:500;letter-spacing:0.04em;color:rgba(197,165,90,0.95);">
+              <p style="margin:0;font-family:${FONT};font-size:11px;line-height:1.55;font-weight:500;letter-spacing:0.04em;color:rgba(197,165,90,0.95);">
                 ${initiative}
-              </p>
-              <p style="margin:0;font-family:${FONT};font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(197,165,90,0.72);font-weight:600;">
-                Telling Oman&#39;s Growth Story Globally
               </p>
             </td>
           </tr>
@@ -103,8 +117,7 @@ export function renderInspireEmailShell(input: EmailShellInput): string {
                 <tr>
                   <td style="padding-top:22px;">
                     <p style="margin:0 0 4px;font-family:${FONT};font-size:14px;color:#0A0A0A;font-weight:700;">Team &#39;Inspire Oman&#39;</p>
-                    <p style="margin:0 0 6px;font-family:${FONT};font-size:12px;color:#71717A;line-height:1.5;">${initiative}</p>
-                    <p style="margin:0 0 18px;font-family:${FONT};font-size:12px;color:#A0A0A0;">Telling Oman&#39;s Growth Story Globally</p>
+                    <p style="margin:0 0 18px;font-family:${FONT};font-size:12px;color:#71717A;line-height:1.5;">${initiative}</p>
                     <a href="${SITE_URL}" style="display:inline-block;padding:12px 22px;background-color:#C5A55A;color:#0A0A0A;text-decoration:none;font-family:${FONT};font-size:13px;font-weight:700;letter-spacing:0.02em;border-radius:8px;">
                       Visit inspireoman.findown.in
                     </a>

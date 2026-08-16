@@ -4,11 +4,37 @@
 
 {$SITE_ADDRESS} {
 	encode gzip zstd
-	reverse_proxy app:3000
+
+	log {
+		output file /var/log/caddy/access.log {
+			roll_size 20mb
+			roll_keep 5
+		}
+	}
+
+	@scanners path /.env /.git /wp-admin /wp-login.php /xmlrpc.php /phpmyadmin /vendor/phpunit
+	respond @scanners 404
 
 	header {
 		X-Content-Type-Options nosniff
 		Referrer-Policy strict-origin-when-cross-origin
+		X-Frame-Options SAMEORIGIN
 		-Server
+	}
+
+	# Cap public form bodies (app also enforces 32KB).
+	@forms path /api/forms/*
+	handle @forms {
+		request_body {
+			max_size 64KB
+		}
+		reverse_proxy app:3000
+	}
+
+	handle {
+		request_body {
+			max_size 20MB
+		}
+		reverse_proxy app:3000
 	}
 }

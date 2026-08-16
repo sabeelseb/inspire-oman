@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Play, Video, X } from "lucide-react";
+import { ArrowRight, BookOpen, ImageIcon, Play, Video, X } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { youtubeThumbnailUrl } from "@/lib/youtube";
 
@@ -13,9 +13,13 @@ export type HeroSpotlightCopy = {
   card1Keynote?: string | null;
   card1Title?: string | null;
   card1Description?: string | null;
+  card1Image?: string | null;
+  card1Href?: string | null;
   card2Keynote?: string | null;
   card2Title?: string | null;
   card2Description?: string | null;
+  card2Image?: string | null;
+  card2Href?: string | null;
   videoKeynote?: string | null;
   videoTitle?: string | null;
   videoDescription?: string | null;
@@ -30,10 +34,12 @@ const DEFAULTS = {
   card1Title: "Legacy Documentation",
   card1Description:
     "Documenting Oman's success stories and institutional memory for Vision 2040.",
+  card1Href: "/pillars",
   card2Keynote: "Keynote",
   card2Title: "Digital Video Campaign",
   card2Description:
     "A cinematic campaign amplifying Omani brands and leaders across digital platforms.",
+  card2Href: "/media",
   videoKeynote: "Chairman Video",
   videoTitle: "Official Launch of Inspire Oman | Muscat Highlights",
   videoDescription:
@@ -89,41 +95,107 @@ function FeatureCard({
   keynote,
   title,
   description,
+  image,
+  href,
   delay = 0,
 }: {
   icon: typeof BookOpen;
   keynote: string;
   title: string;
   description: string;
+  image?: string | null;
+  href?: string | null;
   delay?: number;
 }) {
   const reduceMotion = useReducedMotion();
+  const link = normalizeHref(href);
+  const portrait = (image || "").trim();
+  const remotePortrait = /^https?:\/\//i.test(portrait);
 
-  return (
-    <motion.article
-      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.35 }}
-      transition={{ duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={reduceMotion ? undefined : { y: -3 }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6"
-    >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-gold/10 to-transparent opacity-80"
-        aria-hidden
-      />
-      <div className="relative mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold">
-        <Icon size={20} />
+  const body = (
+    <>
+      <div className="relative flex min-h-0 flex-1 items-center gap-4">
+        <div className="min-w-0 flex-1">
+          <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-gold/30 bg-gold/10 text-gold">
+            <Icon size={20} />
+          </div>
+          <p className="io-keynote mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+            {keynote}
+          </p>
+          <h3 className="mb-2 text-xl font-bold text-white sm:text-2xl">{title}</h3>
+          <p className="text-sm leading-relaxed text-white/50 sm:text-[15px]">
+            {description}
+          </p>
+          {link ? (
+            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-gold/85 transition-colors group-hover:text-gold">
+              Learn more
+              <ArrowRight
+                size={14}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </span>
+          ) : null}
+        </div>
+        {portrait ? (
+          <div className="relative h-[7.25rem] w-[5.35rem] shrink-0 overflow-hidden rounded-xl border border-gold/25 bg-white/[0.04] sm:h-[8.25rem] sm:w-[6.1rem]">
+            {remotePortrait ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={portrait}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            ) : (
+              <Image
+                src={portrait}
+                alt=""
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="100px"
+              />
+            )}
+          </div>
+        ) : (
+          <div
+            className="relative flex h-[7.25rem] w-[5.35rem] shrink-0 items-center justify-center overflow-hidden rounded-xl border border-dashed border-gold/30 bg-white/[0.03] text-gold/45 sm:h-[8.25rem] sm:w-[6.1rem]"
+            aria-hidden
+          >
+            <ImageIcon size={22} strokeWidth={1.5} />
+          </div>
+        )}
       </div>
-      <p className="io-keynote relative mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-        {keynote}
-      </p>
-      <h3 className="relative mb-2 text-xl font-bold text-white sm:text-2xl">{title}</h3>
-      <p className="relative text-sm leading-relaxed text-white/50 sm:text-[15px]">
-        {description}
-      </p>
-    </motion.article>
+    </>
   );
+
+  const className = `group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6 ${
+    link ? "cursor-pointer transition-colors hover:border-gold/40 hover:bg-gold/[0.05]" : ""
+  }`;
+
+  const motionProps = {
+    initial: reduceMotion ? false : { opacity: 0, y: 18 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.35 },
+    transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] as const },
+    whileHover: reduceMotion ? undefined : { y: -3 },
+    className,
+  };
+
+  if (link) {
+    const external = /^https?:\/\//i.test(link);
+    return (
+      <motion.div {...motionProps}>
+        <Link
+          href={link}
+          className="absolute inset-0 z-10"
+          aria-label={`${title} - open link`}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        />
+        <div className="relative z-0 flex h-full flex-col">{body}</div>
+      </motion.div>
+    );
+  }
+
+  return <motion.article {...motionProps}>{body}</motion.article>;
 }
 
 export default function HeroSpotlightGrid({
@@ -148,11 +220,15 @@ export default function HeroSpotlightGrid({
     keynote: copy?.card1Keynote?.trim() || DEFAULTS.card1Keynote,
     title: copy?.card1Title?.trim() || DEFAULTS.card1Title,
     description: copy?.card1Description?.trim() || DEFAULTS.card1Description,
+    image: copy?.card1Image?.trim() || "",
+    href: copy?.card1Href?.trim() || DEFAULTS.card1Href,
   };
   const card2 = {
     keynote: copy?.card2Keynote?.trim() || DEFAULTS.card2Keynote,
     title: copy?.card2Title?.trim() || DEFAULTS.card2Title,
     description: copy?.card2Description?.trim() || DEFAULTS.card2Description,
+    image: copy?.card2Image?.trim() || "",
+    href: copy?.card2Href?.trim() || DEFAULTS.card2Href,
   };
 
   const videoHref =
@@ -190,6 +266,8 @@ export default function HeroSpotlightGrid({
                 keynote={card1.keynote}
                 title={card1.title}
                 description={card1.description}
+                image={card1.image}
+                href={card1.href}
                 delay={0.05}
               />
               <FeatureCard
@@ -197,6 +275,8 @@ export default function HeroSpotlightGrid({
                 keynote={card2.keynote}
                 title={card2.title}
                 description={card2.description}
+                image={card2.image}
+                href={card2.href}
                 delay={0.12}
               />
             </div>

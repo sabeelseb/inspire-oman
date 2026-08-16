@@ -507,9 +507,19 @@ export async function getCmsPageHome() {
       spotlightCard1Keynote: page.spotlightCard1Keynote,
       spotlightCard1Title: page.spotlightCard1Title,
       spotlightCard1Description: page.spotlightCard1Description,
+      spotlightCard1Image:
+        mediaUrl(page.spotlightCard1Image) ||
+        (page.spotlightCard1ImageSrc as string) ||
+        null,
+      spotlightCard1Href: page.spotlightCard1Href,
       spotlightCard2Keynote: page.spotlightCard2Keynote,
       spotlightCard2Title: page.spotlightCard2Title,
       spotlightCard2Description: page.spotlightCard2Description,
+      spotlightCard2Image:
+        mediaUrl(page.spotlightCard2Image) ||
+        (page.spotlightCard2ImageSrc as string) ||
+        null,
+      spotlightCard2Href: page.spotlightCard2Href,
       spotlightVideoKeynote: page.spotlightVideoKeynote,
       spotlightVideoTitle: page.spotlightVideoTitle,
       spotlightVideoDescription: page.spotlightVideoDescription,

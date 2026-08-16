@@ -19,7 +19,7 @@ const statusField: CollectionConfig["fields"][number] = {
   admin: {
     position: "sidebar",
     description:
-      "New → registration email on submit. In progress → no email. Approved / Rejected → status email. Closed → no email.",
+      "New → registration email on website submit. In progress → no email. Approved / Rejected → status email. Closed → no email.",
   },
 };
 
@@ -44,17 +44,24 @@ export const SummitRegistrations: CollectionConfig = {
     description: "Summit registration submissions from the website.",
   },
   access: {
-    create: () => true,
+    // Anonymous REST create blocked (was an open mail-relay surface).
+    // Public site uses /api/forms/summit-registrations with overrideAccess.
+    create: ({ req: { user } }) => Boolean(user),
     read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),
   },
   hooks: {
     afterChange: [
-      async ({ doc, previousDoc, operation }) => {
+      async ({ doc, previousDoc, operation, req }) => {
         try {
           if (operation === "create") {
-            await sendRegistrationUnderReviewEmail(doc);
+            const ctx = (req?.context || {}) as { notifyRegistrant?: boolean };
+            // Website form sets notifyRegistrant. Admin UI creates also notify.
+            // Raw anonymous REST create is blocked by access.create.
+            if (ctx.notifyRegistrant === true || Boolean(req?.user)) {
+              await sendRegistrationUnderReviewEmail(doc);
+            }
             return;
           }
 

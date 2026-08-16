@@ -3,6 +3,7 @@ import {
   TYPOGRAPHY_FONT_SIZE_OPTIONS,
   TYPOGRAPHY_STYLE_OPTIONS,
 } from "@/lib/typography";
+import { globalAccess } from "../access";
 
 const draftVersions = {
   drafts: true,
@@ -49,6 +50,7 @@ export const Site: GlobalConfig = {
       "Shared brand, SEO, summit details, typography, and default images. Header, footer, contact, social, and partner names are edited in their own Settings tabs.",
   },
   versions: draftVersions,
+  access: globalAccess,
   fields: [
     {
       type: "tabs",
@@ -341,6 +343,7 @@ export const Header: GlobalConfig = {
     description: "Logo, brand wordmark, navigation links, header CTA, and Register Now floating widget.",
   },
   versions: draftVersions,
+  access: globalAccess,
   fields: [
     {
       name: "logo",
@@ -456,6 +459,7 @@ export const Footer: GlobalConfig = {
       "Footer brand, blurb, quick links, contact blocks, partner callout, social links, and copyright.",
   },
   versions: draftVersions,
+  access: globalAccess,
   fields: [
     {
       name: "brandPrimary",
@@ -631,6 +635,7 @@ export const HomePage: GlobalConfig = {
       "Homepage copy and section headings. Tabs: Hero, Spotlight Grid (3 blocks), About, Stats, Partners, Pillars, Summit, Videos, Testimonials, Contact, Bottom CTA. Collections: Partners, Pillars, Speakers, Videos, Testimonials.",
   },
   versions: draftVersions,
+  access: globalAccess,
   fields: [
     {
       type: "tabs",
@@ -894,6 +899,35 @@ export const HomePage: GlobalConfig = {
                     "Documenting Oman's success stories and institutional memory for Vision 2040.",
                   label: "Short description",
                 },
+                {
+                  name: "spotlightCard1Image",
+                  type: "upload",
+                  relationTo: "media",
+                  label: "Portrait image upload",
+                  admin: {
+                    description:
+                      "Small portrait shown inside this block. Prefer a vertical/portrait crop.",
+                  },
+                },
+                {
+                  name: "spotlightCard1ImageSrc",
+                  type: "text",
+                  label: "Portrait image path / URL (optional)",
+                  admin: {
+                    description:
+                      "Fallback if no upload is set. Example: /images/gallery/example.jpg",
+                  },
+                },
+                {
+                  name: "spotlightCard1Href",
+                  type: "text",
+                  defaultValue: "/pillars",
+                  label: "Click redirect link",
+                  admin: {
+                    description:
+                      "Whole card becomes clickable. Use /pillars or a full URL.",
+                  },
+                },
               ],
             },
             {
@@ -918,6 +952,35 @@ export const HomePage: GlobalConfig = {
                   defaultValue:
                     "A cinematic campaign amplifying Omani brands and leaders across digital platforms.",
                   label: "Short description",
+                },
+                {
+                  name: "spotlightCard2Image",
+                  type: "upload",
+                  relationTo: "media",
+                  label: "Portrait image upload",
+                  admin: {
+                    description:
+                      "Small portrait shown inside this block. Prefer a vertical/portrait crop.",
+                  },
+                },
+                {
+                  name: "spotlightCard2ImageSrc",
+                  type: "text",
+                  label: "Portrait image path / URL (optional)",
+                  admin: {
+                    description:
+                      "Fallback if no upload is set. Example: /images/gallery/example.jpg",
+                  },
+                },
+                {
+                  name: "spotlightCard2Href",
+                  type: "text",
+                  defaultValue: "/media",
+                  label: "Click redirect link",
+                  admin: {
+                    description:
+                      "Whole card becomes clickable. Use /media or a full URL.",
+                  },
                 },
               ],
             },
@@ -1255,6 +1318,7 @@ function pageGlobal(slug: string, label: string, extra: GlobalConfig["fields"] =
     label,
     admin: { group: "Pages" },
     versions: draftVersions,
+    access: globalAccess,
     fields: [
       { name: "eyebrow", type: "text", label: "Hero eyebrow" },
       { name: "title", type: "text", label: "Hero title" },

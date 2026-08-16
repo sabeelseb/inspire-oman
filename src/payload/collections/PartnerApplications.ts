@@ -32,7 +32,8 @@ export const PartnerApplications: CollectionConfig = {
     description: "Partnership applications from the website.",
   },
   access: {
-    create: () => true,
+    // Block anonymous REST create; website uses /api/forms/partner-applications.
+    create: ({ req: { user } }) => Boolean(user),
     read: ({ req: { user } }) => Boolean(user),
     update: ({ req: { user } }) => Boolean(user),
     delete: ({ req: { user } }) => Boolean(user),

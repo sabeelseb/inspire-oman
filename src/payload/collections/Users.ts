@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { usersAccess } from "../access";
 
 export const Users: CollectionConfig = {
   slug: "users",
@@ -7,5 +8,6 @@ export const Users: CollectionConfig = {
     group: "Settings",
   },
   auth: true,
+  access: usersAccess,
   fields: [],
 };

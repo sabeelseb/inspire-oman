@@ -113,9 +113,13 @@ type HomePage = {
   spotlightCard1Keynote?: string | null;
   spotlightCard1Title?: string | null;
   spotlightCard1Description?: string | null;
+  spotlightCard1Image?: string | null;
+  spotlightCard1Href?: string | null;
   spotlightCard2Keynote?: string | null;
   spotlightCard2Title?: string | null;
   spotlightCard2Description?: string | null;
+  spotlightCard2Image?: string | null;
+  spotlightCard2Href?: string | null;
   spotlightVideoKeynote?: string | null;
   spotlightVideoTitle?: string | null;
   spotlightVideoDescription?: string | null;
@@ -352,9 +356,13 @@ export default function HomeClient({
           card1Keynote: page?.spotlightCard1Keynote,
           card1Title: page?.spotlightCard1Title,
           card1Description: page?.spotlightCard1Description,
+          card1Image: page?.spotlightCard1Image,
+          card1Href: page?.spotlightCard1Href,
           card2Keynote: page?.spotlightCard2Keynote,
           card2Title: page?.spotlightCard2Title,
           card2Description: page?.spotlightCard2Description,
+          card2Image: page?.spotlightCard2Image,
+          card2Href: page?.spotlightCard2Href,
           videoKeynote: page?.spotlightVideoKeynote,
           videoTitle: page?.spotlightVideoTitle,
           videoDescription: page?.spotlightVideoDescription,

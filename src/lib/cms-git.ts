@@ -54,14 +54,14 @@ export async function publishLive() {
 }
 
 export function guardLocalCmsAction() {
-  if (process.env.VERCEL) {
+  if (process.env.VERCEL || process.env.NODE_ENV === "production") {
     return NextResponse.json(
       {
         ok: false,
         message:
-          "Draft/Publish git actions only work when running locally (npm run dev). On Vercel, edit locally then Publish from your machine.",
+          "Draft/Publish git actions are disabled on the live server. Edit content in /admin only.",
       },
-      { status: 400 }
+      { status: 403 }
     );
   }
   return null;

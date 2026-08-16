@@ -11,7 +11,6 @@ import TitleHighlight from "./TitleHighlight";
 import LogoImage from "./LogoImage";
 import { usePageLoader } from "./AppShell";
 import { useIsMobile } from "@/hooks/useMobilePerf";
-import { usePastFirstView } from "@/hooks/usePastFirstView";
 import { typographyToStyle } from "@/lib/typography";
 
 export type HomeHeroContent = {
@@ -109,7 +108,6 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
   const { markTopReady } = usePageLoader();
   const reduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
-  const pastFirstView = usePastFirstView(100);
 
   const date = page?.heroDate || siteConfig.summitDate;
   const city = page?.heroCity || siteConfig.city || "Muscat";
@@ -227,25 +225,13 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
       <div className="relative z-10 mx-auto flex w-full min-h-[100svh] flex-col justify-center pt-[calc(env(safe-area-inset-top)+5rem)] pb-7 sm:pt-[calc(env(safe-area-inset-top)+5.25rem)] sm:pb-12 lg:pt-[calc(env(safe-area-inset-top)+5.5rem)] lg:pb-14">
         <div className="site-container">
           <div className="flex w-full min-w-0 flex-col items-center text-center">
-            {/* Desktop/tablet: partners flank main logo */}
+            {/* Desktop/tablet: Inspire Oman stays page-centered; partners sit beside it out of flow */}
             <motion.div
               {...fade(0.15, 16, 0.65)}
-              className={
-                showBothPartners
-                  ? "mb-3 hidden w-full min-w-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 md:mb-4 md:grid md:gap-6 lg:gap-8"
-                  : "mb-3 hidden w-full min-w-0 items-center justify-center gap-4 md:mb-4 md:flex md:gap-6 lg:gap-8"
-              }
+              className="mb-3 hidden w-full min-w-0 justify-center md:mb-4 md:flex"
               aria-label="Partners and brand"
             >
-              {showExecution ? (
-                <PartnerBlock
-                  role={executionPartner.role}
-                  title={executionPartner.title}
-                  src={executionPartner.src}
-                  align={showBothPartners ? "end" : "center"}
-                />
-              ) : null}
-              <div className="flex shrink-0 justify-center px-2">
+              <div className="relative flex shrink-0 justify-center px-2">
                 <Image
                   src={heroLogoSrc}
                   alt="Inspire Oman"
@@ -254,15 +240,25 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
                   priority
                   className="h-[8.5rem] w-auto max-w-full object-contain object-center md:h-[9.5rem] lg:h-[10.5rem] xl:h-[11.25rem]"
                 />
+                {showExecution ? (
+                  <div className="absolute right-full top-1/2 mr-6 w-max -translate-y-1/2 lg:mr-8">
+                    <PartnerBlock
+                      role={executionPartner.role}
+                      title={executionPartner.title}
+                      src={executionPartner.src}
+                    />
+                  </div>
+                ) : null}
+                {showStrategic ? (
+                  <div className="absolute left-full top-[34%] ml-6 w-max -translate-y-1/2 lg:ml-8">
+                    <PartnerBlock
+                      role={strategicPartner.role}
+                      title={strategicPartner.title}
+                      src={strategicPartner.src}
+                    />
+                  </div>
+                ) : null}
               </div>
-              {showStrategic ? (
-                <PartnerBlock
-                  role={strategicPartner.role}
-                  title={strategicPartner.title}
-                  src={strategicPartner.src}
-                  align={showBothPartners ? "start" : "center"}
-                />
-              ) : null}
             </motion.div>
 
             {/* mWeb: brand first — larger logo for first-fold presence */}
@@ -337,19 +333,17 @@ export default function Hero({ page }: { page?: HomeHeroContent | null }) {
                 {...fade(0.75)}
                 className="flex w-full flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-4"
               >
-                {!pastFirstView ? (
-                  <Link
-                    id="hero-register-cta"
-                    href={primaryHref}
-                    className="btn-primary group min-h-11 w-auto px-5 py-2.5 text-sm shadow-lg shadow-gold/25 sm:min-h-12 sm:px-10 sm:py-4 sm:text-lg"
-                  >
-                    {primaryCta}
-                    <ArrowRight
-                      size={18}
-                      className="ml-1.5 transition-transform group-hover:translate-x-1 sm:ml-2 sm:h-[22px] sm:w-[22px]"
-                    />
-                  </Link>
-                ) : null}
+                <Link
+                  id="hero-register-cta"
+                  href={primaryHref}
+                  className="btn-primary group min-h-11 w-auto px-5 py-2.5 text-sm shadow-lg shadow-gold/25 sm:min-h-12 sm:px-10 sm:py-4 sm:text-lg"
+                >
+                  {primaryCta}
+                  <ArrowRight
+                    size={18}
+                    className="ml-1.5 transition-transform group-hover:translate-x-1 sm:ml-2 sm:h-[22px] sm:w-[22px]"
+                  />
+                </Link>
                 {secondaryCta ? (
                   <Link
                     href={secondaryHref}

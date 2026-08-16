@@ -3,7 +3,9 @@ const { withPayload } = require("@payloadcms/next/withPayload");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-      images: {
+  // Do not emit browser source maps in production (reduces crash/env leakage surface).
+  productionBrowserSourceMaps: false,
+  images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",

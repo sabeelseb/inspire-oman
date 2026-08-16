@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { contentAccess } from "../access";
 
 const draftVersions = {
   drafts: true,
@@ -12,6 +13,7 @@ export const Partners: CollectionConfig = {
     defaultColumns: ["name", "role", "fullName", "_status"],
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "name", type: "text", required: true, label: "Short name" },
     { name: "slug", type: "text", required: true, unique: true, label: "Slug" },
@@ -50,6 +52,7 @@ export const Stats: CollectionConfig = {
     defaultColumns: ["label", "value", "suffix", "_status"],
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "label", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -69,6 +72,7 @@ export const Speakers: CollectionConfig = {
     description: "Drag rows to set speaker order on the homepage Summit section.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "name", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -87,6 +91,7 @@ export const Testimonials: CollectionConfig = {
     description: "Quotes shown in the homepage Voices of Support section.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "author", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -104,6 +109,7 @@ export const Pillars: CollectionConfig = {
     description: "Cards shown in the homepage Three Pillars section.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "title", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -142,6 +148,7 @@ export const Packages: CollectionConfig = {
     defaultColumns: ["tier", "price", "currency", "highlight", "_status"],
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "tier", type: "text", required: true, label: "Tier name" },
     { name: "slug", type: "text", required: true, unique: true },
@@ -165,6 +172,7 @@ export const Values: CollectionConfig = {
     defaultColumns: ["title", "icon", "_status"],
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "title", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -197,6 +205,7 @@ export const Agenda: CollectionConfig = {
     description: "Drag rows to set the order shown on the Summit page.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "title", type: "text", required: true, label: "Session title" },
     { name: "slug", type: "text", required: true, unique: true },
@@ -228,6 +237,7 @@ export const Gallery: CollectionConfig = {
     description: "Drag rows to set the order shown on the Media page.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "title", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -253,6 +263,7 @@ export const Videos: CollectionConfig = {
     description: "Drag rows to set the order shown on the homepage carousel and Media page.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "title", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },
@@ -311,6 +322,7 @@ export const Press: CollectionConfig = {
     description: "Drag rows to set the order shown on the Media page.",
   },
   versions: draftVersions,
+  access: contentAccess,
   fields: [
     { name: "title", type: "text", required: true },
     { name: "slug", type: "text", required: true, unique: true },

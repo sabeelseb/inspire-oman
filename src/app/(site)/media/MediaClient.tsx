@@ -177,19 +177,19 @@ export default function MediaClient({
             </h2>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6 items-stretch">
             {videos.map((video, i) => {
               const clickable = Boolean(normalizeHref(video.href));
               return (
-                <ScrollReveal key={i} delay={i * 0.1}>
+                <ScrollReveal key={i} delay={i * 0.1} className="h-full">
                   <motion.button
                     type="button"
                     whileHover={{ y: -4 }}
                     onClick={() => openVideo(video)}
                     disabled={!clickable}
-                    className="glass-card-hover overflow-hidden group w-full text-left disabled:cursor-default"
+                    className="glass-card-hover overflow-hidden group flex h-full w-full flex-col text-left disabled:cursor-default"
                   >
-                    <div className="relative aspect-video">
+                    <div className="relative aspect-video shrink-0">
                       {isRemoteSrc(video.image) ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -216,9 +216,9 @@ export default function MediaClient({
                         {video.tag}
                       </span>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-semibold text-white mb-2">{video.title}</h3>
-                      <p className="text-white/50 text-sm">{video.description}</p>
+                    <div className="flex flex-1 flex-col p-6">
+                      <h3 className="mb-2 text-lg font-semibold text-white">{video.title}</h3>
+                      <p className="flex-1 text-sm text-white/50">{video.description}</p>
                     </div>
                   </motion.button>
                 </ScrollReveal>
